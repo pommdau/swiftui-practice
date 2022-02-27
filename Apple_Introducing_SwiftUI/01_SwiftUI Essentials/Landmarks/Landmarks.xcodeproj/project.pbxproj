@@ -12,6 +12,7 @@
 		DAA0BA0927CB2F910082CFEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA0BA0827CB2F910082CFEF /* Assets.xcassets */; };
 		DAA0BA0C27CB2F910082CFEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA0BA0B27CB2F910082CFEF /* Preview Assets.xcassets */; };
 		DAA0BA1327CB3AB60082CFEF /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA0BA1227CB3AB60082CFEF /* CircleImage.swift */; };
+		DAA0BA1527CB3B860082CFEF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA0BA1427CB3B860082CFEF /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		DAA0BA0827CB2F910082CFEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAA0BA0B27CB2F910082CFEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DAA0BA1227CB3AB60082CFEF /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		DAA0BA1427CB3B860082CFEF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				DAA0BA0427CB2F900082CFEF /* LandmarksApp.swift */,
 				DAA0BA0627CB2F900082CFEF /* ContentView.swift */,
 				DAA0BA1227CB3AB60082CFEF /* CircleImage.swift */,
+				DAA0BA1427CB3B860082CFEF /* MapView.swift */,
 				DAA0BA0827CB2F910082CFEF /* Assets.xcassets */,
 				DAA0BA0A27CB2F910082CFEF /* Preview Content */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA0BA0727CB2F900082CFEF /* ContentView.swift in Sources */,
+				DAA0BA1527CB3B860082CFEF /* MapView.swift in Sources */,
 				DAA0BA0527CB2F900082CFEF /* LandmarksApp.swift in Sources */,
 				DAA0BA1327CB3AB60082CFEF /* CircleImage.swift in Sources */,
 			);
