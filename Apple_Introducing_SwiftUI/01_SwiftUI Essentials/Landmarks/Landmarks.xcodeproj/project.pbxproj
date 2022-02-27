@@ -98,10 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				DAA0BA0627CB2F900082CFEF /* ContentView.swift */,
-				DAA0BA1227CB3AB60082CFEF /* CircleImage.swift */,
-				DAA0BA1427CB3B860082CFEF /* MapView.swift */,
 				DAEFD57027CB5A8C005B30C3 /* LandmarkRow.swift */,
 				DAEFD57227CB6120005B30C3 /* LandmarkList.swift */,
+				DAA0BA1227CB3AB60082CFEF /* CircleImage.swift */,
+				DAA0BA1427CB3B860082CFEF /* MapView.swift */,
 				DAEFD57427CB6200005B30C3 /* LandmarkDetail.swift */,
 			);
 			path = Views;
