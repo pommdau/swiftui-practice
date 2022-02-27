@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    Text("Hello, world!")
-      .padding()  // 10points padding
+      VStack {
+          Text("R: ??? G: ??? B: ???")
+              .padding()
+      }  // 10points padding
   }
 }
 
