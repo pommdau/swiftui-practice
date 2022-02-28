@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    @EnvironmentObject var modelData: ModelData
     @State private var showFavoritesOnly = true
     
     var filteredLandmarks: [Landmark] {
-        landmarks.filter { landmark in
+        modelData.landmarks.filter { landmark in
             // showFavoritesOnlyがfalseのときフィルタリングはされない
             (!showFavoritesOnly || landmark.isFavorite)
         }
