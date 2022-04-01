@@ -33,14 +33,36 @@
 import SwiftUI
 
 struct ContentView: View {
-  var body: some View {
-    Text("Hello, world!")
-      .padding()
-  }
+    
+    // MARK: - Properties
+    
+    @State var game = Game()
+    @State var guess: RGB
+    
+    var target = RGB.random()
+    
+    // MARK: - Lifecycles
+    
+    // MARK: - Views
+    
+    var body: some View {
+        VStack {
+            Color(red: 0.5, green: 0.5, blue: 0.5)
+            Text("R: ??? G: ??? B: ???")
+                .padding()
+            Color(red: 0.5, green: 0.5, blue: 0.5)
+            Text("R: 204 G: 76 B: 178")
+                .padding()
+            Slider(value: .constant(0.5))            
+            Button(action: {}) {
+                Text("Hit Me!")
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ContentView(guess: RGB(red: 0.8, green: 0.3, blue: 0.7))
   }
 }
