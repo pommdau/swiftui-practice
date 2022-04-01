@@ -36,10 +36,10 @@ struct ContentView: View {
     
     // MARK: - Properties
     
-    @State var game = Game()
-    @State var guess: RGB
+    @State var game = Game()  // 正解
+    @State var guess: RGB  // 予想(入力値)
     
-    var target = RGB.random()
+    var target = RGB.random()  // ???
     
     // MARK: - Lifecycles
     
@@ -47,13 +47,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Color(red: 0.5, green: 0.5, blue: 0.5)
+            Color(rgbStruct: game.target)
             Text("R: ??? G: ??? B: ???")
                 .padding()
-            Color(red: 0.5, green: 0.5, blue: 0.5)
-            Text("R: 204 G: 76 B: 178")
+            Color(rgbStruct: guess)
+            Text(guess.intString())
                 .padding()
-            Slider(value: .constant(0.5))            
+            ColorSlider(value: $guess.red, trackColor: .red)
+            ColorSlider(value: $guess.green, trackColor: .green)
+            ColorSlider(value: $guess.blue, trackColor: .blue)
             Button(action: {}) {
                 Text("Hit Me!")
             }
@@ -63,6 +65,26 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(guess: RGB(red: 0.8, green: 0.3, blue: 0.7))
+      ContentView(guess: RGB())
   }
+}
+
+struct ColorSlider: View {
+    
+    // MARK: - Properties
+    
+    @Binding var value: Double  // Stateの代わりにBinding. ビュー自体はvalueを所有しないため(外から値を与えられる)
+    var trackColor: Color
+    
+    // MARK: - View
+    
+    var body: some View {
+        HStack {
+            Text("0")
+            Slider(value: $value)
+                .accentColor(trackColor)
+            Text("255")
+        }
+        .padding(.horizontal)
+    }
 }
