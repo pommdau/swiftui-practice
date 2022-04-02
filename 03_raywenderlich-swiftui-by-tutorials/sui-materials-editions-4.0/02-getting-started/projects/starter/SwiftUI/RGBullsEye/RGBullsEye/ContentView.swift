@@ -39,52 +39,72 @@ struct ContentView: View {
     @State var game = Game()  // 正解
     @State var guess: RGB  // 予想(入力値)
     @State var showScore = false
+    
+    let circleSize: CGFloat = 0.275
+    let labelHeight: CGFloat = 0.06
+    let labelWidth: CGFloat = 0.53
+    let buttonWidth: CGFloat = 0.87
         
     // MARK: - Lifecycles
     
     // MARK: - Views
     
     var body: some View {
-        VStack {
-
-            ColorCircle(rgb: game.target)
-            
-            if !showScore {
-                Text("R: ??? G: ??? B: ???")
-                    .padding()
-            } else {
-                Text(game.target.intString())
-                    .padding()
+        GeometryReader { proxy in
+            // proxy: GeometryReader provides you with a GeometryProxy object that has a frame method and size and safeAreaInset properties. You name this object proxy.
+            ZStack {
+                Color.element
+                    .ignoresSafeArea()
+                VStack {
+                    ColorCircle(rgb: game.target, size: proxy.size.height * circleSize)
+                    
+                    if !showScore {
+                        BavelText(text: "R: ??? G: ??? B: ???",
+                                  width: proxy.size.width * labelWidth,
+                                  height: proxy.size.height * labelHeight)
+                    } else {
+                        BavelText(text: game.target.intString(),
+                                  width: proxy.size.width * labelWidth,
+                                  height: proxy.size.height * labelHeight)
+                    }
+                    ColorCircle(rgb: guess, size: proxy.size.height * circleSize)
+                    BavelText(text: guess.intString(),
+                              width: proxy.size.width * labelWidth,
+                              height: proxy.size.height * labelHeight)
+                    ColorSlider(value: $guess.red, trackColor: .red)
+                    ColorSlider(value: $guess.green, trackColor: .green)
+                    ColorSlider(value: $guess.blue, trackColor: .blue)
+                    
+                    Button("Hit Me!") {
+                        showScore = true
+                        game.check(guess: guess)  // Scoreを算出し内部のプロパティに保存
+                    }
+                    .buttonStyle(NewButtonStyle(width: proxy.size.width * buttonWidth,
+                                                height: proxy.size.height * labelHeight))
+                    .alert(isPresented: $showScore) {
+                        Alert(title: Text("Your Score"),
+                              message: Text(String(game.scoreRound)),
+                              dismissButton: .default(Text("OK")) {
+                            game.startNewRound()
+                            guess = RGB()
+                        })
+                    }
+                    
+                }
+                .font(.headline)
             }
-                        
-            ColorCircle(rgb: guess)
-            
-            Text(guess.intString())
-                .padding()
-            ColorSlider(value: $guess.red, trackColor: .red)
-            ColorSlider(value: $guess.green, trackColor: .green)
-            ColorSlider(value: $guess.blue, trackColor: .blue)
-            
-            Button("Hit Me!") {
-                showScore = true
-                game.check(guess: guess)  // Scoreを算出し内部のプロパティに保存
-            }
-            .alert(isPresented: $showScore) {
-                Alert(title: Text("Your Score"),
-                      message: Text(String(game.scoreRound)),
-                      dismissButton: .default(Text("OK")) {
-                    game.startNewRound()
-                    guess = RGB()
-                })
-            }
-            
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-      ContentView(guess: RGB())
+      Group {
+          ContentView(guess: RGB())
+              .previewDevice("iPhone 8")
+          ContentView(guess: RGB())
+              .previewDevice("iPhone 13 Pro Max")
+      }
   }
 }
 
@@ -105,23 +125,6 @@ struct ColorSlider: View {
             Text("255")
         }
         .padding(.horizontal)
-    }
-}
-
-struct ColorCircle: View {
-    
-    let rgb: RGB
-    
-    var body: some View {
-        Circle()
-            .fill(Color(rgbStruct: rgb))
-    }
-}
-
-
-struct ColorCircle_Previews: PreviewProvider {
-        
-    static var previews: some View {
-        ColorCircle(rgb: RGB())
+        .font(.subheadline)
     }
 }
