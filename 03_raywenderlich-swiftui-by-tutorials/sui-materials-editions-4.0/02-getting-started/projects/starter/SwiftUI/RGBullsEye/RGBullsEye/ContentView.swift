@@ -77,6 +77,7 @@ struct ContentView: View {
                 }
                 
             }
+            .font(.headline)
         }
     }
 }
@@ -104,5 +105,6 @@ struct ColorSlider: View {
             Text("255")
         }
         .padding(.horizontal)
+        .font(.subheadline)
     }
 }
