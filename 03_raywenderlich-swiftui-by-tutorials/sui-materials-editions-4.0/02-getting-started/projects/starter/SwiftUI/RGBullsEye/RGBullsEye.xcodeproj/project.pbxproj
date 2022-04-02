@@ -16,6 +16,7 @@
 		CD405F022536AA720062B1CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD405F012536AA720062B1CC /* Preview Assets.xcassets */; };
 		DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C346D27F8517700687D57 /* ColorCircle.swift */; };
 		DA5C347027F8524B00687D57 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C346F27F8524B00687D57 /* ViewExtension.swift */; };
+		DA5C347227F85FC100687D57 /* NeuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C347127F85FC100687D57 /* NeuButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CD405F032536AA720062B1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5C346D27F8517700687D57 /* ColorCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCircle.swift; sourceTree = "<group>"; };
 		DA5C346F27F8524B00687D57 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		DA5C347127F85FC100687D57 /* NeuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				DA5C346D27F8517700687D57 /* ColorCircle.swift */,
 				CD405EFA2536AA700062B1CC /* RGBullsEyeApp.swift */,
 				CD405EFC2536AA700062B1CC /* ContentView.swift */,
+				DA5C347127F85FC100687D57 /* NeuButtonStyle.swift */,
 				CDF08BAC253E84F10061DB4A /* Model */,
 				CD405EFE2536AA720062B1CC /* Assets.xcassets */,
 				CD405F032536AA720062B1CC /* Info.plist */,
@@ -187,6 +190,7 @@
 				CD25DEBF253C26A200A218D4 /* Game.swift in Sources */,
 				CD405EFB2536AA700062B1CC /* RGBullsEyeApp.swift in Sources */,
 				DA5C347027F8524B00687D57 /* ViewExtension.swift in Sources */,
+				DA5C347227F85FC100687D57 /* NeuButtonStyle.swift in Sources */,
 				CD25DEC3253C279400A218D4 /* RGB.swift in Sources */,
 				CD25DEC6253C299400A218D4 /* ColorExtension.swift in Sources */,
 				DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */,
