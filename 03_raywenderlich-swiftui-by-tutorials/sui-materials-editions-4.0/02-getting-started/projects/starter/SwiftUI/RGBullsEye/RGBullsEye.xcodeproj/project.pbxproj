@@ -14,6 +14,7 @@
 		CD405EFD2536AA700062B1CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD405EFC2536AA700062B1CC /* ContentView.swift */; };
 		CD405EFF2536AA720062B1CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD405EFE2536AA720062B1CC /* Assets.xcassets */; };
 		CD405F022536AA720062B1CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD405F012536AA720062B1CC /* Preview Assets.xcassets */; };
+		DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C346D27F8517700687D57 /* ColorCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD405EFE2536AA720062B1CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD405F012536AA720062B1CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD405F032536AA720062B1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA5C346D27F8517700687D57 /* ColorCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		CD405EF92536AA700062B1CC /* RGBullsEye */ = {
 			isa = PBXGroup;
 			children = (
+				DA5C346D27F8517700687D57 /* ColorCircle.swift */,
 				CD405EFA2536AA700062B1CC /* RGBullsEyeApp.swift */,
 				CD405EFC2536AA700062B1CC /* ContentView.swift */,
 				CDF08BAC253E84F10061DB4A /* Model */,
@@ -182,6 +185,7 @@
 				CD405EFB2536AA700062B1CC /* RGBullsEyeApp.swift in Sources */,
 				CD25DEC3253C279400A218D4 /* RGB.swift in Sources */,
 				CD25DEC6253C299400A218D4 /* ColorExtension.swift in Sources */,
+				DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
