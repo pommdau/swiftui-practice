@@ -15,6 +15,7 @@
 		CD405EFF2536AA720062B1CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD405EFE2536AA720062B1CC /* Assets.xcassets */; };
 		CD405F022536AA720062B1CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD405F012536AA720062B1CC /* Preview Assets.xcassets */; };
 		DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C346D27F8517700687D57 /* ColorCircle.swift */; };
+		DA5C347027F8524B00687D57 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C346F27F8524B00687D57 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CD405F012536AA720062B1CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD405F032536AA720062B1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5C346D27F8517700687D57 /* ColorCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCircle.swift; sourceTree = "<group>"; };
+		DA5C346F27F8524B00687D57 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				CD25DEBE253C26A200A218D4 /* Game.swift */,
 				CD25DEC2253C279400A218D4 /* RGB.swift */,
 				CD25DEC5253C299400A218D4 /* ColorExtension.swift */,
+				DA5C346F27F8524B00687D57 /* ViewExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				CD405EFD2536AA700062B1CC /* ContentView.swift in Sources */,
 				CD25DEBF253C26A200A218D4 /* Game.swift in Sources */,
 				CD405EFB2536AA700062B1CC /* RGBullsEyeApp.swift in Sources */,
+				DA5C347027F8524B00687D57 /* ViewExtension.swift in Sources */,
 				CD25DEC3253C279400A218D4 /* RGB.swift in Sources */,
 				CD25DEC6253C299400A218D4 /* ColorExtension.swift in Sources */,
 				DA5C346E27F8517700687D57 /* ColorCircle.swift in Sources */,
