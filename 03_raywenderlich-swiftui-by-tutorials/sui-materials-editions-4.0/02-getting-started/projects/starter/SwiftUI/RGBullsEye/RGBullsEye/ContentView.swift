@@ -52,16 +52,12 @@ struct ContentView: View {
                 ColorCircle(rgb: game.target, size: 200)
                 
                 if !showScore {
-                    Text("R: ??? G: ??? B: ???")
-                        .padding()
+                    BavelText(text: "R: ??? G: ??? B: ???", width: 200, height: 48)
                 } else {
-                    Text(game.target.intString())
-                        .padding()
+                    BavelText(text: game.target.intString(), width: 200, height: 48)
                 }
-                            
                 ColorCircle(rgb: guess, size: 200)
-                Text(guess.intString())
-                    .padding()
+                BavelText(text: guess.intString(), width: 200, height: 48)
                 ColorSlider(value: $guess.red, trackColor: .red)
                 ColorSlider(value: $guess.green, trackColor: .green)
                 ColorSlider(value: $guess.blue, trackColor: .blue)
@@ -70,7 +66,7 @@ struct ContentView: View {
                     showScore = true
                     game.check(guess: guess)  // Scoreを算出し内部のプロパティに保存
                 }
-                .buttonStyle(NewButtonStyle(width: 327, height: 48))                
+                .buttonStyle(NewButtonStyle(width: 327, height: 48))
                 .alert(isPresented: $showScore) {
                     Alert(title: Text("Your Score"),
                           message: Text(String(game.scoreRound)),
