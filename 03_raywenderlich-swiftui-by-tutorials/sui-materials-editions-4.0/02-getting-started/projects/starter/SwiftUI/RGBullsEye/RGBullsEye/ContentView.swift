@@ -33,14 +33,95 @@
 import SwiftUI
 
 struct ContentView: View {
-  var body: some View {
-    Text("Hello, world!")
-      .padding()
-  }
+    
+    // MARK: - Properties
+    
+    @State var game = Game()  // 正解
+    @State var guess: RGB  // 予想(入力値)
+    @State var showScore = false
+        
+    // MARK: - Lifecycles
+    
+    // MARK: - Views
+    
+    var body: some View {
+        VStack {
+
+            ColorCircle(rgb: game.target)
+            
+            if !showScore {
+                Text("R: ??? G: ??? B: ???")
+                    .padding()
+            } else {
+                Text(game.target.intString())
+                    .padding()
+            }
+                        
+            ColorCircle(rgb: guess)
+            
+            Text(guess.intString())
+                .padding()
+            ColorSlider(value: $guess.red, trackColor: .red)
+            ColorSlider(value: $guess.green, trackColor: .green)
+            ColorSlider(value: $guess.blue, trackColor: .blue)
+            
+            Button("Hit Me!") {
+                showScore = true
+                game.check(guess: guess)  // Scoreを算出し内部のプロパティに保存
+            }
+            .alert(isPresented: $showScore) {
+                Alert(title: Text("Your Score"),
+                      message: Text(String(game.scoreRound)),
+                      dismissButton: .default(Text("OK")) {
+                    game.startNewRound()
+                    guess = RGB()
+                })
+            }
+            
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+      ContentView(guess: RGB())
   }
+}
+
+struct ColorSlider: View {
+    
+    // MARK: - Properties
+    
+    @Binding var value: Double  // Stateの代わりにBinding. ビュー自体はvalueを所有しないため(外から値を与えられる)
+    var trackColor: Color
+    
+    // MARK: - View
+    
+    var body: some View {
+        HStack {
+            Text("0")
+            Slider(value: $value)
+                .accentColor(trackColor)
+            Text("255")
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct ColorCircle: View {
+    
+    let rgb: RGB
+    
+    var body: some View {
+        Circle()
+            .fill(Color(rgbStruct: rgb))
+    }
+}
+
+
+struct ColorCircle_Previews: PreviewProvider {
+        
+    static var previews: some View {
+        ColorCircle(rgb: RGB())
+    }
 }
