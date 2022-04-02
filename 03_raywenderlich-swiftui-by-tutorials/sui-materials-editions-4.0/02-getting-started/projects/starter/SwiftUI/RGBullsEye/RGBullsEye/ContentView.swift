@@ -38,9 +38,8 @@ struct ContentView: View {
     
     @State var game = Game()  // 正解
     @State var guess: RGB  // 予想(入力値)
-    
-    var target = RGB.random()  // ???
-    
+    @State var showScore = false
+        
     // MARK: - Lifecycles
     
     // MARK: - Views
@@ -48,17 +47,31 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Color(rgbStruct: game.target)
-            Text("R: ??? G: ??? B: ???")
-                .padding()
+            
+            if !showScore {
+                Text("R: ??? G: ??? B: ???")
+                    .padding()
+            }
             Color(rgbStruct: guess)
             Text(guess.intString())
                 .padding()
             ColorSlider(value: $guess.red, trackColor: .red)
             ColorSlider(value: $guess.green, trackColor: .green)
             ColorSlider(value: $guess.blue, trackColor: .blue)
-            Button(action: {}) {
-                Text("Hit Me!")
+            
+            Button("Hit Me!") {
+                showScore = true
+                game.check(guess: guess)  // Scoreを算出し内部のプロパティに保存
             }
+            .alert(isPresented: $showScore) {
+                Alert(title: Text("Your Score"),
+                      message: Text(String(game.scoreRound)),
+                      dismissButton: .default(Text("OK")) {
+                    game.startNewRound()
+                    guess = RGB()
+                })
+            }
+            
         }
     }
 }
