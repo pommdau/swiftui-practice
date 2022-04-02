@@ -46,8 +46,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Circle()
-                .fill(Color(rgbStruct: game.target))
+
+            ColorCircle(rgb: game.target)
             
             if !showScore {
                 Text("R: ??? G: ??? B: ???")
@@ -57,8 +57,7 @@ struct ContentView: View {
                     .padding()
             }
                         
-            Circle()
-                .fill(Color(rgbStruct: guess))
+            ColorCircle(rgb: guess)
             
             Text(guess.intString())
                 .padding()
@@ -106,5 +105,23 @@ struct ColorSlider: View {
             Text("255")
         }
         .padding(.horizontal)
+    }
+}
+
+struct ColorCircle: View {
+    
+    let rgb: RGB
+    
+    var body: some View {
+        Circle()
+            .fill(Color(rgbStruct: rgb))
+    }
+}
+
+
+struct ColorCircle_Previews: PreviewProvider {
+        
+    static var previews: some View {
+        ColorCircle(rgb: RGB())
     }
 }
