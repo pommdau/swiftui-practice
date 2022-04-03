@@ -52,8 +52,10 @@ class SwiftCalcUITests: XCTestCase {
         
         let memoryButton = app.buttons["M+"]
         memoryButton.tap()
-
         
+        let display = app.staticTexts["display"]
+        let displayText = display.label
+        XCTAssert(displayText == "0")
     }
 
     func testLaunchPerformance() throws {
