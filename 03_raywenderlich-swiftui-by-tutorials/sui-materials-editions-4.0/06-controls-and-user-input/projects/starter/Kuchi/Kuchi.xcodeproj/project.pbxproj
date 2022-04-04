@@ -27,6 +27,11 @@
 		57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
 		57F8DD6926EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */; };
 		57F8DD6A26EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */; };
+		DABF673B27FAA46A002E1F2E /* WelcomeBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF673A27FAA46A002E1F2E /* WelcomeBackgroundImage.swift */; };
+		DABF673D27FAB40D002E1F2E /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF673C27FAB40D002E1F2E /* LogoImage.swift */; };
+		DABF673F27FAB47D002E1F2E /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */; };
+		DABF674127FAB77F002E1F2E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF674027FAB77F002E1F2E /* RegisterView.swift */; };
+		DABF674327FAC07B002E1F2E /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		57EF341124E89F92004ABEB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57EF341224E89F92004ABEB2 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontallyAlignedLabelStyle.swift; sourceTree = "<group>"; };
+		DABF673A27FAA46A002E1F2E /* WelcomeBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackgroundImage.swift; sourceTree = "<group>"; };
+		DABF673C27FAB40D002E1F2E /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageView.swift; sourceTree = "<group>"; };
+		DABF674027FAB77F002E1F2E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +106,10 @@
 		579CB98926EA18AA0009C09F /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				DABF673927FAA44E002E1F2E /* Components */,
 				579CB98A26EA1BE30009C09F /* WelcomeView.swift */,
 				57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */,
+				DABF674027FAB77F002E1F2E /* RegisterView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -148,6 +160,17 @@
 				57EF341224E89F92004ABEB2 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		DABF673927FAA44E002E1F2E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DABF673A27FAA46A002E1F2E /* WelcomeBackgroundImage.swift */,
+				DABF673C27FAB40D002E1F2E /* LogoImage.swift */,
+				DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */,
+				DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,12 +274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DABF674127FAB77F002E1F2E /* RegisterView.swift in Sources */,
 				57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */,
+				DABF674327FAC07B002E1F2E /* BorderedViewModifier.swift in Sources */,
 				5712CCAE26F68A8A000243C2 /* Profile.swift in Sources */,
 				579CB98B26EA1BE30009C09F /* WelcomeView.swift in Sources */,
+				DABF673F27FAB47D002E1F2E /* WelcomeMessageView.swift in Sources */,
+				DABF673D27FAB40D002E1F2E /* LogoImage.swift in Sources */,
 				57F8DD6926EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift in Sources */,
 				5712CCB026F68A8A000243C2 /* Settings.swift in Sources */,
 				5712CCAC26F68A8A000243C2 /* UserManager.swift in Sources */,
+				DABF673B27FAA46A002E1F2E /* WelcomeBackgroundImage.swift in Sources */,
 				57578FDE24E9D943003465A4 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
