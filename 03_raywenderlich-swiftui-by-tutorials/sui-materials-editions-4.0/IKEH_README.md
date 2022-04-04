@@ -12,3 +12,7 @@
 - シュミレータのダークモード表示
 
 <img width="400" alt="image" src="https://i.imgur.com/8LVCKPx.png">
+
+- ショートカット
+
+<img width="400" alt="image" src="https://i.imgur.com/hggfDVF.png">
