@@ -22,12 +22,10 @@ struct WelcomeView: View {
                     .foregroundColor(.red)
                 
                 VStack(alignment: .leading) {
-                    Text("Welcome to")
+                    Text("**Welcome to**")
                         .font(.headline)
-                        .bold()
-                    Text("Kuchi")
+                    Text("**Kuchi**")
                         .font(.largeTitle)
-                        .bold()
                 }
                 .foregroundColor(.red)
                 .lineLimit(1)
