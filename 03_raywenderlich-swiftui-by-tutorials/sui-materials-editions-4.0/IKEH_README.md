@@ -16,3 +16,7 @@
 - ショートカット
 
 <img width="400" alt="image" src="https://i.imgur.com/hggfDVF.png">
+
+- Modifiersを覚えていなくても下記から選択すれば良い
+
+<img width="400" alt="image" src="https://i.imgur.com/zAY0q3A.png">
