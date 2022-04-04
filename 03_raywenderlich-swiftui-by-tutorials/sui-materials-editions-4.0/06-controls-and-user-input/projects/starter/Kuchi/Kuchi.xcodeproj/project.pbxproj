@@ -31,6 +31,7 @@
 		DABF673D27FAB40D002E1F2E /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF673C27FAB40D002E1F2E /* LogoImage.swift */; };
 		DABF673F27FAB47D002E1F2E /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */; };
 		DABF674127FAB77F002E1F2E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF674027FAB77F002E1F2E /* RegisterView.swift */; };
+		DABF674327FAC07B002E1F2E /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		DABF673C27FAB40D002E1F2E /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageView.swift; sourceTree = "<group>"; };
 		DABF674027FAB77F002E1F2E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				DABF673A27FAA46A002E1F2E /* WelcomeBackgroundImage.swift */,
 				DABF673C27FAB40D002E1F2E /* LogoImage.swift */,
 				DABF673E27FAB47D002E1F2E /* WelcomeMessageView.swift */,
+				DABF674227FAC07B002E1F2E /* BorderedViewModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				DABF674127FAB77F002E1F2E /* RegisterView.swift in Sources */,
 				57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */,
+				DABF674327FAC07B002E1F2E /* BorderedViewModifier.swift in Sources */,
 				5712CCAE26F68A8A000243C2 /* Profile.swift in Sources */,
 				579CB98B26EA1BE30009C09F /* WelcomeView.swift in Sources */,
 				DABF673F27FAB47D002E1F2E /* WelcomeMessageView.swift in Sources */,
