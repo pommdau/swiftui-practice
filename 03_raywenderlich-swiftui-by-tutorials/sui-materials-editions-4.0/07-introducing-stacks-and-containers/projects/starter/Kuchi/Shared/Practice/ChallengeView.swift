@@ -2,23 +2,13 @@ import SwiftUI
 
 struct ChallengeView: View {
     var body: some View {
-        
-        HStack {
-          Text("A great and warm welcome to Kuchi")
-            .layoutPriority(-1)
-            .background(Color.red)
-
-          Text("A great and warm welcome to Kuchi")
-            .layoutPriority(1)
-            .background(Color.red)
-
-            Text("A great and warm welcome to Kuchi")
-                .font(.title)
-            .background(Color.red)
-            .layoutPriority(-1)
+        HStack(alignment: .firstTextBaseline) {
+            Text("Welcome to Kuchi").font(.caption)
+            Text("Welcome to Kuchi").font(.title)
+            Button(action: {}, label: { Text("OK").font(.body) })
         }
-        .background(Color.yellow)
     }
+    
 }
 
 
