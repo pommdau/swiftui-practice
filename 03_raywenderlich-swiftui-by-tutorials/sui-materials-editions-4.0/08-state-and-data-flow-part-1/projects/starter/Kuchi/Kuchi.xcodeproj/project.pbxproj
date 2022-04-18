@@ -55,6 +55,8 @@
 		57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
 		57F8DD6926EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */; };
 		57F8DD6A26EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */; };
+		DAB85B1327FFF3F4005674FF /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB85B1227FFF3F4005674FF /* ScoreView.swift */; };
+		DAB85B1427FFF3F4005674FF /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB85B1227FFF3F4005674FF /* ScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,7 @@
 		57EF341124E89F92004ABEB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57EF341224E89F92004ABEB2 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		57F8DD6826EEC01300153B9F /* HorizontallyAlignedLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontallyAlignedLabelStyle.swift; sourceTree = "<group>"; };
+		DAB85B1227FFF3F4005674FF /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 				57211E7C26F69C9500F99E16 /* PracticeView.swift */,
 				57211E7D26F69C9500F99E16 /* ChallengeView.swift */,
 				57211E7E26F69C9500F99E16 /* ChoicesRow.swift */,
+				DAB85B1227FFF3F4005674FF /* ScoreView.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -330,6 +334,7 @@
 				57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */,
 				576942A926EF720D004B8191 /* Profile.swift in Sources */,
 				57AD7DAE26F15F70007A84C5 /* LogoImage.swift in Sources */,
+				DAB85B1327FFF3F4005674FF /* ScoreView.swift in Sources */,
 				57211E8526F69C9500F99E16 /* ChallengesViewModel.swift in Sources */,
 				57AD7DB226F15F70007A84C5 /* WelcomeMessageView.swift in Sources */,
 				579CB98B26EA1BE30009C09F /* WelcomeView.swift in Sources */,
@@ -358,6 +363,7 @@
 				57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */,
 				576942AA26EF720D004B8191 /* Profile.swift in Sources */,
 				57AD7DAF26F15F70007A84C5 /* LogoImage.swift in Sources */,
+				DAB85B1427FFF3F4005674FF /* ScoreView.swift in Sources */,
 				57211E8626F69C9500F99E16 /* ChallengesViewModel.swift in Sources */,
 				57AD7DB326F15F70007A84C5 /* WelcomeMessageView.swift in Sources */,
 				579CB98C26EA1BE30009C09F /* WelcomeView.swift in Sources */,
