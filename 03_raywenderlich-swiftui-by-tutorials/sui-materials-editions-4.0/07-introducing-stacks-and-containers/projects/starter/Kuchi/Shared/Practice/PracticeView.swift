@@ -40,7 +40,7 @@ struct PracticeView: View {
   @ViewBuilder
   var body: some View {
     if challengeTest != nil {
-      ChallengeView()
+      ChallengeView(challengeTest: challengeTest!)
     } else {
       CongratulationsView(userName: userName)
     }

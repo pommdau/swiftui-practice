@@ -1,15 +1,14 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @EnvironmentObject var userManager: UserManager
+    
     @FocusState var nameFieldFocused: Bool
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         VStack {
             Spacer()
-            
             WelcomeMessageView()
-            
             TextField("Type your name...", text: $userManager.profile.name)
                 .focused($nameFieldFocused)
                 .submitLabel(.done)
@@ -21,14 +20,15 @@ struct RegisterView: View {
                 Text("\(userManager.profile.name.count)")
                     .font(.caption)
                     .foregroundColor(
-                        userManager.isUserNameValid() ? .green : .red)
+                        userManager.isUserNameValid() ? .green : .red
+                    )
                     .padding(.trailing)
             }
             .padding(.bottom)
             
+            // Toggle Button
             HStack {
                 Spacer()
-                
                 Toggle(isOn: $userManager.settings.rememberUser) {
                     Text("Remember me")
                         .font(.subheadline)
@@ -36,8 +36,9 @@ struct RegisterView: View {
                 }
                 .fixedSize()
             }
-            
-            Button(action: self.registerUser) {
+                        
+            // OK Button
+            Button(action: registerUser) {
                 HStack {
                     Image(systemName: "checkmark")
                         .resizable()
@@ -46,8 +47,8 @@ struct RegisterView: View {
                         .font(.body)
                         .bold()
                 }
+                .bordered()
             }
-            .bordered()
             .disabled(!userManager.isUserNameValid())
             
             Spacer()
@@ -60,6 +61,7 @@ struct RegisterView: View {
 // MARK: - Event Handlers
 extension RegisterView {
     func registerUser() {
+        
         nameFieldFocused = false
         
         if userManager.settings.rememberUser {
@@ -74,6 +76,7 @@ extension RegisterView {
 }
 
 struct RegisterView_Previews: PreviewProvider {
+    
     static let user = UserManager(name: "Ray")
     
     static var previews: some View {
