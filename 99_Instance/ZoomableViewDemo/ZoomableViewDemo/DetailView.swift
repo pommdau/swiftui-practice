@@ -51,8 +51,8 @@ public struct IKEHZoomableModifier: ViewModifier {
     
     var showsIndicators: Bool = true
     var screenSize: CGSize = .zero
-    var min: CGFloat = 1.0  // TODO: RENAME
-    var max: CGFloat = 2.0
+    var minScale: CGFloat = 1.0
+    var maxScale: CGFloat = 3.0
     @GestureState private var zoomState = ZoomState.inactive  // ズーム中のスケール
     @State private var currentScale: CGFloat = 1.0  // 現在のスケール
 
@@ -63,7 +63,8 @@ public struct IKEHZoomableModifier: ViewModifier {
     // MARK: - Computed Properties
     
     var scrollViewAxes: Axis.Set {
-//        return scale > 1.0 ? [.horizontal, .vertical] : []
+        print(trueScale)
+//        return trueScale > 1.0 ? [.horizontal, .vertical] : []
         return  [.horizontal, .vertical]
     }
     
@@ -75,17 +76,17 @@ public struct IKEHZoomableModifier: ViewModifier {
             .onEnded { value in
                 print("onEnded")
                 var new = self.currentScale * value
-                if new <= min { new = min }
-                if new >= max { new = max }
+                if new <= minScale { new = minScale }
+                if new >= maxScale { new = maxScale }
                 self.currentScale = new
             }
     }
     
     var doubleTapGesture: some Gesture {
         TapGesture(count: 2).onEnded {
-            if trueScale <= min { currentScale = max } else
-            if trueScale >= max { currentScale = min } else {
-                currentScale = ((max - min) * 0.5 + min) < trueScale ? max : min
+            if trueScale <= minScale { currentScale = maxScale } else
+            if trueScale >= maxScale { currentScale = minScale } else {
+                currentScale = ((maxScale - minScale) * 0.5 + minScale) < trueScale ? maxScale : minScale
             }
         }
     }

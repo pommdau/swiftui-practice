@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         PageView(pages: [
+            DetailView(imageName: "image01"),
             DetailView(imageName: "image04"),
-            DetailView(imageName: "image02"),
             DetailView(imageName: "image03"),
         ])
     }
