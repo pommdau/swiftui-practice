@@ -21,10 +21,10 @@
 		84D08AB124B8DAE000B73A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D08AAF24B8DAE000B73A2C /* AppDelegate.swift */; };
 		84D08AB224B8DAE000B73A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D08AB024B8DAE000B73A2C /* SceneDelegate.swift */; };
 		84EAA77924BADCD00004B53F /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAA77824BADCD00004B53F /* IngredientListView.swift */; };
-		DA89F8DE28334022009EA1EE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DA89F8DD28334022009EA1EE /* Realm */; };
-		DA89F8E028334022009EA1EE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DA89F8DF28334022009EA1EE /* RealmSwift */; };
 		DA89F8E2283340BE009EA1EE /* IngredientDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA89F8E1283340BE009EA1EE /* IngredientDB.swift */; };
 		DA89F8E928335AF4009EA1EE /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA89F8E828335AF4009EA1EE /* RealmMigrator.swift */; };
+		DAA0136E2833950F00416B83 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DAA0136D2833950F00416B83 /* Realm */; };
+		DAA013702833950F00416B83 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DAA0136F2833950F00416B83 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA89F8E028334022009EA1EE /* RealmSwift in Frameworks */,
-				DA89F8DE28334022009EA1EE /* Realm in Frameworks */,
+				DAA013702833950F00416B83 /* RealmSwift in Frameworks */,
+				DAA0136E2833950F00416B83 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,8 +153,8 @@
 			);
 			name = PotionsMaster;
 			packageProductDependencies = (
-				DA89F8DD28334022009EA1EE /* Realm */,
-				DA89F8DF28334022009EA1EE /* RealmSwift */,
+				DAA0136D2833950F00416B83 /* Realm */,
+				DAA0136F2833950F00416B83 /* RealmSwift */,
 			);
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* PotionsMaster.app */;
@@ -185,7 +185,7 @@
 			);
 			mainGroup = 18D775B422AD944300AE281E;
 			packageReferences = (
-				DA89F8DC28334022009EA1EE /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				DAA0136C2833950F00416B83 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
 			projectDirPath = "";
@@ -444,7 +444,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DA89F8DC28334022009EA1EE /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		DAA0136C2833950F00416B83 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -455,14 +455,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA89F8DD28334022009EA1EE /* Realm */ = {
+		DAA0136D2833950F00416B83 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA89F8DC28334022009EA1EE /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = DAA0136C2833950F00416B83 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
-		DA89F8DF28334022009EA1EE /* RealmSwift */ = {
+		DAA0136F2833950F00416B83 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA89F8DC28334022009EA1EE /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = DAA0136C2833950F00416B83 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
