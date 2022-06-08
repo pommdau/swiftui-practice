@@ -51,11 +51,8 @@ public struct IKEHZoomableModifier: ViewModifier {
     public func body(content: Content) -> some View {
         ScrollView(scrollViewAxes, showsIndicators: showsIndicators) {
             content
-                .frame(width: screenSize.width, height: screenSize.height)
-//                    .frame(width: 200, height: 200, alignment: .center)
-//                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-//                .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+                .frame(maxWidth: screenSize.width, maxHeight: screenSize.height)
         }
-        .background(.red)
+        .background(.blue)
     }
 }
