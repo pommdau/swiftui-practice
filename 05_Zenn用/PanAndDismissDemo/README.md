@@ -20,7 +20,7 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 300, height: 300)
                     .modifier(PanAndDismissModifier(showingModal: $showingModal))  // This modifier!
-                .zIndex(1)
+                .zIndex(1)  // Bring to the front like a modal sheet
             }
             Button {
                 withAnimation() {
