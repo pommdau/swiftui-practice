@@ -15,12 +15,9 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            if showingModal {
-                Image("image01")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-//                ZoomedImageView(imageName: imageName,
-//                                showingCanvas: $showingModal)
+            if showingModal {                
+                DetailView(imageName: imageName,
+                           showingModal: $showingModal)
                 .zIndex(1)
             }
             Button {
