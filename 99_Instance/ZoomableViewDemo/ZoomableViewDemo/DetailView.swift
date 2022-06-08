@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct ZoomableViewDemo: View {
+struct DetailView: View {
     
     let imageName: String
     
     var body: some View {
         VStack {
             Image(imageName)
-                .resizable()                
-                .frame(width: 300, height: 300)
-                .foregroundColor(.blue)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .modifier(IKEHZoomableModifier())
             Text("\(imageName)")
         }
     }
@@ -24,6 +24,13 @@ struct ZoomableViewDemo: View {
 
 struct ZoomableView_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomableViewDemo(imageName: "image01")
+        DetailView(imageName: "image01")
+    }
+}
+
+public struct IKEHZoomableModifier: ViewModifier {
+    
+    public func body(content: Content) -> some View {
+        content
     }
 }
