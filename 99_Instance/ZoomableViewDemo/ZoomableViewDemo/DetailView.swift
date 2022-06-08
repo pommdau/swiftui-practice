@@ -26,7 +26,7 @@ struct DetailView: View {
 
 struct ZoomableView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(imageName: "image01")
+        DetailView(imageName: "image02")
     }
 }
 
@@ -56,16 +56,14 @@ public struct IKEHZoomableModifier: ViewModifier {
     @GestureState private var zoomState = ZoomState.inactive  // ズーム中のスケール
     @State private var currentScale: CGFloat = 1.0  // 現在のスケール
 
+    // MARK: - Computed Properties
+    
     var trueScale: CGFloat {
         return currentScale * zoomState.scale
     }
-    
-    // MARK: - Computed Properties
-    
+        
     var scrollViewAxes: Axis.Set {
-        print(trueScale)
-//        return trueScale > 1.0 ? [.horizontal, .vertical] : []
-        return  [.horizontal, .vertical]
+        return trueScale > 1.0 ? [.horizontal, .vertical] : []
     }
     
     var zoomGesture: some Gesture {
@@ -74,11 +72,13 @@ public struct IKEHZoomableModifier: ViewModifier {
                 referedZoomState = .active(scale: value)
             }
             .onEnded { value in
-                print("onEnded")
-                var new = self.currentScale * value
-                if new <= minScale { new = minScale }
-                if new >= maxScale { new = maxScale }
-                self.currentScale = new
+                var newScale = self.currentScale * value
+                if newScale <= minScale { newScale = minScale }
+                if newScale >= maxScale { newScale = maxScale }
+                self.currentScale = newScale
+                
+                print("🐱\(screenSize)")
+                print("\(trueScale)")
             }
     }
     
@@ -98,11 +98,12 @@ public struct IKEHZoomableModifier: ViewModifier {
     public func body(content: Content) -> some View {
         ScrollView(scrollViewAxes, showsIndicators: showsIndicators) {
             content
-                .frame(maxWidth: screenSize.width, maxHeight: screenSize.height)
+                .frame(maxWidth: screenSize.width * trueScale,
+                       maxHeight: screenSize.height * trueScale,
+                       alignment: .center)
                 .scaleEffect(trueScale, anchor: .center)
         }
         .gesture(ExclusiveGesture(zoomGesture, doubleTapGesture))
-        .background(.blue)
         .animation(.easeInOut, value: trueScale)
     }
 }
