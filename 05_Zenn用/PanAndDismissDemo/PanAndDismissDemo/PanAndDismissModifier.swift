@@ -46,12 +46,16 @@ struct PanAndDismissModifier: ViewModifier {
 
 struct SwipableModifier: ViewModifier {
     
-    @State private var offset: CGSize = .zero
+    // MARK: - Properties
+    
     @Binding var backgroundColorOpacity: Double
     @Binding var imageDismissTransition: AnyTransition
-    
-    let dismissThreshold: CGFloat = 150
     var onDismiss: () -> Void
+    
+    @State private var offset: CGSize = .zero
+    private let dismissThreshold: CGFloat = 150
+    
+    // MARK: - View
     
     func body(content: Content) -> some View {
         GeometryReader { geometry in
@@ -65,30 +69,36 @@ struct SwipableModifier: ViewModifier {
             }
             .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
             .simultaneousGesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        if gesture.translation.width < 50 {
-                            offset = gesture.translation
-                        }
-                        // 画面の高さに対してどれだけスワイプされているかの比率
-                        backgroundColorOpacity = 1 - abs(Double(offset.height / geometry.size.height))
-                    }
-                    .onEnded { _ in
-                        if offset.height < -dismissThreshold {
-                            imageDismissTransition = .move(edge: .top)
-                            onDismiss()
-                            backgroundColorOpacity = 1.0
-                        } else if offset.height > dismissThreshold {
-                            imageDismissTransition = .move(edge: .bottom)
-                            onDismiss()
-                            backgroundColorOpacity = 1.0
-                        } else {
-                            offset = .zero
-                            backgroundColorOpacity = 1.0
-                        }
-                    }
+                swipeGesture(geometry: geometry)
             )
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func swipeGesture(geometry: GeometryProxy) -> some Gesture {
+        DragGesture()
+            .onChanged { gesture in
+                if gesture.translation.width < 50 {
+                    offset = gesture.translation
+                }
+                // 画面の高さに対してどれだけスワイプされているかの比率
+                backgroundColorOpacity = 1 - abs(Double(offset.height / geometry.size.height))
+            }
+            .onEnded { _ in
+                if offset.height < -dismissThreshold {
+                    imageDismissTransition = .move(edge: .top)
+                    onDismiss()
+                    backgroundColorOpacity = 1.0
+                } else if offset.height > dismissThreshold {
+                    imageDismissTransition = .move(edge: .bottom)
+                    onDismiss()
+                    backgroundColorOpacity = 1.0
+                } else {
+                    offset = .zero
+                    backgroundColorOpacity = 1.0
+                }
+            }
     }
     
 }
