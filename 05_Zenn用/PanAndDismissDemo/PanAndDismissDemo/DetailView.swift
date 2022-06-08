@@ -40,8 +40,12 @@ struct DetailView: View {
     }
 }
 
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailView()
-//    }
-//}
+struct DetailView_Previews: PreviewProvider {
+    
+    @State static private var showingModal = true
+    
+    static var previews: some View {
+        DetailView(imageName: "image01",
+                   showingModal: $showingModal)
+    }
+}

@@ -13,6 +13,7 @@ struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
     @Binding var backgroundColorOpacity: Double
     @Binding var imageDismissTransition: AnyTransition
+
     let dismissThreshold: CGFloat = 150
     var onDismiss: () -> Void
     
@@ -57,9 +58,16 @@ struct SwipableImageView: View {
     }
 }
     
-    //struct SwipableImageView_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        SwipableImageView()
-    //    }
-    //}
-    //
+struct SwipableImageView_Previews: PreviewProvider {
+    
+    @State static private var backgroundColorOpacity: Double = 1.0
+    @State static private var imageDismissTransition = AnyTransition.move(edge: .top)
+
+    
+    static var previews: some View {
+        SwipableImageView(imageName: "image01",
+                          backgroundColorOpacity: $backgroundColorOpacity,
+                          imageDismissTransition: $imageDismissTransition) {}
+    }
+}
+
