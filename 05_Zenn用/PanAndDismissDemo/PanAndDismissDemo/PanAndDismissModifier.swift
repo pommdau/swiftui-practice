@@ -44,7 +44,7 @@ struct PanAndDismissModifier: ViewModifier {
     }
 }
 
-struct SwipableModifier: ViewModifier {
+private struct SwipableModifier: ViewModifier {
     
     // MARK: - Properties
     
@@ -68,9 +68,7 @@ struct SwipableModifier: ViewModifier {
                     .animation(.interactiveSpring(), value: offset)
             }
             .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-            .simultaneousGesture(
-                swipeGesture(geometry: geometry)
-            )
+            .simultaneousGesture(swipeGesture(geometry: geometry))
         }
     }
     

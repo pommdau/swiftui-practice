@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private let imageName = "image01"
     @State private var showingModal = false
     
+    private let imageName = "image01"
+    
     var body: some View {
-        
         ZStack {
             if showingModal {
                 Image(imageName)
