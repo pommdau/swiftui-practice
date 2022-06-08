@@ -12,6 +12,8 @@
 		DAFA710628506D8F00F133C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFA710528506D8F00F133C5 /* Assets.xcassets */; };
 		DAFA710928506D8F00F133C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFA710828506D8F00F133C5 /* Preview Assets.xcassets */; };
 		DAFA711228506E3000F133C5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA711128506E3000F133C5 /* DetailView.swift */; };
+		DAFA711628506FEF00F133C5 /* SwipableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA711528506FEF00F133C5 /* SwipableImageView.swift */; };
+		DAFA711828506FF700F133C5 /* SwipeToDismissModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA711728506FF700F133C5 /* SwipeToDismissModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		DAFA710528506D8F00F133C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFA710828506D8F00F133C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DAFA711128506E3000F133C5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		DAFA711528506FEF00F133C5 /* SwipableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableImageView.swift; sourceTree = "<group>"; };
+		DAFA711728506FF700F133C5 /* SwipeToDismissModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeToDismissModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 				DAFA710128506D8F00F133C5 /* PanAndDismissDemoApp.swift */,
 				DAFA710328506D8F00F133C5 /* ContentView.swift */,
 				DAFA711128506E3000F133C5 /* DetailView.swift */,
+				DAFA711528506FEF00F133C5 /* SwipableImageView.swift */,
+				DAFA711728506FF700F133C5 /* SwipeToDismissModifier.swift */,
 				DAFA710528506D8F00F133C5 /* Assets.xcassets */,
 				DAFA710728506D8F00F133C5 /* Preview Content */,
 			);
@@ -141,8 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFA710428506D8F00F133C5 /* ContentView.swift in Sources */,
+				DAFA711828506FF700F133C5 /* SwipeToDismissModifier.swift in Sources */,
 				DAFA711228506E3000F133C5 /* DetailView.swift in Sources */,
 				DAFA710228506D8F00F133C5 /* PanAndDismissDemoApp.swift in Sources */,
+				DAFA711628506FEF00F133C5 /* SwipableImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

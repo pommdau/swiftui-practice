@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailView: View {
     let imageName: String
     @Binding var showingModal: Bool
-    @State private var imageDismissTransition: AnyTransition = .move(edge: .top)
+    @State private var imageDismissTransition: AnyTransition = .move(edge: .leading)
     @State private var backgroundColorOpacity: Double = 1.0
     
     var body: some View {
@@ -24,18 +24,14 @@ struct DetailView: View {
             }
             
             if showingModal {
-                Image("image01")
-                    .resizable()
-                    .frame(width: 300, height: 300)
-//                DetailImageView(
-//                    imageName: imageName,
-//                    backgroundColorOpacity: $backgroundColorOpacity,
-//                    onDismiss: { dismissTransition in
-//                        self.dismissTransition = dismissTransition
-//                        withAnimation {
-//                            showingCanvas = false
-//                        }
-//                    })
+                SwipableImageView(imageName: imageName,
+                                  backgroundColorOpacity: $backgroundColorOpacity,
+                                  onDismiss: { dismissTransition in
+                    self.imageDismissTransition = dismissTransition
+                    withAnimation {
+                        showingModal = false
+                    }
+                })
                 .zIndex(1)
                 .transition(.asymmetric(insertion: .opacity,
                                         removal: imageDismissTransition))
