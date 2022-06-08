@@ -9,11 +9,14 @@ import SwiftUI
 
 struct DemoView: View {
     var body: some View {
+        GeometryReader { geometry in
         Image("image01")
             .resizable()
             .aspectRatio(contentMode: .fit)
-//            .padding()
+//            .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+            .frame(maxWidth: 100, maxHeight: 100)
             .scaleEffect(1.0)
+        }
     }
 }
 

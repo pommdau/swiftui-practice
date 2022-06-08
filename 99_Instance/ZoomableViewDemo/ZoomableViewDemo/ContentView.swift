@@ -13,31 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         PageView(pages: [
-            
-            ZoomableView(
-                size: CGSize(width: 200, height: 200),
-                content: {
-                    VStack {
-                        Text("image01")
-                        Image("image01")
-                    }
-                }),
-            ZoomableView(
-                size: CGSize(width: 200, height: 200),
-                content: {
-                    VStack {
-                        Text("image02")
-                        Image("image02")
-                    }
-                }),
-            ZoomableView(
-                size: CGSize(width: 200, height: 200),
-                content: {
-                    VStack {
-                        Text("image03")
-                        Image("image03")
-                    }
-                })
+            DetailView(imageName: "image04"),
+            DetailView(imageName: "image02"),
+            DetailView(imageName: "image03"),
         ])
     }
 }
