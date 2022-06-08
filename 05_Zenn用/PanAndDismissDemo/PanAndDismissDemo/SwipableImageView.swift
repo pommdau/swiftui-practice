@@ -12,8 +12,9 @@ struct SwipableImageView: View {
     let imageName: String
     @State private var offset: CGSize = .zero
     @Binding var backgroundColorOpacity: Double
+    @Binding var imageDismissTransition: AnyTransition
     let dismissThreshold: CGFloat = 150
-    var onDismiss: (AnyTransition) -> Void
+    var onDismiss: () -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,10 +40,12 @@ struct SwipableImageView: View {
                     }
                     .onEnded { _ in
                         if offset.height < -dismissThreshold {
-                            onDismiss(.move(edge: .top))
+                            imageDismissTransition = .move(edge: .top)
+                            onDismiss()
                             backgroundColorOpacity = 1.0
                         } else if offset.height > dismissThreshold {
-                            onDismiss(.move(edge: .bottom))
+                            imageDismissTransition = .move(edge: .bottom)
+                            onDismiss()
                             backgroundColorOpacity = 1.0
                         } else {
                             offset = .zero

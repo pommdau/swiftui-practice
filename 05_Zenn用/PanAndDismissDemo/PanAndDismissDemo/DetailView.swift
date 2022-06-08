@@ -26,8 +26,8 @@ struct DetailView: View {
             if showingModal {
                 SwipableImageView(imageName: imageName,
                                   backgroundColorOpacity: $backgroundColorOpacity,
-                                  onDismiss: { dismissTransition in
-                    self.imageDismissTransition = dismissTransition
+                                  imageDismissTransition: $imageDismissTransition,
+                                  onDismiss: {
                     withAnimation {
                         showingModal = false
                     }
