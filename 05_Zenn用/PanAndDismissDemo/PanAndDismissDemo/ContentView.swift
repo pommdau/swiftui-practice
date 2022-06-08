@@ -18,11 +18,8 @@ struct ContentView: View {
             if showingModal {
                 Image(imageName)
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 300, height: 300)
                     .modifier(PanAndDismissModifier(showingModal: $showingModal))
-                    
-//                DetailView(imageName: imageName,
-//                           showingModal: $showingModal)
                 .zIndex(1)
             }
             Button {

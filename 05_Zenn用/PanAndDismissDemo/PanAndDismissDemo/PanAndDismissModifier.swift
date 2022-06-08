@@ -14,11 +14,13 @@ struct PanAndDismissModifier: ViewModifier {
     @State private var imageDismissTransition: AnyTransition = .move(edge: .leading)
     @State private var backgroundColorOpacity: Double = 1.0
     
+    var backgroundColor: Color = .black
+    
     func body(content: Content) -> some View {
         ZStack {
             if showingModal {
                 // 画像周りの背景色
-                Color(.black)
+                backgroundColor
                     .ignoresSafeArea()
                     .opacity(backgroundColorOpacity)
                     .transition(.opacity)
@@ -54,7 +56,7 @@ struct SwipableModifier: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             ZStack {
-                Color(uiColor: .clear)
+                Color.clear
                     .contentShape(Rectangle())
                     .ignoresSafeArea()
                 content
