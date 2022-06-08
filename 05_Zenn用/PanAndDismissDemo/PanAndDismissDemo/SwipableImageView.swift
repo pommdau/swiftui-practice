@@ -13,7 +13,7 @@ struct SwipableImageView: View {
     @State private var offset: CGSize = .zero
     @Binding var backgroundColorOpacity: Double
     @Binding var imageDismissTransition: AnyTransition
-
+    
     let dismissThreshold: CGFloat = 150
     var onDismiss: () -> Void
     
