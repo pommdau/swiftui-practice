@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ZoomableView: View {
+struct ZoomableViewDemo: View {
     
     let imageName: String
     
@@ -24,6 +24,6 @@ struct ZoomableView: View {
 
 struct ZoomableView_Previews: PreviewProvider {
     static var previews: some View {
-        ZoomableView(imageName: "image01")
+        ZoomableViewDemo(imageName: "image01")
     }
 }

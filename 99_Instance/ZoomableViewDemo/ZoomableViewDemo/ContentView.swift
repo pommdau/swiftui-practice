@@ -11,10 +11,10 @@ struct ContentView: View {
             
     private let imageNames = ["image01", "image02", "image03"]
         
-    var zoomableViews: [ZoomableView] {
-        var zoomableViews = [ZoomableView]()
+    var zoomableViews: [ZoomableViewDemo] {
+        var zoomableViews = [ZoomableViewDemo]()
         for imageName in imageNames {
-            zoomableViews.append(ZoomableView(imageName: imageName))
+            zoomableViews.append(ZoomableViewDemo(imageName: imageName))
         }
         return zoomableViews
     }
