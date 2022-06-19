@@ -1,5 +1,7 @@
 ## PanAndDismissDemo
 
+- [SwiftUIでパンで半透明にしながら画面を閉じる実装](https://zenn.dev/ikeh1024/articles/e4f4830f27e563)
+
 https://user-images.githubusercontent.com/29433103/172553180-bded1343-8047-4cc0-9937-7a7a9333630a.mov
 
 ## Usage sample code
