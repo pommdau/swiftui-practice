@@ -19,7 +19,6 @@ struct PanAndDismissModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             if showingModal {
-                // 画像周りの背景色
                 backgroundColor
                     .ignoresSafeArea()
                     .opacity(backgroundColorOpacity)
@@ -53,7 +52,8 @@ private struct SwipableModifier: ViewModifier {
     var onDismiss: () -> Void
     
     @State private var offset: CGSize = .zero
-    private let dismissThreshold: CGFloat = 150
+    private let dismissOffsetThreshold: CGFloat = 150
+    private let dismissVelocityThreshold: CGFloat = 20
     
     // MARK: - View
     
@@ -83,12 +83,16 @@ private struct SwipableModifier: ViewModifier {
                 // 画面の高さに対してどれだけスワイプされているかの比率
                 backgroundColorOpacity = 1 - abs(Double(offset.height / geometry.size.height))
             }
-            .onEnded { _ in
-                if offset.height < -dismissThreshold {
+            .onEnded { value in
+                let velocity = value.predictedEndLocation.y - value.location.y
+                
+                if velocity <= -dismissVelocityThreshold ||
+                    offset.height < -dismissOffsetThreshold {
                     imageDismissTransition = .move(edge: .top)
                     onDismiss()
                     backgroundColorOpacity = 1.0
-                } else if offset.height > dismissThreshold {
+                } else if velocity >= dismissVelocityThreshold ||
+                            offset.height > dismissOffsetThreshold {
                     imageDismissTransition = .move(edge: .bottom)
                     onDismiss()
                     backgroundColorOpacity = 1.0
