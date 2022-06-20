@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var showingModal = false
-    
+    @State private var showingModal = false    
     private let imageName = "image01"
     
     var body: some View {

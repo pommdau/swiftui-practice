@@ -29,7 +29,7 @@ struct PanAndDismissModifier: ViewModifier {
                 content
                     .modifier(SwipableModifier(
                         backgroundColorOpacity: $backgroundColorOpacity,
-                        imageDismissTransition: $imageDismissTransition,
+                        dismissTransition: $imageDismissTransition,
                         onDismiss: {
                             withAnimation {
                                 showingModal = false
@@ -48,7 +48,7 @@ private struct SwipableModifier: ViewModifier {
     // MARK: - Properties
     
     @Binding var backgroundColorOpacity: Double
-    @Binding var imageDismissTransition: AnyTransition
+    @Binding var dismissTransition: AnyTransition
     var onDismiss: () -> Void
     
     @State private var offset: CGSize = .zero
@@ -88,12 +88,12 @@ private struct SwipableModifier: ViewModifier {
                 
                 if velocity <= -dismissVelocityThreshold ||
                     offset.height < -dismissOffsetThreshold {
-                    imageDismissTransition = .move(edge: .top)
+                    dismissTransition = .move(edge: .top)
                     onDismiss()
                     backgroundColorOpacity = 1.0
                 } else if velocity >= dismissVelocityThreshold ||
                             offset.height > dismissOffsetThreshold {
-                    imageDismissTransition = .move(edge: .bottom)
+                    dismissTransition = .move(edge: .bottom)
                     onDismiss()
                     backgroundColorOpacity = 1.0
                 } else {
