@@ -19,37 +19,15 @@ struct RootView: View {
             
             if showingModal {
                 GeometryReader { geometry in
-                    PageView(pages: [
-                        
-                        ZoomableView(viewSize: CGSize(width: 800, height: 800),
+                    PageView(pages: photos.map({ photo in
+                        ZoomableView(viewSize: photo.size,
                                      screenSize: geometry.size) {
-                                         Image("image01")
-                                             .resizable()
-                                             .scaledToFit()
-                                             .clipped()
-                                     },
-                        ZoomableView(viewSize: CGSize(width: 800, height: 800),
-                                     screenSize: geometry.size) {
-                                         Image("image02")
-                                             .resizable()
-                                             .scaledToFit()
-                                             .clipped()
-                                     },
-                        ZoomableView(viewSize: CGSize(width: 800, height: 800),
-                                     screenSize: geometry.size) {
-                                         Image("image03")
-                                             .resizable()
-                                             .scaledToFit()
-                                             .clipped()
-                                     },
-                        ZoomableView(viewSize: CGSize(width: 800, height: 800),
-                                     screenSize: geometry.size) {
-                                         Image("image04")
-                                             .resizable()
-                                             .scaledToFit()
-                                             .clipped()
-                                     }
-                    ])
+                            Image(photo.name)
+                                .resizable()
+                                .scaledToFit()
+                                .clipped()
+                        }
+                    }))
                 }
                 .modifier(PanAndDismissModifier(showingModal: $showingModal,
                                                 backgroundColor: .gray))
