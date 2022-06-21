@@ -16,18 +16,20 @@ struct RootView: View {
     var body: some View {
         
         ZStack {
-            
             if showingModal {
                 GeometryReader { geometry in
-                    PageView(pages: photos.map({ photo in
-                        ZoomableView(viewSize: photo.size,
-                                     screenSize: geometry.size) {
-                            Image(photo.name)
-                                .resizable()
-                                .scaledToFit()
-                                .clipped()
-                        }
-                    }))
+                    PageView(
+                        pages: photos.map({ photo in
+                            ZoomableView(viewSize: photo.size,
+                                         screenSize: geometry.size) {
+                                Image(photo.name)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipped()
+                            }
+                        }),
+                        currentPage: selectedImageIndex
+                    )
                 }
                 .modifier(PanAndDismissModifier(showingModal: $showingModal,
                                                 backgroundColor: .gray))
