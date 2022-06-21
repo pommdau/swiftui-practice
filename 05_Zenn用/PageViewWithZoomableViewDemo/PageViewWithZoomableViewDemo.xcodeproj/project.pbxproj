@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA347149286153C3007E3880 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA347148286153C3007E3880 /* Photo.swift */; };
 		DA7C5B0628614ABA000B1CB4 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA7C5B0528614ABA000B1CB4 /* SDWebImageSwiftUI */; };
 		DA7DC62D284C383B00A7DAC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC62C284C383B00A7DAC0 /* ContentView.swift */; };
-		DA7DC685284DE13400A7DAC0 /* ZoomableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC684284DE13400A7DAC0 /* ZoomableContentView.swift */; };
+		DA7DC685284DE13400A7DAC0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC684284DE13400A7DAC0 /* RootView.swift */; };
 		DA7DC68A284DF07900A7DAC0 /* ZoomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC689284DF07900A7DAC0 /* ZoomableView.swift */; };
 		DA7DC68C284DF08400A7DAC0 /* ZoomableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC68B284DF08400A7DAC0 /* ZoomableModifier.swift */; };
 		DA7DC68E284DF09400A7DAC0 /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DC68D284DF09400A7DAC0 /* ZoomableImageView.swift */; };
@@ -23,8 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA347148286153C3007E3880 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		DA7DC62C284C383B00A7DAC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		DA7DC684284DE13400A7DAC0 /* ZoomableContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableContentView.swift; sourceTree = "<group>"; };
+		DA7DC684284DE13400A7DAC0 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DA7DC689284DF07900A7DAC0 /* ZoomableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableView.swift; sourceTree = "<group>"; };
 		DA7DC68B284DF08400A7DAC0 /* ZoomableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableModifier.swift; sourceTree = "<group>"; };
 		DA7DC68D284DF09400A7DAC0 /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA3471472861537B007E3880 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA347148286153C3007E3880 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DA7DC688284DF06500A7DAC0 /* Zoomable */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,9 +101,10 @@
 			children = (
 				DAD6B8262849C26F006149E0 /* TransitionDemoApp.swift */,
 				DA7DC62C284C383B00A7DAC0 /* ContentView.swift */,
+				DA7DC684284DE13400A7DAC0 /* RootView.swift */,
+				DA3471472861537B007E3880 /* Models */,
 				DA7DC688284DF06500A7DAC0 /* Zoomable */,
 				DAA39CEB284F330500C0C6DF /* PageView */,
-				DA7DC684284DE13400A7DAC0 /* ZoomableContentView.swift */,
 				DA81DD6428603BAA002BA8CA /* PanAndDismissModifier.swift */,
 				DAD6B82A2849C26F006149E0 /* Assets.xcassets */,
 				DAD6B82C2849C26F006149E0 /* Preview Content */,
@@ -190,8 +201,9 @@
 				DA7DC68C284DF08400A7DAC0 /* ZoomableModifier.swift in Sources */,
 				DAA39CF5285027FC00C0C6DF /* PageControl.swift in Sources */,
 				DA7DC68E284DF09400A7DAC0 /* ZoomableImageView.swift in Sources */,
-				DA7DC685284DE13400A7DAC0 /* ZoomableContentView.swift in Sources */,
+				DA7DC685284DE13400A7DAC0 /* RootView.swift in Sources */,
 				DAD6B8272849C26F006149E0 /* TransitionDemoApp.swift in Sources */,
+				DA347149286153C3007E3880 /* Photo.swift in Sources */,
 				DAA39CEF284F348D00C0C6DF /* PageView.swift in Sources */,
 				DA7DC68A284DF07900A7DAC0 /* ZoomableView.swift in Sources */,
 				DA81DD6528603BAA002BA8CA /* PanAndDismissModifier.swift in Sources */,

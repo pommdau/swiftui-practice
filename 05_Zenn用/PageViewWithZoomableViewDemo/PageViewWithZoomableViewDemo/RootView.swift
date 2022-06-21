@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct ZoomableContentView: View {
+struct RootView: View {
     
     @State private var showingModal = false
-    private let imageName = "image01"
+    @State private var selectedImageIndex = 0
+    private let photos = [Photo.mock1, Photo.mock2, Photo.mock3, Photo.mock4]
     
     var body: some View {
         
@@ -19,6 +20,7 @@ struct ZoomableContentView: View {
             if showingModal {
                 GeometryReader { geometry in
                     PageView(pages: [
+                        
                         ZoomableView(viewSize: CGSize(width: 800, height: 800),
                                      screenSize: geometry.size) {
                                          Image("image01")
@@ -54,21 +56,59 @@ struct ZoomableContentView: View {
                 .zIndex(1)
                 
             }
-            Button {
-                withAnimation() {
-                    showingModal = true
+            
+            VStack {
+                HStack {
+                    Button {
+                        selectedImageIndex = 0
+                        withAnimation() {
+                            showingModal = true
+                        }
+                    } label: {
+                        Image(photos[0].name)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Button {
+                        selectedImageIndex = 1
+                        withAnimation() {
+                            showingModal = true
+                        }
+                    } label: {
+                        Image(photos[1].name)
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }
-            } label: {
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 200, height: 200)
+                HStack {
+                    Button {
+                        selectedImageIndex = 2
+                        withAnimation() {
+                            showingModal = true
+                        }
+                    } label: {
+                        Image(photos[2].name)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Button {
+                        selectedImageIndex = 3
+                        withAnimation() {
+                            showingModal = true
+                        }
+                    } label: {
+                        Image(photos[3].name)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                }
             }
         }
     }
 }
 
-struct ZoomableContentView_Preview: PreviewProvider {
+struct RootViewView_Preview: PreviewProvider {
     static var previews: some View {
-        ZoomableContentView()
+        RootView()
     }
 }
