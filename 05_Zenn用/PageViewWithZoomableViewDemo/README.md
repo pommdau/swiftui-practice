@@ -22,3 +22,6 @@ https://user-images.githubusercontent.com/29433103/174698881-53b9fefa-3796-4980-
 - [【SwiftUI】PageViewをSwiftUIで実現する方法](https://www.yururiwork.net/archives/750)
 - [Horizontal padding between UIPageViewController child view controllers](https://stackoverflow.com/questions/20694679/horizontal-padding-between-uipageviewcontroller-child-view-controllers)
     - UIPageViewのpadding設定
+
+### パン部分
+- [swiftui\-practice/05\_Zenn用/PanAndDismissDemo/](https://github.com/pommdau/swiftui-practice/tree/main/05_Zenn%E7%94%A8/PanAndDismissDemo)
