@@ -9,36 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private var fonts = Font.loadBundleResourceFonts()
-           
+    @State private var fonts = Font.loadBundleResourceFonts()
+    
     var body: some View {
         
         VStack {
             
             List {
                 Section("Target Fonts") {
-                    ForEach(fonts, id: \.url) { font in
-//                        Toggle(isOn: $font.isInstalled) {
-//                            Text(font.fileName)
-//                        }
-                        Text(font.fileName)
+                    ForEach(fonts.indices, id: \.self) { index in
+                        Toggle(isOn: $fonts[index].isInstalled) {
+                            Text(fonts[index].fileName)
+                        }
+                    }
+                }
+                
+                Section("Actions") {
+                    Button {
+                        handleFonts(fonts: fonts, enabled: true)
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Install font")
+                            Spacer()
+                        }
+                    }
+                    
+                    Button {
+                        fonts.forEach { font in
+                            print("\(font.fileName): \(font.isInstalled)")
+                        }
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("show status")
+                            Spacer()
+                        }
                     }
                 }
             }
-            
-            
-            Button {
-                handleFonts(fonts: fonts, enabled: true)
-            } label: {
-                Text("Install font")
-            }
-            
-            Button {
-                print("")
-            } label: {
-                Text("update UI")
-            }
-            
+            .textCase(.lowercase)
         }
     }
     

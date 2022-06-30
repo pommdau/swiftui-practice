@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct Font {
+class Font: ObservableObject {
 
     var url: URL
-    var isInstalled: Bool = false
+    @Published var isInstalled: Bool = false
     
     var fileName: String {
         return url.lastPathComponent
+    }
+    
+    init(url: URL, isInstalled: Bool = false) {
+        self.url = url
+        self.isInstalled = isInstalled
     }
     
 }
