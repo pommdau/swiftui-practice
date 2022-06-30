@@ -15,6 +15,7 @@
 		DAD9D23A286D92810023D2CB /* Utusi Star Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D238286D92810023D2CB /* Utusi Star Bold.otf */; };
 		DAD9D23C286D92930023D2CB /* NikkyouSans-mLKax.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D23B286D92930023D2CB /* NikkyouSans-mLKax.ttf */; };
 		DAD9D23E286D929C0023D2CB /* 1980 portable.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D23D286D929C0023D2CB /* 1980 portable.otf */; };
+		DAD9D240286D945A0023D2CB /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD9D23F286D945A0023D2CB /* Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DAD9D238286D92810023D2CB /* Utusi Star Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Utusi Star Bold.otf"; sourceTree = "<group>"; };
 		DAD9D23B286D92930023D2CB /* NikkyouSans-mLKax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NikkyouSans-mLKax.ttf"; sourceTree = "<group>"; };
 		DAD9D23D286D929C0023D2CB /* 1980 portable.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "1980 portable.otf"; sourceTree = "<group>"; };
+		DAD9D23F286D945A0023D2CB /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				DAD9D230286D8A810023D2CB /* Fonts */,
 				DAD9D22F286D6D810023D2CB /* CustomFontDemo.entitlements */,
+				DAD9D23F286D945A0023D2CB /* Font.swift */,
 				DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */,
 				DAD9D223286D6D3F0023D2CB /* ContentView.swift */,
 				DAD9D225286D6D400023D2CB /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 			files = (
 				DAD9D224286D6D3F0023D2CB /* ContentView.swift in Sources */,
 				DAD9D222286D6D3F0023D2CB /* CustomFontDemoApp.swift in Sources */,
+				DAD9D240286D945A0023D2CB /* Font.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

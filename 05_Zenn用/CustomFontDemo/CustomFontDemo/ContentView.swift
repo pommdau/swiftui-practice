@@ -9,54 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private var fontURLs: [URL] {
-        
-        let fontExtensions: [String] = ["otf", "ttf", "ttc"]
-        
-        var fontURLs = [URL]()
-        
-        fontExtensions.forEach { fontExtension in
-            if let urls = Bundle.main.urls(forResourcesWithExtension: fontExtension, subdirectory: nil) {
-                fontURLs += urls
-            }
-        }
-                        
-        return fontURLs
-    }
+    private var fonts = Font.loadBundleResourceFonts()
            
     var body: some View {
         
         VStack {
-                        
-            Text("Hello, world!")
-                .padding()
-            Button {
             
-                fontURLs.forEach { url in
-                    print(url.path)
+            List {
+                Section("Target Fonts") {
+                    ForEach(fonts, id: \.url) { font in
+//                        Toggle(isOn: $font.isInstalled) {
+//                            Text(font.fileName)
+//                        }
+                        Text(font.fileName)
+                    }
                 }
-                
-                
-                CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
-                    print(cfarray)
-                    print(result)
-                    return true
-                }
-                
-//                CTFontManagerRegisterFontsWithAssetNames(
-//                    ["NikkyouSans-mLKax"] as CFArray,
-//                    nil, .user, true, { arr, result in
-//                        print(arr)
-//                        print(result)
-//                        return true
-//                    })
+            }
+            
+            
+            Button {
+                handleFonts(fonts: fonts, enabled: true)
             } label: {
                 Text("Install font")
             }
             
+            Button {
+                print("")
+            } label: {
+                Text("update UI")
+            }
+            
         }
-        
-        
+    }
+    
+    private func handleFonts(fonts: [Font], enabled: Bool) {
+        let fontURLs = fonts.map { $0.url } as CFArray
+        CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, enabled) { cfarray, result in
+            print(cfarray)
+            print(result)
+            return true
+        }
     }
 }
 
