@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private var fontURLs: CFArray {
+    private var fontURLs: [URL] {
         
-        let fontNames: [String] = ["", "", ""]
+        let fontExtensions: [String] = ["otf", "ttf", "ttc"]
         
-        let fontURLs: [URL] = fontNames.compactMap { fontName in
-            if let resource = Bundle.main.resourceURL {
-                return resource.appendingPathComponent(fontName)
-            } else {
-                return nil
+        var fontURLs = [URL]()
+        
+        fontExtensions.forEach { fontExtension in
+            if let urls = Bundle.main.urls(forResourcesWithExtension: fontExtension, subdirectory: nil) {
+                fontURLs += urls
             }
         }
-        
-        return fontURLs as CFArray
+                        
+        return fontURLs
     }
            
     var body: some View {
@@ -31,8 +31,13 @@ struct ContentView: View {
             Text("Hello, world!")
                 .padding()
             Button {
-                                
-                CTFontManagerRegisterFontURLs(self.fontURLs, .user, true) { cfarray, result in
+            
+                fontURLs.forEach { url in
+                    print(url.path)
+                }
+                
+                
+                CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
                     print(cfarray)
                     print(result)
                     return true

@@ -11,6 +11,10 @@
 		DAD9D224286D6D3F0023D2CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD9D223286D6D3F0023D2CB /* ContentView.swift */; };
 		DAD9D226286D6D400023D2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D225286D6D400023D2CB /* Assets.xcassets */; };
 		DAD9D229286D6D400023D2CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D228286D6D400023D2CB /* Preview Assets.xcassets */; };
+		DAD9D239286D92810023D2CB /* Utusi Star Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D237286D92810023D2CB /* Utusi Star Normal.otf */; };
+		DAD9D23A286D92810023D2CB /* Utusi Star Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D238286D92810023D2CB /* Utusi Star Bold.otf */; };
+		DAD9D23C286D92930023D2CB /* NikkyouSans-mLKax.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D23B286D92930023D2CB /* NikkyouSans-mLKax.ttf */; };
+		DAD9D23E286D929C0023D2CB /* 1980 portable.otf in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D23D286D929C0023D2CB /* 1980 portable.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		DAD9D225286D6D400023D2CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAD9D228286D6D400023D2CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DAD9D22F286D6D810023D2CB /* CustomFontDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomFontDemo.entitlements; sourceTree = "<group>"; };
+		DAD9D237286D92810023D2CB /* Utusi Star Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Utusi Star Normal.otf"; sourceTree = "<group>"; };
+		DAD9D238286D92810023D2CB /* Utusi Star Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Utusi Star Bold.otf"; sourceTree = "<group>"; };
+		DAD9D23B286D92930023D2CB /* NikkyouSans-mLKax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NikkyouSans-mLKax.ttf"; sourceTree = "<group>"; };
+		DAD9D23D286D929C0023D2CB /* 1980 portable.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "1980 portable.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,10 @@
 		DAD9D230286D8A810023D2CB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DAD9D238286D92810023D2CB /* Utusi Star Bold.otf */,
+				DAD9D237286D92810023D2CB /* Utusi Star Normal.otf */,
+				DAD9D23B286D92930023D2CB /* NikkyouSans-mLKax.ttf */,
+				DAD9D23D286D929C0023D2CB /* 1980 portable.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -135,8 +147,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD9D239286D92810023D2CB /* Utusi Star Normal.otf in Resources */,
+				DAD9D23E286D929C0023D2CB /* 1980 portable.otf in Resources */,
 				DAD9D229286D6D400023D2CB /* Preview Assets.xcassets in Resources */,
+				DAD9D23C286D92930023D2CB /* NikkyouSans-mLKax.ttf in Resources */,
 				DAD9D226286D6D400023D2CB /* Assets.xcassets in Resources */,
+				DAD9D23A286D92810023D2CB /* Utusi Star Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
