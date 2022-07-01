@@ -40,9 +40,7 @@ struct ContentView: View {
                 
                 Section("Actions") {
                     Button {
-                        let url = URL(fileURLWithPath: "path/to/file")
-                        let font = Font(url: url)
-                        installFonts(fonts: [font])
+                        
                     } label: {
                         HStack {
                             Spacer()
@@ -53,12 +51,12 @@ struct ContentView: View {
                     
                     Button {
                         /*
-                        fonts.forEach { font in
-                            print("\(font.fileName): \(font.isInstalled)")
-                        }
+                         fonts.forEach { font in
+                         print("\(font.fileName): \(font.isInstalled)")
+                         }
                          */
                         
-                        Self.updateRegisteredFonts()
+                        updateRegisteredFonts()
                     } label: {
                         HStack {
                             Spacer()
@@ -95,55 +93,68 @@ struct ContentView: View {
                 selector: #selector(helper.fontsChangedNotification(_:)) ,
                 name: kCTFontManagerRegisteredFontsChangedNotification as NSNotification.Name,
                 object: nil)
+            updateRegisteredFonts()
         }
     }
     
-    static func updateRegisteredFonts() {
+    private func updateRegisteredFonts() {
         guard let registeredDescriptors = CTFontManagerCopyRegisteredFontDescriptors(.user, true) as? [CTFontDescriptor] else {
             return
         }
         
-        for registeredDescriptor in registeredDescriptors {
-            if let postName = CTFontDescriptorCopyAttribute(registeredDescriptor, kCTFontNameAttribute) as? String {
-                if let font = UIFont(name: postName, size: 12.0) {
-                    print("😿")
-                    print(postName)
-                    print(font.familyName)
-                    print(font.fontName)
+        let registeredFontPostNames = createPostNames(fromDescriptors: registeredDescriptors)
+        fonts.forEach { font in
+            let fontPostNames = createPostNames(fromDescriptors: font.descriptors)
+            for fontPostName in fontPostNames {
+                for registeredFontPostName in registeredFontPostNames {
+                    if registeredFontPostName == fontPostName {
+                        font.isInstalled = true
+                        break
+                    } else {
+                        font.isInstalled = false
+                    }
                 }
             }
         }
     }
     
-    
-    //    private func installFonts(fonts: [Font], completion: @escaping (Bool) -> Void) {
-    //    private func installFonts(fonts: [Font]) -> Result<[Font], FontHandlingError> {
-    private func installFonts(fonts: [Font]) {
-        
-        let fontURLs = fonts.map { $0.url } as CFArray
-        
-        CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
-            print("*** result ***")
-            print(cfarray)
-            if let errors = cfarray as? [Error] {
-                print("Stop")
-            }
-            //            let array: [Error] = cfarray as? [Error] ?? []
-            print(result)
-            return true  // Return NO from the block to stop the registration operation, like after receiving an error.
+    private func createPostNames(fromDescriptors descriptors: [CTFontDescriptor]) -> [String] {
+        let postNames = descriptors.compactMap { descriptor in
+            return CTFontDescriptorCopyAttribute(descriptor, kCTFontNameAttribute) as? String
         }
+        
+        return postNames
     }
+}
+
+
+//    private func installFonts(fonts: [Font], completion: @escaping (Bool) -> Void) {
+//    private func installFonts(fonts: [Font]) -> Result<[Font], FontHandlingError> {
+private func installFonts(fonts: [Font]) {
     
-    private func uninstallFonts(fonts: [Font]) {
-        let fontURLs = fonts.map { $0.url } as CFArray
-        
-        CTFontManagerUnregisterFontURLs(fontURLs as CFArray, .user) { cfarray, result in
-            print("*** result ***")
-            print(cfarray)
-            print(result)
-            return true
-            
+    let fontURLs = fonts.map { $0.url } as CFArray
+    
+    CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
+        print("*** result ***")
+        print(cfarray)
+        if let errors = cfarray as? [Error] {
+            print("Stop")
         }
+        //            let array: [Error] = cfarray as? [Error] ?? []
+        print(result)
+        return true  // Return NO from the block to stop the registration operation, like after receiving an error.
+    }
+}
+
+private func uninstallFonts(fonts: [Font]) {
+    let fontURLs = fonts.map { $0.url } as CFArray
+    
+    CTFontManagerUnregisterFontURLs(fontURLs as CFArray, .user) { cfarray, result in
+        print("*** result ***")
+        print(cfarray)
+        print(result)
+        return true
+        
     }
 }
 

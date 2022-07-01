@@ -6,19 +6,22 @@
 //
 
 import Foundation
+import CoreText
 
 class Font: ObservableObject {
-
-    var url: URL
+    
+    let url: URL
     @Published var isInstalled: Bool = false
+    let descriptors: [CTFontDescriptor]
     
     var fileName: String {
         return url.lastPathComponent
     }
     
-    init(url: URL, isInstalled: Bool = false) {
+    init(url: URL, isInstalled: Bool = false, descriptors: [CTFontDescriptor]) {
         self.url = url
         self.isInstalled = isInstalled
+        self.descriptors = descriptors
     }
     
 }
@@ -34,7 +37,12 @@ extension Font {
             }
         }
         
-        return fontURLs.map { Font(url: $0) }
+        return fontURLs.compactMap { fontURL in
+            guard let descriptors = CTFontManagerCreateFontDescriptorsFromURL(fontURL as CFURL) as? [CTFontDescriptor]
+            else {
+                return nil
+            }
+            return Font(url: fontURL, descriptors: descriptors)
+        }
     }
-    
 }
