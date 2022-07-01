@@ -11,7 +11,7 @@ struct ContentView: View {
     
     // MARK: - Properties
     
-    @State private var fonts = Font.loadBundleResourceFonts()
+    @State private var fonts: [Font] = Font.loadBundleResourceFonts()
     let helper = ContentViewHelper()
     
     // MARK: - View
@@ -49,7 +49,6 @@ struct ContentView: View {
                     Button {
                         uninstallFonts(fonts: fonts)
                         updateFontStatus()  // TODO: Data-Bindingでできるはず
-                        
                     } label: {
                         HStack {
                             Spacer()
@@ -114,7 +113,7 @@ extension ContentView {
             return true  // Return NO from the block to stop the registration operation, like after receiving an error.
         }
     }
-
+    
     private func uninstallFonts(fonts: [Font]) {
         let fontURLs = fonts.map { $0.url } as CFArray
         
@@ -132,17 +131,19 @@ extension ContentView {
         }
         
         let registeredFontPostNames = Self.createPostNames(fromDescriptors: registeredDescriptors)
-        fonts.forEach { font in
-            let fontPostNames = Self.createPostNames(fromDescriptors: font.descriptors)
+        
+        for index in fonts.indices {
+            let fontPostNames = Self.createPostNames(fromDescriptors: fonts[index].descriptors)
             for fontPostName in fontPostNames {
+                var isInstalled = false
+                // インストールされたフォントに該当するものがないか確認
                 for registeredFontPostName in registeredFontPostNames {
                     if registeredFontPostName == fontPostName {
-                        font.isInstalled = true
+                        isInstalled = true
                         break
-                    } else {
-                        font.isInstalled = false
                     }
                 }
+                fonts[index].isInstalled = isInstalled
             }
         }
     }

@@ -8,11 +8,11 @@
 import Foundation
 import CoreText
 
-class Font: ObservableObject {
+struct Font {
     
-    let url: URL
-    @Published var isInstalled: Bool = false
-    let descriptors: [CTFontDescriptor]
+    var url: URL
+    var isInstalled: Bool = false
+    var descriptors: [CTFontDescriptor]
     
     var fileName: String {
         return url.lastPathComponent
