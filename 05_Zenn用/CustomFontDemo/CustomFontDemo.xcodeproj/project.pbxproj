@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA8C80C5286F6C8900BC9505 /* ContentViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C80C4286F6C8900BC9505 /* ContentViewHelper.swift */; };
+		DA8C80C7286F6C9900BC9505 /* FontHandlingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C80C6286F6C9900BC9505 /* FontHandlingError.swift */; };
 		DAD9D222286D6D3F0023D2CB /* CustomFontDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */; };
 		DAD9D224286D6D3F0023D2CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD9D223286D6D3F0023D2CB /* ContentView.swift */; };
 		DAD9D226286D6D400023D2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD9D225286D6D400023D2CB /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA8C80C4286F6C8900BC9505 /* ContentViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewHelper.swift; sourceTree = "<group>"; };
+		DA8C80C6286F6C9900BC9505 /* FontHandlingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHandlingError.swift; sourceTree = "<group>"; };
 		DAD9D21E286D6D3F0023D2CB /* CustomFontDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomFontDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontDemoApp.swift; sourceTree = "<group>"; };
 		DAD9D223286D6D3F0023D2CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,8 +69,10 @@
 				DAD9D230286D8A810023D2CB /* Fonts */,
 				DAD9D22F286D6D810023D2CB /* CustomFontDemo.entitlements */,
 				DAD9D23F286D945A0023D2CB /* Font.swift */,
+				DA8C80C6286F6C9900BC9505 /* FontHandlingError.swift */,
 				DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */,
 				DAD9D223286D6D3F0023D2CB /* ContentView.swift */,
+				DA8C80C4286F6C8900BC9505 /* ContentViewHelper.swift */,
 				DAD9D225286D6D400023D2CB /* Assets.xcassets */,
 				DAD9D227286D6D400023D2CB /* Preview Content */,
 			);
@@ -166,7 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8C80C5286F6C8900BC9505 /* ContentViewHelper.swift in Sources */,
 				DAD9D224286D6D3F0023D2CB /* ContentView.swift in Sources */,
+				DA8C80C7286F6C9900BC9505 /* FontHandlingError.swift in Sources */,
 				DAD9D222286D6D3F0023D2CB /* CustomFontDemoApp.swift in Sources */,
 				DAD9D240286D945A0023D2CB /* Font.swift in Sources */,
 			);
