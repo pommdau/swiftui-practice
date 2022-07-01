@@ -20,13 +20,19 @@ struct ContentView: View {
                     ForEach(fonts.indices, id: \.self) { index in
                         Toggle(isOn: $fonts[index].isInstalled) {
                             Text(fonts[index].fileName)
+                        }.onChange(of: fonts[index].isInstalled) { newValue in
+                            if newValue {
+                                installFonts(fonts: [fonts[index]])
+                            } else {
+                                uninstallFonts(fonts: [fonts[index]])
+                            }
                         }
                     }
                 }
                 
                 Section("Actions") {
                     Button {
-                        handleFonts(fonts: fonts, enabled: true)
+                        installFonts(fonts: fonts)
                     } label: {
                         HStack {
                             Spacer()
@@ -52,14 +58,30 @@ struct ContentView: View {
         }
     }
     
-    private func handleFonts(fonts: [Font], enabled: Bool) {
+    //    private func installFonts(fonts: [Font], completion: @escaping (Bool) -> Void) {
+    private func installFonts(fonts: [Font]) {
         let fontURLs = fonts.map { $0.url } as CFArray
-        CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, enabled) { cfarray, result in
+        
+        CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
+            print("*** result ***")
+            print(cfarray)
+            print(result)
+            return true  // Return NO from the block to stop the registration operation, like after receiving an error.
+        }
+    }
+    
+    private func uninstallFonts(fonts: [Font]) {
+        let fontURLs = fonts.map { $0.url } as CFArray
+        
+        CTFontManagerUnregisterFontURLs(fontURLs as CFArray, .user) { cfarray, result in
+            print("*** result ***")
             print(cfarray)
             print(result)
             return true
         }
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
