@@ -20,7 +20,7 @@ struct ContentView: View {
         VStack {
             List {
                 
-                Section("Target Fonts") {
+                Section(header: Text("Fonts").textCase(.none)) {
                     ForEach(fonts.indices, id: \.self) { index in
                         Toggle(isOn: $fonts[index].isInstalled) {
                             Text(fonts[index].fileName)
@@ -30,11 +30,12 @@ struct ContentView: View {
                             } else {
                                 uninstallFonts(fonts: [fonts[index]])
                             }
+                            updateFontStatus()  // TODO: Data-Bindingでできるはず
                         }
                     }
                 }
                 
-                Section("Actions") {
+                Section(header: Text("Actions").textCase(.none)) {
                     Button {
                         installFonts(fonts: fonts)
                         updateFontStatus()  // TODO: Data-Bindingでできるはず
@@ -68,7 +69,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .textCase(.lowercase)
         }
         .onAppear {
             NotificationCenter.default.addObserver(
