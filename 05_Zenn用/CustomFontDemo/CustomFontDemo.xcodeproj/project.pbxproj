@@ -23,6 +23,7 @@
 /* Begin PBXFileReference section */
 		DA8C80C4286F6C8900BC9505 /* ContentViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewHelper.swift; sourceTree = "<group>"; };
 		DA8C80C6286F6C9900BC9505 /* FontHandlingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHandlingError.swift; sourceTree = "<group>"; };
+		DA8C80FC28729F7400BC9505 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DAD9D21E286D6D3F0023D2CB /* CustomFontDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomFontDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontDemoApp.swift; sourceTree = "<group>"; };
 		DAD9D223286D6D3F0023D2CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 				DAD9D221286D6D3F0023D2CB /* CustomFontDemoApp.swift */,
 				DAD9D223286D6D3F0023D2CB /* ContentView.swift */,
 				DA8C80C4286F6C8900BC9505 /* ContentViewHelper.swift */,
+				DA8C80FC28729F7400BC9505 /* README.md */,
 				DAD9D225286D6D400023D2CB /* Assets.xcassets */,
 				DAD9D227286D6D400023D2CB /* Preview Content */,
 			);
