@@ -48,5 +48,7 @@ struct LandmarkList_Previews: PreviewProvider {
 //        }
         LandmarkList()
             .environmentObject(ModelData())
+            .previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
+
     }
 }
