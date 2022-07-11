@@ -89,11 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				DA5BD0582879D7FE00DBDC2D /* ContentView.swift */,
-				DA5BD064287BED2800DBDC2D /* CircleImage.swift */,
-				DA5BD066287BED9400DBDC2D /* MapView.swift */,
-				DA5BD071287BF98C00DBDC2D /* LandmarkRow.swift */,
 				DA5BD073287BFDC100DBDC2D /* LandmarkList.swift */,
+				DA5BD071287BF98C00DBDC2D /* LandmarkRow.swift */,
 				DA5BD075287C000200DBDC2D /* LandmarkDetail.swift */,
+				DA5BD066287BED9400DBDC2D /* MapView.swift */,
+				DA5BD064287BED2800DBDC2D /* CircleImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
