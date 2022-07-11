@@ -57,8 +57,8 @@
 			children = (
 				DA5BD0562879D7FE00DBDC2D /* LandmarksApp.swift */,
 				DA5BD064287BED2800DBDC2D /* CircleImage.swift */,
-				DA5BD0582879D7FE00DBDC2D /* ContentView.swift */,
 				DA5BD066287BED9400DBDC2D /* MapView.swift */,
+				DA5BD0582879D7FE00DBDC2D /* ContentView.swift */,
 				DA5BD05A2879D7FF00DBDC2D /* Assets.xcassets */,
 				DA5BD05C2879D7FF00DBDC2D /* Preview Content */,
 			);
