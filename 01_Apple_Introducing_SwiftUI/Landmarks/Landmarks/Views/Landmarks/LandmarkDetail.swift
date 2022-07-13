@@ -2,14 +2,14 @@
 //  LandmarkDetail.swift
 //  Landmarks
 //
-//  Created by HIROKI IKEUCHI on 2022/02/27.
+//  Created by HIROKI IKEUCHI on 2022/07/11.
 //
 
 import SwiftUI
 
 struct LandmarkDetail: View {
-    @EnvironmentObject var modelData: ModelData
     
+    @EnvironmentObject var modelData: ModelData
     var landmark: Landmark
     
     var landmarkIndex: Int {
@@ -19,7 +19,6 @@ struct LandmarkDetail: View {
     var body: some View {
         ScrollView {
             MapView(coordinate: landmark.locationCoordinate)
-                .ignoresSafeArea(edges: .top)
                 .frame(height: 300)
             
             CircleImage(image: landmark.image)
@@ -35,8 +34,10 @@ struct LandmarkDetail: View {
                 
                 HStack {
                     Text(landmark.park)
+                        .font(.subheadline)
                     Spacer()
                     Text(landmark.state)
+                        .font(.subheadline)
                 }
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -46,6 +47,7 @@ struct LandmarkDetail: View {
                 Text("About \(landmark.name)")
                     .font(.title2)
                 Text(landmark.description)
+                
             }
             .padding()
         }
@@ -55,7 +57,13 @@ struct LandmarkDetail: View {
 }
 
 struct LandmarkDetail_Previews: PreviewProvider {
+    
+    static let modelData = ModelData()
+    
     static var previews: some View {
-        LandmarkDetail(landmark: ModelData().landmarks[0])
+        Group {
+            LandmarkDetail(landmark: modelData.landmarks[0])
+                .environmentObject(modelData)
+        }
     }
 }

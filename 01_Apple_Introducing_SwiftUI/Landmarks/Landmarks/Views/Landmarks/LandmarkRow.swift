@@ -2,7 +2,7 @@
 //  LandmarkRow.swift
 //  Landmarks
 //
-//  Created by HIROKI IKEUCHI on 2022/02/27.
+//  Created by HIROKI IKEUCHI on 2022/07/11.
 //
 
 import SwiftUI
@@ -17,7 +17,7 @@ struct LandmarkRow: View {
                 .resizable()
                 .frame(width: 50, height: 50)
             Text(landmark.name)
-
+            
             Spacer()
             
             if landmark.isFavorite {
@@ -29,6 +29,7 @@ struct LandmarkRow: View {
 }
 
 struct LandmarkRow_Previews: PreviewProvider {
+    
     static var landmarks = ModelData().landmarks
     
     static var previews: some View {

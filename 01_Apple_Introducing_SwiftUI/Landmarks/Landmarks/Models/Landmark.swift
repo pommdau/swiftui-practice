@@ -2,7 +2,7 @@
 //  Landmark.swift
 //  Landmarks
 //
-//  Created by HIROKI IKEUCHI on 2022/02/27.
+//  Created by HIROKI IKEUCHI on 2022/07/11.
 //
 
 import Foundation
@@ -16,25 +16,11 @@ struct Landmark: Hashable, Codable, Identifiable {
     var state: String
     var description: String
     var isFavorite: Bool
-    var isFeatured: Bool
-    
-    // MARK: - Category
-    
-    var category: Category
-    enum Category: String, CaseIterable, Codable {
-        case lakes = "Lakes"
-        case rivers = "Rivers"
-        case mountains = "Mountains"
-    }
-    
-    // MARK: - Image
     
     private var imageName: String
     var image: Image {
         Image(imageName)
     }
-    
-    // MARK: - Corrdinates
     
     private var coordinates: Coordinates
     var locationCoordinate: CLLocationCoordinate2D {
@@ -42,9 +28,9 @@ struct Landmark: Hashable, Codable, Identifiable {
             latitude: coordinates.latitude,
             longitude: coordinates.longitude)
     }
+    
     struct Coordinates: Hashable, Codable {
         var latitude: Double
         var longitude: Double
     }
-    
 }
