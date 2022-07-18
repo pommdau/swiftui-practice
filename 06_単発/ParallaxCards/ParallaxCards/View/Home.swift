@@ -81,10 +81,11 @@ struct Home: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .offset(x: motionManager.currentSlide.id == place.id
-                                    ? motionManager.xValue * 7 : 0,
+                                    ? overlayOffset() : 0,
                                     y: 0)
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
+                            .scaleEffect(1.05, anchor: .bottom)
                         
                         VStack(spacing: 5) {
                             Text("FEATURES")
@@ -128,6 +129,13 @@ struct Home: View {
                     }
                     .frame(width: size.width, height: size.height, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    
+                    // MARK: If You Need Smooth Animation
+                    // It wil1 Consume Some Memory
+                    // So Always Check Memory Usage
+                    .animation(
+                        .interactiveSpring(),
+                               value: motionManager.xValue)
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 40)
@@ -144,6 +152,17 @@ struct Home: View {
             motionManager.stopMotionUpdates()
         }
     }
+    
+    // 上限を決めるだけかな
+    func overlayOffset() -> CGFloat {
+        let offset = motionManager.xValue * 7
+        let maxOffset: CGFloat = 8
+        if offset > 0 {
+            return offset > maxOffset ? maxOffset : offset
+        }
+        return -offset > maxOffset ? -maxOffset : offset
+    }
+    
     
     // MARK: Tab Bar
     
