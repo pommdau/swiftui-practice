@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA17D3CC28856B9400A7DDAC /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17D3CB28856B9400A7DDAC /* MotionManager.swift */; };
 		DACAEE8B2885553700E2C16B /* ParallaxCardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACAEE8A2885553700E2C16B /* ParallaxCardsApp.swift */; };
 		DACAEE8D2885553700E2C16B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACAEE8C2885553700E2C16B /* ContentView.swift */; };
 		DACAEE8F2885553900E2C16B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACAEE8E2885553900E2C16B /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA17D3CB28856B9400A7DDAC /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		DACAEE872885553700E2C16B /* ParallaxCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParallaxCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACAEE8A2885553700E2C16B /* ParallaxCardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxCardsApp.swift; sourceTree = "<group>"; };
 		DACAEE8C2885553700E2C16B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,8 +61,8 @@
 		DACAEE892885553700E2C16B /* ParallaxCards */ = {
 			isa = PBXGroup;
 			children = (
-				DACAEE9F2885589600E2C16B /* Extension */,
 				DACAEE8C2885553700E2C16B /* ContentView.swift */,
+				DACAEE9F2885589600E2C16B /* Extension */,
 				DACAEE9A2885563E00E2C16B /* Model */,
 				DACAEE992885563800E2C16B /* View */,
 				DACAEE982885562B00E2C16B /* ViewModel */,
@@ -83,6 +85,7 @@
 		DACAEE982885562B00E2C16B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DA17D3CB28856B9400A7DDAC /* MotionManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DACAEE8D2885553700E2C16B /* ContentView.swift in Sources */,
+				DA17D3CC28856B9400A7DDAC /* MotionManager.swift in Sources */,
 				DACAEE9C2885564800E2C16B /* Home.swift in Sources */,
 				DACAEE8B2885553700E2C16B /* ParallaxCardsApp.swift in Sources */,
 				DACAEEA12885589D00E2C16B /* Color+myColor.swift in Sources */,

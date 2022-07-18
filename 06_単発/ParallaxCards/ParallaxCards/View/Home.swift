@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct Home: View {
+    
+    // MARK: - State object of motion manager
+    
+    @StateObject var motionManager: MotionMangar = .init()
+    
+    // MARK: - View
+    
     var body: some View {
         VStack(spacing: 15) {
             HStack {
@@ -117,6 +124,12 @@ struct Home: View {
             
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
+        .onAppear {
+            motionManager.detectMotion()
+        }
+        .onDisappear {
+            motionManager.stopMotionUpdates()
+        }
     }
     
     // MARK: Tab Bar
