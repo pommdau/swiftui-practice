@@ -69,6 +69,42 @@ struct Home: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
+                        
+                        VStack(spacing: 10) {
+                            Text("FEATURES")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white.opacity(0.6))
+                            
+                            Text(place.placeName)
+                                .font(.system(size: 45, weight: .regular, design: .serif))
+                                .italic()
+                                .foregroundColor(.white.opacity(0.6))
+                                .shadow(color: .black.opacity(0.3), radius: 15, x: 5, y: 5)
+                                .shadow(color: .black.opacity(0.3), radius: 15, x: -5, y: -5)
+                            
+                            Button {
+                                
+                            } label: {
+                                Text("EXPLORE")
+                                    .font(.system(size: 14, weight: .regular, design: .serif))
+                                    .italic()
+                                    .foregroundColor(.white.opacity(0.6))
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .background {
+                                        ZStack {
+                                            Rectangle()
+                                                .fill(.black.opacity(0.15))
+                                            
+                                            Rectangle()
+                                                .fill(.white.opacity(0.3))
+                                        }
+                                    }
+                            }
+                        }
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .padding(.top, 60)
                     }
                     .frame(width: size.width, height: size.height, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))

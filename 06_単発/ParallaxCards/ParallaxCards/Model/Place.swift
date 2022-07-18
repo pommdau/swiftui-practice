@@ -17,7 +17,7 @@ struct Place: Identifiable, Hashable {
 }
 
 var sample_places: [Place] = [
-    .init(placeName: "france", imageName: "france", bgName: "france-bg"),
-    .init(placeName: "iceland", imageName: "iceland", bgName: "iceland-bg"),
     .init(placeName: "rio", imageName: "rio", bgName: "rio-bg"),
+    .init(placeName: "france", imageName: "france", bgName: "france-bg"),
+    .init(placeName: "iceland", imageName: "iceland", bgName: "iceland-bg"),  
 ]
