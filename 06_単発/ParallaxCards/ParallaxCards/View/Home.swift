@@ -70,7 +70,7 @@ struct Home: View {
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
                         
-                        VStack(spacing: 10) {
+                        VStack(spacing: 5) {
                             Text("FEATURES")
                                 .font(.caption)
                                 .fontWeight(.semibold)
@@ -102,6 +102,7 @@ struct Home: View {
                                         }
                                     }
                             }
+                            .padding(.top, 15)
                         }
                         .frame(maxHeight: .infinity, alignment: .top)
                         .padding(.top, 60)
