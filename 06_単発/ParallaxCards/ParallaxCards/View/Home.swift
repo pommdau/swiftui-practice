@@ -60,20 +60,29 @@ struct Home: View {
     
     @ViewBuilder
     func ParallaxCards() -> some View {
-        TabView {
+        TabView(selection: $motionManager.currentSlide) {
             ForEach(sample_places) { place in
                 GeometryReader { proxy in
-                    let size = proxy.size                    
+                    let size = proxy.size
+                    
+                    // MARK: Adding parallax effect to currently showing slide
+                    
                     ZStack {
                         Image(place.bgName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .offset(x: motionManager.currentSlide.id == place.id
+                                    ? -motionManager.xValue * 75 : 0,
+                                    y: 0)
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
                         
                         Image(place.imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .offset(x: motionManager.currentSlide.id == place.id
+                                    ? motionManager.xValue * 7 : 0,
+                                    y: 0)
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
                         
@@ -113,12 +122,16 @@ struct Home: View {
                         }
                         .frame(maxHeight: .infinity, alignment: .top)
                         .padding(.top, 60)
+                        .offset(x: motionManager.currentSlide.id == place.id
+                                ? motionManager.xValue * 15 : 0,
+                                y: 0)
                     }
                     .frame(width: size.width, height: size.height, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 40)
+                .tag(place)
             }
             
             
@@ -136,7 +149,6 @@ struct Home: View {
     
     @ViewBuilder
     func TabBar() -> some View {
-        
         HStack(spacing: 0) {
             ForEach(["house", "suit.heart", "magnifyingglass"], id: \.self) { icon in
                 Image(systemName: icon)
