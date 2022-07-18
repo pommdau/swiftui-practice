@@ -61,8 +61,17 @@ struct Home: View {
                         Image(place.bgName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .frame(width: size.width, height: size.height, alignment: .center)
+                            .clipped()
+                        
+                        Image(place.imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size.width, height: size.height, alignment: .center)
+                            .clipped()
                     }
                     .frame(width: size.width, height: size.height, alignment: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 40)
