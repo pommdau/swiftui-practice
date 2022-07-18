@@ -9,9 +9,23 @@ import SwiftUI
 
 struct Home: View {
     
-    // MARK: - State object of motion manager
+    // MARK: - Properties
+    
+    // MARK: State object of motion manager
     
     @StateObject var motionManager: MotionMangar = .init()
+    
+    // MARK: Computed properties
+    
+    // 上限を決めるだけかな
+    private var overlayOffset: CGFloat {
+        let offset = motionManager.xValue * 7
+        let maxOffset: CGFloat = 8
+        if offset > 0 {
+            return offset > maxOffset ? maxOffset : offset
+        }
+        return -offset > maxOffset ? -maxOffset : offset
+    }
     
     // MARK: - View
     
@@ -19,7 +33,6 @@ struct Home: View {
         VStack(spacing: 15) {
             HStack {
                 Button {
-                    
                 } label: {
                     Image(systemName: "line.3.horizontal")
                         .font(.title3)
@@ -28,7 +41,6 @@ struct Home: View {
                 Spacer()
                 
                 Button {
-                    
                 } label: {
                     Image(systemName: "person")
                         .font(.title3)
@@ -81,7 +93,7 @@ struct Home: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .offset(x: motionManager.currentSlide.id == place.id
-                                    ? overlayOffset() : 0,
+                                    ? overlayOffset : 0,
                                     y: 0)
                             .frame(width: size.width, height: size.height, alignment: .center)
                             .clipped()
@@ -152,18 +164,7 @@ struct Home: View {
             motionManager.stopMotionUpdates()
         }
     }
-    
-    // 上限を決めるだけかな
-    func overlayOffset() -> CGFloat {
-        let offset = motionManager.xValue * 7
-        let maxOffset: CGFloat = 8
-        if offset > 0 {
-            return offset > maxOffset ? maxOffset : offset
-        }
-        return -offset > maxOffset ? -maxOffset : offset
-    }
-    
-    
+            
     // MARK: Tab Bar
     
     @ViewBuilder

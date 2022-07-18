@@ -61,12 +61,12 @@
 		DACAEE892885553700E2C16B /* ParallaxCards */ = {
 			isa = PBXGroup;
 			children = (
+				DACAEE8A2885553700E2C16B /* ParallaxCardsApp.swift */,
 				DACAEE8C2885553700E2C16B /* ContentView.swift */,
 				DACAEE9F2885589600E2C16B /* Extension */,
 				DACAEE9A2885563E00E2C16B /* Model */,
 				DACAEE992885563800E2C16B /* View */,
 				DACAEE982885562B00E2C16B /* ViewModel */,
-				DACAEE8A2885553700E2C16B /* ParallaxCardsApp.swift */,
 				DACAEE8E2885553900E2C16B /* Assets.xcassets */,
 				DACAEE9D288557D000E2C16B /* Colors.xcassets */,
 				DACAEE902885553900E2C16B /* Preview Content */,
