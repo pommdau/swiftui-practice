@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             HStack {
                 Button {
                     
@@ -28,6 +28,17 @@ struct Home: View {
                 }
             }
             .foregroundColor(.white)
+            
+            Text("Exclusive trips just for you")
+                .font(.system(.title3, design: .serif))
+                .italic()
+                .foregroundColor(.white)
+                .padding(.top, 10)
+            
+            ParallaxCards()
+                .padding(.horizontal, -15)
+            
+            TabBar()
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -37,6 +48,48 @@ struct Home: View {
                 .ignoresSafeArea()
         }
     }
+    
+    // MARK: - Parallax Cards
+    
+    @ViewBuilder
+    func ParallaxCards() -> some View {
+        TabView {
+            ForEach(sample_places) { place in
+                GeometryReader { proxy in
+                    let size = proxy.size                    
+                    ZStack {
+                        Image(place.bgName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    .frame(width: size.width, height: size.height, alignment: .center)
+                }
+                .padding(.vertical, 30)
+                .padding(.horizontal, 40)
+            }
+            
+            
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+    }
+    
+    // MARK: Tab Bar
+    
+    @ViewBuilder
+    func TabBar() -> some View {
+        
+        HStack(spacing: 0) {
+            ForEach(["house", "suit.heart", "magnifyingglass"], id: \.self) { icon in
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundColor(.white.opacity(0.7))
+                    .frame(maxWidth: .infinity)
+            }
+        }
+        
+    }
+    
+    
 }
 
 struct Home_Previews: PreviewProvider {

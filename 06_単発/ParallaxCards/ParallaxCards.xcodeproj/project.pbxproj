@@ -14,6 +14,7 @@
 		DACAEE9C2885564800E2C16B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACAEE9B2885564800E2C16B /* Home.swift */; };
 		DACAEE9E288557D000E2C16B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACAEE9D288557D000E2C16B /* Colors.xcassets */; };
 		DACAEEA12885589D00E2C16B /* Color+myColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACAEEA02885589D00E2C16B /* Color+myColor.swift */; };
+		DACAEEA32885647800E2C16B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACAEEA22885647800E2C16B /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DACAEE9B2885564800E2C16B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DACAEE9D288557D000E2C16B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DACAEEA02885589D00E2C16B /* Color+myColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+myColor.swift"; sourceTree = "<group>"; };
+		DACAEEA22885647800E2C16B /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		DACAEE9A2885563E00E2C16B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DACAEEA22885647800E2C16B /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				DACAEE9C2885564800E2C16B /* Home.swift in Sources */,
 				DACAEE8B2885553700E2C16B /* ParallaxCardsApp.swift in Sources */,
 				DACAEEA12885589D00E2C16B /* Color+myColor.swift in Sources */,
+				DACAEEA32885647800E2C16B /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
