@@ -1,4 +1,8 @@
 # MovingDashPathDemoApp
+##
+
+https://imgur.com/OdVC2Al
+
 ## 参考
 - [streamLogoMarchingAnts.swift](https://gist.github.com/amosgyamfi/df6aa93f6c41b60fc4be70e2fb79985b#file-streamlogomarchingants-swift)
     - 元ネタ
