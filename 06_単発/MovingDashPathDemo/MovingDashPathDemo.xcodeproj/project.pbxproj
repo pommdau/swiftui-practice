@@ -13,6 +13,7 @@
 		DADB769028882A7600393DC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADB768F28882A7600393DC2 /* Preview Assets.xcassets */; };
 		DADB769728882A9900393DC2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DADB769628882A9900393DC2 /* README.md */; };
 		DADB769928882ABB00393DC2 /* StreamLogoMarchingAnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB769828882ABB00393DC2 /* StreamLogoMarchingAnts.swift */; };
+		DADB769D28882BDB00393DC2 /* Path+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB769C28882BDB00393DC2 /* Path+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		DADB768F28882A7600393DC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DADB769628882A9900393DC2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DADB769828882ABB00393DC2 /* StreamLogoMarchingAnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamLogoMarchingAnts.swift; sourceTree = "<group>"; };
+		DADB769C28882BDB00393DC2 /* Path+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +57,8 @@
 		DADB768728882A7500393DC2 /* MovingDashPathDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DADB768828882A7500393DC2 /* MovingDashPathDemoApp.swift */,
-				DADB768A28882A7500393DC2 /* ContentView.swift */,
-				DADB769828882ABB00393DC2 /* StreamLogoMarchingAnts.swift */,
+				DADB769B28882BCB00393DC2 /* Models */,
+				DADB769A28882BC600393DC2 /* Views */,
 				DADB768C28882A7600393DC2 /* Assets.xcassets */,
 				DADB768E28882A7600393DC2 /* Preview Content */,
 				DADB769628882A9900393DC2 /* README.md */,
@@ -71,6 +72,24 @@
 				DADB768F28882A7600393DC2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DADB769A28882BC600393DC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DADB768828882A7500393DC2 /* MovingDashPathDemoApp.swift */,
+				DADB768A28882A7500393DC2 /* ContentView.swift */,
+				DADB769828882ABB00393DC2 /* StreamLogoMarchingAnts.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DADB769B28882BCB00393DC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DADB769C28882BDB00393DC2 /* Path+extension.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +166,7 @@
 				DADB768B28882A7500393DC2 /* ContentView.swift in Sources */,
 				DADB769928882ABB00393DC2 /* StreamLogoMarchingAnts.swift in Sources */,
 				DADB768928882A7500393DC2 /* MovingDashPathDemoApp.swift in Sources */,
+				DADB769D28882BDB00393DC2 /* Path+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
