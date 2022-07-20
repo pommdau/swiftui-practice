@@ -68,7 +68,5 @@ extension Path {
         path.closeSubpath()
         path.move(to: CGPoint(x: 95.057899, y: 32.345699))
     }
-
-    
-    
+        
 }
