@@ -8,10 +8,31 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @State var toggle = false
+    
     var body: some View {
         ZStack {
             // Wave form view...
-            WaveForm(color: .purple, amplify: 150)
+            WaveForm(color: .purple.opacity(0.8), amplify: 150, isReversed: false)
+            WaveForm(color: (toggle ? Color.purple : Color.cyan).opacity(0.6), amplify: 140, isReversed: true)
+            
+            VStack {
+                HStack {
+                    Text("Wave's")
+                        .font(.largeTitle.bold())
+                    Spacer()
+                    
+                    Toggle(isOn: $toggle) {
+                        Image(systemName: "eyedropper.halffull")
+                            .font(.title2)
+                    }
+                    .toggleStyle(.button)
+                    .tint(.purple)
+                }
+            }
+            .padding()
+            .frame(maxHeight: .infinity, alignment: .top)
         }
         .ignoresSafeArea(.all, edges: .bottom)
     }
@@ -29,6 +50,7 @@ struct WaveForm: View {
     
     var color: Color
     var amplify: CGFloat
+    var isReversed: Bool  // reverse motion
     
     var body: some View {
         // Using time line view for peroidc updates...
@@ -45,11 +67,6 @@ struct WaveForm: View {
                 // calculating offset
                 let offset = angle * size.width
                 
-                context.draw(Text("\(angle)"),
-                             at: CGPoint(x: size.width / 2, y: 200))
-                context.draw(Text("\(offset)"),
-                             at: CGPoint(x: size.width / 2, y: 100))
-                
                 // you can see it now shifts to screen width...
                 
                 // you can see it moves between -1.5 - 1.5...
@@ -58,7 +75,7 @@ struct WaveForm: View {
                                 
                 // moving the whole view...
                 // simple and easy wave animation
-                context.translateBy(x: offset, y: 0)
+                context.translateBy(x: isReversed ? -offset : offset, y: 0)
                 
                 // Using SwiftUI path for drawing wave...
                 context.fill(getPath(size: size), with: .color(color))
@@ -88,8 +105,8 @@ struct WaveForm: View {
             // drawing curve...
             path.addCurve(
                 to: CGPoint(x: width, y: midHeight),
-                control1: CGPoint(x: width * 0.5, y: midHeight + amplify),
-                control2: CGPoint(x: width * 0.5, y: midHeight - amplify))
+                control1: CGPoint(x: width * 0.4, y: midHeight + amplify),
+                control2: CGPoint(x: width * 0.65, y: midHeight - amplify))
             
             // filling the bottom remaining
             path.addLine(to: CGPoint(x: width, y: size.height))
