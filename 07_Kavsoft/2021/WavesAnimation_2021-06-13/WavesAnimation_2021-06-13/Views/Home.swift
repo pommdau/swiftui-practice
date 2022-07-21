@@ -76,18 +76,15 @@ struct WaveForm: View {
                 // moving the whole view...
                 // simple and easy wave animation
                 context.translateBy(x: isReversed ? -offset : offset, y: 0)
-                
                 // Using SwiftUI path for drawing wave...
                 context.fill(getPath(size: size), with: .color(color))
                 
                 // drawing curve front and back
                 // so that translation will be look like wave animation...
                 context.translateBy(x: -size.width, y: 0)
-                
                 context.fill(getPath(size: size), with: .color(color))
                 
                 context.translateBy(x: size.width * 2, y: 0)
-                
                 context.fill(getPath(size: size), with: .color(color))
                 
             }
