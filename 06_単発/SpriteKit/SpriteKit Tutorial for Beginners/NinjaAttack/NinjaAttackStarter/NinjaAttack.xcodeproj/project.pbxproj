@@ -86,7 +86,6 @@
 				AFD63F882036497100E08C66 /* GameScene.swift */,
 				DA62890B288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift */,
 				DA628908288A61BF00755F76 /* Models */,
-				DA628906288A61B900755F76 /* PhysicsCategory.swift */,
 				AFD63F8C203649F800E08C66 /* Sounds */,
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
@@ -100,6 +99,7 @@
 		DA628908288A61BF00755F76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DA628906288A61B900755F76 /* PhysicsCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

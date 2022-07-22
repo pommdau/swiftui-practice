@@ -23,6 +23,10 @@ class GameScene: SKScene {
         SKAction.wait(forDuration: 1.0)
       ])
     ))
+    
+    let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
+    backgroundMusic.autoplayLooped = true
+    addChild(backgroundMusic)
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -30,6 +34,8 @@ class GameScene: SKScene {
     guard let touch = touches.first else {
       return
     }
+    run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
+
     let touchLocation = touch.location(in: self)
     
     // 2 - Set up initial location of projectile
