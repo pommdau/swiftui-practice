@@ -17,6 +17,7 @@
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		DA628905288A5FA100755F76 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628904288A5FA100755F76 /* Operator.swift */; };
 		DA628907288A61B900755F76 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA628906288A61B900755F76 /* PhysicsCategory.swift */; };
+		DA62890C288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA62890B288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = NinjaAttack/AppDelegate.swift; sourceTree = "<group>"; };
 		DA628904288A5FA100755F76 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		DA628906288A61B900755F76 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		DA62890B288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+SKPhysicsContactDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				DA628909288A61C300755F76 /* Views */,
 				AFD63F862036493600E08C66 /* GameViewController.swift */,
 				AFD63F882036497100E08C66 /* GameScene.swift */,
+				DA62890B288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift */,
 				DA628908288A61BF00755F76 /* Models */,
 				DA628906288A61B900755F76 /* PhysicsCategory.swift */,
 				AFD63F8C203649F800E08C66 /* Sounds */,
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA62890C288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift in Sources */,
 				AFD63F892036497100E08C66 /* GameScene.swift in Sources */,
 				DA628905288A5FA100755F76 /* Operator.swift in Sources */,
 				DA628907288A61B900755F76 /* PhysicsCategory.swift in Sources */,
