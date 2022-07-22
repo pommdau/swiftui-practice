@@ -25,7 +25,7 @@ class GameOverScene: SKScene {
         // 5
         guard let `self` = self else { return }
         let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-        let scene = GameScene(size: size)
+        let scene = GameScene(size: size)  // ゲームシーンに戻る
         self.view?.presentScene(scene, transition:reveal)  // 新しい画面への遷移
       }
       ]))
