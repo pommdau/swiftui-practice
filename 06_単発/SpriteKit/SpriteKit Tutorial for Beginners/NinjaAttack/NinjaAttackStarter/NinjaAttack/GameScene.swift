@@ -50,6 +50,45 @@ class GameScene: SKScene {
     ))
   }
   
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // 1 - Choose one of the touches to work with
+    guard let touch = touches.first else {
+      return
+    }
+    let touchLocation = touch.location(in: self)
+    
+    // 2 - Set up initial location of projectile
+    let projectile = SKSpriteNode(imageNamed: "projectile")
+    projectile.position = player.position
+    
+    // 3 - Determine offset of location to projectile
+    // ベクトルの作成
+    let offset = touchLocation - projectile.position
+    
+    // 4 - Bail out if you are shooting down or backwards
+    // 今回逆向きの発射は許可しない
+    if offset.x < 0 { return }
+    
+    // 5 - OK to add now - you've double checked position
+    addChild(projectile)
+    
+    // 6 - Get the direction of where to shoot
+    // 単位ベクトルに変換？
+    let direction = offset.normalized()
+    
+    // 7 - Make it shoot far enough to be guaranteed off screen
+    // *1000すれば画面外になるだろうという割と適当な値
+    let shootAmount = direction * 1000
+    
+    // 8 - Add the shoot amount to the current position
+    let realDest = shootAmount + projectile.position
+    
+    // 9 - Create the actions
+    let actionMove = SKAction.move(to: realDest, duration: 2.0)
+    let actionMoveDone = SKAction.removeFromParent()
+    projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+  }
+
 }
 
 // MARK: - Helpers
