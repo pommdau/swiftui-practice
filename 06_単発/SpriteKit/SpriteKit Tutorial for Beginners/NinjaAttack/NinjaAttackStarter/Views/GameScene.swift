@@ -5,6 +5,7 @@ class GameScene: SKScene {
   // MARK: - Properties
   
   let player = SKSpriteNode(imageNamed: "player")
+  var monstersDestroyed = 0
   
   // MARK: - Overrides
   
@@ -122,7 +123,13 @@ extension GameScene {
     let actionMoveDone = SKAction.removeFromParent()
     
     // sequence: SKActionを順番に連続して処理させる
-    monster.run(SKAction.sequence([actionMove, actionMoveDone]))
+    let loseAction = SKAction.run() { [weak self] in
+      guard let `self` = self else { return }
+      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+      let gameOverScene = GameOverScene(size: self.size, won: false)
+      self.view?.presentScene(gameOverScene, transition: reveal)
+    }
+    monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
   }
   
   // 敵と発射物が衝突した際にオブエジェクトを消す
@@ -131,6 +138,14 @@ extension GameScene {
     print("Hit")
     projectile.removeFromParent()
     monster.removeFromParent()
+    
+    monstersDestroyed += 1
+    if monstersDestroyed > 30 {  // 30体倒せばクリア
+      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+      let gameOverScene = GameOverScene(size: self.size, won: true)
+      view?.presentScene(gameOverScene, transition: reveal)
+    }
+
   }
   
 }

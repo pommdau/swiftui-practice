@@ -106,10 +106,10 @@
 		DA628909288A61C300755F76 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA62890D288AA49900755F76 /* GameOverScene.swift */,
 				AFD63F862036493600E08C66 /* GameViewController.swift */,
 				AFD63F882036497100E08C66 /* GameScene.swift */,
 				DA62890B288A628100755F76 /* GameScene+SKPhysicsContactDelegate.swift */,
+				DA62890D288AA49900755F76 /* GameOverScene.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
