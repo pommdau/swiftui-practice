@@ -33,8 +33,15 @@ class GameScene: SKScene {
     let touchLocation = touch.location(in: self)
     
     // 2 - Set up initial location of projectile
+    // projectile: 発射物
     let projectile = SKSpriteNode(imageNamed: "projectile")
     projectile.position = player.position
+    projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+    projectile.physicsBody?.isDynamic = true
+    projectile.physicsBody?.categoryBitMask = PhysicsCategory.projectile
+    projectile.physicsBody?.contactTestBitMask = PhysicsCategory.monster
+    projectile.physicsBody?.collisionBitMask = PhysicsCategory.none
+    projectile.physicsBody?.usesPreciseCollisionDetection = true  // 高速で移動する物体に設定することが大事。
     
     // 3 - Determine offset of location to projectile
     // ベクトルの作成
@@ -112,7 +119,13 @@ extension GameScene {
     monster.run(SKAction.sequence([actionMove, actionMoveDone]))
   }
   
+  // 敵と発射物が衝突した際にオブエジェクトを消す
+  func projectileDidCollideWithMonster(projectile: SKSpriteNode,
+                                       monster: SKSpriteNode) {
+    print("Hit")
+    projectile.removeFromParent()
+    monster.removeFromParent()
+  }
+  
 }
   
-
-
