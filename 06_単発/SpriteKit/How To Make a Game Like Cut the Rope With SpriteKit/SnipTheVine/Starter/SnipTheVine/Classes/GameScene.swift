@@ -32,6 +32,9 @@ import AVFoundation
 class GameScene: SKScene {
   private var particles: SKEmitterNode?
   
+  private var crocodile: SKSpriteNode!
+  private var prize: SKSpriteNode!
+  
   override func didMove(to view: SKView) {
     setUpPhysics()
     setUpScenery()
@@ -76,11 +79,30 @@ class GameScene: SKScene {
   //MARK: - Croc methods
   
   private func setUpCrocodile() {
+    crocodile = SKSpriteNode(imageNamed: ImageName.crocMouthClosed)
+    crocodile.position = CGPoint(x: size.width * 0.75, y: size.height * 0.312)
+    crocodile.zPosition = Layer.crocodile
+    crocodile.physicsBody = SKPhysicsBody(
+      texture: SKTexture(imageNamed: ImageName.crocMask),  // 頭と口だけの画像を用意している
+      size: crocodile.size)
+    crocodile.physicsBody?.categoryBitMask = PhysicsCategory.crocodile
+    crocodile.physicsBody?.collisionBitMask = 0  // 跳ね返りを防ぐだけ0とする
+    crocodile.physicsBody?.contactTestBitMask = PhysicsCategory.prize  // 接触確認用
+    crocodile.physicsBody?.isDynamic = false  // 重力・正徳などを無視する
     
+    addChild(crocodile)
+    
+    animateCrocodile()
   }
   
   private func animateCrocodile() {
-    
+    let duration = Double.random(in: 2...4)
+    let open = SKAction.setTexture(SKTexture(imageNamed: ImageName.crocMouthOpen))
+    let wait = SKAction.wait(forDuration: duration)
+    let close = SKAction.setTexture(SKTexture(imageNamed: ImageName.crocMouthClosed))
+    let sequence = SKAction.sequence([wait, open, wait, close])
+        
+    crocodile.run(.repeatForever(sequence))
   }
   
   private func runNomNomAnimation(withDelay delay: TimeInterval) {
