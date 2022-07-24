@@ -47,7 +47,9 @@ class GameScene: SKScene {
   //MARK: - Level setup
   
   private func setUpPhysics() {
-    
+    physicsWorld.contactDelegate = self  // SKPhysicsContactDelegate
+    physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)  // 重力の設定
+    physicsWorld.speed = 1.0  // シュミレーションの実行速度(等倍)
   }
   
   private func setUpScenery() {
@@ -67,7 +69,15 @@ class GameScene: SKScene {
   }
   
   private func setUpPrize() {
-    
+    prize = SKSpriteNode(imageNamed: ImageName.prize)
+    prize.position = CGPoint(x: size.width * 0.5, y: size.height * 0.7)
+    prize.zPosition = Layer.prize
+    prize.physicsBody = SKPhysicsBody(circleOfRadius: prize.size.height / 2)
+    prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+    prize.physicsBody?.collisionBitMask = 0
+    prize.physicsBody?.density = 0.5
+
+    addChild(prize)
   }
   
   //MARK: - Vine methods
