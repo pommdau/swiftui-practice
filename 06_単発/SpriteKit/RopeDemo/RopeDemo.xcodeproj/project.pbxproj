@@ -12,6 +12,9 @@
 		DA4719E2288EA6CA00F09BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4719E1288EA6CA00F09BFE /* Assets.xcassets */; };
 		DA4719E5288EA6CA00F09BFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4719E3288EA6CA00F09BFE /* Main.storyboard */; };
 		DA4719ED288EA6EF00F09BFE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4719EC288EA6EF00F09BFE /* GameScene.swift */; };
+		DA4719EF288EA80100F09BFE /* VineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4719EE288EA80100F09BFE /* VineNode.swift */; };
+		DA4719F1288EA82B00F09BFE /* VineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4719F0288EA82B00F09BFE /* VineData.swift */; };
+		DA4719F3288EA84D00F09BFE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4719F2288EA84D00F09BFE /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		DA4719E4288EA6CA00F09BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA4719E6288EA6CA00F09BFE /* RopeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RopeDemo.entitlements; sourceTree = "<group>"; };
 		DA4719EC288EA6EF00F09BFE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		DA4719EE288EA80100F09BFE /* VineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineNode.swift; sourceTree = "<group>"; };
+		DA4719F0288EA82B00F09BFE /* VineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineData.swift; sourceTree = "<group>"; };
+		DA4719F2288EA84D00F09BFE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				DA4719DD288EA6CA00F09BFE /* AppDelegate.swift */,
 				DA4719DF288EA6CA00F09BFE /* ViewController.swift */,
+				DA4719EE288EA80100F09BFE /* VineNode.swift */,
+				DA4719F2288EA84D00F09BFE /* Constants.swift */,
+				DA4719F0288EA82B00F09BFE /* VineData.swift */,
 				DA4719EC288EA6EF00F09BFE /* GameScene.swift */,
 				DA4719E1288EA6CA00F09BFE /* Assets.xcassets */,
 				DA4719E3288EA6CA00F09BFE /* Main.storyboard */,
@@ -135,8 +144,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4719ED288EA6EF00F09BFE /* GameScene.swift in Sources */,
+				DA4719F1288EA82B00F09BFE /* VineData.swift in Sources */,
+				DA4719EF288EA80100F09BFE /* VineNode.swift in Sources */,
 				DA4719E0288EA6CA00F09BFE /* ViewController.swift in Sources */,
 				DA4719DE288EA6CA00F09BFE /* AppDelegate.swift in Sources */,
+				DA4719F3288EA84D00F09BFE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
