@@ -190,7 +190,24 @@ class GameScene: SKScene {
   //MARK: - Game logic
   
   private func checkIfVineCut(withBody body: SKPhysicsBody) {
-    
+    let node = body.node!
+
+    // if it has a name it must be a vine node
+    // 現状はつるにのみ名前をつけている状態
+    if let name = node.name {
+      // snip the vine
+      // つるのカット
+      node.removeFromParent()
+
+      // fade out all nodes matching name
+      // その他の部分はフェードアウトさせる
+      enumerateChildNodes(withName: name, using: { node, _ in
+        let fadeAway = SKAction.fadeOut(withDuration: 0.25)
+        let removeNode = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([fadeAway, removeNode])
+        node.run(sequence)
+      })
+    }
   }
   
   private func switchToNewGame(withTransition transition: SKTransition) {
