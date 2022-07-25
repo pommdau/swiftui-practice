@@ -43,6 +43,8 @@ class GameScene: SKScene {
   private var splashSoundAction: SKAction!
   private var nomNomSoundAction: SKAction!
   
+  private var didCutVine = false
+  
   override func didMove(to view: SKView) {
     setUpPhysics()
     setUpScenery()
@@ -165,7 +167,8 @@ class GameScene: SKScene {
   //MARK: - Touch handling
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
+    // 1tapにつき一回しかつるをカットできない
+    didCutVine = false
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -206,6 +209,11 @@ class GameScene: SKScene {
   //MARK: - Game logic
   
   private func checkIfVineCut(withBody body: SKPhysicsBody) {
+    
+    if didCutVine && !GameConfiguration.canCutMultipleVinesAtOnce {
+      return
+    }
+    
     let node = body.node!
 
     // if it has a name it must be a vine node
@@ -223,8 +231,9 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([fadeAway, removeNode])
         node.run(sequence)
       })
-      
       run(sliceSoundAction)
+      
+      didCutVine = true
     }
     
     // つるを切ったときにワニの口を開けた状態にする
