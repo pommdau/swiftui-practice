@@ -41,20 +41,10 @@ class VineNode: SKNode {
         
         // create vine holder
         // つるの保持する点の作成
-        startAnchor = SKShapeNode(circleOfRadius: 10)
-        startAnchor.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        startAnchor.lineWidth = 4
-        startAnchor.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        
+        startAnchor = Self.createAnchor()
         startAnchor.position = anchorPoint
-        startAnchor.zPosition = 1
-        
-        addChild(startAnchor)
-        
-        startAnchor.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        startAnchor.physicsBody?.isDynamic = false
-        startAnchor.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
-        startAnchor.physicsBody?.collisionBitMask = 0
-        
+        addChild(startAnchor)        
         
         // add each of the vine parts
         // つるの作成
@@ -110,19 +100,9 @@ class VineNode: SKNode {
         }
         lastNode.position = anchorEndPoint
         
-        endAnchor = SKShapeNode(circleOfRadius: 10)
-        endAnchor.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        endAnchor.lineWidth = 4
-        endAnchor.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        endAnchor = Self.createAnchor()
         endAnchor.position = anchorEndPoint
-        endAnchor.zPosition = 1
-        
         addChild(endAnchor)
-        
-        endAnchor.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        endAnchor.physicsBody?.isDynamic = false
-        endAnchor.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
-        endAnchor.physicsBody?.collisionBitMask = 0
         
         let joint2 = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
                                             bodyB: endAnchor.physicsBody!,
@@ -130,19 +110,23 @@ class VineNode: SKNode {
         scene.physicsWorld.add(joint2)
         
     }
+
+}
+
+extension VineNode {
     
-//    // prize: パイナップル
-//    func attachToPrize(_ prize: SKSpriteNode) {
-//        // align last segment of vine with prize
-//        let lastNode = vineSegments.last!
-//        lastNode.position = CGPoint(x: prize.position.x,
-//                                    y: prize.position.y + prize.size.height * 0.1)
-//
-//        // set up connecting joint
-//        let joint = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
-//                                            bodyB: prize.physicsBody!,
-//                                            anchor: lastNode.position)
-//
-//        prize.scene?.physicsWorld.add(joint)
-//    }
+    private static func createAnchor() -> SKShapeNode {
+        let anchor = SKShapeNode(circleOfRadius: 10)
+        anchor.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        anchor.lineWidth = 4
+        anchor.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        anchor.zPosition = 1
+        anchor.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        anchor.physicsBody?.isDynamic = false
+        anchor.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
+        anchor.physicsBody?.collisionBitMask = 0
+        
+        return anchor
+    }
+    
 }
