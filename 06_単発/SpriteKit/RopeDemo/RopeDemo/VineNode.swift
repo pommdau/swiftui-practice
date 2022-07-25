@@ -13,8 +13,8 @@ class VineNode: SKNode {
     private let length: Int
     private let anchorPoint: CGPoint
     private let anchorEndPoint: CGPoint
-    var vineHolder: SKShapeNode? = nil
-    var prize: SKShapeNode!
+    var startAnchor: SKShapeNode!
+    var endAnchor: SKShapeNode!
     var vineSegments: [SKNode] = []
     
     init(length: Int, anchorPoint: CGPoint, anchorEndPoint: CGPoint, name: String) {
@@ -41,22 +41,19 @@ class VineNode: SKNode {
         
         // create vine holder
         // つるの保持する点の作成
-        vineHolder = SKShapeNode(circleOfRadius: 10)
-        guard let vineHolder = vineHolder else {
-            return
-        }
-        vineHolder.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        vineHolder.lineWidth = 4
-        vineHolder.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        vineHolder.position = anchorPoint
-        vineHolder.zPosition = 1
+        startAnchor = SKShapeNode(circleOfRadius: 10)
+        startAnchor.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        startAnchor.lineWidth = 4
+        startAnchor.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        startAnchor.position = anchorPoint
+        startAnchor.zPosition = 1
         
-        addChild(vineHolder)
+        addChild(startAnchor)
         
-        vineHolder.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        vineHolder.physicsBody?.isDynamic = false
-        vineHolder.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
-        vineHolder.physicsBody?.collisionBitMask = 0
+        startAnchor.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        startAnchor.physicsBody?.isDynamic = false
+        startAnchor.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
+        startAnchor.physicsBody?.collisionBitMask = 0
         
         
         // add each of the vine parts
@@ -80,11 +77,11 @@ class VineNode: SKNode {
         
         // 最初の1点は特別に処理する
         let joint = SKPhysicsJointPin.joint(
-            withBodyA: vineHolder.physicsBody!,
+            withBodyA: startAnchor.physicsBody!,
             bodyB: vineSegments[0].physicsBody!,
             anchor: CGPoint(
-                x: vineHolder.frame.midX,
-                y: vineHolder.frame.midY))
+                x: startAnchor.frame.midX,
+                y: startAnchor.frame.midY))
         
         scene.physicsWorld.add(joint)
         
