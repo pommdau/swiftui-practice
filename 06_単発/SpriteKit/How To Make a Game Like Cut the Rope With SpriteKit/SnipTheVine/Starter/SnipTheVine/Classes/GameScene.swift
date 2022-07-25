@@ -224,7 +224,13 @@ class GameScene: SKScene {
   }
   
   private func switchToNewGame(withTransition transition: SKTransition) {
-    
+    let delay = SKAction.wait(forDuration: 1)
+    let sceneChange = SKAction.run {
+      let scene = GameScene(size: self.size)
+      self.view?.presentScene(scene, transition: transition)
+    }
+
+    run(.sequence([delay, sceneChange]))
   }
   
   //MARK: - Audio
@@ -251,6 +257,9 @@ extension GameScene: SKPhysicsContactDelegate {
       prize.run(sequence)
       
       runNomNomAnimation(withDelay: 0.15)
+      
+      // transition to next level
+      switchToNewGame(withTransition: .doorway(withDuration: 1.0))
     }
 
   }
