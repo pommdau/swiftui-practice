@@ -11,16 +11,16 @@ import SpriteKit
 class VineNode: SKNode {
     
     private let length: Int
-    private let anchorPoint: CGPoint
-    private let anchorEndPoint: CGPoint
+    private let startAnchorPoint: CGPoint
+    private let endAnchorPoint: CGPoint
     var startAnchor: SKShapeNode!
     var endAnchor: SKShapeNode!
     var vineSegments: [SKNode] = []
     
     init(length: Int, anchorPoint: CGPoint, anchorEndPoint: CGPoint, name: String) {
         self.length = length
-        self.anchorPoint = anchorPoint
-        self.anchorEndPoint = anchorEndPoint
+        self.startAnchorPoint = anchorPoint
+        self.endAnchorPoint = anchorEndPoint
         
         super.init()
         self.name = name
@@ -28,8 +28,8 @@ class VineNode: SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         self.length = aDecoder.decodeInteger(forKey: "length")
-        self.anchorPoint = aDecoder.decodePoint(forKey: "anchorPoint")
-        self.anchorEndPoint = aDecoder.decodePoint(forKey: "anchorEndPoint")
+        self.startAnchorPoint = aDecoder.decodePoint(forKey: "anchorPoint")
+        self.endAnchorPoint = aDecoder.decodePoint(forKey: "anchorEndPoint")
         
         super.init(coder: aDecoder)
     }
@@ -43,15 +43,15 @@ class VineNode: SKNode {
         // つるの保持する点の作成
         
         startAnchor = Self.createAnchor()
-        startAnchor.position = anchorPoint
-        addChild(startAnchor)        
+        startAnchor.position = startAnchorPoint
+        addChild(startAnchor)
         
         // add each of the vine parts
         // つるの作成
         for i in 0..<length {
             let vineSegment = SKSpriteNode(imageNamed: ImageName.vineTexture)
             let offset = vineSegment.size.height * CGFloat(i + 1)
-            vineSegment.position = CGPoint(x: anchorPoint.x, y: anchorPoint.y - offset)
+            vineSegment.position = CGPoint(x: startAnchorPoint.x, y: startAnchorPoint.y - offset)
             vineSegment.name = name
             
             vineSegments.append(vineSegment)
@@ -98,10 +98,10 @@ class VineNode: SKNode {
         guard let lastNode = vineSegments.last else {
             return
         }
-        lastNode.position = anchorEndPoint
+        lastNode.position = endAnchorPoint
         
         endAnchor = Self.createAnchor()
-        endAnchor.position = anchorEndPoint
+        endAnchor.position = endAnchorPoint
         addChild(endAnchor)
         
         let joint2 = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
