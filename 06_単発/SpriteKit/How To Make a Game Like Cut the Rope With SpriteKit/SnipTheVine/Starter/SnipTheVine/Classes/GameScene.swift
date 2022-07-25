@@ -142,8 +142,16 @@ class GameScene: SKScene {
     crocodile.run(.repeatForever(sequence))
   }
   
+  // ワニがかみかみしているアニメーションをつける
   private func runNomNomAnimation(withDelay delay: TimeInterval) {
-    
+    crocodile.removeAllActions()
+
+    let closeMouth = SKAction.setTexture(SKTexture(imageNamed: ImageName.crocMouthClosed))
+    let wait = SKAction.wait(forDuration: delay)
+    let openMouth = SKAction.setTexture(SKTexture(imageNamed: ImageName.crocMouthOpen))
+    let sequence = SKAction.sequence([closeMouth, wait, openMouth, wait, closeMouth])
+
+    crocodile.run(sequence)
   }
   
   //MARK: - Touch handling
@@ -208,6 +216,11 @@ class GameScene: SKScene {
         node.run(sequence)
       })
     }
+    
+    // つるを切ったときにワニの口を開けた状態にする
+    crocodile.removeAllActions()
+    crocodile.texture = SKTexture(imageNamed: ImageName.crocMouthOpen)
+    animateCrocodile()
   }
   
   private func switchToNewGame(withTransition transition: SKTransition) {
@@ -236,6 +249,8 @@ extension GameScene: SKPhysicsContactDelegate {
       let removeNode = SKAction.removeFromParent()
       let sequence = SKAction.sequence([shrink, removeNode])
       prize.run(sequence)
+      
+      runNomNomAnimation(withDelay: 0.15)
     }
 
   }
