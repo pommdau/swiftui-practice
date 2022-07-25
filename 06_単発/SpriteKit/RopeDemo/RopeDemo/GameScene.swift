@@ -16,10 +16,19 @@ class GameScene: SKScene {
     // MARK: - Overrides
     
     override func didMove(to view: SKView) {
+        backgroundColor = SKColor.windowBackgroundColor
+        setUpPhysics()
         setUpVines()
     }
     
     // MARK: - Helpers
+    
+    private func setUpPhysics() {
+//      physicsWorld.contactDelegate = self  // SKPhysicsContactDelegate
+      physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)  // 重力の設定
+      physicsWorld.speed = 1.0  // シュミレーションの実行速度(等倍)
+    }
+    
     
     private func setUpVines() {
         
