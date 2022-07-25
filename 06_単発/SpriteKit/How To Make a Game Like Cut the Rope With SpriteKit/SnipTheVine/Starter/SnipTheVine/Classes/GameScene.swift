@@ -226,8 +226,18 @@ extension GameScene: SKPhysicsContactDelegate {
     
   }
   
+  // 衝突時の処理
   func didBegin(_ contact: SKPhysicsContact) {
-    
+    if (contact.bodyA.node == crocodile && contact.bodyB.node == prize)
+      || (contact.bodyA.node == prize && contact.bodyB.node == crocodile) {
+      
+      // shrink the pineapple away
+      let shrink = SKAction.scale(to: 0, duration: 0.08)
+      let removeNode = SKAction.removeFromParent()
+      let sequence = SKAction.sequence([shrink, removeNode])
+      prize.run(sequence)
+    }
+
   }
 }
 
