@@ -41,7 +41,6 @@ class VineNode: SKNode {
         
         // create vine holder
         // つるの保持する点の作成
-        
         startAnchor = Self.createAnchor()
         startAnchor.position = startAnchorPoint
         addChild(startAnchor)
@@ -49,17 +48,17 @@ class VineNode: SKNode {
         // add each of the vine parts
         // つるの作成
         for i in 0..<length {
-            let vineSegment = SKSpriteNode(imageNamed: ImageName.vineTexture)
-            let offset = vineSegment.size.height * CGFloat(i + 1)
+            let vineSegment = SKShapeNode(circleOfRadius: 4)
+            vineSegment.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            vineSegment.zPosition = 1
+            vineSegment.physicsBody = SKPhysicsBody(circleOfRadius: 4)
+            let offset = vineSegment.frame.size.height * CGFloat(i + 1)
             vineSegment.position = CGPoint(x: startAnchorPoint.x, y: startAnchorPoint.y - offset)
-            vineSegment.name = name
-            
-            vineSegments.append(vineSegment)
-            addChild(vineSegment)
-            
-            vineSegment.physicsBody = SKPhysicsBody(rectangleOf: vineSegment.size)
             vineSegment.physicsBody?.categoryBitMask = PhysicsCategory.vine
             vineSegment.physicsBody?.collisionBitMask = PhysicsCategory.vineHolder
+            vineSegment.name = name
+            vineSegments.append(vineSegment)
+            addChild(vineSegment)
         }
         
         // set up joint for vine holder

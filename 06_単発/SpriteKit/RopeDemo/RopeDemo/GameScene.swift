@@ -45,7 +45,7 @@ class GameScene: SKScene {
     
     private func setUpVines() {
         
-        let vineData = VineData(length: 30, relAnchorPoint: CGPoint(x: 0.25, y: 0.8))
+        let vineData = VineData(length: 30, relAnchorPoint: CGPoint(x: 0.1, y: 0.9))
         
         let anchorPoint = CGPoint(
             x: vineData.relAnchorPoint.x * size.width,
