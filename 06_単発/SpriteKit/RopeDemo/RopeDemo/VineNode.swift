@@ -110,22 +110,22 @@ class VineNode: SKNode {
         }
         lastNode.position = anchorEndPoint
         
-        let prize = SKShapeNode(circleOfRadius: 10)
-        prize.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        prize.lineWidth = 4
-        prize.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        prize.position = anchorEndPoint
-        prize.zPosition = 1
+        endAnchor = SKShapeNode(circleOfRadius: 10)
+        endAnchor.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        endAnchor.lineWidth = 4
+        endAnchor.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        endAnchor.position = anchorEndPoint
+        endAnchor.zPosition = 1
         
-        addChild(prize)
+        addChild(endAnchor)
         
-        prize.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        prize.physicsBody?.isDynamic = false
-        prize.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
-        prize.physicsBody?.collisionBitMask = 0
+        endAnchor.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        endAnchor.physicsBody?.isDynamic = false
+        endAnchor.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
+        endAnchor.physicsBody?.collisionBitMask = 0
         
         let joint2 = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
-                                            bodyB: prize.physicsBody!,
+                                            bodyB: endAnchor.physicsBody!,
                                             anchor: lastNode.position)
         scene.physicsWorld.add(joint2)
         
