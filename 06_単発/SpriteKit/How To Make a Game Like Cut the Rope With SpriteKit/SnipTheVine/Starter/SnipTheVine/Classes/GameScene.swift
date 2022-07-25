@@ -36,6 +36,8 @@ class GameScene: SKScene {
   private var prize: SKSpriteNode!
   private static var backgroundMusicPlayer: AVAudioPlayer!
   
+  private var isLevelOver = false
+  
   // 再利用可能な効果音を流すためにSKAction
   private var sliceSoundAction: SKAction!
   private var splashSoundAction: SKAction!
@@ -280,8 +282,13 @@ extension GameScene: SKPhysicsContactDelegate {
   
   // that's called once every frame
   override func update(_ currentTime: TimeInterval) {
+    if isLevelOver {
+      return
+    }
+    
     // パイナップルが画面外下に行ったら終了
     if prize.position.y <= 0 {
+      isLevelOver = true
       switchToNewGame(withTransition: .fade(withDuration: 1.0))
       run(splashSoundAction)
     }
@@ -289,8 +296,14 @@ extension GameScene: SKPhysicsContactDelegate {
   
   // 衝突時の処理
   func didBegin(_ contact: SKPhysicsContact) {
+    if isLevelOver {
+      return
+    }
+    
     if (contact.bodyA.node == crocodile && contact.bodyB.node == prize)
       || (contact.bodyA.node == prize && contact.bodyB.node == crocodile) {
+      
+      isLevelOver = true
       
       // shrink the pineapple away
       let shrink = SKAction.scale(to: 0, duration: 0.08)
