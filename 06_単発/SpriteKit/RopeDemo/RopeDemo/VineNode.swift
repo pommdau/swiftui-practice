@@ -14,6 +14,7 @@ class VineNode: SKNode {
     private let anchorPoint: CGPoint
     private let anchorEndPoint: CGPoint
     var vineHolder: SKShapeNode? = nil
+    var prize: SKShapeNode!
     var vineSegments: [SKNode] = []
     
     init(length: Int, anchorPoint: CGPoint, anchorEndPoint: CGPoint, name: String) {
@@ -102,20 +103,49 @@ class VineNode: SKNode {
             scene.physicsWorld.add(joint)
         }
         
-    }
-    
-    // prize: パイナップル
-    func attachToPrize(_ prize: SKSpriteNode) {
-        // align last segment of vine with prize
-        let lastNode = vineSegments.last!
-        lastNode.position = CGPoint(x: prize.position.x,
-                                    y: prize.position.y + prize.size.height * 0.1)
         
-        // set up connecting joint
-        let joint = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
+        // 最後の点の処理
+        // 3 connect the other end of the vine to the prize
+        //        vine.attachToPrize(prize)
+        
+        guard let lastNode = vineSegments.last else {
+            return
+        }
+        lastNode.position = anchorEndPoint
+        
+        let prize = SKShapeNode(circleOfRadius: 10)
+        prize.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        prize.lineWidth = 4
+        prize.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        prize.position = anchorEndPoint
+        prize.zPosition = 1
+        
+        addChild(prize)
+        
+        prize.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        prize.physicsBody?.isDynamic = false
+        prize.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
+        prize.physicsBody?.collisionBitMask = 0
+        
+        let joint2 = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
                                             bodyB: prize.physicsBody!,
                                             anchor: lastNode.position)
+        scene.physicsWorld.add(joint2)
         
-        prize.scene?.physicsWorld.add(joint)
     }
+    
+//    // prize: パイナップル
+//    func attachToPrize(_ prize: SKSpriteNode) {
+//        // align last segment of vine with prize
+//        let lastNode = vineSegments.last!
+//        lastNode.position = CGPoint(x: prize.position.x,
+//                                    y: prize.position.y + prize.size.height * 0.1)
+//
+//        // set up connecting joint
+//        let joint = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
+//                                            bodyB: prize.physicsBody!,
+//                                            anchor: lastNode.position)
+//
+//        prize.scene?.physicsWorld.add(joint)
+//    }
 }

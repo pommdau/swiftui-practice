@@ -10,9 +10,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     // MARK: - Properties
-    
-    private var prize: SKSpriteNode!
-    
+        
     // MARK: - Lifecycles
     
     // MARK: - Overrides
@@ -21,25 +19,10 @@ class GameScene: SKScene {
         backgroundColor = SKColor.windowBackgroundColor
         
         setUpPhysics()
-        setUpPrize()
         setUpVines()
     }
     
     // MARK: - Helpers
-    
-    private func setUpPrize() {
-        prize = SKSpriteNode(imageNamed: ImageName.vineTexture)
-        prize.position = CGPoint(x: size.width * 0.5, y: size.height * 0.7)
-        prize.zPosition = Layer.prize
-
-        prize.physicsBody = SKPhysicsBody(circleOfRadius: prize.size.height / 2)
-        prize.physicsBody?.isDynamic = false
-        prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
-        prize.physicsBody?.collisionBitMask = 0
-//        prize.physicsBody?.density = 0.5
-        
-        addChild(prize)
-    }
     
     private func setUpPhysics() {
         //      physicsWorld.contactDelegate = self  // SKPhysicsContactDelegate
@@ -67,20 +50,6 @@ class GameScene: SKScene {
         
         // 2 add to scene
         vine.addToScene(self)
-        
-        // 3 connect the other end of the vine to the prize
-        //        vine.attachToPrize(prize)
-        
-        guard let lastNode = vine.vineSegments.last else {
-            return
-        }
-        lastNode.position = CGPoint(x: prize.position.x,
-                                    y: prize.position.y + prize.size.height * 0.1)
-        
-        let joint = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
-                                            bodyB: prize.physicsBody!,
-                                            anchor: lastNode.position)
-        scene?.physicsWorld.add(joint)
     }
     
 }
