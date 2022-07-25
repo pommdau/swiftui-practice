@@ -12,6 +12,7 @@ class VineNode: SKNode {
     
     private let length: Int
     private let anchorPoint: CGPoint
+    var vineHolder: SKShapeNode? = nil
     var vineSegments: [SKNode] = []
     
     init(length: Int, anchorPoint: CGPoint, name: String) {
@@ -35,22 +36,23 @@ class VineNode: SKNode {
         
         // create vine holder
         // つるの保持する点の作成
-        //    let vineHolder = SKSpriteNode(imageNamed: ImageName.vineHolder)
-        //      let vineHolder = SKSpriteNode(color: .red, size: CGSize(width: 10, height: 10))
-        let vineHolder = SKShapeNode(circleOfRadius: 10)
+        vineHolder = SKShapeNode(circleOfRadius: 10)
+        guard let vineHolder = vineHolder else {
+            return
+        }
         vineHolder.fillColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         vineHolder.lineWidth = 4
         vineHolder.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        
         vineHolder.position = anchorPoint
         vineHolder.zPosition = 1
         
         addChild(vineHolder)
         
-        vineHolder.physicsBody = SKPhysicsBody(circleOfRadius: 4)
+        vineHolder.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         vineHolder.physicsBody?.isDynamic = false
         vineHolder.physicsBody?.categoryBitMask = PhysicsCategory.vineHolder
         vineHolder.physicsBody?.collisionBitMask = 0
+        
         
         // add each of the vine parts
         // つるの作成
