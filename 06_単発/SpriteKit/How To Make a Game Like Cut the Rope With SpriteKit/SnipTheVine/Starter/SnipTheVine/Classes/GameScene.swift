@@ -83,7 +83,34 @@ class GameScene: SKScene {
   //MARK: - Vine methods
   
   private func setUpVines() {
+    // plistから3本のVine情報を読み取る
+    let decoder = PropertyListDecoder()
+    guard
+      let dataFile = Bundle.main.url(
+        forResource: GameConfiguration.vineDataFile,
+        withExtension: nil),
+      let data = try? Data(contentsOf: dataFile),
+      let vines = try? decoder.decode([VineData].self, from: data)
+    else {
+      return
+    }
     
+    // 1 add vines
+    for (i, vineData) in vines.enumerated() {
+      let anchorPoint = CGPoint(
+        x: vineData.relAnchorPoint.x * size.width,
+        y: vineData.relAnchorPoint.y * size.height)
+      let vine = VineNode(
+        length: vineData.length,
+        anchorPoint: anchorPoint,
+        name: "\(i)")
+
+      // 2 add to scene
+      vine.addToScene(self)
+
+      // 3 connect the other end of the vine to the prize
+      vine.attachToPrize(prize)
+    }
   }
   
   //MARK: - Croc methods
