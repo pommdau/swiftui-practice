@@ -113,7 +113,18 @@ class VineNode: SKNode {
 
   }
   
+  // prize: パイナップル
   func attachToPrize(_ prize: SKSpriteNode) {
-    
+    // align last segment of vine with prize
+    let lastNode = vineSegments.last!
+    lastNode.position = CGPoint(x: prize.position.x,
+                                y: prize.position.y + prize.size.height * 0.1)
+        
+    // set up connecting joint
+    let joint = SKPhysicsJointPin.joint(withBodyA: lastNode.physicsBody!,
+                                        bodyB: prize.physicsBody!,
+                                        anchor: lastNode.position)
+        
+    prize.scene?.physicsWorld.add(joint)
   }
 }
