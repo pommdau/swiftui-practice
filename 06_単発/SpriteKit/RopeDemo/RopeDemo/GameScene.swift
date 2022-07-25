@@ -16,10 +16,17 @@ class GameScene: SKScene {
     // MARK: - Overrides
     
     override func didMove(to view: SKView) {
+        
         backgroundColor = SKColor.windowBackgroundColor
         
-        setUpPhysics()
-        setUpVines()
+//        setUpPhysics()
+//        setUpVines()
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        // Get mouse position in scene coordinates
+        let location = event.locationInWindow
+        print(location)
     }
     
     // MARK: - Helpers
