@@ -12,12 +12,15 @@ class VineNode: SKNode {
     
     private let length: Int
     private let anchorPoint: CGPoint
+    private let anchorEndPoint: CGPoint
     var vineHolder: SKShapeNode? = nil
     var vineSegments: [SKNode] = []
     
-    init(length: Int, anchorPoint: CGPoint, name: String) {
+    init(length: Int, anchorPoint: CGPoint, anchorEndPoint: CGPoint, name: String) {
         self.length = length
         self.anchorPoint = anchorPoint
+        self.anchorEndPoint = anchorEndPoint
+        
         super.init()
         self.name = name
     }
@@ -25,6 +28,7 @@ class VineNode: SKNode {
     required init?(coder aDecoder: NSCoder) {
         self.length = aDecoder.decodeInteger(forKey: "length")
         self.anchorPoint = aDecoder.decodePoint(forKey: "anchorPoint")
+        self.anchorEndPoint = aDecoder.decodePoint(forKey: "anchorEndPoint")
         
         super.init(coder: aDecoder)
     }

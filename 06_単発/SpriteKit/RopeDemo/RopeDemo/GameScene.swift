@@ -54,9 +54,15 @@ class GameScene: SKScene {
         let anchorPoint = CGPoint(
             x: vineData.relAnchorPoint.x * size.width,
             y: vineData.relAnchorPoint.y * size.height)
+        
+        let anchorEndPoint = CGPoint(
+            x: (vineData.relAnchorPoint.x + 0.5) * size.width,
+            y: vineData.relAnchorPoint.y * size.height)
+        
         let vine = VineNode(
             length: vineData.length,
             anchorPoint: anchorPoint,
+            anchorEndPoint: anchorEndPoint,
             name: "vine1")
         
         // 2 add to scene
