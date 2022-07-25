@@ -241,8 +241,13 @@ class GameScene: SKScene {
 }
 
 extension GameScene: SKPhysicsContactDelegate {
+  
+  // that's called once every frame
   override func update(_ currentTime: TimeInterval) {
-    
+    // パイナップルが画面外下に行ったら終了
+    if prize.position.y <= 0 {
+      switchToNewGame(withTransition: .fade(withDuration: 1.0))
+    }
   }
   
   // 衝突時の処理
