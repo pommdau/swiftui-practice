@@ -10,6 +10,8 @@ import SpriteKit
 class GameScene: SKScene {
     
     // MARK: - Properties
+    
+    private var vine: VineNode!
         
     // MARK: - Lifecycles
     
@@ -19,14 +21,18 @@ class GameScene: SKScene {
         
         backgroundColor = SKColor.windowBackgroundColor
         
-//        setUpPhysics()
-//        setUpVines()
+        setUpPhysics()
+        setUpVines()
     }
     
     override func mouseDown(with event: NSEvent) {
-        // Get mouse position in scene coordinates
         let location = event.locationInWindow
-        print(location)
+        vine.endAnchor.position = location
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        let location = event.locationInWindow
+        vine.endAnchor.position = location
     }
     
     // MARK: - Helpers
@@ -39,7 +45,7 @@ class GameScene: SKScene {
     
     private func setUpVines() {
         
-        let vineData = VineData(length: 50, relAnchorPoint: CGPoint(x: 0.25, y: 0.8))
+        let vineData = VineData(length: 30, relAnchorPoint: CGPoint(x: 0.25, y: 0.8))
         
         let anchorPoint = CGPoint(
             x: vineData.relAnchorPoint.x * size.width,
@@ -49,7 +55,7 @@ class GameScene: SKScene {
             x: (vineData.relAnchorPoint.x + 0.5) * size.width,
             y: vineData.relAnchorPoint.y * size.height)
         
-        let vine = VineNode(
+        vine = VineNode(
             length: vineData.length,
             anchorPoint: anchorPoint,
             anchorEndPoint: anchorEndPoint,
