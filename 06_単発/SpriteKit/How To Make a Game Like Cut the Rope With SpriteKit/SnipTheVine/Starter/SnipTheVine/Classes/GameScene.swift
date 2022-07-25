@@ -34,6 +34,12 @@ class GameScene: SKScene {
   
   private var crocodile: SKSpriteNode!
   private var prize: SKSpriteNode!
+  private static var backgroundMusicPlayer: AVAudioPlayer!
+  
+  // 再利用可能な効果音を流すためにSKAction
+  private var sliceSoundAction: SKAction!
+  private var splashSoundAction: SKAction!
+  private var nomNomSoundAction: SKAction!
   
   override func didMove(to view: SKView) {
     setUpPhysics()
@@ -215,6 +221,8 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([fadeAway, removeNode])
         node.run(sequence)
       })
+      
+      run(sliceSoundAction)
     }
     
     // つるを切ったときにワニの口を開けた状態にする
@@ -236,7 +244,35 @@ class GameScene: SKScene {
   //MARK: - Audio
   
   private func setUpAudio() {
+    if GameScene.backgroundMusicPlayer == nil {
+      let backgroundMusicURL = Bundle.main.url(
+        forResource: SoundFile.backgroundMusic,
+        withExtension: nil)
+      
+      do {
+        let theme = try AVAudioPlayer(contentsOf: backgroundMusicURL!)
+        GameScene.backgroundMusicPlayer = theme
+      } catch {
+        // couldn't load file :[
+      }
+      
+      GameScene.backgroundMusicPlayer.numberOfLoops = -1  // -1: 無限にループさせる
+      
+      
+      if !GameScene.backgroundMusicPlayer.isPlaying {
+        GameScene.backgroundMusicPlayer.play()
+      }
+    }
     
+    sliceSoundAction = .playSoundFileNamed(
+      SoundFile.slice,
+      waitForCompletion: false)
+    splashSoundAction = .playSoundFileNamed(
+      SoundFile.splash,
+      waitForCompletion: false)
+    nomNomSoundAction = .playSoundFileNamed(
+      SoundFile.nomNom,
+      waitForCompletion: false)
   }
 }
 
@@ -247,6 +283,7 @@ extension GameScene: SKPhysicsContactDelegate {
     // パイナップルが画面外下に行ったら終了
     if prize.position.y <= 0 {
       switchToNewGame(withTransition: .fade(withDuration: 1.0))
+      run(splashSoundAction)
     }
   }
   
@@ -262,6 +299,7 @@ extension GameScene: SKPhysicsContactDelegate {
       prize.run(sequence)
       
       runNomNomAnimation(withDelay: 0.15)
+      run(nomNomSoundAction)
       
       // transition to next level
       switchToNewGame(withTransition: .doorway(withDuration: 1.0))
