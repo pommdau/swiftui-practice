@@ -76,7 +76,7 @@ class GameScene: SKScene {
     prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
     prize.physicsBody?.collisionBitMask = 0
     prize.physicsBody?.density = 0.5
-
+    
     addChild(prize)
   }
   
@@ -104,10 +104,10 @@ class GameScene: SKScene {
         length: vineData.length,
         anchorPoint: anchorPoint,
         name: "\(i)")
-
+      
       // 2 add to scene
       vine.addToScene(self)
-
+      
       // 3 connect the other end of the vine to the prize
       vine.attachToPrize(prize)
     }
@@ -138,7 +138,7 @@ class GameScene: SKScene {
     let wait = SKAction.wait(forDuration: duration)
     let close = SKAction.setTexture(SKTexture(imageNamed: ImageName.crocMouthClosed))
     let sequence = SKAction.sequence([wait, open, wait, close])
-        
+    
     crocodile.run(.repeatForever(sequence))
   }
   
@@ -147,13 +147,29 @@ class GameScene: SKScene {
   }
   
   //MARK: - Touch handling
-
+  
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+    
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
+    for touch in touches {
+      let startPoint = touch.location(in: self)
+      let endPoint = touch.previousLocation(in: self)
+      
+      // check if vine cut
+      // ray: 光線
+      // rayに重なるすべてのphysics bodiesを検出する？
+      scene?.physicsWorld.enumerateBodies(
+        alongRayStart: startPoint,
+        end: endPoint,
+        using: { body, _, _, _ in
+          self.checkIfVineCut(withBody: body)
+        })
+      
+      // produce some nice particles
+      showMoveParticles(touchPosition: startPoint)
+    }
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
