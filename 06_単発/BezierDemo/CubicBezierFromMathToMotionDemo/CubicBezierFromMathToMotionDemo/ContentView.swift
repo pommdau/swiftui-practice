@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView{
-            LinearInterpolationView()
-                .padding()
-                .tabItem {
-                    Image(systemName: "1.circle.fill")
-                    Text("Linear")
-                }
-            Text("Hello, world!")
+        TabView {
+//            LinearInterpolationView()
+//                .padding()
+//                .tabItem {
+//                    Image(systemName: "1.circle.fill")
+//                    Text("Linear")
+//                }
+            QuadraticBezierView()
                 .padding()
                 .tabItem {
                     Image(systemName: "2.circle.fill")

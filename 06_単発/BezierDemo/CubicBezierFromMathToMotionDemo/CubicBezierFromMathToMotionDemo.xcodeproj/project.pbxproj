@@ -13,6 +13,8 @@
 		DA6C85C7288F8E74005D344F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C85C6288F8E74005D344F /* Preview Assets.xcassets */; };
 		DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */; };
 		DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */; };
+		DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */; };
+		DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		DA6C85C6288F8E74005D344F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolationView.swift; sourceTree = "<group>"; };
 		DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolationGraphView.swift; sourceTree = "<group>"; };
+		DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierView.swift; sourceTree = "<group>"; };
+		DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierGraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			children = (
 				DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */,
 				DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */,
+				DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */,
+				DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */,
+				DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */,
+				DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */,
 				DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */,
 				DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */,
 				DA6C85C0288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift in Sources */,
