@@ -16,15 +16,23 @@ struct QuadraticBezierGraphView: View {
     }
     
     var pointP1: CGPoint {
-        return CGPoint(x: 0.5, y: 1)
+        return .init(x: 0.5, y: 1.0)
     }
     
     var pointP2: CGPoint {
-        return CGPoint(x: 1, y: 0)
+        return .init(x: 1.0, y: 0.0)
     }
     
     var pointA: CGPoint {
-        return .zero
+        let ax = (1 - tValue) * pointP0.x + tValue * pointP1.x
+        let ay = (1 - tValue) * pointP0.y + tValue * pointP1.y
+        return .init(x: ax, y: ay)
+    }
+    
+    var pointB: CGPoint {
+        let ax = (1 - tValue) * pointP1.x + tValue * pointP2.x
+        let ay = (1 - tValue) * pointP1.y + tValue * pointP2.y
+        return .init(x: ax, y: ay)
     }
     
 //    var pointP: CGPoint {
@@ -38,7 +46,7 @@ struct QuadraticBezierGraphView: View {
             ZStack {
                 
                 Circle()
-                    .frame(width: 28, height: 28)
+                    .frame(width: 20, height: 20)
                     .position(
                         pointA.convert(inCanvasSize: geometry.size)
                     )
@@ -46,9 +54,9 @@ struct QuadraticBezierGraphView: View {
                     .foregroundColor(.red)
                 
                 Circle()
-                    .frame(width: 28, height: 28)
+                    .frame(width: 20, height: 20)
                     .position(
-                        pointP2.convert(inCanvasSize: geometry.size)
+                        pointB.convert(inCanvasSize: geometry.size)
                     )
                     .zIndex(1)
                     .foregroundColor(.red)
@@ -68,7 +76,7 @@ struct QuadraticBezierGraphView: View {
                                       control: pointP1.convert(inCanvasSize: geometry.size))
                     path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
                 }
-                .stroke(lineWidth: 10)
+                .stroke(lineWidth: 6)
                 .foregroundStyle(
                     .linearGradient(
                         colors: [.pink, .blue, .pink],
@@ -76,6 +84,16 @@ struct QuadraticBezierGraphView: View {
                         endPoint: .trailing
                     )
                 )
+                
+                // 補助線
+                Path { path in
+                    path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+                    path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
+                    path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+                }
+                .stroke(lineWidth: 6)
+                .foregroundColor(.gray.opacity(0.5))
+                
             }
         }
     }
