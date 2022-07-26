@@ -11,7 +11,7 @@ import SwiftUI
 struct RopeView: View {
     
     var tValue: CGFloat = 0.3
-    private let pointRadius: CGFloat = 14
+    private let pointRadius: CGFloat = 14  // 点の直径
     
     var pointP0: CGPoint {
         return .init(x: 10, y: 10)
@@ -33,7 +33,9 @@ struct RopeView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                                            
+                               
+                Points()
+                
                 Circle()
                     .frame(width: pointRadius, height: pointRadius)
                     .position(
@@ -67,14 +69,40 @@ struct RopeView: View {
                 .foregroundColor(.gray.opacity(0.5))
                 
             }
-            .onTouch(limitToBounds: false,
-                     perform: updateLocation)
+//            .onTouch(limitToBounds: false,
+//                     perform: updateLocation)
+//            .onTouch(type: .started, limitToBounds: false, perform: { _ in
+//                print("start")
+//            })
+//            .onTouch(type: .moved, limitToBounds: false, perform: { _ in
+//                print("moved")
+//            })
+//            .onTouch(type: .ended, limitToBounds: false, perform: { _ in
+//                print("end")
+//            })
             .background(.yellow.opacity(0.2))
         }
     }
     
     func updateLocation(_ location: CGPoint) {
         pointP2 = location
+    }
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        GeometryReader { geometry in
+            Group {
+                Circle()
+                    .position(pointP0)
+                    .onTouch(type: .moved, limitToBounds: false) { point in
+                        
+                    }
+                Circle()
+                    .position(pointP2)
+            }
+            .foregroundColor(.red)
+            .frame(width: pointRadius, height: pointRadius)
+        }
     }
 }
 
