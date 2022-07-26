@@ -91,6 +91,8 @@ struct CubicBezierGraphView: View {
 
         return .init(x: px, y: py)
     }
+    
+    // MARK: - Views
 
     var body: some View {
         GeometryReader { geometry in
@@ -102,6 +104,8 @@ struct CubicBezierGraphView: View {
             }
         }
     }
+    
+    // MARK: View Parts
     
     @ViewBuilder
     private func Points() -> some View {
@@ -157,12 +161,21 @@ struct CubicBezierGraphView: View {
     private func AuxiliaryLine() -> some View {
         GeometryReader { geometry in
             Path { path in
-                path.move(to: pointP0.convert(inCanvasSize:    geometry.size))
+                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
                 path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
                 path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
                 path.addLine(to: pointP3.convert(inCanvasSize: geometry.size))
+                
+                path.move(to: pointR0.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointR1.convert(inCanvasSize: geometry.size))
+                
+                path.move(to: pointR1.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointR2.convert(inCanvasSize: geometry.size))
+                
+                path.move(to: pointG0.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointG1.convert(inCanvasSize: geometry.size))
             }
-            .stroke(lineWidth: 6)
+            .stroke(lineWidth: 2)
             .foregroundColor(.gray.opacity(0.5))
         }
     }
