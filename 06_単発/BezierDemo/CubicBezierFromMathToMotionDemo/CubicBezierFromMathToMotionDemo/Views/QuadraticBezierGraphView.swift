@@ -16,7 +16,7 @@ struct QuadraticBezierGraphView: View {
     }
     
     var pointP1: CGPoint {
-        return .zero
+        return CGPoint(x: 0.5, y: 1)
     }
     
     var pointP2: CGPoint {
@@ -40,17 +40,21 @@ struct QuadraticBezierGraphView: View {
 //                                y: geometry.size.height * pointP.y)
 //                    )
 //                    .zIndex(1)
-//                    .foregroundColor(.blue)
+                //                    .foregroundColor(.blue)
                 Path { path in
                     path.move(to: CGPoint(x: geometry.size.width * pointP0.x,
                                           y: geometry.size.height * pointP0.y))
+                    path.addQuadCurve(to: CGPoint(x: geometry.size.width * pointP2.x,
+                                                  y: geometry.size.height * pointP2.y),
+                                      control: CGPoint(x: geometry.size.width * pointP1.x,
+                                                       y: geometry.size.height * pointP1.y))
                     path.addLine(to: CGPoint(x: geometry.size.width * pointP2.x,
-                                             y: geometry.size.height * pointP2.y))
+                                             y: geometry.size.height * pointP2.y))                    
                 }
                 .stroke(lineWidth: 10)
                 .foregroundStyle(
                     .linearGradient(
-                        colors: [.pink, .blue],
+                        colors: [.pink, .blue, .pink],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
