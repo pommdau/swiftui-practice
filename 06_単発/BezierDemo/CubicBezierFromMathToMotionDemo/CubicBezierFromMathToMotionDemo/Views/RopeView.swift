@@ -10,8 +10,15 @@ import SwiftUI
 
 struct RopeView: View {
     
+    enum DraggingStatus {
+        case none
+        case isDraggingP0
+        case isDraggingP2
+    }
+    
     var tValue: CGFloat = 0.5
     private let pointRadius: CGFloat = 28  // 点の直径
+    @State private var draggingStatus: DraggingStatus = .none
     
     @State var pointP0: CGPoint = .init(x: 10, y: 10)
     @State var pointP2: CGPoint = .init(x: 400, y: 10)
@@ -70,11 +77,21 @@ struct RopeView: View {
             .simultaneousGesture(
                 DragGesture()
                     .onChanged { gesture in
-//                        gesture.location
-                        pointP2 = gesture.location
+                        switch draggingStatus {
+                        case .none:
+                            if bothPointsAreClose(point1: pointP0, point2: gesture.location) {
+                                draggingStatus = .isDraggingP0
+                            } else if bothPointsAreClose(point1: pointP2, point2: gesture.location) {
+                                draggingStatus = .isDraggingP2
+                            }
+                        case .isDraggingP0:
+                            pointP0 = gesture.location
+                        case .isDraggingP2:
+                            pointP2 = gesture.location
+                        }
                     }
                     .onEnded { gesture in
-                        print(gesture)
+                        draggingStatus = .none
                     }
             )
         }
@@ -100,11 +117,16 @@ struct RopeView: View {
             .frame(width: pointRadius, height: pointRadius)
         }
     }
+    
+    private func bothPointsAreClose(point1: CGPoint, point2: CGPoint) -> Bool {
+        return abs(point1.x - point2.x) < pointRadius / 2 &&
+        abs(point1.y - point2.y) < pointRadius / 2
+    }
 }
 
 struct RopeView_Previews: PreviewProvider {
     static var previews: some View {
-        RopeView(tValue: 0.3)
+        RopeView()
             .frame(width: 400, height: 400)
             .previewLayout(.fixed(width: 600, height: 600))
     }
