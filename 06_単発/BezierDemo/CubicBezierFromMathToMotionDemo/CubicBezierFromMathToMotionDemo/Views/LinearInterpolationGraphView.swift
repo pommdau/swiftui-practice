@@ -21,7 +21,7 @@ struct LinearInterpolationGraphView: View {
         GeometryReader { geometry in
             ZStack {
                 Circle()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 28, height: 28)
                     .position(
                         CGPoint(x: geometry.size.width * pointP.x,
                                 y: geometry.size.height * pointP.y)
