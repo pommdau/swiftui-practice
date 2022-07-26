@@ -23,6 +23,10 @@ struct QuadraticBezierGraphView: View {
         return CGPoint(x: 1, y: 0)
     }
     
+    var pointA: CGPoint {
+        return .zero
+    }
+    
 //    var pointP: CGPoint {
 //        let x = (1 - tValue) * 0 + tValue * 1.0
 //        let y = (1 - tValue) * 0 + tValue * 1.0
@@ -36,7 +40,7 @@ struct QuadraticBezierGraphView: View {
                 Circle()
                     .frame(width: 28, height: 28)
                     .position(
-                        pointP0.convert(inCanvasSize: geometry.size)
+                        pointA.convert(inCanvasSize: geometry.size)
                     )
                     .zIndex(1)
                     .foregroundColor(.red)
