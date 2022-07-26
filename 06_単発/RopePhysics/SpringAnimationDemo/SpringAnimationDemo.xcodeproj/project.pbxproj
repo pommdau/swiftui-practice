@@ -11,6 +11,7 @@
 		DA721C202890249B002D55D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C1F2890249B002D55D1 /* ContentView.swift */; };
 		DA721C222890249C002D55D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C212890249C002D55D1 /* Assets.xcassets */; };
 		DA721C252890249C002D55D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C242890249C002D55D1 /* Preview Assets.xcassets */; };
+		DA721C2D289026BF002D55D1 /* NoSpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C2C289026BF002D55D1 /* NoSpringView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		DA721C1F2890249B002D55D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA721C212890249C002D55D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA721C242890249C002D55D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA721C2B289024AE002D55D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA721C2C289026BF002D55D1 /* NoSpringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSpringView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +38,7 @@
 		DA721C112890249B002D55D1 = {
 			isa = PBXGroup;
 			children = (
+				DA721C2B289024AE002D55D1 /* README.md */,
 				DA721C1C2890249B002D55D1 /* SpringAnimationDemo */,
 				DA721C1B2890249B002D55D1 /* Products */,
 			);
@@ -53,6 +57,7 @@
 			children = (
 				DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */,
 				DA721C1F2890249B002D55D1 /* ContentView.swift */,
+				DA721C2E289026F0002D55D1 /* VIews */,
 				DA721C212890249C002D55D1 /* Assets.xcassets */,
 				DA721C232890249C002D55D1 /* Preview Content */,
 			);
@@ -65,6 +70,14 @@
 				DA721C242890249C002D55D1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA721C2E289026F0002D55D1 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				DA721C2C289026BF002D55D1 /* NoSpringView.swift */,
+			);
+			path = VIews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
+				DA721C2D289026BF002D55D1 /* NoSpringView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
