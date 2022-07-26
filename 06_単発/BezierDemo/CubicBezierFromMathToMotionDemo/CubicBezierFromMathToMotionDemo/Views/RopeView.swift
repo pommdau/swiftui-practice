@@ -16,10 +16,8 @@ struct RopeView: View {
         case isDraggingP2
     }
     
-    var tValue: CGFloat = 0.5
     private let pointRadius: CGFloat = 28  // 点の直径
     @State private var draggingStatus: DraggingStatus = .none
-    
     @State var pointP0: CGPoint = .init(x: 10, y: 10)
     @State var pointP2: CGPoint = .init(x: 400, y: 10)
     
