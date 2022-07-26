@@ -70,14 +70,6 @@ struct CubicBezierGraphView: View {
                 Circle()
                     .frame(width: pointRadius, height: pointRadius)
                     .position(
-                        pointP1.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.green)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
                         pointR1.convert(inCanvasSize: geometry.size)
                     )
                     .zIndex(1)
@@ -97,16 +89,7 @@ struct CubicBezierGraphView: View {
                         pointR3.convert(inCanvasSize: geometry.size)
                     )
                     .zIndex(1)
-                    .foregroundColor(.red)
-                
-                
-//                Circle()
-//                    .frame(width: pointRadius, height: pointRadius)
-//                    .position(
-//                        pointP.convert(inCanvasSize: geometry.size)
-//                    )
-//                    .zIndex(1)
-//                    .foregroundColor(.blue)
+                    .foregroundColor(.red)        
                 
                 Path { path in
                     path.move(to: pointP0.convert(inCanvasSize: geometry.size))
@@ -122,7 +105,20 @@ struct CubicBezierGraphView: View {
                         endPoint: .trailing
                     )
                 )
+                
+                auxiliaryLinePath(size: geometry.size)
+                    .stroke(lineWidth: 6)
+                    .foregroundColor(.gray.opacity(0.5))
             }
+        }
+    }
+    
+    private func auxiliaryLinePath(size: CGSize) -> Path {
+        return Path { path in
+            path.move(to: pointP0.convert(inCanvasSize: size))
+            path.addLine(to: pointP1.convert(inCanvasSize: size))
+            path.addLine(to: pointP2.convert(inCanvasSize: size))
+            path.addLine(to: pointP3.convert(inCanvasSize: size))
         }
     }
 }
