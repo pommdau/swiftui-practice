@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA721C042890247A002D55D1 /* SprintAnimationDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C032890247A002D55D1 /* SprintAnimationDemoApp.swift */; };
-		DA721C062890247A002D55D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C052890247A002D55D1 /* ContentView.swift */; };
-		DA721C082890247B002D55D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C072890247B002D55D1 /* Assets.xcassets */; };
-		DA721C0B2890247B002D55D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C0A2890247B002D55D1 /* Preview Assets.xcassets */; };
+		DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */; };
+		DA721C202890249B002D55D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C1F2890249B002D55D1 /* ContentView.swift */; };
+		DA721C222890249C002D55D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C212890249C002D55D1 /* Assets.xcassets */; };
+		DA721C252890249C002D55D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C242890249C002D55D1 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA721C002890247A002D55D1 /* SprintAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SprintAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA721C032890247A002D55D1 /* SprintAnimationDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprintAnimationDemoApp.swift; sourceTree = "<group>"; };
-		DA721C052890247A002D55D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		DA721C072890247B002D55D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DA721C0A2890247B002D55D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA721C1A2890249B002D55D1 /* SpringAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnimationDemoApp.swift; sourceTree = "<group>"; };
+		DA721C1F2890249B002D55D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DA721C212890249C002D55D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA721C242890249C002D55D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DA721BFD2890247A002D55D1 /* Frameworks */ = {
+		DA721C172890249B002D55D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,37 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA721BF72890247A002D55D1 = {
+		DA721C112890249B002D55D1 = {
 			isa = PBXGroup;
 			children = (
-				DA721C022890247A002D55D1 /* SprintAnimationDemo */,
-				DA721C012890247A002D55D1 /* Products */,
+				DA721C1C2890249B002D55D1 /* SpringAnimationDemo */,
+				DA721C1B2890249B002D55D1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		DA721C012890247A002D55D1 /* Products */ = {
+		DA721C1B2890249B002D55D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA721C002890247A002D55D1 /* SprintAnimationDemo.app */,
+				DA721C1A2890249B002D55D1 /* SpringAnimationDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DA721C022890247A002D55D1 /* SprintAnimationDemo */ = {
+		DA721C1C2890249B002D55D1 /* SpringAnimationDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DA721C032890247A002D55D1 /* SprintAnimationDemoApp.swift */,
-				DA721C052890247A002D55D1 /* ContentView.swift */,
-				DA721C072890247B002D55D1 /* Assets.xcassets */,
-				DA721C092890247B002D55D1 /* Preview Content */,
+				DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */,
+				DA721C1F2890249B002D55D1 /* ContentView.swift */,
+				DA721C212890249C002D55D1 /* Assets.xcassets */,
+				DA721C232890249C002D55D1 /* Preview Content */,
 			);
-			path = SprintAnimationDemo;
+			path = SpringAnimationDemo;
 			sourceTree = "<group>";
 		};
-		DA721C092890247B002D55D1 /* Preview Content */ = {
+		DA721C232890249C002D55D1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				DA721C0A2890247B002D55D1 /* Preview Assets.xcassets */,
+				DA721C242890249C002D55D1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -70,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA721BFF2890247A002D55D1 /* SprintAnimationDemo */ = {
+		DA721C192890249B002D55D1 /* SpringAnimationDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA721C0E2890247B002D55D1 /* Build configuration list for PBXNativeTarget "SprintAnimationDemo" */;
+			buildConfigurationList = DA721C282890249C002D55D1 /* Build configuration list for PBXNativeTarget "SpringAnimationDemo" */;
 			buildPhases = (
-				DA721BFC2890247A002D55D1 /* Sources */,
-				DA721BFD2890247A002D55D1 /* Frameworks */,
-				DA721BFE2890247A002D55D1 /* Resources */,
+				DA721C162890249B002D55D1 /* Sources */,
+				DA721C172890249B002D55D1 /* Frameworks */,
+				DA721C182890249B002D55D1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SprintAnimationDemo;
-			productName = SprintAnimationDemo;
-			productReference = DA721C002890247A002D55D1 /* SprintAnimationDemo.app */;
+			name = SpringAnimationDemo;
+			productName = SpringAnimationDemo;
+			productReference = DA721C1A2890249B002D55D1 /* SpringAnimationDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		DA721BF82890247A002D55D1 /* Project object */ = {
+		DA721C122890249B002D55D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					DA721BFF2890247A002D55D1 = {
+					DA721C192890249B002D55D1 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = DA721BFB2890247A002D55D1 /* Build configuration list for PBXProject "SprintAnimationDemo" */;
+			buildConfigurationList = DA721C152890249B002D55D1 /* Build configuration list for PBXProject "SpringAnimationDemo" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = DA721BF72890247A002D55D1;
-			productRefGroup = DA721C012890247A002D55D1 /* Products */;
+			mainGroup = DA721C112890249B002D55D1;
+			productRefGroup = DA721C1B2890249B002D55D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA721BFF2890247A002D55D1 /* SprintAnimationDemo */,
+				DA721C192890249B002D55D1 /* SpringAnimationDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DA721BFE2890247A002D55D1 /* Resources */ = {
+		DA721C182890249B002D55D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA721C0B2890247B002D55D1 /* Preview Assets.xcassets in Resources */,
-				DA721C082890247B002D55D1 /* Assets.xcassets in Resources */,
+				DA721C252890249C002D55D1 /* Preview Assets.xcassets in Resources */,
+				DA721C222890249C002D55D1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DA721BFC2890247A002D55D1 /* Sources */ = {
+		DA721C162890249B002D55D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA721C062890247A002D55D1 /* ContentView.swift in Sources */,
-				DA721C042890247A002D55D1 /* SprintAnimationDemoApp.swift in Sources */,
+				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
+				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		DA721C0C2890247B002D55D1 /* Debug */ = {
+		DA721C262890249C002D55D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -205,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		DA721C0D2890247B002D55D1 /* Release */ = {
+		DA721C272890249C002D55D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -259,14 +259,14 @@
 			};
 			name = Release;
 		};
-		DA721C0F2890247B002D55D1 /* Debug */ = {
+		DA721C292890249C002D55D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SprintAnimationDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpringAnimationDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -280,7 +280,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.SprintAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.SpringAnimationDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -288,14 +288,14 @@
 			};
 			name = Debug;
 		};
-		DA721C102890247B002D55D1 /* Release */ = {
+		DA721C2A2890249C002D55D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SprintAnimationDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpringAnimationDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -309,7 +309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.SprintAnimationDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.SpringAnimationDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,25 +320,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA721BFB2890247A002D55D1 /* Build configuration list for PBXProject "SprintAnimationDemo" */ = {
+		DA721C152890249B002D55D1 /* Build configuration list for PBXProject "SpringAnimationDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA721C0C2890247B002D55D1 /* Debug */,
-				DA721C0D2890247B002D55D1 /* Release */,
+				DA721C262890249C002D55D1 /* Debug */,
+				DA721C272890249C002D55D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA721C0E2890247B002D55D1 /* Build configuration list for PBXNativeTarget "SprintAnimationDemo" */ = {
+		DA721C282890249C002D55D1 /* Build configuration list for PBXNativeTarget "SpringAnimationDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA721C0F2890247B002D55D1 /* Debug */,
-				DA721C102890247B002D55D1 /* Release */,
+				DA721C292890249C002D55D1 /* Debug */,
+				DA721C2A2890249C002D55D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = DA721BF82890247A002D55D1 /* Project object */;
+	rootObject = DA721C122890249B002D55D1 /* Project object */;
 }

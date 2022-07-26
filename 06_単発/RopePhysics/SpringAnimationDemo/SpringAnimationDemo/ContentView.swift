@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SprintAnimationDemo
+//  SpringAnimationDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/07/26.
 //
