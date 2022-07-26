@@ -96,53 +96,9 @@ struct CubicBezierGraphView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointR0.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.red)
                 
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointR1.convert(inCanvasSize: geometry.size)
-                    )
+                Points()
                     .zIndex(1)
-                    .foregroundColor(.red)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointR2.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.red)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointG0.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.green)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointG1.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.green)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointP.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.blue)
                 
                 Path { path in
                     path.move(to: pointP0.convert(inCanvasSize: geometry.size))
@@ -163,6 +119,36 @@ struct CubicBezierGraphView: View {
                     .stroke(lineWidth: 6)
                     .foregroundColor(.gray.opacity(0.5))
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        GeometryReader { geometry in
+            Group {
+                Group {
+                    Circle()
+                        .position(pointR0.convert(inCanvasSize: geometry.size))
+                    Circle()
+                        .position(pointR1.convert(inCanvasSize: geometry.size))
+                    Circle()
+                        .position(pointR2.convert(inCanvasSize: geometry.size))
+                }
+                .foregroundColor(.red)
+                
+                Group {
+                    Circle()
+                        .position(pointG0.convert(inCanvasSize: geometry.size))
+                    Circle()
+                        .position(pointG1.convert(inCanvasSize: geometry.size))
+                }
+                .foregroundColor(.green)
+                
+                Circle()
+                    .position(pointP.convert(inCanvasSize: geometry.size))
+                    .foregroundColor(.blue)
+            }
+            .frame(width: pointRadius, height: pointRadius)
         }
     }
     
