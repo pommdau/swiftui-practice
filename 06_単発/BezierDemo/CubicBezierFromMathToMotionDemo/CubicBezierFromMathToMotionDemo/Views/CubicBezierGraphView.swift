@@ -30,25 +30,41 @@ struct CubicBezierGraphView: View {
         return .init(x: 1.0, y: 0.0)
     }
     
-    // MARK: Dynamic
+    // MARK: - Dynamic
     
-    var pointR1: CGPoint {
+    // MARK: Red Point
+    
+    var pointR0: CGPoint {
         let x = (1 - tValue) * pointP0.x + tValue * pointP1.x
         let y = (1 - tValue) * pointP0.y + tValue * pointP1.y
         return .init(x: x, y: y)
     }
     
-    var pointR2: CGPoint {
+    var pointR1: CGPoint {
         let x = (1 - tValue) * pointP1.x + tValue * pointP2.x
         let y = (1 - tValue) * pointP1.y + tValue * pointP2.y
         return .init(x: x, y: y)
     }
     
-    var pointR3: CGPoint {
+    var pointR2: CGPoint {
         let x = (1 - tValue) * pointP2.x + tValue * pointP3.x
         let y = (1 - tValue) * pointP2.y + tValue * pointP3.y
         return .init(x: x, y: y)
     }
+    
+    // MARK: Green Point
+    
+//    var pointG1: CGPoint {
+//        let px = pow((1 - tValue), 2) * pointP0.x +
+//        2 * (1 - tValue) * tValue * pointP1.x +
+//        pow(tValue, 2) * pointP2.x
+//
+//        let py = pow((1 - tValue), 2) * pointP0.y +
+//        2 * (1 - tValue) * tValue * pointP1.y +
+//        pow(tValue, 2) * pointP2.y
+//
+//        return .init(x: px, y: py)
+//    }
     
     
 //    var pointP: CGPoint {
@@ -66,6 +82,13 @@ struct CubicBezierGraphView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .position(
+                        pointR0.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.red)
                 
                 Circle()
                     .frame(width: pointRadius, height: pointRadius)
@@ -82,14 +105,6 @@ struct CubicBezierGraphView: View {
                     )
                     .zIndex(1)
                     .foregroundColor(.red)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointR3.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.red)        
                 
                 Path { path in
                     path.move(to: pointP0.convert(inCanvasSize: geometry.size))
