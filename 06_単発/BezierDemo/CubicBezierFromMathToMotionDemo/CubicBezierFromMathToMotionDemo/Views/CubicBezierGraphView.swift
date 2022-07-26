@@ -77,8 +77,7 @@ struct CubicBezierGraphView: View {
 
         return .init(x: px, y: py)
     }
-    
-    
+        
     var pointP: CGPoint {
         let px = pow((1 - tValue), 3) * pointP0.x +
         tValue * pointP1.x * 3 * pow((1 - tValue), 2) +
@@ -96,28 +95,10 @@ struct CubicBezierGraphView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                
                 Points()
                     .zIndex(1)
-                
-                Path { path in
-                    path.move(to: pointP0.convert(inCanvasSize: geometry.size))
-                    path.addCurve(to: pointP3.convert(inCanvasSize: geometry.size),
-                                  control1: pointP1.convert(inCanvasSize: geometry.size),
-                                  control2: pointP2.convert(inCanvasSize: geometry.size))
-                }
-                .stroke(lineWidth: 6)
-                .foregroundStyle(
-                    .linearGradient(
-                        colors: [.pink, .blue, .pink],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                
-                auxiliaryLinePath(size: geometry.size)
-                    .stroke(lineWidth: 6)
-                    .foregroundColor(.gray.opacity(0.5))
+                CubicBezierLine()
+                AuxiliaryLine()
             }
         }
     }
@@ -152,12 +133,37 @@ struct CubicBezierGraphView: View {
         }
     }
     
-    private func auxiliaryLinePath(size: CGSize) -> Path {
-        return Path { path in
-            path.move(to: pointP0.convert(inCanvasSize: size))
-            path.addLine(to: pointP1.convert(inCanvasSize: size))
-            path.addLine(to: pointP2.convert(inCanvasSize: size))
-            path.addLine(to: pointP3.convert(inCanvasSize: size))
+    @ViewBuilder
+    private func CubicBezierLine() -> some View {
+        GeometryReader { geometry in
+            Path { path in
+                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+                path.addCurve(to: pointP3.convert(inCanvasSize: geometry.size),
+                              control1: pointP1.convert(inCanvasSize: geometry.size),
+                              control2: pointP2.convert(inCanvasSize: geometry.size))
+            }
+            .stroke(lineWidth: 6)
+            .foregroundStyle(
+                .linearGradient(
+                    colors: [.pink, .blue, .pink],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private func AuxiliaryLine() -> some View {
+        GeometryReader { geometry in
+            Path { path in
+                path.move(to: pointP0.convert(inCanvasSize:    geometry.size))
+                path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointP3.convert(inCanvasSize: geometry.size))
+            }
+            .stroke(lineWidth: 6)
+            .foregroundColor(.gray.opacity(0.5))
         }
     }
 }
