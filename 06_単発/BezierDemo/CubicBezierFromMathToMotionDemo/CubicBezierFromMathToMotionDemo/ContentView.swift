@@ -22,7 +22,6 @@ struct ContentView: View {
                     Image(systemName: "2.circle.fill")
                 }
         }
-        
     }
 }
 
