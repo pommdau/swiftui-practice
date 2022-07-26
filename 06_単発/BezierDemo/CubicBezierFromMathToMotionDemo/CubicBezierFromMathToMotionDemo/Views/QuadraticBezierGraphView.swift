@@ -10,6 +10,7 @@ import SwiftUI
 struct QuadraticBezierGraphView: View {
     
     @Binding var tValue: CGFloat
+    private let pointRadius: CGFloat = 14
     
     var pointP0: CGPoint {
         return .zero
@@ -35,6 +36,18 @@ struct QuadraticBezierGraphView: View {
         return .init(x: ax, y: ay)
     }
     
+    var pointP: CGPoint {
+        let px = pow((1 - tValue), 2) * pointP0.x +
+        2 * (1 - tValue) * tValue * pointP1.x +
+        pow(tValue, 2) * pointP2.x
+        
+        let py = pow((1 - tValue), 2) * pointP0.y +
+        2 * (1 - tValue) * tValue * pointP1.y +
+        pow(tValue, 2) * pointP2.y
+        
+        return .init(x: px, y: py)
+    }
+    
 //    var pointP: CGPoint {
 //        let x = (1 - tValue) * 0 + tValue * 1.0
 //        let y = (1 - tValue) * 0 + tValue * 1.0
@@ -46,7 +59,7 @@ struct QuadraticBezierGraphView: View {
             ZStack {
                 
                 Circle()
-                    .frame(width: 20, height: 20)
+                    .frame(width: pointRadius, height: pointRadius)
                     .position(
                         pointA.convert(inCanvasSize: geometry.size)
                     )
@@ -54,12 +67,20 @@ struct QuadraticBezierGraphView: View {
                     .foregroundColor(.red)
                 
                 Circle()
-                    .frame(width: 20, height: 20)
+                    .frame(width: pointRadius, height: pointRadius)
                     .position(
                         pointB.convert(inCanvasSize: geometry.size)
                     )
                     .zIndex(1)
                     .foregroundColor(.red)
+                
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .position(
+                        pointP.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.blue)
                 
                 
 //                Circle()
@@ -90,6 +111,9 @@ struct QuadraticBezierGraphView: View {
                     path.move(to: pointP0.convert(inCanvasSize: geometry.size))
                     path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
                     path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+                    
+                    path.move(to: pointA.convert(inCanvasSize: geometry.size))
+                    path.addLine(to: pointB.convert(inCanvasSize: geometry.size))
                 }
                 .stroke(lineWidth: 6)
                 .foregroundColor(.gray.opacity(0.5))
