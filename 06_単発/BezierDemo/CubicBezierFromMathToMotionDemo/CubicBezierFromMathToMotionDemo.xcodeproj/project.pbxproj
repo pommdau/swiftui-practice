@@ -12,6 +12,7 @@
 		DA6C85C4288F8E74005D344F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C85C3288F8E74005D344F /* Assets.xcassets */; };
 		DA6C85C7288F8E74005D344F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C85C6288F8E74005D344F /* Preview Assets.xcassets */; };
 		DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */; };
+		DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		DA6C85C3288F8E74005D344F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA6C85C6288F8E74005D344F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolationView.swift; sourceTree = "<group>"; };
+		DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolationGraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,7 @@
 			children = (
 				DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */,
 				DA6C85C1288F8E73005D344F /* ContentView.swift */,
-				DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */,
+				DA6C85D1288FA4D0005D344F /* Views */,
 				DA6C85C3288F8E74005D344F /* Assets.xcassets */,
 				DA6C85C5288F8E74005D344F /* Preview Content */,
 			);
@@ -68,6 +70,15 @@
 				DA6C85C6288F8E74005D344F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA6C85D1288FA4D0005D344F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C85CD288F8EF4005D344F /* LinearInterpolationView.swift */,
+				DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */,
+				DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */,
 				DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */,
 				DA6C85C0288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift in Sources */,
 			);
