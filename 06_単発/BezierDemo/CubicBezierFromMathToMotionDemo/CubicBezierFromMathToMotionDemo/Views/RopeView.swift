@@ -13,9 +13,7 @@ struct RopeView: View {
     var tValue: CGFloat = 0.3
     private let pointRadius: CGFloat = 14  // 点の直径
     
-    var pointP0: CGPoint {
-        return .init(x: 10, y: 10)
-    }
+    @State var pointP0: CGPoint = .init(x: 10, y: 10)
 
     var pointP1: CGPoint {
         
@@ -69,18 +67,17 @@ struct RopeView: View {
                 .foregroundColor(.gray.opacity(0.5))
                 
             }
-//            .onTouch(limitToBounds: false,
-//                     perform: updateLocation)
-//            .onTouch(type: .started, limitToBounds: false, perform: { _ in
-//                print("start")
-//            })
-//            .onTouch(type: .moved, limitToBounds: false, perform: { _ in
-//                print("moved")
-//            })
-//            .onTouch(type: .ended, limitToBounds: false, perform: { _ in
-//                print("end")
-//            })
             .background(.yellow.opacity(0.2))
+            .simultaneousGesture(
+                DragGesture()
+                    .onChanged { gesture in
+//                        gesture.location
+                        pointP2 = gesture.location
+                    }
+                    .onEnded { gesture in
+                        print(gesture)
+                    }
+            )
         }
     }
     
@@ -94,9 +91,6 @@ struct RopeView: View {
             Group {
                 Circle()
                     .position(pointP0)
-                    .onTouch(type: .moved, limitToBounds: false) { point in
-                        
-                    }
                 Circle()
                     .position(pointP2)
             }
