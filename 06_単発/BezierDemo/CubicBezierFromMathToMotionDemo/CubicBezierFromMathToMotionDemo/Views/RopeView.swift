@@ -10,23 +10,22 @@ import SwiftUI
 
 struct RopeView: View {
     
-    var tValue: CGFloat = 0.3
-    private let pointRadius: CGFloat = 14  // 点の直径
+    var tValue: CGFloat = 0.5
+    private let pointRadius: CGFloat = 28  // 点の直径
     
     @State var pointP0: CGPoint = .init(x: 10, y: 10)
-
+    @State var pointP2: CGPoint = .init(x: 400, y: 10)
+    
+    // P0, P2の中点をP1とする
     var pointP1: CGPoint {
-        
         let distance = sqrt(
             pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
         )
-        let decline = max(0, 600 - distance)  // 近似値？
+        let decline = max(0, 600 - distance / 2)  // 近似値？
         
         return .init(x: (pointP0.x + pointP2.x) / 2,
                      y: (pointP0.y + pointP2.y) / 2 + decline)
     }
-        
-    @State var pointP2: CGPoint = .init(x: 400, y: 10)
     
     var body: some View {
         GeometryReader { geometry in
@@ -90,11 +89,14 @@ struct RopeView: View {
         GeometryReader { geometry in
             Group {
                 Circle()
+                    .stroke(.blue, lineWidth: 2)
+                    .background(Circle().fill(.blue.opacity(0.3)))
                     .position(pointP0)
                 Circle()
+                    .stroke(.blue, lineWidth: 2)
+                    .background(Circle().fill(.blue.opacity(0.3)))
                     .position(pointP2)
             }
-            .foregroundColor(.red)
             .frame(width: pointRadius, height: pointRadius)
         }
     }
