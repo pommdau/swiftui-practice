@@ -16,22 +16,6 @@ struct ContentView_Previews: PreviewProvider {
 // Finally, here's some example code you can try out.
 struct ContentView: View {
     var body: some View {
-//        VStack {
-//            Text("This will track all touches, inside bounds only.")
-//                .padding()
-//                .background(.red)
-//                .onTouch(perform: updateLocation)
-//
-//            Text("This will track all touches, ignoring bounds – you can start a touch inside, then carry on moving it outside.")
-//                .padding()
-//                .background(.blue)
-//                .onTouch(limitToBounds: false, perform: updateLocation)
-//
-//            Text("This will track only starting touches, inside bounds only.")
-//                .padding()
-//                .background(.green)
-//                .onTouch(type: .started, perform: updateLocation)
-//        }
         TabView {
 //            LinearInterpolationView()
 //                .padding()
@@ -39,11 +23,11 @@ struct ContentView: View {
 //                    Image(systemName: "1.circle.fill")
 //                    Text("Linear")
 //                }
-//            QuadraticBezierView()
-//                .padding()
-//                .tabItem {
-//                    Image(systemName: "2.circle.fill")
-//                }
+            QuadraticBezierView()
+                .padding()
+                .tabItem {
+                    Image(systemName: "2.circle.fill")
+                }
 //
 //            CubicBezierView()
 //                .padding()

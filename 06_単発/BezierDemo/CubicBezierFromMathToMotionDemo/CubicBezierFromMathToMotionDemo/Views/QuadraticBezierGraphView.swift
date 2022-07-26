@@ -52,67 +52,76 @@ struct QuadraticBezierGraphView: View {
         GeometryReader { geometry in
             ZStack {
                 
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointA.convert(inCanvasSize: geometry.size)
-                    )
+                Points()
                     .zIndex(1)
-                    .foregroundColor(.red)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointB.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.red)
-                
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .position(
-                        pointP.convert(inCanvasSize: geometry.size)
-                    )
-                    .zIndex(1)
-                    .foregroundColor(.blue)
-                
-                
-//                Circle()
-//                    .frame(width: 28, height: 28)
-//                    .position(
-//                        CGPoint(x: geometry.size.width * pointP.x,
-//                                y: geometry.size.height * pointP.y)
-//                    )
-//                    .zIndex(1)
-                //                    .foregroundColor(.blue)
-                Path { path in
-                    path.move(to: pointP0.convert(inCanvasSize: geometry.size))
-                    path.addQuadCurve(to: pointP2.convert(inCanvasSize: geometry.size),
-                                      control: pointP1.convert(inCanvasSize: geometry.size))
-                    path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
-                }
-                .stroke(lineWidth: 6)
-                .foregroundStyle(
-                    .linearGradient(
-                        colors: [.pink, .blue, .pink],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                
-                // 補助線
-                Path { path in
-                    path.move(to: pointP0.convert(inCanvasSize: geometry.size))
-                    path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
-                    path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
-                    
-                    path.move(to: pointA.convert(inCanvasSize: geometry.size))
-                    path.addLine(to: pointB.convert(inCanvasSize: geometry.size))
-                }
-                .stroke(lineWidth: 6)
-                .foregroundColor(.gray.opacity(0.5))
-                
+                QuadraticBezierLine()
+                AuxiliaryLine()
             }
+        }
+    }
+    
+    // MARK: View Parts
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        GeometryReader { geometry in
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .position(
+                    pointA.convert(inCanvasSize: geometry.size)
+                )
+                .foregroundColor(.red)
+            
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .position(
+                    pointB.convert(inCanvasSize: geometry.size)
+                )
+                .foregroundColor(.red)
+            
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .position(
+                    pointP.convert(inCanvasSize: geometry.size)
+                )
+                .foregroundColor(.blue)
+        }
+    }
+    
+    @ViewBuilder
+    private func QuadraticBezierLine() -> some View {
+        GeometryReader { geometry in
+            Path { path in
+                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+                path.addQuadCurve(to: pointP2.convert(inCanvasSize: geometry.size),
+                                  control: pointP1.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+            }
+            .stroke(lineWidth: 6)
+            .foregroundStyle(
+                .linearGradient(
+                    colors: [.pink, .blue, .pink],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+        }
+    }
+
+    @ViewBuilder
+    private func AuxiliaryLine() -> some View {
+        GeometryReader { geometry in
+            // 補助線
+            Path { path in
+                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+                
+                path.move(to: pointA.convert(inCanvasSize: geometry.size))
+                path.addLine(to: pointB.convert(inCanvasSize: geometry.size))
+            }
+            .stroke(lineWidth: 6)
+            .foregroundColor(.gray.opacity(0.5))
         }
     }
 }
