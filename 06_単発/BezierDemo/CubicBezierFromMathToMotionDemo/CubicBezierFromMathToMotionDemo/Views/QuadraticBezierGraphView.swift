@@ -32,6 +32,24 @@ struct QuadraticBezierGraphView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                
+                Circle()
+                    .frame(width: 28, height: 28)
+                    .position(
+                        pointP0.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.red)
+                
+                Circle()
+                    .frame(width: 28, height: 28)
+                    .position(
+                        pointP2.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.red)
+                
+                
 //                Circle()
 //                    .frame(width: 28, height: 28)
 //                    .position(
