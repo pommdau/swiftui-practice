@@ -48,9 +48,11 @@ struct LinearInterpolationGraphView: View {
 
 struct LinearInterpolationGraphViewView_Previews: PreviewProvider {
     static var previews: some View {
+        
         LinearInterpolationGraphView(tValue: Binding.constant(0.5))
             .frame(width: 400, height: 400)
             .background(.gray.opacity(0.3))
+            .previewLayout(.fixed(width: 600, height: 600))
     }
 }
 
