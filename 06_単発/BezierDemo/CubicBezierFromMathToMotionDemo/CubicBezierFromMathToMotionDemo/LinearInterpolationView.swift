@@ -14,7 +14,7 @@ struct LinearInterpolationView: View {
     
     var body: some View {
         VStack {
-            Text("LinearInterpolationView")
+            LinearInterpolationGraphView(xValue: $xValue)
             Slider(value: $xValue)
                 .padding()
             Button {
@@ -34,8 +34,47 @@ struct LinearInterpolationView: View {
     }
 }
 
-struct LinearInterpolationView_Previews: PreviewProvider {
-    static var previews: some View {
-        LinearInterpolationView()
+//struct LinearInterpolationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LinearInterpolationView()
+//    }
+//}
+
+struct LinearInterpolationGraphView: View {
+    
+    @Binding var xValue: CGFloat
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Path { path in
+                    path.move(to: CGPoint(x: geometry.size.width * 0.1,
+                                          y: geometry.size.height * 0.1))
+                    path.addLine(to: CGPoint(x: geometry.size.width * 0.9,
+                                             y: geometry.size.height * 0.9))
+                }
+                .stroke(lineWidth: 10)
+                .foregroundStyle(
+                    .linearGradient(
+                        colors: [.pink, .blue],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .frame(width: 400, height: 400)
+            }
+            
+        }
     }
 }
+
+struct LinearInterpolationGraphViewView_Previews: PreviewProvider {
+    static var previews: some View {
+        LinearInterpolationGraphView(xValue: Binding.constant(0.5))
+            .frame(width: 400, height: 400)
+            .background(.gray.opacity(0.3))
+    }
+}
+
+
+
