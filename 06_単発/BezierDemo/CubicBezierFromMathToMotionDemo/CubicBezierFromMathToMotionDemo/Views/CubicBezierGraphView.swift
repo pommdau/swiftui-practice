@@ -54,30 +54,44 @@ struct CubicBezierGraphView: View {
     
     // MARK: Green Point
     
-//    var pointG1: CGPoint {
-//        let px = pow((1 - tValue), 2) * pointP0.x +
-//        2 * (1 - tValue) * tValue * pointP1.x +
-//        pow(tValue, 2) * pointP2.x
-//
-//        let py = pow((1 - tValue), 2) * pointP0.y +
-//        2 * (1 - tValue) * tValue * pointP1.y +
-//        pow(tValue, 2) * pointP2.y
-//
-//        return .init(x: px, y: py)
-//    }
+    var pointG0: CGPoint {
+        let px = pow((1 - tValue), 2) * pointP0.x +
+        2 * (1 - tValue) * tValue * pointP1.x +
+        pow(tValue, 2) * pointP2.x
+
+        let py = pow((1 - tValue), 2) * pointP0.y +
+        2 * (1 - tValue) * tValue * pointP1.y +
+        pow(tValue, 2) * pointP2.y
+
+        return .init(x: px, y: py)
+    }
+    
+    var pointG1: CGPoint {
+        let px = pow((1 - tValue), 2) * pointP1.x +
+        2 * (1 - tValue) * tValue * pointP2.x +
+        pow(tValue, 2) * pointP3.x
+
+        let py = pow((1 - tValue), 2) * pointP1.y +
+        2 * (1 - tValue) * tValue * pointP2.y +
+        pow(tValue, 2) * pointP3.y
+
+        return .init(x: px, y: py)
+    }
     
     
-//    var pointP: CGPoint {
-//        let px = pow((1 - tValue), 2) * pointP0.x +
-//        2 * (1 - tValue) * tValue * pointP1.x +
-//        pow(tValue, 2) * pointP2.x
-//
-//        let py = pow((1 - tValue), 2) * pointP0.y +
-//        2 * (1 - tValue) * tValue * pointP1.y +
-//        pow(tValue, 2) * pointP2.y
-//
-//        return .init(x: px, y: py)
-//    }
+    var pointP: CGPoint {
+        let px = pow((1 - tValue), 3) * pointP0.x +
+        tValue * pointP1.x * 3 * pow((1 - tValue), 2) +
+        pointP2.x * 3 * (1 - tValue) * pow(tValue, 2) +
+        pointP3.x * pow(tValue, 3)
+
+        let py = pow((1 - tValue), 3) * pointP0.y +
+        tValue * pointP1.y * 3 * pow((1 - tValue), 2) +
+        pointP2.y * 3 * (1 - tValue) * pow(tValue, 2) +
+        pointP3.y * pow(tValue, 3)
+
+        return .init(x: px, y: py)
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -105,6 +119,30 @@ struct CubicBezierGraphView: View {
                     )
                     .zIndex(1)
                     .foregroundColor(.red)
+                
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .position(
+                        pointG0.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.green)
+                
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .position(
+                        pointG1.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.green)
+                
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .position(
+                        pointP.convert(inCanvasSize: geometry.size)
+                    )
+                    .zIndex(1)
+                    .foregroundColor(.blue)
                 
                 Path { path in
                     path.move(to: pointP0.convert(inCanvasSize: geometry.size))
