@@ -16,10 +16,16 @@ struct ContentView: View {
 //                    Image(systemName: "1.circle.fill")
 //                    Text("Linear")
 //                }
-            QuadraticBezierView()
+//            QuadraticBezierView()
+//                .padding()
+//                .tabItem {
+//                    Image(systemName: "2.circle.fill")
+//                }
+            
+            CubicBezierView()
                 .padding()
                 .tabItem {
-                    Image(systemName: "2.circle.fill")
+                    Image(systemName: "3.circle.fill")
                 }
         }
     }

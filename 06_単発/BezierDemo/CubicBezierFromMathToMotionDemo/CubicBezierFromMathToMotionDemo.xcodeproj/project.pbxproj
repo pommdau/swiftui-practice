@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */; };
 		DA4C75FD288FAE45000C7FF4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4C75FC288FAE45000C7FF4 /* README.md */; };
+		DA4CE5E0288FB8E600C90E5C /* CubicBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4CE5DF288FB8E600C90E5C /* CubicBezierView.swift */; };
+		DA4CE5E2288FB8EC00C90E5C /* CubicBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4CE5E1288FB8EC00C90E5C /* CubicBezierGraphView.swift */; };
 		DA6C85C0288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */; };
 		DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85C1288F8E73005D344F /* ContentView.swift */; };
 		DA6C85C4288F8E74005D344F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C85C3288F8E74005D344F /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		DA4C75FC288FAE45000C7FF4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA4CE5DF288FB8E600C90E5C /* CubicBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierView.swift; sourceTree = "<group>"; };
+		DA4CE5E1288FB8EC00C90E5C /* CubicBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierGraphView.swift; sourceTree = "<group>"; };
 		DA6C85BC288F8E73005D344F /* CubicBezierFromMathToMotionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubicBezierFromMathToMotionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierFromMathToMotionDemoApp.swift; sourceTree = "<group>"; };
 		DA6C85C1288F8E73005D344F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */,
 				DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */,
 				DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */,
+				DA4CE5DF288FB8E600C90E5C /* CubicBezierView.swift */,
+				DA4CE5E1288FB8EC00C90E5C /* CubicBezierGraphView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,7 +180,9 @@
 			files = (
 				DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */,
 				DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */,
+				DA4CE5E0288FB8E600C90E5C /* CubicBezierView.swift in Sources */,
 				DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */,
+				DA4CE5E2288FB8EC00C90E5C /* CubicBezierGraphView.swift in Sources */,
 				DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */,
 				DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */,
 				DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */,
