@@ -48,12 +48,6 @@ struct QuadraticBezierGraphView: View {
         return .init(x: px, y: py)
     }
     
-//    var pointP: CGPoint {
-//        let x = (1 - tValue) * 0 + tValue * 1.0
-//        let y = (1 - tValue) * 0 + tValue * 1.0
-//        return CGPoint(x: x, y: y)
-//    }
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {

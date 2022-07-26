@@ -15,7 +15,7 @@ struct CubicBezierView: View {
     
     var body: some View {
         VStack {
-            QuadraticBezierGraphView(tValue: $tValue)
+            CubicBezierGraphView(tValue: $tValue)
                 .frame(width: graphWidth, height: graphWidth)
             VStack(alignment: .leading) {
                 Text("t: \(tValue)")
