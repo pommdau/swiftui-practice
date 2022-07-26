@@ -74,16 +74,24 @@ struct RopeView: View {
                 
             }
             .background(.yellow.opacity(0.2))
+            .onTouch(type: .started, limitToBounds: true, perform: { location in
+                switch draggingStatus {
+                case .none:
+                    if bothPointsAreClose(point1: pointP0, point2: location) {
+                        draggingStatus = .isDraggingP0
+                    } else if bothPointsAreClose(point1: pointP2, point2: location) {
+                        draggingStatus = .isDraggingP2
+                    }
+                case .isDraggingP0, .isDraggingP2:
+                    break
+                }
+            })
             .simultaneousGesture(
                 DragGesture()
                     .onChanged { gesture in
                         switch draggingStatus {
                         case .none:
-                            if bothPointsAreClose(point1: pointP0, point2: gesture.location) {
-                                draggingStatus = .isDraggingP0
-                            } else if bothPointsAreClose(point1: pointP2, point2: gesture.location) {
-                                draggingStatus = .isDraggingP2
-                            }
+                            break
                         case .isDraggingP0:
                             pointP0 = gesture.location
                         case .isDraggingP2:
