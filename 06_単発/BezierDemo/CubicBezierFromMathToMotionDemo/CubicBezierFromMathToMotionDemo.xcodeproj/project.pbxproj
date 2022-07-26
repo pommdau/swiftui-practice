@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */; };
 		DA6C85C0288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */; };
 		DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85C1288F8E73005D344F /* ContentView.swift */; };
 		DA6C85C4288F8E74005D344F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C85C3288F8E74005D344F /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		DA6C85BC288F8E73005D344F /* CubicBezierFromMathToMotionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubicBezierFromMathToMotionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierFromMathToMotionDemoApp.swift; sourceTree = "<group>"; };
 		DA6C85C1288F8E73005D344F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA4C75F9288FACDC000C7FF4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DA6C85B3288F8E73005D344F = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 			children = (
 				DA6C85BF288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift */,
 				DA6C85C1288F8E73005D344F /* ContentView.swift */,
+				DA4C75F9288FACDC000C7FF4 /* Extensions */,
 				DA6C85D1288FA4D0005D344F /* Views */,
 				DA6C85C3288F8E74005D344F /* Assets.xcassets */,
 				DA6C85C5288F8E74005D344F /* Preview Content */,
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */,
 				DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */,
 				DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */,
 				DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */,

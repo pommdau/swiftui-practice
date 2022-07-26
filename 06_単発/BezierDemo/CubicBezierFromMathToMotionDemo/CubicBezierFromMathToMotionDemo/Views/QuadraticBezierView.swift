@@ -15,7 +15,7 @@ struct QuadraticBezierView: View {
     
     var body: some View {
         VStack {
-            LinearInterpolationGraphView(tValue: $tValue)
+            QuadraticBezierGraphView(tValue: $tValue)
                 .frame(width: graphWidth, height: graphWidth)
             Slider(value: $tValue)
                 .frame(width: graphWidth)
