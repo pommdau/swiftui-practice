@@ -18,6 +18,16 @@ struct Font {
         return url.lastPathComponent
     }
     
+    var familyName: String {
+        // no support OTC, TTC
+        guard let descriptor = descriptors.first else {
+            return ""
+        }
+        let font = CTFontCreateWithFontDescriptor(descriptor, 0.0, nil)
+        return CTFontCopyFamilyName(font) as String
+    }
+    
+    
     init(url: URL, isInstalled: Bool = false, descriptors: [CTFontDescriptor]) {
         self.url = url
         self.isInstalled = isInstalled
@@ -42,6 +52,7 @@ extension Font {
             else {
                 return nil
             }
+            
             return Font(url: fontURL, descriptors: descriptors)
         }
     }

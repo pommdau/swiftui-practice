@@ -19,11 +19,10 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List {
-                
                 Section(header: Text("Fonts").textCase(.none)) {
                     ForEach(fonts.indices, id: \.self) { index in
                         Toggle(isOn: $fonts[index].isInstalled) {
-                            Text(fonts[index].fileName)
+                            Text(fonts[index].familyName)
                         }.onChange(of: fonts[index].isInstalled) { newValue in
                             if newValue {
                                 installFonts(fonts: [fonts[index]])
