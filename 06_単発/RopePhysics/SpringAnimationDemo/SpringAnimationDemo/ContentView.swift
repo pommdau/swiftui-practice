@@ -8,18 +8,33 @@
 import SwiftUI
 
 class PhysicsManager: ObservableObject {
-    var count: Int = 0
     private var timer: Timer? = nil
     
     func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.count += 1
+        timer = Timer.scheduledTimer(withTimeInterval: frameRate, repeats: true) { _ in
+            self.updateStatus()
         }
     }
     
     func stopTimer() {
         timer?.invalidate()
         timer = nil
+    }
+    
+    let mass: Double = 1  // 質量
+    let springLength: Double = 10
+    var x: Double = 100
+    var v: Double = 0
+    var k: Double = -20  // stiffness: 20
+//    var frameRate = 1 / 60
+    var frameRate: Double = 1 / 60
+    var positions = [CGFloat]()
+    
+    private func updateStatus() {
+        let fSpring = k * (x - springLength)  // フックの法則
+        let a = fSpring / mass  // 加速度
+        v = v + a * frameRate
+        x = x + v * frameRate  // x=v0t+1/2at^2じゃない？
     }
         
 }
@@ -32,8 +47,11 @@ struct ContentView: View {
     @ObservedObject var physicsManager = PhysicsManager()
     
     var body: some View {
-        TimelineView(.periodic(from: Date(), by: 1)) { _ in
-            Text("\(physicsManager.count)")
+        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { _ in
+            Circle()
+                .position(CGPoint(x: 100 + physicsManager.x, y: 200))
+                .frame(width: 30, height: 30)
+                .foregroundColor(.red)
         }
         
 //        GeometryReader { geometry in
