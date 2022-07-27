@@ -7,25 +7,53 @@
 
 import SwiftUI
 
-struct ContentView: View {
+class PhysicsManager: ObservableObject {
+    var count: Int = 0
+    private var timer: Timer? = nil
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.count += 1
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+        
+}
 
-    private let standardHeight: CGFloat = 400
+struct ContentView: View {
+        
+//    private let standardHeight: CGFloat = 400
+//    @State private var yOffset: CGFloat = 10
+    
+    @ObservedObject var physicsManager = PhysicsManager()
     
     var body: some View {
-
-        GeometryReader { geomerry in
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: standardHeight))
-                path.addLine(to: CGPoint(x: geomerry.size.width,
-                                         y: standardHeight))
-            }
-            .stroke(lineWidth: 2)
-            .foregroundColor(.gray.opacity(0.3))
+        TimelineView(.periodic(from: Date(), by: 1)) { _ in
+            Text("\(physicsManager.count)")
         }
         
-        
+//        GeometryReader { geometry in
+//            TimelineView(.periodic(from: Date(), by: 1)) { context in
+//                VStack {
+//                    Text("\(context.date)")
+//                    Circle()
+//                        .frame(width: 30, height: 30)
+//                        .position(CGPoint(x: geometry.size.width / 2,
+//                                          y: geometry.size.height / 2 + yOffset))
+//                        .foregroundColor(.red)
+//
+//                }
+//            }
+//        }
+            .onAppear {
+                physicsManager.startTimer()
+            }
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
