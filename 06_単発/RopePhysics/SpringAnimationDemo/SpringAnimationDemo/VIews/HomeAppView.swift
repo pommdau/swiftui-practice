@@ -50,6 +50,9 @@ struct HomeAppView: View {
                     .foregroundColor(color.opacity(1.0))
                     .frame(width: 40, height: 40)
             }
+            .onTapGesture {
+                print("hoge!")
+            }
             
             Image(systemName: "drop.fill")
                 .resizable()
