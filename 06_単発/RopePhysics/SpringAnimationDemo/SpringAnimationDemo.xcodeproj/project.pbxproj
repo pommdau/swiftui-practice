@@ -13,6 +13,7 @@
 		DA721C252890249C002D55D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C242890249C002D55D1 /* Preview Assets.xcassets */; };
 		DA721C302890CFB9002D55D1 /* View+TouchAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */; };
 		DA721C322890DE8D002D55D1 /* SpringPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C312890DE8D002D55D1 /* SpringPointView.swift */; };
+		DA721C342890DFDF002D55D1 /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C332890DFDF002D55D1 /* RopeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DA721C2B289024AE002D55D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "View+TouchAction.swift"; path = "../../CubicBezierFromMathToMotionDemo/CubicBezierFromMathToMotionDemo/Extensions/View+TouchAction.swift"; sourceTree = "<group>"; };
 		DA721C312890DE8D002D55D1 /* SpringPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringPointView.swift; sourceTree = "<group>"; };
+		DA721C332890DFDF002D55D1 /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DA721C312890DE8D002D55D1 /* SpringPointView.swift */,
+				DA721C332890DFDF002D55D1 /* RopeView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA721C342890DFDF002D55D1 /* RopeView.swift in Sources */,
 				DA721C302890CFB9002D55D1 /* View+TouchAction.swift in Sources */,
 				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,

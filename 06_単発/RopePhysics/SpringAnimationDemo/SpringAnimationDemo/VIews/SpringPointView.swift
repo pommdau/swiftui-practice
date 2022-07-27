@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct Point {
-    let mass: Double = 1  // 質量
-    var x: Double = 100
-    var y: Double = 100
-    var vx: Double = 0
-    var vy: Double = 0
-}
-
-struct Spring {
-    let springLength: Double = 0
-    let k: Double = -200  // stiffness: 20
-    let d: Double = -2.0  // damping: 減衰振動
-}
-
 class PhysicsManager: ObservableObject {
+    
+    struct Point {
+        let mass: Double = 1  // 質量
+        var x: Double = 100
+        var y: Double = 100
+        var vx: Double = 0
+        var vy: Double = 0
+    }
+
+    struct Spring {
+        let springLength: Double = 0
+        let k: Double = -200  // stiffness: 20
+        let d: Double = -2.0  // damping: 減衰振動
+    }
         
     private var timer: Timer? = nil
     private let spring = Spring()
