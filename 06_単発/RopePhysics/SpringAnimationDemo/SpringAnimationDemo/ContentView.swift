@@ -22,12 +22,12 @@ class PhysicsManager: ObservableObject {
     }
     
     let mass: Double = 1  // 質量
-    let springLength: Double = 10
+    let springLength: Double = 0
     var x: Double = 100
     var v: Double = 0
     var k: Double = -20  // stiffness: 20
     let d = -0.5  // damping: 減衰振動
-//    var frameRate = 1 / 60
+//    let d: Double = 0.0
     var frameRate: Double = 1 / 60
     var positions = [CGFloat]()
     
@@ -38,42 +38,37 @@ class PhysicsManager: ObservableObject {
         v = v + a * frameRate
         x = x + v * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
     }
-        
+    
 }
 
 struct ContentView: View {
-        
-//    private let standardHeight: CGFloat = 400
-//    @State private var yOffset: CGFloat = 10
     
     @ObservedObject var physicsManager = PhysicsManager()
     
     var body: some View {
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { _ in
-            Circle()
-                .position(CGPoint(x: 0 + physicsManager.x, y: 200))
-                .frame(width: 30, height: 30)
-                .foregroundColor(.red)
-        }
-        
-//        GeometryReader { geometry in
-//            TimelineView(.periodic(from: Date(), by: 1)) { context in
-//                VStack {
-//                    Text("\(context.date)")
-//                    Circle()
-//                        .frame(width: 30, height: 30)
-//                        .position(CGPoint(x: geometry.size.width / 2,
-//                                          y: geometry.size.height / 2 + yOffset))
-//                        .foregroundColor(.red)
-//
-//                }
-//            }
-//        }
-            .onAppear {
-                physicsManager.startTimer()
+            
+            VStack {
+                
+                Text("\(physicsManager.x)")
+                
+                ZStack {
+                    Circle()
+                        .position(CGPoint(x: 10, y: 200 + physicsManager.x))
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.red)
+                    Circle()
+                        .position(CGPoint(x: 10, y: 200))
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.blue)
+                }
             }
+            
+        }
+        .onAppear {
+            physicsManager.startTimer()
+        }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
