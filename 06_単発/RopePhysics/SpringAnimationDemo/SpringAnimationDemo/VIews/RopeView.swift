@@ -78,22 +78,9 @@ struct RopeView: View {
         TimelineView(.periodic(from: Date(), by: 1/60)) { context in
             
             ZStack {
-                Circle()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.red)
-                    .position(physicsManager.pointP0)
-                
-                Circle()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.blue)
-                    .position(physicsManager.pointP1)
-                
-                Circle()
-                    .frame(width: 30, height: 30)
-                    .position(physicsManager.pointP2)
-                    .foregroundColor(.red)
-                
+                Points()
                 Rope()
+                AuxiliaryLine()
             }
             
         }
@@ -113,6 +100,24 @@ struct RopeView: View {
     }
     
     @ViewBuilder
+    private func Points() -> some View {
+        Circle()
+            .frame(width: 30, height: 30)
+            .foregroundColor(.red)
+            .position(physicsManager.pointP0)
+        
+        Circle()
+            .frame(width: 30, height: 30)
+            .foregroundColor(.blue)
+            .position(physicsManager.pointP1)
+        
+        Circle()
+            .frame(width: 30, height: 30)
+            .position(physicsManager.pointP2)
+            .foregroundColor(.red)
+    }
+    
+    @ViewBuilder
     private func Rope() -> some View {
         Path { path in
             path.move(to: physicsManager.pointP0)
@@ -128,6 +133,17 @@ struct RopeView: View {
             )
         )
         .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
+    }
+    
+    @ViewBuilder
+    private func AuxiliaryLine() -> some View {
+        Path { path in
+            path.move(to: physicsManager.pointP0)
+            path.addLine(to: physicsManager.pointP1)
+            path.addLine(to: physicsManager.pointP2)
+        }
+        .stroke(lineWidth: 2)
+        .foregroundColor(.gray.opacity(0.5))
     }
 }
 
