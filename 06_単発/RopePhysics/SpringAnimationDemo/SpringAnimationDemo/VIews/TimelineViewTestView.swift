@@ -14,14 +14,43 @@ struct TimelineViewTestView: View {
     
     var body: some View {
         TimelineView(.periodic(from: Date(), by: 1/60)) { context in
-            Canvas { context, size in
-                context.fill(getPath(size: size, point: touchPoint),
-                             with: .color(.blue))
+            ZStack {
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.blue)
+                    .position(touchPoint)
                 
-                context
-                    .stroke(circlePath(point: touchPoint), with: .color(.red))
-                context
-                    .fill(circlePath(point: touchPoint), with: .color(.red.opacity(0.3)))
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.blue)
+                    .position(CGPoint(x: 200, y: 200))
+                
+                Path { path in
+                    path.move(to: touchPoint)
+                    path.addLine(to: CGPoint(x: 200, y: 200))
+//                    path.move(to: physicsManager.pointP0)
+//                    path.addQuadCurve(to: physicsManager.pointP2,
+//                                      control: physicsManager.pointP1)
+//                        path.addLine(to: physicsManager.pointP2)
+                }
+                .stroke(lineWidth: 6)
+                .foregroundStyle(
+                    .linearGradient(
+                        colors: [.pink, .blue, .pink],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                
+//                Canvas { context, size in
+//                    context.fill(getPath(size: size, point: touchPoint),
+//                                 with: .color(.blue))
+//                    
+//                    context
+//                        .stroke(circlePath(point: touchPoint), with: .color(.red))
+//                    context
+//                        .fill(circlePath(point: touchPoint), with: .color(.red.opacity(0.3)))
+//                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -48,7 +77,7 @@ struct TimelineViewTestView: View {
             )
             path.closeSubpath()
         }
-
+        
     }
     
     private func getPath(size: CGSize, point: CGPoint) -> Path {

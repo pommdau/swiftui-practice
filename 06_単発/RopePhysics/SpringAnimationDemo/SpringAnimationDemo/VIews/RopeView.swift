@@ -15,13 +15,13 @@ class PhysicsManager: ObservableObject {
         var vx: Double = 0
         var vy: Double = 0
     }
-
+    
     struct Spring {
         let springLength: Double = 0
         let k: Double = -200  // stiffness: 20
         let d: Double = -2.0  // damping: 減衰振動
     }
-        
+    
     private var timer: Timer? = nil
     private let spring = Spring()
     
@@ -52,7 +52,7 @@ class PhysicsManager: ObservableObject {
         timer?.invalidate()
         timer = nil
     }
-                           
+    
     private func updateStatus() {
         let fSpringX = spring.k * (anchor.point.x - spring.springLength)  // フックの法則
         let fSpringY = spring.k * (anchor.point.y - spring.springLength)
@@ -76,43 +76,27 @@ struct RopeView: View {
     
     var body: some View {
         TimelineView(.periodic(from: Date(), by: 1/60)) { context in
-            VStack {
-                ZStack {
-                    Circle()
-                        .position(physicsManager.pointP0)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.red)
-                    
-                    Circle()
-                        .position(physicsManager.pointP1)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
-                    
-                    Circle()
-                        .position(physicsManager.pointP2)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.red)
-                    
-                    Path { path in
-                        path.move(to: physicsManager.pointP0)
-                        path.addQuadCurve(to: physicsManager.pointP2,
-                                          control: physicsManager.pointP1)
-//                        path.addLine(to: physicsManager.pointP2)
-                    }
-                    .stroke(lineWidth: 6)
-                    .foregroundStyle(
-                        .linearGradient(
-                            colors: [.pink, .blue, .pink],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                }
+            
+            ZStack {
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.red)
+                    .position(physicsManager.pointP0)
+                
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.blue)
+                    .position(physicsManager.pointP1)
+                
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .position(physicsManager.pointP2)
+                    .foregroundColor(.red)
+                
+                Rope()
             }
+            
         }
-        .position(x: 0, y: 0)
-        //        .position(x: 10, y: 10)
-        //        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.green)
         .simultaneousGesture(
             DragGesture()
@@ -124,8 +108,26 @@ struct RopeView: View {
                 }
         )
         .onAppear() {
-//            physicsManager.startTimer()
+            //            physicsManager.startTimer()
         }
+    }
+    
+    @ViewBuilder
+    private func Rope() -> some View {
+        Path { path in
+            path.move(to: physicsManager.pointP0)
+            path.addQuadCurve(to: physicsManager.pointP2,
+                              control: physicsManager.pointP1)
+        }
+        .stroke(lineWidth: 6)
+        .foregroundStyle(
+            .linearGradient(
+                colors: [.pink, .blue, .pink],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
+        .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
     }
 }
 
