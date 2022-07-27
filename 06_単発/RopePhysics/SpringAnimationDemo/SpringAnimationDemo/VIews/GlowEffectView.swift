@@ -31,35 +31,44 @@ struct GlowEffectView: View {
     @ViewBuilder
     private func Rope() -> some View {
         ZStack {
-            LinePath
-                .stroke(lineWidth: lineWidth)
-                .foregroundColor(.white)
-                .blur(radius: isGlowing ? 10 : 0)
+            
+            if isGlowing {
+                LinePath
+                    .stroke(lineWidth: lineWidth)
+                    .foregroundColor(.white)
+                    .blur(radius: 10)
+            }
             
             LinePath
-                .stroke(.white, lineWidth: lineWidth)
-                .foregroundColor(.white)
-            
+                .stroke(isGlowing ? .blue : .black,
+                        lineWidth: lineWidth + 4)
+
             LinePath
-                .stroke(style: StrokeStyle(
-                    lineWidth: lineWidth,
-                    dash: dashPattern,
-                    dashPhase: dashPhase))
-                .foregroundColor(.blue)
-                .onReceive(timer) { _ in
-                    timerCount = timerCount > dashPattern.reduce(0){ $0 + $1 } ? 0 : timerCount + 1
-                    dashPhase = timerCount
-                }
+                .stroke(isGlowing ? .white : .gray,
+                        lineWidth: lineWidth)
+            
+            if isGlowing {
+                LinePath
+                    .stroke(style: StrokeStyle(
+                        lineWidth: lineWidth,
+                        dash: dashPattern,
+                        dashPhase: dashPhase))
+                    .foregroundColor(.blue)
+                    .onReceive(timer) { _ in
+                        timerCount = timerCount > dashPattern.reduce(0){ $0 + $1 } ? 0 : timerCount + 1
+                        dashPhase = timerCount
+                    }
+            }
         }
     }
     
     var body: some View {
         ZStack {
-            Color.gray
+            Color.black.opacity(0.8)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Toggle(isOn: $isGlowing) {
+                Toggle(isOn: $isGlowing.animation()) {
                     Text("Glowing")
                         .foregroundColor(.white)
                 }
