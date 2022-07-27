@@ -132,18 +132,18 @@ extension ContentView {
         let registeredFontPostNames = Self.createPostNames(fromDescriptors: registeredDescriptors)
         
         for index in fonts.indices {
-            let fontPostNames = Self.createPostNames(fromDescriptors: fonts[index].descriptors)
-            for fontPostName in fontPostNames {
-                var isInstalled = false
-                // インストールされたフォントに該当するものがないか確認
-                for registeredFontPostName in registeredFontPostNames {
-                    if registeredFontPostName == fontPostName {
-                        isInstalled = true
-                        break
-                    }
-                }
-                fonts[index].isInstalled = isInstalled
-            }
+//            let fontPostNames = Self.createPostNames(fromDescriptors: fonts[index].descriptors)
+//            for fontPostName in fontPostNames {
+//                var isInstalled = false
+//                // インストールされたフォントに該当するものがないか確認
+//                for registeredFontPostName in registeredFontPostNames {
+//                    if registeredFontPostName == fontPostName {
+//                        isInstalled = true
+//                        break
+//                    }
+//                }
+//                fonts[index].isInstalled = isInstalled
+//            }
         }
     }
     

@@ -12,26 +12,22 @@ struct Font {
     
     var url: URL
     var isInstalled: Bool = false
-    var descriptors: [CTFontDescriptor]
+    var descriptor: CTFontDescriptor
     
     var fileName: String {
         return url.lastPathComponent
     }
     
     var familyName: String {
-        // no support OTC, TTC
-        guard let descriptor = descriptors.first else {
-            return ""
-        }
         let font = CTFontCreateWithFontDescriptor(descriptor, 0.0, nil)
         return CTFontCopyFamilyName(font) as String
     }
     
     
-    init(url: URL, isInstalled: Bool = false, descriptors: [CTFontDescriptor]) {
+    init(url: URL, isInstalled: Bool = false, descriptor: CTFontDescriptor) {
         self.url = url
         self.isInstalled = isInstalled
-        self.descriptors = descriptors
+        self.descriptor = descriptor
     }
     
 }
@@ -39,7 +35,7 @@ struct Font {
 extension Font {
     
     static func loadBundleResourceFonts() -> [Font] {
-        let fontExtensions: [String] = ["otf", "ttf", "ttc"]
+        let fontExtensions: [String] = ["otf", "ttf", "otc", "ttc"]
         var fontURLs = [URL]()
         fontExtensions.forEach { fontExtension in
             if let urls = Bundle.main.urls(forResourcesWithExtension: fontExtension, subdirectory: nil) {
@@ -47,13 +43,18 @@ extension Font {
             }
         }
         
-        return fontURLs.compactMap { fontURL in
+        var fonts = [Font]()
+        for fontURL in fontURLs {
             guard let descriptors = CTFontManagerCreateFontDescriptorsFromURL(fontURL as CFURL) as? [CTFontDescriptor]
             else {
-                return nil
+                continue
             }
             
-            return Font(url: fontURL, descriptors: descriptors)
+            for descriptor in descriptors {
+                fonts.append(Font(url: fontURL, descriptor: descriptor))
+            }
         }
+        
+        return fonts
     }
 }
