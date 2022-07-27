@@ -12,6 +12,7 @@
 		DA721C222890249C002D55D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C212890249C002D55D1 /* Assets.xcassets */; };
 		DA721C252890249C002D55D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C242890249C002D55D1 /* Preview Assets.xcassets */; };
 		DA721C2D289026BF002D55D1 /* NoSpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C2C289026BF002D55D1 /* NoSpringView.swift */; };
+		DA721C302890CFB9002D55D1 /* View+TouchAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DA721C242890249C002D55D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA721C2B289024AE002D55D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA721C2C289026BF002D55D1 /* NoSpringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSpringView.swift; sourceTree = "<group>"; };
+		DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "View+TouchAction.swift"; path = "../../CubicBezierFromMathToMotionDemo/CubicBezierFromMathToMotionDemo/Extensions/View+TouchAction.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		DA721C1C2890249B002D55D1 /* SpringAnimationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */,
 				DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */,
 				DA721C1F2890249B002D55D1 /* ContentView.swift */,
 				DA721C2E289026F0002D55D1 /* VIews */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA721C302890CFB9002D55D1 /* View+TouchAction.swift in Sources */,
 				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
 				DA721C2D289026BF002D55D1 /* NoSpringView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
