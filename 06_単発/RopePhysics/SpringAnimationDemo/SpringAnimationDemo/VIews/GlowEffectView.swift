@@ -18,7 +18,8 @@ struct GlowEffectView: View {
     /// 0.1秒毎に`dashPhase`を変更処理を実行する為のTimer
     private let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
-    private let lineWidth: CGFloat = 10
+    private let lineWidth: CGFloat = 8
+    private let dashPattern: [CGFloat] = [12, 14]
     
     var body: some View {
         ZStack {
@@ -66,11 +67,11 @@ struct GlowEffectView: View {
                     }
                     .stroke(style: StrokeStyle(
                         lineWidth: lineWidth,
-                        dash: [10, 14],
+                        dash: dashPattern,
                         dashPhase: dashPhase))
                     .foregroundColor(.blue)
                     .onReceive(timer) { _ in
-                        timerCount = timerCount > 24 ? 0 : timerCount + 1
+                        timerCount = timerCount > dashPattern.reduce(0){ $0 + $1 } ? 0 : timerCount + 1
                         dashPhase = timerCount
                     }
                     
