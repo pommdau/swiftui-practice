@@ -54,8 +54,11 @@ class PhysicsManager: ObservableObject {
     }
     
     private func updateStatus() {
-        let fSpringX = spring.k * (anchor.point.x - spring.springLength)  // フックの法則
-        let fSpringY = spring.k * (anchor.point.y - spring.springLength)
+        let offsetX = anchor.point.x - pointP1.x
+        let offsetY = anchor.point.y - pointP1.y
+        
+        let fSpringX = spring.k * offsetX  // フックの法則
+        let fSpringY = spring.k * offsetY
         let fDampingX = spring.d * anchor.vx
         let fDampingY = spring.d * anchor.vy
         let ax = (fSpringX + fDampingX) / anchor.mass  // 加速度
@@ -95,7 +98,7 @@ struct RopeView: View {
                 }
         )
         .onAppear() {
-            //            physicsManager.startTimer()
+            physicsManager.startTimer()
         }
     }
     
@@ -115,6 +118,11 @@ struct RopeView: View {
             .frame(width: 30, height: 30)
             .position(physicsManager.pointP2)
             .foregroundColor(.red)
+        
+        Circle()
+            .frame(width: 30, height: 30)
+            .position(physicsManager.anchor.point)
+            .foregroundColor(.orange)
     }
     
     @ViewBuilder
