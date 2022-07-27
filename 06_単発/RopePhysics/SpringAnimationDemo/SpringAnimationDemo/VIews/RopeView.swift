@@ -9,10 +9,9 @@ import SwiftUI
 
 class PhysicsManager: ObservableObject {
     
-    struct Point {
+    struct Anchor {
         let mass: Double = 1  // 質量
-        var x: Double = 100
-        var y: Double = 100
+        var point: CGPoint = .init(x: 100, y: 100)
         var vx: Double = 0
         var vy: Double = 0
     }
@@ -26,7 +25,7 @@ class PhysicsManager: ObservableObject {
     private var timer: Timer? = nil
     private let spring = Spring()
     
-    var point = Point()
+    var anchor = Anchor()
     var frameRate: Double = 1 / 60
     
     func startTimer() {
@@ -41,17 +40,17 @@ class PhysicsManager: ObservableObject {
     }
                            
     private func updateStatus() {
-        let fSpringX = spring.k * (point.x - spring.springLength)  // フックの法則
-        let fSpringY = spring.k * (point.y - spring.springLength)
-        let fDampingX = spring.d * point.vx
-        let fDampingY = spring.d * point.vy
-        let ax = (fSpringX + fDampingX) / point.mass  // 加速度
-        let ay = (fSpringY + fDampingY) / point.mass  // 加速度
+        let fSpringX = spring.k * (anchor.point.x - spring.springLength)  // フックの法則
+        let fSpringY = spring.k * (anchor.point.y - spring.springLength)
+        let fDampingX = spring.d * anchor.vx
+        let fDampingY = spring.d * anchor.vy
+        let ax = (fSpringX + fDampingX) / anchor.mass  // 加速度
+        let ay = (fSpringY + fDampingY) / anchor.mass  // 加速度
         
-        point.vx = point.vx + ax * frameRate
-        point.vy = point.vy + ay * frameRate
-        point.x = point.x + point.vx * frameRate
-        point.y = point.y + point.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
+        anchor.vx = anchor.vx + ax * frameRate
+        anchor.vy = anchor.vy + ay * frameRate
+        anchor.point.x = anchor.point.x + anchor.vx * frameRate
+        anchor.point.y = anchor.point.y + anchor.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
     }
     
 }
@@ -66,7 +65,7 @@ struct RopeView: View {
             VStack {
                 ZStack {
                     Circle()
-                        .position(CGPoint(x: physicsManager.point.x, y: physicsManager.point.y))
+                        .position(physicsManager.anchor.point)
                         .frame(width: 30, height: 30)
                         .foregroundColor(.blue)
                 }
@@ -79,8 +78,7 @@ struct RopeView: View {
         .simultaneousGesture(
             DragGesture()
                 .onChanged { gesture in
-                    physicsManager.point.x = gesture.location.x
-                    physicsManager.point.y = gesture.location.y
+                    physicsManager.anchor.point = gesture.location
                 }
                 .onEnded { gesture in
                     
