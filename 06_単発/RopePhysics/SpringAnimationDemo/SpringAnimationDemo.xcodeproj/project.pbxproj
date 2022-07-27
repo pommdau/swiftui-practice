@@ -15,6 +15,7 @@
 		DA721C322890DE8D002D55D1 /* SpringPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C312890DE8D002D55D1 /* SpringPointView.swift */; };
 		DA721C342890DFDF002D55D1 /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C332890DFDF002D55D1 /* RopeView.swift */; };
 		DA7C98FE289150260094B00F /* GlowEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7C98FD289150260094B00F /* GlowEffectView.swift */; };
+		DAF3C56C289174F300089EE5 /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C56B289174F300089EE5 /* HomeAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DA721C312890DE8D002D55D1 /* SpringPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringPointView.swift; sourceTree = "<group>"; };
 		DA721C332890DFDF002D55D1 /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
 		DA7C98FD289150260094B00F /* GlowEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowEffectView.swift; sourceTree = "<group>"; };
+		DAF3C56B289174F300089EE5 /* HomeAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				DA721C312890DE8D002D55D1 /* SpringPointView.swift */,
 				DA721C332890DFDF002D55D1 /* RopeView.swift */,
 				DA7C98FD289150260094B00F /* GlowEffectView.swift */,
+				DAF3C56B289174F300089EE5 /* HomeAppView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				DA721C342890DFDF002D55D1 /* RopeView.swift in Sources */,
 				DA721C302890CFB9002D55D1 /* View+TouchAction.swift in Sources */,
+				DAF3C56C289174F300089EE5 /* HomeAppView.swift in Sources */,
 				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
 				DA7C98FE289150260094B00F /* GlowEffectView.swift in Sources */,
