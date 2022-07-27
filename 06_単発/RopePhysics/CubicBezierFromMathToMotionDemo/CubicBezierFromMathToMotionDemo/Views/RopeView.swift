@@ -50,7 +50,7 @@ struct RopeView: View {
                     path.move(to: pointP0)
                     path.addQuadCurve(to: pointP2,
                                       control: pointP1)
-                    path.addLine(to: pointP2)
+//                    path.addLine(to: pointP2)
                 }
                 .stroke(lineWidth: 6)
                 .foregroundStyle(

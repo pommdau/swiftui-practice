@@ -11,7 +11,7 @@ class PhysicsManager: ObservableObject {
     
     struct Anchor {
         let mass: Double = 1  // 質量
-        var point: CGPoint = .init(x: 100, y: 100)
+        var point: CGPoint = .zero
         var vx: Double = 0
         var vy: Double = 0
     }
@@ -25,7 +25,21 @@ class PhysicsManager: ObservableObject {
     private var timer: Timer? = nil
     private let spring = Spring()
     
-    var anchor = Anchor()
+    var pointP0 = CGPoint(x: 100, y: 100)
+    var pointP2 = CGPoint(x: 400, y: 100)
+    
+    // P0, P2の中点をP1とする
+    var pointP1: CGPoint {
+        let distance = sqrt(
+            pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
+        )
+        let decline = max(0, 400 - distance / 2)  // 近似値？
+        
+        return .init(x: (pointP0.x + pointP2.x) / 2,
+                     y: (pointP0.y + pointP2.y) / 2 + decline)
+    }
+    
+    var anchor = Anchor(point: .init(x: 250, y: 400))
     var frameRate: Double = 1 / 60
     
     func startTimer() {
@@ -61,13 +75,38 @@ struct RopeView: View {
     @State private var touchPoint: CGPoint = .zero
     
     var body: some View {
-        TimelineView(.periodic(from: Date(), by: 1/60)) { _ in
+        TimelineView(.periodic(from: Date(), by: 1/60)) { context in
             VStack {
                 ZStack {
                     Circle()
-                        .position(physicsManager.anchor.point)
+                        .position(physicsManager.pointP0)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.red)
+                    
+                    Circle()
+                        .position(physicsManager.pointP1)
                         .frame(width: 30, height: 30)
                         .foregroundColor(.blue)
+                    
+                    Circle()
+                        .position(physicsManager.pointP2)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.red)
+                    
+                    Path { path in
+                        path.move(to: physicsManager.pointP0)
+                        path.addQuadCurve(to: physicsManager.pointP2,
+                                          control: physicsManager.pointP1)
+//                        path.addLine(to: physicsManager.pointP2)
+                    }
+                    .stroke(lineWidth: 6)
+                    .foregroundStyle(
+                        .linearGradient(
+                            colors: [.pink, .blue, .pink],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
                 }
             }
         }
@@ -78,7 +117,7 @@ struct RopeView: View {
         .simultaneousGesture(
             DragGesture()
                 .onChanged { gesture in
-                    physicsManager.anchor.point = gesture.location
+                    physicsManager.pointP2 = gesture.location
                 }
                 .onEnded { gesture in
                     
@@ -93,5 +132,6 @@ struct RopeView: View {
 struct RopeView_Previews: PreviewProvider {
     static var previews: some View {
         RopeView()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
