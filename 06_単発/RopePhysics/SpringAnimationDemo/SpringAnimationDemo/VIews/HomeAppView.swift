@@ -31,7 +31,7 @@ struct HomeAppView: View {
     @ViewBuilder
     private func RectangleUnit(color: Color) -> some View {
         ZStack {
-                        
+                                    
             RoundedRectangle(cornerRadius: rectangleCornerRadius)
                 .stroke(color, lineWidth: 4)
                 .background(
@@ -50,6 +50,14 @@ struct HomeAppView: View {
                     .foregroundColor(color.opacity(1.0))
                     .frame(width: 40, height: 40)
             }
+            
+            Image(systemName: "drop.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 24)
+                .offset(x: -40, y: -30)
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
             
         }
     }
