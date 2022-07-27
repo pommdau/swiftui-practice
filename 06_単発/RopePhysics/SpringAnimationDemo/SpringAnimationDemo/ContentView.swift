@@ -9,21 +9,25 @@ import SwiftUI
 
 struct Point {
     let mass: Double = 1  // 質量
+    var x: Double = 100
     var y: Double = 100
-    var v: Double = 0
+    var vx: Double = 0
+    var vy: Double = 0
 }
 
 struct Spring {
     let springLength: Double = 0
-    var k: Double = -200  // stiffness: 20
-    let d = -2.0  // damping: 減衰振動
-//    let d: Double = 0.0
+    let k: Double = -200  // stiffness: 20
+    let d: Double = -2.0  // damping: 減衰振動
 }
 
 class PhysicsManager: ObservableObject {
+        
     private var timer: Timer? = nil
-    var point = Point()
     private let spring = Spring()
+    
+    var point = Point()
+    var frameRate: Double = 1 / 60
     
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: frameRate, repeats: true) { _ in
@@ -35,15 +39,19 @@ class PhysicsManager: ObservableObject {
         timer?.invalidate()
         timer = nil
     }
-                    
-    var frameRate: Double = 1 / 60
-    
+                           
     private func updateStatus() {
-        let fSpring = spring.k * (point.y - spring.springLength)  // フックの法則
-        let fDamping = spring.d * point.v
-        let a = (fSpring + fDamping) / point.mass  // 加速度
-        point.v = point.v + a * frameRate
-        point.y = point.y + point.v * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
+        let fSpringX = spring.k * (point.x - spring.springLength)  // フックの法則
+        let fSpringY = spring.k * (point.y - spring.springLength)
+        let fDampingX = spring.d * point.vx
+        let fDampingY = spring.d * point.vy
+        let ax = (fSpringX + fDampingX) / point.mass  // 加速度
+        let ay = (fSpringY + fDampingY) / point.mass  // 加速度
+        
+        point.vx = point.vx + ax * frameRate
+        point.vy = point.vy + ay * frameRate
+        point.x = point.x + point.vx * frameRate
+        point.y = point.y + point.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
     }
     
 }
@@ -65,7 +73,7 @@ struct ContentView: View {
 //                    Text("\(physicsManager.point.y)")
                     ZStack {
                         Circle()
-                            .position(CGPoint(x: standardPoint.x,
+                            .position(CGPoint(x: standardPoint.x + physicsManager.point.x,
                                               y: standardPoint.y + physicsManager.point.y))
                             .frame(width: 30, height: 30)
                             .foregroundColor(.red)
@@ -84,11 +92,10 @@ struct ContentView: View {
             physicsManager.startTimer()
         }
         .onTouch(type: .started, limitToBounds: true, perform: { location in
-//            physicsManager.point.y = 200 - location.y
+            physicsManager.point.x = location.x - standardPoint.x
             physicsManager.point.y = location.y - standardPoint.y
-            physicsManager.point.v = 0
-//            print(location.y - 200)
-//            print(location.y)
+            physicsManager.point.vx = 0
+            physicsManager.point.vy = 0
         })
         
     }
