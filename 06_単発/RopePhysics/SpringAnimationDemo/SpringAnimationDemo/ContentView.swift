@@ -26,15 +26,17 @@ class PhysicsManager: ObservableObject {
     var x: Double = 100
     var v: Double = 0
     var k: Double = -20  // stiffness: 20
+    let d = -0.5  // damping: 減衰振動
 //    var frameRate = 1 / 60
     var frameRate: Double = 1 / 60
     var positions = [CGFloat]()
     
     private func updateStatus() {
         let fSpring = k * (x - springLength)  // フックの法則
-        let a = fSpring / mass  // 加速度
+        let fDamping = d * v
+        let a = (fSpring + fDamping) / mass  // 加速度
         v = v + a * frameRate
-        x = x + v * frameRate  // x=v0t+1/2at^2じゃない？
+        x = x + v * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
     }
         
 }
@@ -49,7 +51,7 @@ struct ContentView: View {
     var body: some View {
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { _ in
             Circle()
-                .position(CGPoint(x: 100 + physicsManager.x, y: 200))
+                .position(CGPoint(x: 0 + physicsManager.x, y: 200))
                 .frame(width: 30, height: 30)
                 .foregroundColor(.red)
         }
