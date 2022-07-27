@@ -17,15 +17,15 @@ class PhysicsManager: ObservableObject {
     }
     
     struct Spring {
-        let springLength: Double = 0
+        let length: Double = 500
         let k: Double = -200  // stiffness: 20
-        let d: Double = -2.0  // damping: 減衰振動
+        let d: Double = -10  // damping: 減衰振動
     }
     
     private var timer: Timer? = nil
     private let spring = Spring()
     
-    var pointP0 = CGPoint(x: 100, y: 100)
+    var pointP0 = CGPoint(x: 40, y: 40)
     var pointP2 = CGPoint(x: 400, y: 100)
     
     // P0, P2の中点をP1とする
@@ -33,7 +33,7 @@ class PhysicsManager: ObservableObject {
         let distance = sqrt(
             pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
         )
-        let decline = max(0, 400 - distance / 2)  // 近似値？
+        let decline = max(0, spring.length - distance / 2)  // 近似値？
         
         return .init(x: (pointP0.x + pointP2.x) / 2,
                      y: (pointP0.y + pointP2.y) / 2 + decline)
@@ -83,7 +83,7 @@ struct RopeView: View {
             ZStack {
                 Points()
                 Rope()
-                AuxiliaryLine()
+//                AuxiliaryLine()
             }
             
         }
@@ -108,21 +108,21 @@ struct RopeView: View {
             .frame(width: 30, height: 30)
             .foregroundColor(.red)
             .position(physicsManager.pointP0)
-        
-        Circle()
-            .frame(width: 30, height: 30)
-            .foregroundColor(.blue)
-            .position(physicsManager.pointP1)
-        
+                
         Circle()
             .frame(width: 30, height: 30)
             .position(physicsManager.pointP2)
             .foregroundColor(.red)
         
-        Circle()
-            .frame(width: 30, height: 30)
-            .position(physicsManager.anchor.point)
-            .foregroundColor(.orange)
+//        Circle()
+//            .frame(width: 30, height: 30)
+//            .foregroundColor(.blue)
+//            .position(physicsManager.pointP1)
+//
+//        Circle()
+//            .frame(width: 30, height: 30)
+//            .position(physicsManager.anchor.point)
+//            .foregroundColor(.orange)
     }
     
     @ViewBuilder
@@ -130,7 +130,7 @@ struct RopeView: View {
         Path { path in
             path.move(to: physicsManager.pointP0)
             path.addQuadCurve(to: physicsManager.pointP2,
-                              control: physicsManager.pointP1)
+                              control: physicsManager.anchor.point)
         }
         .stroke(lineWidth: 6)
         .foregroundStyle(
@@ -147,7 +147,7 @@ struct RopeView: View {
     private func AuxiliaryLine() -> some View {
         Path { path in
             path.move(to: physicsManager.pointP0)
-            path.addLine(to: physicsManager.pointP1)
+            path.addLine(to: physicsManager.anchor.point)
             path.addLine(to: physicsManager.pointP2)
         }
         .stroke(lineWidth: 2)
