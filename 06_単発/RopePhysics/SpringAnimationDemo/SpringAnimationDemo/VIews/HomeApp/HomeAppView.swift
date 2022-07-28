@@ -8,10 +8,18 @@
 import SwiftUI
 
 
+
+
 struct HomeAppView: View {
     
+    enum DraggingStates {
+        case none
+        case draggingAnchor1
+        case draggingAnchor2
+    }
+    
     @State private var anchorFrames: [CGRect] = [CGRect(x: 100, y: 100, width: 60, height: 60)]
-    @State private var anchorDraggingStates = [false]
+    @State private var draggingStates: DraggingStates = .none
     @State private var rectangleUnitFrames = [CGRect]()
     @State private var rectangleUnitStates = [false]
     
@@ -48,14 +56,20 @@ struct HomeAppView: View {
                 
                 // Anchorのドラッグ確認
 //                anchorFrames[0].origin = value.location
-                if anchorDraggingStates[0] {
-                    anchorFrames[0].origin = value.location
-                } else if let match = anchorFrames.firstIndex(where: { frame in
-                    return frame.contains(value.location)
-                }) {
-                    anchorDraggingStates[match] = true
-                } else {
+                
+                switch draggingStates {
+                case .none:
+                    if let match = anchorFrames.firstIndex(where: { frame in
+                        return frame.contains(value.location)
+                    }) {
+                        draggingStates = .draggingAnchor1
+                    } else {
 
+                    }
+                case .draggingAnchor1:
+                    anchorFrames[0].origin = value.location
+                case .draggingAnchor2:
+                    break
                 }
 
                 if let match = rectangleUnitFrames.firstIndex(where: { frame in
@@ -72,10 +86,7 @@ struct HomeAppView: View {
             })
                 .onEnded({ (_) in
                     deactivateSounds()
-                    
-                    for index in anchorDraggingStates.indices {
-                        anchorDraggingStates[index] = false
-                    }
+                    draggingStates = .none
                 })
         )
     }
