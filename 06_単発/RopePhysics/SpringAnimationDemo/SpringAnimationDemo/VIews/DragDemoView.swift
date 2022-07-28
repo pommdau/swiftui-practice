@@ -9,24 +9,24 @@ import SwiftUI
 
 struct DragDemoView: View {
     
-    @State var position1: CGSize = CGSize(width: 200, height: 300)
+    @State var position1: CGPoint = .init(x: 200, y: 300)
     @State var position2: CGPoint = .init(x: 200, y: 500)
     
     var drag1: some Gesture {
         DragGesture()
         .onChanged{ value in
-            self.position1 = CGSize(
-                width: value.startLocation.x
+            self.position1 = CGPoint(
+                x: value.startLocation.x
                     + value.translation.width,
-                height: value.startLocation.y
+                y: value.startLocation.y
                     + value.translation.height
             )
         }
         .onEnded{ value in
-            self.position1 = CGSize(
-                width: value.startLocation.x
+            self.position1 = CGPoint(
+                x: value.startLocation.x
                     + value.translation.width,
-                height: value.startLocation.y
+                y: value.startLocation.y
                     + value.translation.height
             )
         }
@@ -35,7 +35,6 @@ struct DragDemoView: View {
     var drag2: some Gesture {
         DragGesture()
         .onChanged{ value in
-
             self.position2 = CGPoint(
                 x: value.startLocation.x
                     + value.translation.width,
@@ -55,8 +54,11 @@ struct DragDemoView: View {
     
     var body: some View {
         VStack {
-            Text("x: \(position1.width)")
-            Text("y: \(position1.height)")
+            Group {
+                Text("x: \(position1.x)")
+                Text("y: \(position1.y)")
+            }
+            .foregroundColor(.red)
             
             Rectangle()
                 .frame(width: 200, height: 200)
@@ -71,7 +73,7 @@ struct DragDemoView: View {
                 Circle()
                     .frame(width: 100, height: 100)
                     .foregroundColor(.red)
-                    .position(x: position1.width, y: position1.height)
+                    .position(position1)
                     .gesture(drag1)
                 
                 Circle()
