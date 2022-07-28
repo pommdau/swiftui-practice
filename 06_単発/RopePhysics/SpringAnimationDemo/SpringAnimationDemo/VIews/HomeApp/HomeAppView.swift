@@ -101,7 +101,6 @@ struct HomeAppView: View {
                 // Anchorのドラッグ処理
                 switch anchorState.draggingStates {
                 case .none:
-                                                                
                     if anchorState.startAnchorFrame.contains(value.location) {
                         anchorState.draggingStates = .draggingStartAnchor
                     } else if anchorState.endAnchorFrame.contains(value.location) {
@@ -113,16 +112,25 @@ struct HomeAppView: View {
                     anchorState.endAnchorFrame.origin = value.location
                 }
                 
-                // Unitにつなぐかどうかの判定
-                if let match = endUnitStates.firstIndex(where: { endUnitState in
-                    return endUnitState.validFrame.contains(value.location)
-                }) {
-                    endUnitStates[match].isAttached = true
-                    anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
-                                                                y: endUnitStates[match].frame.midY)
-                } else {
-                    deactivateEndUnits()
-                }
+                // EndUnitにつなぐかどうかの判定
+                
+                switch anchorState.draggingStates {
+                    
+                case .none:
+                    break
+                case .draggingStartAnchor:
+                    break
+                case .draggingEndAnchor:
+                    if let match = endUnitStates.firstIndex(where: { endUnitState in
+                        return endUnitState.validFrame.contains(value.location)
+                    }) {
+                        endUnitStates[match].isAttached = true
+                        anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
+                                                                    y: endUnitStates[match].frame.midY)
+                    } else {
+                        deactivateEndUnits()
+                    }
+                }                                
             })
                 .onEnded({ (_) in
                     anchorState.draggingStates = .none
