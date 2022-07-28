@@ -69,44 +69,7 @@ struct HomeAppView: View {
                     .foregroundColor(.orange)
             }
             .zIndex(1)
-            VStack(spacing: 20) {
-                RectangleUnitView(color: attachedColor, active: $endUnitStates[0])
-                    .overlay(
-                        GeometryReader { geo in
-                            Color.clear
-                                .onAppear {
-                                    endUnitFrames.insert(
-                                        (geo.frame(in: .global)), at: 0
-                                    )
-                                }
-                        }
-                    )
-                
-                RectangleUnitView(color: attachedColor, active: $endUnitStates[1])
-                    .overlay(
-                        GeometryReader { geo in
-                            Color.clear
-                                .onAppear {
-                                    endUnitFrames.insert(
-                                        (geo.frame(in: .global)), at: 0
-                                    )
-                                }
-                        }
-                    )
-                
-                RectangleUnitView(color: attachedColor
-                                  , active: $endUnitStates[2])
-                    .overlay(
-                        GeometryReader { geo in
-                            Color.clear
-                                .onAppear {
-                                    endUnitFrames.insert(
-                                        (geo.frame(in: .global)), at: 0
-                                    )
-                                }
-                        }
-                    )
-            }
+            EndUnitsView()
         }
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
@@ -155,10 +118,30 @@ struct HomeAppView: View {
         }
     }
     
+    @ViewBuilder
+    private func EndUnitsView() -> some View {
+        
+        VStack(spacing: 20) {
+            ForEach(0 ..< endUnitStates.count, id: \.self) { index in
+                RectangleUnitView(color: attachedColor, active: $endUnitStates[index])
+                    .overlay(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    endUnitFrames.insert((geo.frame(in: .global)), at: 0)
+                                }
+                        }
+                    )
+            }
+        }
+    }
+
 }
+
 
 struct HomeAppView_Previews: PreviewProvider {
     static var previews: some View {
         HomeAppView()
+//        EndUnitsView(attachedColor: .constant(.blue))
     }
 }
