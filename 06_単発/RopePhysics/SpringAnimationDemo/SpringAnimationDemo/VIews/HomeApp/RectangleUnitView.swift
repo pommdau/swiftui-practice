@@ -12,10 +12,12 @@ struct RectangleUnitView: View {
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
     let color: Color
+    let active: Bool
+    let icon: String
+    
     var currentColor: Color {
         active ? color : .gray
     }
-    var active: Bool
     
     var body: some View {
         ZStack {
@@ -52,7 +54,7 @@ struct RectangleUnitView: View {
     
     @ViewBuilder
     private func TopLeftIcon() -> some View {
-        Image(systemName: "drop.fill")
+        Image(systemName: icon)
             .resizable()
             .scaledToFit()
             .frame(width: 24, height: 24)
@@ -64,7 +66,7 @@ struct RectangleUnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleUnitView(color: .blue, active: true)
+        RectangleUnitView(color: .blue, active: true, icon: "drop")
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }

@@ -12,21 +12,22 @@ struct HomeAppView: View {
             
     struct AnchorsState {
         
-        enum DraggingStates {
+        enum DraggingState {
             case none
             case draggingStartAnchor
             case draggingEndAnchor
         }
         
         let id = UUID().uuidString
-        var draggingStates: DraggingStates = .none
-        var startAnchorAttachedIndex = -1
-        var endAnchorAttachedIndex = -1
+        var draggingState: DraggingState = .none
         var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
         var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
         
+        var attachedStartUnitIndex = -1
+        var attachedEndUnitIndex = -1
+        
         var isConnected: Bool {
-            return startAnchorAttachedIndex >= 0 && endAnchorAttachedIndex >= 0
+            return attachedStartUnitIndex >= 0 && attachedEndUnitIndex >= 0
         }
     }
     
@@ -34,8 +35,11 @@ struct HomeAppView: View {
     struct StartUnitState {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var color: Color  // ONになったときの色
         var isAttached: Bool = false
+                
+        var color: Color  // ONになったときの色
+        var icon: String
+        
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -49,6 +53,7 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var isAttached: Bool = false
+        var icon: String        
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -59,15 +64,15 @@ struct HomeAppView: View {
     }
     
     @State private var anchorState = AnchorsState()
-    @State private var startUnitStates = [StartUnitState(color: .red),
-                                          StartUnitState(color: .blue),
-                                          StartUnitState(color: .yellow)]
-    @State private var endUnitStates = [EndUnitState(),
-                                        EndUnitState(),
-                                        EndUnitState()]
+    @State private var startUnitStates = [StartUnitState(color: .red, icon: "drop.fill"),
+                                          StartUnitState(color: .blue, icon: "flame.fill"),
+                                          StartUnitState(color: .yellow, icon: "bolt.fill")]
+    @State private var endUnitStates = [EndUnitState(icon: "lightbulb.fill"),
+                                        EndUnitState(icon: "umbrella.fill"),
+                                        EndUnitState(icon: "macpro.gen3.fill")]
     
     var attachedColor: Color {
-        let startUnitIndex = anchorState.startAnchorAttachedIndex
+        let startUnitIndex = anchorState.attachedStartUnitIndex
         switch startUnitIndex {
         case 0, 1, 2:
             return startUnitStates[startUnitIndex].color
@@ -108,12 +113,12 @@ struct HomeAppView: View {
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
                 // Anchorのドラッグ処理
-                switch anchorState.draggingStates {
+                switch anchorState.draggingState {
                 case .none:
                     if anchorState.startAnchorFrame.contains(value.location) {
-                        anchorState.draggingStates = .draggingStartAnchor
+                        anchorState.draggingState = .draggingStartAnchor
                     } else if anchorState.endAnchorFrame.contains(value.location) {
-                        anchorState.draggingStates = .draggingEndAnchor
+                        anchorState.draggingState = .draggingEndAnchor
                     }
                 case .draggingStartAnchor:
                     anchorState.startAnchorFrame.origin = value.location
@@ -121,14 +126,14 @@ struct HomeAppView: View {
                     anchorState.endAnchorFrame.origin = value.location
                 }
                                 
-                switch anchorState.draggingStates {
+                switch anchorState.draggingState {
                 case .none:
                     break
                 case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
                     if let match = startUnitStates.firstIndex(where: { startUnitState in
                         return startUnitState.validFrame.contains(value.location)
                     }) {
-                        anchorState.startAnchorAttachedIndex = match
+                        anchorState.attachedStartUnitIndex = match
                         anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
                                                                     y: startUnitStates[match].frame.midY)
                         startUnitStates[match].isAttached = true
@@ -140,7 +145,7 @@ struct HomeAppView: View {
                     if let match = endUnitStates.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
                     }) {
-                        anchorState.endAnchorAttachedIndex = match
+                        anchorState.attachedEndUnitIndex = match
                         anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
                                                                     y: endUnitStates[match].frame.midY)
                         endUnitStates[match].isAttached = true
@@ -150,13 +155,13 @@ struct HomeAppView: View {
                 }
             })
                 .onEnded({ (_) in
-                    anchorState.draggingStates = .none
+                    anchorState.draggingState = .none
                 })
         )
     }
     
     private func deactivateStartUnits() {
-        anchorState.startAnchorAttachedIndex = -1
+        anchorState.attachedStartUnitIndex = -1
         for index in startUnitStates.indices {
             startUnitStates[index].isAttached = false
         }
@@ -164,7 +169,7 @@ struct HomeAppView: View {
     }
     
     private func deactivateEndUnits() {
-        anchorState.endAnchorAttachedIndex = -1
+        anchorState.attachedEndUnitIndex = -1
         for index in startUnitStates.indices {
             endUnitStates[index].isAttached = false
         }
@@ -175,7 +180,8 @@ struct HomeAppView: View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
                 RectangleUnitView(color: attachedColor,
-                                  active: anchorState.isConnected && startUnitStates[index].isAttached)
+                                  active: anchorState.isConnected && startUnitStates[index].isAttached,
+                                  icon: startUnitStates[index].icon)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
@@ -193,7 +199,8 @@ struct HomeAppView: View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
                 RectangleUnitView(color: attachedColor,
-                                  active: anchorState.isConnected && endUnitStates[index].isAttached)
+                                  active: anchorState.isConnected && endUnitStates[index].isAttached,
+                                  icon: endUnitStates[index].icon)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
