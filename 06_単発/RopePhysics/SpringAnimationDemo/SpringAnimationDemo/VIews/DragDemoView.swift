@@ -9,12 +9,13 @@ import SwiftUI
 
 struct DragDemoView: View {
     
-    @State var position: CGSize = CGSize(width: 200, height: 300)
+    @State var position1: CGSize = CGSize(width: 200, height: 300)
+    @State var position2: CGSize = CGSize(width: 200, height: 500)
     
-    var drag: some Gesture {
+    var drag1: some Gesture {
         DragGesture()
         .onChanged{ value in
-            self.position = CGSize(
+            self.position1 = CGSize(
                 width: value.startLocation.x
                     + value.translation.width,
                 height: value.startLocation.y
@@ -22,26 +23,53 @@ struct DragDemoView: View {
             )
         }
         .onEnded{ value in
-            self.position = CGSize(
+            self.position1 = CGSize(
                 width: value.startLocation.x
                     + value.translation.width,
                 height: value.startLocation.y
                     + value.translation.height
             )
         }
-        
+    }
+    
+    var drag2: some Gesture {
+        DragGesture()
+        .onChanged{ value in
+            self.position2 = CGSize(
+                width: value.startLocation.x
+                    + value.translation.width,
+                height: value.startLocation.y
+                    + value.translation.height
+            )
+        }
+        .onEnded{ value in
+            self.position2 = CGSize(
+                width: value.startLocation.x
+                    + value.translation.width,
+                height: value.startLocation.y
+                    + value.translation.height
+            )
+        }
     }
     
     var body: some View {
         VStack {
-            Text("x: \(position.width)")
-            Text("y: \(position.height)")
+            Text("x: \(position1.width)")
+            Text("y: \(position1.height)")
             
-            Circle()
-                .frame(width: 100, height: 100)
-                .foregroundColor(.red)
-                .position(x: position.width, y: position.height)
-                .gesture(drag)
+            ZStack {
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.red)
+                    .position(x: position1.width, y: position1.height)
+                    .gesture(drag1)
+                
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.blue)
+                    .position(x: position2.width, y: position2.height)
+                    .gesture(drag2)
+            }
         }
     }
 }
