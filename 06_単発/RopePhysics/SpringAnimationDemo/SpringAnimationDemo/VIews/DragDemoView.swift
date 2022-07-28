@@ -10,7 +10,7 @@ import SwiftUI
 struct DragDemoView: View {
     
     @State var position1: CGSize = CGSize(width: 200, height: 300)
-    @State var position2: CGSize = CGSize(width: 200, height: 500)
+    @State var position2: CGPoint = .init(x: 200, y: 500)
     
     var drag1: some Gesture {
         DragGesture()
@@ -35,18 +35,19 @@ struct DragDemoView: View {
     var drag2: some Gesture {
         DragGesture()
         .onChanged{ value in
-            self.position2 = CGSize(
-                width: value.startLocation.x
+
+            self.position2 = CGPoint(
+                x: value.startLocation.x
                     + value.translation.width,
-                height: value.startLocation.y
+                y: value.startLocation.y
                     + value.translation.height
             )
         }
         .onEnded{ value in
-            self.position2 = CGSize(
-                width: value.startLocation.x
+            self.position2 = CGPoint(
+                x: value.startLocation.x
                     + value.translation.width,
-                height: value.startLocation.y
+                y: value.startLocation.y
                     + value.translation.height
             )
         }
@@ -56,6 +57,15 @@ struct DragDemoView: View {
         VStack {
             Text("x: \(position1.width)")
             Text("y: \(position1.height)")
+            
+            Rectangle()
+                .frame(width: 200, height: 200)
+            
+            Group {
+                Text("x: \(position2.x)")
+                Text("y: \(position2.y)")
+            }
+            .foregroundColor(.blue)
             
             ZStack {
                 Circle()
@@ -67,9 +77,10 @@ struct DragDemoView: View {
                 Circle()
                     .frame(width: 100, height: 100)
                     .foregroundColor(.blue)
-                    .position(x: position2.width, y: position2.height)
+                    .position(position2)
                     .gesture(drag2)
             }
+            .background(.green)
         }
     }
 }
