@@ -14,7 +14,8 @@ struct ContentView: View {
 //        RopeView()
 //        TimelineViewTestView()
 //        GeometryReaderTestView()
-        DragDemoView()
+//        DragDemoView()
+        MultiDragDemoView()
     }    
 }
 

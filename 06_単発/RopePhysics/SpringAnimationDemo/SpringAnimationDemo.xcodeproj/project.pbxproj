@@ -18,6 +18,7 @@
 		DAF3C56C289174F300089EE5 /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C56B289174F300089EE5 /* HomeAppView.swift */; };
 		DAF3C5702891824800089EE5 /* GeometryReaderTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C56F2891824800089EE5 /* GeometryReaderTestView.swift */; };
 		DAF3C572289198C900089EE5 /* DragDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C571289198C900089EE5 /* DragDemoView.swift */; };
+		DAF3C57428921AC700089EE5 /* MultiDragDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C57328921AC700089EE5 /* MultiDragDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DAF3C56B289174F300089EE5 /* HomeAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
 		DAF3C56F2891824800089EE5 /* GeometryReaderTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderTestView.swift; sourceTree = "<group>"; };
 		DAF3C571289198C900089EE5 /* DragDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDemoView.swift; sourceTree = "<group>"; };
+		DAF3C57328921AC700089EE5 /* MultiDragDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDragDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				DAF3C56B289174F300089EE5 /* HomeAppView.swift */,
 				DAF3C56F2891824800089EE5 /* GeometryReaderTestView.swift */,
 				DAF3C571289198C900089EE5 /* DragDemoView.swift */,
+				DAF3C57328921AC700089EE5 /* MultiDragDemoView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				DAF3C56C289174F300089EE5 /* HomeAppView.swift in Sources */,
 				DA721C202890249B002D55D1 /* ContentView.swift in Sources */,
 				DAF3C5702891824800089EE5 /* GeometryReaderTestView.swift in Sources */,
+				DAF3C57428921AC700089EE5 /* MultiDragDemoView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
 				DAF3C572289198C900089EE5 /* DragDemoView.swift in Sources */,
 				DA7C98FE289150260094B00F /* GlowEffectView.swift in Sources */,

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DragDemoView: View {
     
+    @State private var overPoint1 = false
+    
     @State var position1: CGPoint = .init(x: 200, y: 300)
     @State var position2: CGPoint = .init(x: 200, y: 500)
     
@@ -33,7 +35,7 @@ struct DragDemoView: View {
     }
     
     var drag2: some Gesture {
-        DragGesture()
+        DragGesture(coordinateSpace: .global)
         .onChanged{ value in
             self.position2 = CGPoint(
                 x: value.startLocation.x
@@ -72,7 +74,7 @@ struct DragDemoView: View {
             ZStack {
                 Circle()
                     .frame(width: 100, height: 100)
-                    .foregroundColor(.red)
+                    .foregroundColor(overPoint1 ? .orange : .red)
                     .position(position1)
                     .gesture(drag1)
                 
