@@ -9,28 +9,41 @@ import SwiftUI
 
 
 struct HomeAppView: View {
-        
-    @State private var isActive = false
+    @State private var rectangleUnitFrames = [CGRect]()
+    @State private var rectangleUnitStates = [false]
     
     var body: some View {
-        HStack(spacing: 140) {
-            
-            Toggle(isOn: $isActive.animation()) {
-                Text("Toggle me!")
-            }
-            
-            VStack(spacing: 20) {
-                RectangleUnitView(color: .blue, active: $isActive)
-//                RectangleUnit(color: .blue)
-//                RectangleUnit(color: .red)
-//                RectangleUnit(color: .orange)
-            }
-            
-            VStack(spacing: 20) {
-//                RectangleUnit(color: .blue)
-//                RectangleUnit(color: .red)
-//                RectangleUnit(color: .orange)
-            }
+        HStack(spacing: 20) {
+//            Toggle(isOn: $isActive.animation()) {}
+            RectangleUnitView(color: .blue, active: $rectangleUnitStates[0])
+                .overlay(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                rectangleUnitFrames.insert(
+                                    (geo.frame(in: .global)), at: 0
+                                )
+                            }
+                    }
+                )
+        }
+        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+            .onChanged({ (value) in
+                if let match = rectangleUnitFrames.firstIndex(where: { $0.contains(value.location) }) {
+                    rectangleUnitStates[match] = true
+                } else {
+                    deactivateSounds()
+                }
+            })
+                .onEnded({ (_) in
+                    deactivateSounds()
+                })
+        )
+    }
+    
+    private func deactivateSounds() {
+        for index in rectangleUnitStates.indices {
+            rectangleUnitStates[index] = false
         }
     }
     
