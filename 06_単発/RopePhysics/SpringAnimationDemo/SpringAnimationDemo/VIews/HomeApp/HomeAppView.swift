@@ -8,9 +8,14 @@
 import SwiftUI
 
 
-
-
 struct HomeAppView: View {
+    
+    enum AnchorState {
+        case none
+        case attachedToUnit1
+        case attachedToUnit2
+        case attachedToUnit3
+    }
     
     enum DraggingStates {
         case none
@@ -54,29 +59,26 @@ struct HomeAppView: View {
                     )
             }
         }
-        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+        .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
-                
-                // Anchorのドラッグ確認
-//                anchorFrames[0].origin = value.location
-                
+                                                                            
+                // Anchorのドラッグ処理
                 switch draggingStates {
                 case .none:
-                    if let match = anchorFrames.firstIndex(where: { frame in
-                        return frame.contains(value.location)
-                    }) {
+                    if anchorFrames[0].contains(value.location) {
                         draggingStates = .draggingAnchor1
-                    } else {
-
+                    } else if anchorFrames[1].contains(value.location) {
+                        draggingStates = .draggingAnchor2
                     }
                 case .draggingAnchor1:
                     anchorFrames[0].origin = value.location
                 case .draggingAnchor2:
                     break
                 }
-
+                
+                // Unitにつなぐかどうかの判定
                 if let match = rectangleUnitFrames.firstIndex(where: { frame in
-                    let length: CGFloat = 40  // ニコちゃんマークの大きさと一致させる
+                    let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
                     let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
                                                             y: frame.midY - length / 2),
                                             size: CGSize(width: length, height: length))
@@ -91,7 +93,8 @@ struct HomeAppView: View {
                 }                
             })
                 .onEnded({ (_) in
-                    deactivateSounds()
+                                        
+//                    deactivateSounds()
                     draggingStates = .none
                 })
         )
