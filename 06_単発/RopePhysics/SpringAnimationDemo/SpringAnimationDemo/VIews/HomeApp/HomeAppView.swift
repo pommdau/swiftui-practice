@@ -36,7 +36,6 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var isAttached: Bool = false
-                
         var color: Color  // ONになったときの色
         var icon: String
         
@@ -179,8 +178,8 @@ struct HomeAppView: View {
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor,
-                                  active: anchorState.isConnected && startUnitStates[index].isAttached,
+                RectangleUnitView(color: startUnitStates[index].color,
+                                  active: true,
                                   icon: startUnitStates[index].icon)
                     .overlay(
                         GeometryReader { geo in
