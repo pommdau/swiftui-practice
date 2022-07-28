@@ -11,19 +11,6 @@ import SwiftUI
 struct HomeAppView: View {
             
     struct AnchorsState {
-        enum StartAnchorState {
-            case none
-            case attachedToUnit1
-            case attachedToUnit2
-            case attachedToUnit3
-        }
-        
-        enum EndAnchorState {
-            case none
-            case attachedToUnit1
-            case attachedToUnit2
-            case attachedToUnit3
-        }
         
         enum DraggingStates {
             case none
@@ -33,8 +20,8 @@ struct HomeAppView: View {
         
         let id = UUID().uuidString
         var draggingStates: DraggingStates = .none
-        var startAnchorState: StartAnchorState = .none
-        var endAnchorState: EndAnchorState = .none
+        var startAnchorAttachedIndex = -1
+        var endAnchorAttachedIndex = -1
         var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
         var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
     }
@@ -44,7 +31,7 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var isAttached: Bool = false
-        
+        var color: Color
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -58,7 +45,6 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var isAttached: Bool = false
-        
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -69,20 +55,20 @@ struct HomeAppView: View {
     }
     
     @State private var anchorState = AnchorsState()
-    @State private var startUnitStates = [StartUnitState(), StartUnitState(), StartUnitState()]
-    @State private var endUnitStates = [EndUnitState(), EndUnitState(), EndUnitState()]
+    @State private var startUnitStates = [StartUnitState(color: .red),
+                                          StartUnitState(color: .blue),
+                                          StartUnitState(color: .yellow)]
+    @State private var endUnitStates = [EndUnitState(),
+                                        EndUnitState(),
+                                        EndUnitState()]
     
     var attachedColor: Color {
-        // TODO: anchorの状態を反映させる
-        switch anchorState.startAnchorState {
-        case .none:
-            return .gray
-        case .attachedToUnit1:
-            return .blue
-        case .attachedToUnit2:
-            return .yellow
-        case .attachedToUnit3:
-            return .red
+        let startUnitIndex = anchorState.startAnchorAttachedIndex
+        switch startUnitIndex {
+        case 0, 1, 2:
+            return startUnitStates[startUnitIndex].color
+        default:
+            return .clear
         }
     }
     
@@ -117,7 +103,6 @@ struct HomeAppView: View {
         }
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
-                
                 // Anchorのドラッグ処理
                 switch anchorState.draggingStates {
                 case .none:
@@ -131,23 +116,23 @@ struct HomeAppView: View {
                 case .draggingEndAnchor:
                     anchorState.endAnchorFrame.origin = value.location
                 }
-                
-                // EndUnitにつなぐかどうかの判定
-                
+                                
                 switch anchorState.draggingStates {
                 case .none:
                     break
-                case .draggingStartAnchor:
+                case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
                     if let match = startUnitStates.firstIndex(where: { startUnitState in
                         return startUnitState.validFrame.contains(value.location)
                     }) {
+                        anchorState.startAnchorAttachedIndex = match
                         startUnitStates[match].isAttached = true
                         anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
                                                                     y: startUnitStates[match].frame.midY)
                     } else {
                         deactivateStartUnits()
                     }
-                case .draggingEndAnchor:
+                
+                case .draggingEndAnchor:  // EndUnitにつなぐかどうかの判定
                     if let match = endUnitStates.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
                     }) {
