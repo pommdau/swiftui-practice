@@ -17,57 +17,52 @@ struct ContentView: View {
     // MARK: - View
     
     var body: some View {
-        VStack {
-            List {
-                Section(header: Text("Fonts").textCase(.none)) {
-                    ForEach(fonts.indices, id: \.self) { index in
-                        Toggle(isOn: $fonts[index].isInstalled) {
-                            Text(fonts[index].familyName)
-                        }.onChange(of: fonts[index].isInstalled) { newValue in
-                            if newValue {
-                                installFonts(fonts: [fonts[index]])
-                            } else {
-                                uninstallFonts(fonts: [fonts[index]])
-                            }
+        HStack {
+            VStack {
+                List {
+                    
+                    Section(header: Text("Actions").textCase(.none)) {
+                        Button {
+                            installFonts(fonts: fonts)
                             updateFontStatus()  // TODO: Data-Bindingでできるはず
-                        }
-                    }
-                }
-                
-                Section(header: Text("Actions").textCase(.none)) {
-                    Button {
-                        installFonts(fonts: fonts)
-                        updateFontStatus()  // TODO: Data-Bindingでできるはず
-                    } label: {
-                        HStack {
-                            Spacer()
+                        } label: {
                             Text("Install all")
-                            Spacer()
                         }
-                    }
-                    
-                    Button {
-                        uninstallFonts(fonts: fonts)
-                        updateFontStatus()  // TODO: Data-Bindingでできるはず
-                    } label: {
-                        HStack {
-                            Spacer()
+                        
+                        Button {
+                            uninstallFonts(fonts: fonts)
+                            updateFontStatus()  // TODO: Data-Bindingでできるはず
+                        } label: {
                             Text("Uninstall all")
-                            Spacer()
+                        }
+                        
+                        Button {
+                            openSettings()
+                        } label: {
+                            HStack {
+                                Text("Open Settings...")
+                            }
                         }
                     }
                     
-                    Button {
-                        openSettings()
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text("Open Settings...")
-                            Spacer()
+                    Section(header: Text("Fonts").textCase(.none)) {
+                        ForEach(fonts.indices, id: \.self) { index in
+                            Toggle(isOn: $fonts[index].isInstalled) {
+                                Text(fonts[index].familyName)
+                            }.onChange(of: fonts[index].isInstalled) { newValue in
+                                if newValue {
+                                    installFonts(fonts: [fonts[index]])
+                                } else {
+                                    uninstallFonts(fonts: [fonts[index]])
+                                }
+                                updateFontStatus()  // TODO: Data-Bindingでできるはず
+                            }
                         }
                     }
                 }
             }
+            Rectangle()
+                .foregroundColor(.gray)
         }
         .onAppear {
             NotificationCenter.default.addObserver(
@@ -91,6 +86,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
 
