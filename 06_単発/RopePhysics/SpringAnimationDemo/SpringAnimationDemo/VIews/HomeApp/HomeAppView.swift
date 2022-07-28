@@ -26,8 +26,8 @@ struct HomeAppView: View {
     
     enum DraggingStates {
         case none
-        case draggingAnchor1
-        case draggingAnchor2
+        case draggingStartAnchor
+        case draggingEndAnchor
     }
     
     struct EndUnitState {
@@ -45,7 +45,6 @@ struct HomeAppView: View {
     }
     
     @State private var startAnchorState: StartAnchorState = .attachedToUnit1
-    
     @State private var anchorFrames: [CGRect] = [
         CGRect(x: 100, y: 100, width: 60, height: 60),
         CGRect(x: 100, y: 200, width: 60, height: 60),
@@ -68,8 +67,9 @@ struct HomeAppView: View {
     }
     
     var body: some View {
-                 
+        
         ZStack {
+            
             GeometryReader { geo in
                 // positionは親ビューの相対位置であることに注意
                 Circle()
@@ -85,18 +85,18 @@ struct HomeAppView: View {
         }
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
-                                                                            
+                
                 // Anchorのドラッグ処理
                 switch draggingStates {
                 case .none:
                     if anchorFrames[0].contains(value.location) {
-                        draggingStates = .draggingAnchor1
+                        draggingStates = .draggingStartAnchor
                     } else if anchorFrames[1].contains(value.location) {
-                        draggingStates = .draggingAnchor2
+                        draggingStates = .draggingEndAnchor
                     }
-                case .draggingAnchor1:
+                case .draggingStartAnchor:
                     anchorFrames[0].origin = value.location
-                case .draggingAnchor2:
+                case .draggingEndAnchor:
                     break
                 }
                 
@@ -107,20 +107,17 @@ struct HomeAppView: View {
                     endUnitStates[match].isAttached = true
                     anchorFrames[0].origin = CGPoint(x: endUnitStates[match].frame.midX,
                                                      y: endUnitStates[match].frame.midY)
-                    
                 } else {
-                    deactivateSounds()
-                }                
+                    deactivateEndUnits()
+                }
             })
                 .onEnded({ (_) in
-                                        
-//                    deactivateSounds()
                     draggingStates = .none
                 })
         )
     }
     
-    private func deactivateSounds() {
+    private func deactivateEndUnits() {
         for index in endUnitStates.indices {
             endUnitStates[index].isAttached = false
         }
@@ -128,7 +125,6 @@ struct HomeAppView: View {
     
     @ViewBuilder
     private func EndUnitsView() -> some View {
-        
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
                 RectangleUnitView(color: attachedColor, active: $endUnitStates[index].isAttached)
@@ -143,13 +139,13 @@ struct HomeAppView: View {
             }
         }
     }
-
+    
 }
 
 
 struct HomeAppView_Previews: PreviewProvider {
     static var previews: some View {
         HomeAppView()
-//        EndUnitsView(attachedColor: .constant(.blue))
+        //        EndUnitsView(attachedColor: .constant(.blue))
     }
 }
