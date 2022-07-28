@@ -24,14 +24,17 @@ struct HomeAppView: View {
         var endAnchorAttachedIndex = -1
         var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
         var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
+        
+        var isConnected: Bool {
+            return startAnchorAttachedIndex >= 0 && endAnchorAttachedIndex >= 0
+        }
     }
     
     // TODO: UnitStateのマージ
     struct StartUnitState {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var isAttached: Bool = false
-        var color: Color
+        var color: Color  // ONになったときの色
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -44,7 +47,6 @@ struct HomeAppView: View {
     struct EndUnitState {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var isAttached: Bool = false
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -125,7 +127,6 @@ struct HomeAppView: View {
                         return startUnitState.validFrame.contains(value.location)
                     }) {
                         anchorState.startAnchorAttachedIndex = match
-                        startUnitStates[match].isAttached = true
                         anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
                                                                     y: startUnitStates[match].frame.midY)
                     } else {
@@ -136,7 +137,7 @@ struct HomeAppView: View {
                     if let match = endUnitStates.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
                     }) {
-                        endUnitStates[match].isAttached = true
+                        anchorState.endAnchorAttachedIndex = match
                         anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
                                                                     y: endUnitStates[match].frame.midY)
                     } else {
@@ -151,22 +152,18 @@ struct HomeAppView: View {
     }
     
     private func deactivateStartUnits() {
-        for index in startUnitStates.indices {
-            startUnitStates[index].isAttached = false
-        }
+        anchorState.startAnchorAttachedIndex = -1
     }
     
     private func deactivateEndUnits() {
-        for index in endUnitStates.indices {
-            endUnitStates[index].isAttached = false
-        }
+        anchorState.endAnchorAttachedIndex = -1
     }
     
     @ViewBuilder
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor, active: $startUnitStates[index].isAttached)
+                RectangleUnitView(color: attachedColor, active: anchorState.isConnected)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
@@ -183,7 +180,7 @@ struct HomeAppView: View {
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor, active: $endUnitStates[index].isAttached)
+                RectangleUnitView(color: attachedColor, active: anchorState.isConnected)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear

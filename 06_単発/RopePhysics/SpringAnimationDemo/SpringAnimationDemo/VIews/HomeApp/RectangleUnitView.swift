@@ -15,7 +15,7 @@ struct RectangleUnitView: View {
     var currentColor: Color {
         active ? color : .gray
     }
-    @Binding var active: Bool
+    var active: Bool
     
     var body: some View {
         ZStack {
@@ -64,7 +64,7 @@ struct RectangleUnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleUnitView(color: .blue, active: .constant(true))
+        RectangleUnitView(color: .blue, active: true)
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }
