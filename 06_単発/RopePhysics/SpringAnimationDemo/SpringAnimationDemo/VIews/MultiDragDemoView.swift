@@ -39,13 +39,19 @@ struct MultiDragDemoView: View {
                     if let match = soundFrames.firstIndex(where: { $0.contains(value.location) }) {
                         soundStates[match] = true
                     } else {
-//                        deactivateSounds()
+                        deactivateSounds()
                     }
                 })
                     .onEnded({ (_) in
-//                        deactivateSounds()
+                        deactivateSounds()
                     })
             )
+        }
+    }
+    
+    private func deactivateSounds() {
+        for index in soundStates.indices {
+            soundStates[index] = false
         }
     }
 }
@@ -72,20 +78,13 @@ struct SoundView: View {
 //        }
         .background(combo())
         //        For iOS 14
-        //        .onChange(of: active) { (active) in
-        //            <#code#>
-        //        }
+        .onChange(of: active) { (active) in
+            print("🐱: \(active)")
+        }
     }
     
     private func combo() -> Color {
         if active == true {
-//            guard let sound = sound.sound else { return Color.red }
-            
-//            if sound.length == .long {
-//                soundBox.playSound(sound, categoy: .beep, loop: true)
-//            } else if sound.length == .short {
-//                soundBox.playSound(sound, categoy: .beep)
-//            }
             
             return .orange
         } else {

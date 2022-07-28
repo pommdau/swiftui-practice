@@ -10,12 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-//        HomeAppView()
+        HomeAppView()
 //        RopeView()
 //        TimelineViewTestView()
 //        GeometryReaderTestView()
 //        DragDemoView()
-        MultiDragDemoView()
+//        MultiDragDemoView()
     }    
 }
 
