@@ -1,53 +1,40 @@
 //
-//  HomeAppView.swift
+//  RectangleUnitView.swift
 //  SpringAnimationDemo
 //
-//  Created by HIROKI IKEUCHI on 2022/07/27.
+//  Created by HIROKI IKEUCHI on 2022/07/28.
 //
 
 import SwiftUI
 
-struct HomeAppView: View {
+struct RectangleUnitView: View {
     
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
+    let color: Color
+    var currentColor: Color {
+        active ? color : .gray
+    }
+    @Binding var active: Bool
     
     var body: some View {
-        HStack(spacing: 140) {
-            VStack(spacing: 20) {
-                RectangleUnit(color: .blue)
-                RectangleUnit(color: .red)
-                RectangleUnit(color: .orange)
-            }
-            
-            VStack(spacing: 20) {
-                RectangleUnit(color: .blue)
-                RectangleUnit(color: .red)
-                RectangleUnit(color: .orange)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func RectangleUnit(color: Color) -> some View {
         ZStack {
-                                    
             RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                .stroke(color, lineWidth: 4)
+                .stroke(currentColor, lineWidth: 4)
                 .background(
                     RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                        .fill(color.opacity(0.5))
+                        .fill(currentColor.opacity(0.5))
                 )
                 .frame(width: rectangleLength, height: rectangleLength)
             
             ZStack {
                 Image(systemName: "face.smiling.fill")
                     .resizable()
-                    .foregroundColor(color.opacity(0.6))
+                    .foregroundColor(currentColor.opacity(0.6))
                     .frame(width: 40, height: 40)
                 Image(systemName: "face.smiling")
                     .resizable()
-                    .foregroundColor(color.opacity(1.0))
+                    .foregroundColor(currentColor.opacity(1.0))
                     .frame(width: 40, height: 40)
             }
             .onTapGesture {
@@ -66,8 +53,9 @@ struct HomeAppView: View {
     }
 }
 
-struct HomeAppView_Previews: PreviewProvider {
+struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeAppView()
+        RectangleUnitView(color: .blue, active: .constant(true))
+            .previewLayout(.fixed(width: 300, height: 300))
     }
 }
