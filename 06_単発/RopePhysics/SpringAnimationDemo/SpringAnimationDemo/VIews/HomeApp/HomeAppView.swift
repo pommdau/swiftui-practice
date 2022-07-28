@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeAppView: View {
     
-    @State private var anchorFrames: [CGRect] = [CGRect(x: 100, y: 100, width: 100, height: 100)]
+    @State private var anchorFrames: [CGRect] = [CGRect(x: 100, y: 100, width: 60, height: 60)]
     @State private var rectangleUnitFrames = [CGRect]()
     @State private var rectangleUnitStates = [false]
     
@@ -19,7 +19,8 @@ struct HomeAppView: View {
         ZStack {
             GeometryReader { geo in
                 Circle()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 60, height: 60)
+                // positionは親ビューの相対位置であることに注意
                     .position(CGPoint(
                         x: anchorFrames[0].origin.x - geo.frame(in: .global).origin.x,
                         y: anchorFrames[0].origin.y - geo.frame(in: .global).origin.y)
@@ -28,7 +29,6 @@ struct HomeAppView: View {
             }
             
             HStack(spacing: 20) {
-    //            Toggle(isOn: $isActive.animation()) {}
                 RectangleUnitView(color: .blue, active: $rectangleUnitStates[0])
                     .overlay(
                         GeometryReader { geo in
@@ -44,7 +44,7 @@ struct HomeAppView: View {
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged({ (value) in
-                anchorFrames[0].origin = value.location                
+                anchorFrames[0].origin = value.location
                 if let match = rectangleUnitFrames.firstIndex(where: { frame in
                     let length: CGFloat = 40  // ニコちゃんマークの大きさと一致させる
                     let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
