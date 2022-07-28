@@ -29,7 +29,7 @@ struct HomeAppView: View {
     ]
     @State private var draggingStates: DraggingStates = .none
     @State private var rectangleUnitFrames = [CGRect]()
-    @State private var rectangleUnitStates = [false]
+    @State private var rectangleUnitStates = [false, false, false]
     
     var body: some View {
                  
@@ -45,8 +45,32 @@ struct HomeAppView: View {
                     .foregroundColor(.orange)
             }
             .zIndex(1)
-            HStack(spacing: 20) {
+            VStack(spacing: 20) {
                 RectangleUnitView(color: .blue, active: $rectangleUnitStates[0])
+                    .overlay(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    rectangleUnitFrames.insert(
+                                        (geo.frame(in: .global)), at: 0
+                                    )
+                                }
+                        }
+                    )
+                
+                RectangleUnitView(color: .red, active: $rectangleUnitStates[1])
+                    .overlay(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    rectangleUnitFrames.insert(
+                                        (geo.frame(in: .global)), at: 0
+                                    )
+                                }
+                        }
+                    )
+                
+                RectangleUnitView(color: .yellow, active: $rectangleUnitStates[2])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
