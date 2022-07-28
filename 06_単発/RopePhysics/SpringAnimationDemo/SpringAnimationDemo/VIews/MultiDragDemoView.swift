@@ -8,68 +8,91 @@
 import SwiftUI
 
 struct MultiDragDemoView: View {
-    
-    
     @State private var soundFrames = [CGRect]()
     @State private var soundStates = [false, false, false]
     
-    //    let sounds: MultiSound
-    //    let soundBox = SoundBox()
+//    let sounds: MultiSound
+    let colors: [Color] = [.red, .green, .blue]
+//    let soundBox = SoundBox()
     
     var body: some View {
-                
-        VStack {
-            
-            switch soundFrames.count {
-            case 1:
-                Text("\(soundFrames[0].debugDescription), \(soundStates[0] ? "true" : "false")")
-            case 2:
-                Text("\(soundFrames[0].debugDescription), \(soundStates[0] ? "true" : "false")")
-                Text("\(soundFrames[1].debugDescription), \(soundStates[1] ? "true" : "false")")
-            case 3:
-                Text("\(soundFrames[0].debugDescription), \(soundStates[0] ? "true" : "false")")
-                Text("\(soundFrames[1].debugDescription), \(soundStates[1] ? "true" : "false")")
-                Text("\(soundFrames[2].debugDescription), \(soundStates[2] ? "true" : "false")")
-            default:
-                Text("(none)")
-            }
-            
-            HStack {
-                ForEach(0 ..< 3) { index in
-                    //                SoundView(active: $soundStates[index], sound: sound[index])
-                    Circle()
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(Bool.random() ? .red : .blue)
-                        .overlay(
-                            // Creating an overlay creates a view that matches the size of the original view
-                            GeometryReader { geo in
-                                Color.clear
-                                    .onAppear {
-                                        // Insert that into a state array, and now can access the coordinates of frames
-                                        soundFrames.insert((geo.frame(in: .global)), at: 0)
-                                    }
-                            }
-                        )
-                }
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                    .onChanged({ (value) in
-                        print(value.location)
-                        // If there's a match activate the view by toggling state
-                        if let match = soundFrames.firstIndex(where: { $0.contains(value.location) }) {
-                            soundStates[match] = true
-                        } else {
-                            //                        deactivateSounds()
+        
+        //            This came from https://www.youtube.com/watch?v=ffV_fYcFoX0&t=6175s
+        HStack {
+            ForEach(0 ..< colors.count) { index in
+                SoundView(active: $soundStates[index], sound: colors[index])
+                    .overlay(
+                        //            Creating an overlay creates a view that matches the size of the original view
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    //            Insert that into a state array, and now can access the coordinates of frames
+                                    soundFrames.insert((geo.frame(in: .global)), at: 0)
+                                }
                         }
-                    })
-                        .onEnded({ (_) in
-                            //                        deactivateSounds()
-                        })
-                )
+                    )
             }
-            
+            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                .onChanged({ (value) in
+                    
+                    // If there's a match activate the view by toggling state
+                    if let match = soundFrames.firstIndex(where: { $0.contains(value.location) }) {
+                        soundStates[match] = true
+                    } else {
+//                        deactivateSounds()
+                    }
+                })
+                    .onEnded({ (_) in
+//                        deactivateSounds()
+                    })
+            )
         }
     }
+}
+
+struct SoundView: View {
+    @Binding var active: Bool
     
+    let sound: Color
+//    let soundBox = SoundBox()
+    
+    var body: some View {
+        
+        Circle()
+            .frame(width: 40, height: 40)
+            .foregroundColor(sound.opacity(0.3))
+        
+//        VStack {
+//            Text(sound.text)
+//                .padding()
+//                .font(sound.length == .silent ? .body : .largeTitle)
+//            if sound.symbol != nil {
+//                Image(systemName: sound.symbol!)
+//            }
+//        }
+        .background(combo())
+        //        For iOS 14
+        //        .onChange(of: active) { (active) in
+        //            <#code#>
+        //        }
+    }
+    
+    private func combo() -> Color {
+        if active == true {
+//            guard let sound = sound.sound else { return Color.red }
+            
+//            if sound.length == .long {
+//                soundBox.playSound(sound, categoy: .beep, loop: true)
+//            } else if sound.length == .short {
+//                soundBox.playSound(sound, categoy: .beep)
+//            }
+            
+            return .orange
+        } else {
+//            soundBox.stopPlayers()
+            return Color.clear
+        }
+    }
 }
 
 struct MultiDragDemoView_Previews: PreviewProvider {
