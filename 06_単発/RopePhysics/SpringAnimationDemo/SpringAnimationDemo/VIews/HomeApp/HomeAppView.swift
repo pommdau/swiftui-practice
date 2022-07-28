@@ -9,25 +9,34 @@ import SwiftUI
 
 
 struct HomeAppView: View {
-    
-    enum StartAnchorState {
-        case none
-        case attachedToUnit1
-        case attachedToUnit2
-        case attachedToUnit3
-    }
-    
-    enum EndAnchorState {
-        case none
-        case attachedToUnit1
-        case attachedToUnit2
-        case attachedToUnit3
-    }
-    
-    enum DraggingStates {
-        case none
-        case draggingStartAnchor
-        case draggingEndAnchor
+            
+    struct AnchorsState {
+        enum StartAnchorState {
+            case none
+            case attachedToUnit1
+            case attachedToUnit2
+            case attachedToUnit3
+        }
+        
+        enum EndAnchorState {
+            case none
+            case attachedToUnit1
+            case attachedToUnit2
+            case attachedToUnit3
+        }
+        
+        enum DraggingStates {
+            case none
+            case draggingStartAnchor
+            case draggingEndAnchor
+        }
+        
+        let id = UUID().uuidString
+        var draggingStates: DraggingStates = .none
+        var startAnchorState: StartAnchorState = .none
+        var endAnchorState: EndAnchorState = .none
+        var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
+        var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
     }
     
     struct EndUnitState {
@@ -44,17 +53,12 @@ struct HomeAppView: View {
         }
     }
     
-    @State private var startAnchorState: StartAnchorState = .attachedToUnit1
-    @State private var anchorFrames: [CGRect] = [
-        CGRect(x: 100, y: 100, width: 60, height: 60),
-        CGRect(x: 100, y: 200, width: 60, height: 60),
-    ]
-    @State private var draggingStates: DraggingStates = .none
+    @State private var anchorState = AnchorsState()
     @State private var endUnitStates = [EndUnitState(), EndUnitState(), EndUnitState()]
     
     var attachedColor: Color {
         // TODO: anchorの状態を反映させる
-        switch startAnchorState {
+        switch anchorState.startAnchorState {
         case .none:
             return .gray
         case .attachedToUnit1:
@@ -75,8 +79,16 @@ struct HomeAppView: View {
                 Circle()
                     .frame(width: 60, height: 60)
                     .position(CGPoint(
-                        x: anchorFrames[0].origin.x - geo.frame(in: .global).origin.x,
-                        y: anchorFrames[0].origin.y - geo.frame(in: .global).origin.y)
+                        x: anchorState.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
+                        y: anchorState.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
+                    )
+                    .foregroundColor(.black)
+                
+                Circle()
+                    .frame(width: 60, height: 60)
+                    .position(CGPoint(
+                        x: anchorState.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
+                        y: anchorState.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
                     .foregroundColor(.orange)
             }
@@ -87,17 +99,18 @@ struct HomeAppView: View {
             .onChanged({ (value) in
                 
                 // Anchorのドラッグ処理
-                switch draggingStates {
+                switch anchorState.draggingStates {
                 case .none:
-                    if anchorFrames[0].contains(value.location) {
-                        draggingStates = .draggingStartAnchor
-                    } else if anchorFrames[1].contains(value.location) {
-                        draggingStates = .draggingEndAnchor
+                                                                
+                    if anchorState.startAnchorFrame.contains(value.location) {
+                        anchorState.draggingStates = .draggingStartAnchor
+                    } else if anchorState.endAnchorFrame.contains(value.location) {
+                        anchorState.draggingStates = .draggingEndAnchor
                     }
                 case .draggingStartAnchor:
-                    anchorFrames[0].origin = value.location
+                    anchorState.startAnchorFrame.origin = value.location
                 case .draggingEndAnchor:
-                    break
+                    anchorState.endAnchorFrame.origin = value.location
                 }
                 
                 // Unitにつなぐかどうかの判定
@@ -105,14 +118,14 @@ struct HomeAppView: View {
                     return endUnitState.validFrame.contains(value.location)
                 }) {
                     endUnitStates[match].isAttached = true
-                    anchorFrames[0].origin = CGPoint(x: endUnitStates[match].frame.midX,
-                                                     y: endUnitStates[match].frame.midY)
+                    anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
+                                                                y: endUnitStates[match].frame.midY)
                 } else {
                     deactivateEndUnits()
                 }
             })
                 .onEnded({ (_) in
-                    draggingStates = .none
+                    anchorState.draggingStates = .none
                 })
         )
     }
