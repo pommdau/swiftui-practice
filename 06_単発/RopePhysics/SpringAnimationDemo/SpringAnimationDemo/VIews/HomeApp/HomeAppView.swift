@@ -39,6 +39,21 @@ struct HomeAppView: View {
         var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
     }
     
+    // TODO: UnitStateのマージ
+    struct StartUnitState {
+        let id = UUID().uuidString
+        var frame: CGRect = .zero
+        var isAttached: Bool = false
+        
+        var validFrame: CGRect {
+            let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
+            let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
+                                                    y: frame.midY - length / 2),
+                                    size: CGSize(width: length, height: length))
+            return validFrame
+        }
+    }
+    
     struct EndUnitState {
         let id = UUID().uuidString
         var frame: CGRect = .zero
@@ -54,6 +69,7 @@ struct HomeAppView: View {
     }
     
     @State private var anchorState = AnchorsState()
+    @State private var startUnitStates = [StartUnitState(), StartUnitState(), StartUnitState()]
     @State private var endUnitStates = [EndUnitState(), EndUnitState(), EndUnitState()]
     
     var attachedColor: Color {
@@ -93,7 +109,11 @@ struct HomeAppView: View {
                     .foregroundColor(.orange)
             }
             .zIndex(1)
-            EndUnitsView()
+            
+            HStack(spacing: 140) {
+                StartUnitsView()
+                EndUnitsView()
+            }
         }
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
@@ -115,11 +135,18 @@ struct HomeAppView: View {
                 // EndUnitにつなぐかどうかの判定
                 
                 switch anchorState.draggingStates {
-                    
                 case .none:
                     break
                 case .draggingStartAnchor:
-                    break
+                    if let match = startUnitStates.firstIndex(where: { startUnitState in
+                        return startUnitState.validFrame.contains(value.location)
+                    }) {
+                        startUnitStates[match].isAttached = true
+                        anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
+                                                                    y: startUnitStates[match].frame.midY)
+                    } else {
+                        deactivateStartUnits()
+                    }
                 case .draggingEndAnchor:
                     if let match = endUnitStates.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
@@ -130,7 +157,7 @@ struct HomeAppView: View {
                     } else {
                         deactivateEndUnits()
                     }
-                }                                
+                }
             })
                 .onEnded({ (_) in
                     anchorState.draggingStates = .none
@@ -138,9 +165,32 @@ struct HomeAppView: View {
         )
     }
     
+    private func deactivateStartUnits() {
+        for index in startUnitStates.indices {
+            startUnitStates[index].isAttached = false
+        }
+    }
+    
     private func deactivateEndUnits() {
         for index in endUnitStates.indices {
             endUnitStates[index].isAttached = false
+        }
+    }
+    
+    @ViewBuilder
+    private func StartUnitsView() -> some View {
+        VStack(spacing: 20) {
+            ForEach(0 ..< endUnitStates.count, id: \.self) { index in
+                RectangleUnitView(color: attachedColor, active: $startUnitStates[index].isAttached)
+                    .overlay(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    startUnitStates[index].frame = geo.frame(in: .global)
+                                }
+                        }
+                    )
+            }
         }
     }
     
