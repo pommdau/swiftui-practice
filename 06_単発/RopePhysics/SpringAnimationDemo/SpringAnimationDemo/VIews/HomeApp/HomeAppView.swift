@@ -35,6 +35,7 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var color: Color  // ONになったときの色
+        var isAttached: Bool = false
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -47,6 +48,7 @@ struct HomeAppView: View {
     struct EndUnitState {
         let id = UUID().uuidString
         var frame: CGRect = .zero
+        var isAttached: Bool = false
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -129,6 +131,7 @@ struct HomeAppView: View {
                         anchorState.startAnchorAttachedIndex = match
                         anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
                                                                     y: startUnitStates[match].frame.midY)
+                        startUnitStates[match].isAttached = true
                     } else {
                         deactivateStartUnits()
                     }
@@ -140,6 +143,7 @@ struct HomeAppView: View {
                         anchorState.endAnchorAttachedIndex = match
                         anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
                                                                     y: endUnitStates[match].frame.midY)
+                        endUnitStates[match].isAttached = true
                     } else {
                         deactivateEndUnits()
                     }
@@ -153,17 +157,25 @@ struct HomeAppView: View {
     
     private func deactivateStartUnits() {
         anchorState.startAnchorAttachedIndex = -1
+        for index in startUnitStates.indices {
+            startUnitStates[index].isAttached = false
+        }
+
     }
     
     private func deactivateEndUnits() {
         anchorState.endAnchorAttachedIndex = -1
+        for index in startUnitStates.indices {
+            endUnitStates[index].isAttached = false
+        }
     }
     
     @ViewBuilder
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor, active: anchorState.isConnected)
+                RectangleUnitView(color: attachedColor,
+                                  active: anchorState.isConnected && startUnitStates[index].isAttached)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
@@ -180,7 +192,8 @@ struct HomeAppView: View {
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor, active: anchorState.isConnected)
+                RectangleUnitView(color: attachedColor,
+                                  active: anchorState.isConnected && endUnitStates[index].isAttached)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
