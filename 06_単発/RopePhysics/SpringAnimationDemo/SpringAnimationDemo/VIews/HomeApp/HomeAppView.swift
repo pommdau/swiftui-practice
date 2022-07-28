@@ -30,6 +30,12 @@ struct HomeAppView: View {
         case draggingAnchor2
     }
     
+    struct EndUnitState {
+        let id = UUID().uuidString
+        var frame: CGRect = .zero
+        var isAttached: Bool = false
+    }
+    
     @State private var startAnchorState: StartAnchorState = .attachedToUnit1
     
     @State private var anchorFrames: [CGRect] = [
@@ -37,9 +43,7 @@ struct HomeAppView: View {
         CGRect(x: 100, y: 200, width: 60, height: 60),
     ]
     @State private var draggingStates: DraggingStates = .none
-    
-    @State private var endUnitFrames = [CGRect]()
-    @State private var endUnitStates = [false, false, false]
+    @State private var endUnitStates = [EndUnitState(), EndUnitState(), EndUnitState()]
     
     var attachedColor: Color {
         // TODO: anchorの状態を反映させる
@@ -89,16 +93,16 @@ struct HomeAppView: View {
                 }
                 
                 // Unitにつなぐかどうかの判定
-                if let match = endUnitFrames.firstIndex(where: { frame in
+                if let match = endUnitStates.firstIndex(where: { endUnitState in
                     let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
-                    let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
-                                                            y: frame.midY - length / 2),
+                    let validFrame = CGRect(origin: CGPoint(x: endUnitState.frame.midX - length / 2,
+                                                            y: endUnitState.frame.midY - length / 2),
                                             size: CGSize(width: length, height: length))
                     return validFrame.contains(value.location)
                 }) {
-                    endUnitStates[match] = true
-                    anchorFrames[0].origin = CGPoint(x: endUnitFrames[match].midX,
-                                                     y: endUnitFrames[match].midY)
+                    endUnitStates[match].isAttached = true
+                    anchorFrames[0].origin = CGPoint(x: endUnitStates[match].frame.midX,
+                                                     y: endUnitStates[match].frame.midY)
                     
                 } else {
                     deactivateSounds()
@@ -114,7 +118,7 @@ struct HomeAppView: View {
     
     private func deactivateSounds() {
         for index in endUnitStates.indices {
-            endUnitStates[index] = false
+            endUnitStates[index].isAttached = false
         }
     }
     
@@ -123,12 +127,12 @@ struct HomeAppView: View {
         
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: attachedColor, active: $endUnitStates[index])
+                RectangleUnitView(color: attachedColor, active: $endUnitStates[index].isAttached)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    endUnitFrames.insert((geo.frame(in: .global)), at: 0)
+                                    endUnitStates[index].frame = geo.frame(in: .global)
                                 }
                         }
                     )
