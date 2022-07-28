@@ -29,14 +29,21 @@ struct HomeAppView: View {
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged({ (value) in
-                if let match = rectangleUnitFrames.firstIndex(where: { $0.contains(value.location) }) {
+                if let match = rectangleUnitFrames.firstIndex(where: { frame in
+                    let length: CGFloat = 40  // ニコちゃんマークの大きさと一致させる
+                    let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
+                                                            y: frame.midY - length / 2),
+                                            size: CGSize(width: length, height: length))
+                    return validFrame.contains(value.location)
+                }) {
                     rectangleUnitStates[match] = true
                 } else {
                     deactivateSounds()
-                }
+                }                
             })
                 .onEnded({ (_) in
                     deactivateSounds()
+                    print(rectangleUnitFrames[0])
                 })
         )
     }
