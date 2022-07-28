@@ -19,37 +19,46 @@ struct RectangleUnitView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                .stroke(currentColor, lineWidth: 4)
-                .background(
-                    RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                        .fill(currentColor.opacity(0.5))
-                )
-                .frame(width: rectangleLength, height: rectangleLength)
-            
-            ZStack {
-                Image(systemName: "face.smiling.fill")
-                    .resizable()
-                    .foregroundColor(currentColor.opacity(0.6))
-                    .frame(width: 40, height: 40)
-                Image(systemName: "face.smiling")
-                    .resizable()
-                    .foregroundColor(currentColor.opacity(1.0))
-                    .frame(width: 40, height: 40)
-            }
-            .onTapGesture {
-                print("hoge!")
-            }
-            
-            Image(systemName: "drop.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 24, height: 24)
-                .offset(x: -40, y: -30)
-                .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
-            
+            Frame()
+            CenterIcon()
+            TopLeftIcon()
         }
+    }
+    
+    @ViewBuilder
+    private func Frame() -> some View {
+        RoundedRectangle(cornerRadius: rectangleCornerRadius)
+            .stroke(currentColor, lineWidth: 4)
+            .background(
+                RoundedRectangle(cornerRadius: rectangleCornerRadius)
+                    .fill(currentColor.opacity(0.5))
+            )
+            .frame(width: rectangleLength, height: rectangleLength)
+    }
+    
+    @ViewBuilder
+    private func CenterIcon() -> some View {
+        ZStack {
+            Image(systemName: "face.smiling.fill")
+                .resizable()
+                .foregroundColor(currentColor.opacity(0.6))
+                .frame(width: 40, height: 40)
+            Image(systemName: "face.smiling")
+                .resizable()
+                .foregroundColor(currentColor.opacity(1.0))
+                .frame(width: 40, height: 40)
+        }
+    }
+    
+    @ViewBuilder
+    private func TopLeftIcon() -> some View {
+        Image(systemName: "drop.fill")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 24, height: 24)
+            .offset(x: -40, y: -30)
+            .foregroundColor(.white)
+            .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
     }
 }
 
