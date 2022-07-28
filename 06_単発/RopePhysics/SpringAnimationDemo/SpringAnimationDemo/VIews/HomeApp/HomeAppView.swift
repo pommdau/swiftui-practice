@@ -38,8 +38,8 @@ struct HomeAppView: View {
     ]
     @State private var draggingStates: DraggingStates = .none
     
-    @State private var rectangleUnitFrames = [CGRect]()
-    @State private var rectangleUnitStates = [false, false, false]
+    @State private var endUnitFrames = [CGRect]()
+    @State private var endUnitStates = [false, false, false]
     
     var attachedColor: Color {
         // TODO: anchorの状態を反映させる
@@ -70,24 +70,24 @@ struct HomeAppView: View {
             }
             .zIndex(1)
             VStack(spacing: 20) {
-                RectangleUnitView(color: attachedColor, active: $rectangleUnitStates[0])
+                RectangleUnitView(color: attachedColor, active: $endUnitStates[0])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    rectangleUnitFrames.insert(
+                                    endUnitFrames.insert(
                                         (geo.frame(in: .global)), at: 0
                                     )
                                 }
                         }
                     )
                 
-                RectangleUnitView(color: attachedColor, active: $rectangleUnitStates[1])
+                RectangleUnitView(color: attachedColor, active: $endUnitStates[1])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    rectangleUnitFrames.insert(
+                                    endUnitFrames.insert(
                                         (geo.frame(in: .global)), at: 0
                                     )
                                 }
@@ -95,12 +95,12 @@ struct HomeAppView: View {
                     )
                 
                 RectangleUnitView(color: attachedColor
-                                  , active: $rectangleUnitStates[2])
+                                  , active: $endUnitStates[2])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    rectangleUnitFrames.insert(
+                                    endUnitFrames.insert(
                                         (geo.frame(in: .global)), at: 0
                                     )
                                 }
@@ -126,16 +126,16 @@ struct HomeAppView: View {
                 }
                 
                 // Unitにつなぐかどうかの判定
-                if let match = rectangleUnitFrames.firstIndex(where: { frame in
+                if let match = endUnitFrames.firstIndex(where: { frame in
                     let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
                     let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
                                                             y: frame.midY - length / 2),
                                             size: CGSize(width: length, height: length))
                     return validFrame.contains(value.location)
                 }) {
-                    rectangleUnitStates[match] = true
-                    anchorFrames[0].origin = CGPoint(x: rectangleUnitFrames[match].midX,
-                                                     y: rectangleUnitFrames[match].midY)
+                    endUnitStates[match] = true
+                    anchorFrames[0].origin = CGPoint(x: endUnitFrames[match].midX,
+                                                     y: endUnitFrames[match].midY)
                     
                 } else {
                     deactivateSounds()
@@ -150,8 +150,8 @@ struct HomeAppView: View {
     }
     
     private func deactivateSounds() {
-        for index in rectangleUnitStates.indices {
-            rectangleUnitStates[index] = false
+        for index in endUnitStates.indices {
+            endUnitStates[index] = false
         }
     }
     
