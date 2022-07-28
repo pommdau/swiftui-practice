@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeAppView: View {
     
     @State private var anchorFrames: [CGRect] = [CGRect(x: 100, y: 100, width: 60, height: 60)]
+    @State private var anchorDraggingStates = [false]
     @State private var rectangleUnitFrames = [CGRect]()
     @State private var rectangleUnitStates = [false]
     
@@ -44,7 +45,19 @@ struct HomeAppView: View {
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged({ (value) in
-                anchorFrames[0].origin = value.location
+                
+                // Anchorのドラッグ確認
+//                anchorFrames[0].origin = value.location
+                if anchorDraggingStates[0] {
+                    anchorFrames[0].origin = value.location
+                } else if let match = anchorFrames.firstIndex(where: { frame in
+                    return frame.contains(value.location)
+                }) {
+                    anchorDraggingStates[match] = true
+                } else {
+
+                }
+
                 if let match = rectangleUnitFrames.firstIndex(where: { frame in
                     let length: CGFloat = 40  // ニコちゃんマークの大きさと一致させる
                     let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -59,7 +72,10 @@ struct HomeAppView: View {
             })
                 .onEnded({ (_) in
                     deactivateSounds()
-                    print(rectangleUnitFrames[0])
+                    
+                    for index in anchorDraggingStates.indices {
+                        anchorDraggingStates[index] = false
+                    }
                 })
         )
     }
