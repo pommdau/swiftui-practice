@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct SplitViewDemo: View {
+    
+    // MARK: - Properties
+    
+    @State private var fonts: [Font] = Font.loadBundleResourceFonts()
+        
+    // MARK: - Views
+    
     var body: some View {
         NavigationView {
             List {
@@ -45,10 +52,17 @@ struct SplitViewDemo: View {
                         Text("Font2")
                     }
                     
-                }                
+                    NavigationLink {
+                        Image(systemName: "key.viewfinder")
+                            .resizable()
+                            .frame(width: 300, height: 300)
+                    } label: {
+                        Text("Font2")
+                    }
+                    
+                }
             }
         }
-        .padding(0.5)
     }
 }
 
