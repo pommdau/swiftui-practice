@@ -35,7 +35,7 @@ struct Font {
 extension Font {
     
     static func loadBundleResourceFonts() -> [Font] {
-        let fontExtensions: [String] = ["otf", "ttf", "otc", "ttc"]
+        let fontExtensions: [String] = ["otf", "ttf", "ttc"]
         var fontURLs = [URL]()
         fontExtensions.forEach { fontExtension in
             if let urls = Bundle.main.urls(forResourcesWithExtension: fontExtension, subdirectory: nil) {
