@@ -34,6 +34,14 @@ struct HomeAppView: View {
         let id = UUID().uuidString
         var frame: CGRect = .zero
         var isAttached: Bool = false
+        
+        var validFrame: CGRect {
+            let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
+            let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
+                                                    y: frame.midY - length / 2),
+                                    size: CGSize(width: length, height: length))
+            return validFrame
+        }
     }
     
     @State private var startAnchorState: StartAnchorState = .attachedToUnit1
@@ -94,11 +102,7 @@ struct HomeAppView: View {
                 
                 // Unitにつなぐかどうかの判定
                 if let match = endUnitStates.firstIndex(where: { endUnitState in
-                    let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
-                    let validFrame = CGRect(origin: CGPoint(x: endUnitState.frame.midX - length / 2,
-                                                            y: endUnitState.frame.midY - length / 2),
-                                            size: CGSize(width: length, height: length))
-                    return validFrame.contains(value.location)
+                    return endUnitState.validFrame.contains(value.location)
                 }) {
                     endUnitStates[match].isAttached = true
                     anchorFrames[0].origin = CGPoint(x: endUnitStates[match].frame.midX,
