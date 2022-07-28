@@ -18,7 +18,10 @@ struct HomeAppView: View {
         case draggingAnchor2
     }
     
-    @State private var anchorFrames: [CGRect] = [CGRect(x: 100, y: 100, width: 60, height: 60)]
+    @State private var anchorFrames: [CGRect] = [
+        CGRect(x: 100, y: 100, width: 60, height: 60),
+        CGRect(x: 100, y: 200, width: 60, height: 60),
+    ]
     @State private var draggingStates: DraggingStates = .none
     @State private var rectangleUnitFrames = [CGRect]()
     @State private var rectangleUnitStates = [false]
@@ -27,16 +30,16 @@ struct HomeAppView: View {
                  
         ZStack {
             GeometryReader { geo in
+                // positionは親ビューの相対位置であることに注意
                 Circle()
                     .frame(width: 60, height: 60)
-                // positionは親ビューの相対位置であることに注意
                     .position(CGPoint(
                         x: anchorFrames[0].origin.x - geo.frame(in: .global).origin.x,
                         y: anchorFrames[0].origin.y - geo.frame(in: .global).origin.y)
                     )
                     .foregroundColor(.orange)
             }
-            
+            .zIndex(1)
             HStack(spacing: 20) {
                 RectangleUnitView(color: .blue, active: $rectangleUnitStates[0])
                     .overlay(
@@ -80,6 +83,9 @@ struct HomeAppView: View {
                     return validFrame.contains(value.location)
                 }) {
                     rectangleUnitStates[match] = true
+                    anchorFrames[0].origin = CGPoint(x: rectangleUnitFrames[match].midX,
+                                                     y: rectangleUnitFrames[match].midY)
+                    
                 } else {
                     deactivateSounds()
                 }                
