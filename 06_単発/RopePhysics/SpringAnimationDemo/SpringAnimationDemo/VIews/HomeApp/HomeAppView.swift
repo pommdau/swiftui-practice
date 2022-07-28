@@ -10,7 +10,14 @@ import SwiftUI
 
 struct HomeAppView: View {
     
-    enum AnchorState {
+    enum StartAnchorState {
+        case none
+        case attachedToUnit1
+        case attachedToUnit2
+        case attachedToUnit3
+    }
+    
+    enum EndAnchorState {
         case none
         case attachedToUnit1
         case attachedToUnit2
@@ -23,13 +30,30 @@ struct HomeAppView: View {
         case draggingAnchor2
     }
     
+    @State private var startAnchorState: StartAnchorState = .attachedToUnit1
+    
     @State private var anchorFrames: [CGRect] = [
         CGRect(x: 100, y: 100, width: 60, height: 60),
         CGRect(x: 100, y: 200, width: 60, height: 60),
     ]
     @State private var draggingStates: DraggingStates = .none
+    
     @State private var rectangleUnitFrames = [CGRect]()
     @State private var rectangleUnitStates = [false, false, false]
+    
+    var attachedColor: Color {
+        // TODO: anchorの状態を反映させる
+        switch startAnchorState {
+        case .none:
+            return .gray
+        case .attachedToUnit1:
+            return .blue
+        case .attachedToUnit2:
+            return .yellow
+        case .attachedToUnit3:
+            return .red
+        }
+    }
     
     var body: some View {
                  
@@ -46,7 +70,7 @@ struct HomeAppView: View {
             }
             .zIndex(1)
             VStack(spacing: 20) {
-                RectangleUnitView(color: .blue, active: $rectangleUnitStates[0])
+                RectangleUnitView(color: attachedColor, active: $rectangleUnitStates[0])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
@@ -58,7 +82,7 @@ struct HomeAppView: View {
                         }
                     )
                 
-                RectangleUnitView(color: .red, active: $rectangleUnitStates[1])
+                RectangleUnitView(color: attachedColor, active: $rectangleUnitStates[1])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
@@ -70,7 +94,8 @@ struct HomeAppView: View {
                         }
                     )
                 
-                RectangleUnitView(color: .yellow, active: $rectangleUnitStates[2])
+                RectangleUnitView(color: attachedColor
+                                  , active: $rectangleUnitStates[2])
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
