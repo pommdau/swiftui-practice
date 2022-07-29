@@ -21,10 +21,12 @@ struct HomeAppView: View {
         }
         
         let id = UUID().uuidString
+        var fillColor: Color = .fillAnchor
+        var strokeColor: Color = .strokeAnchor
+        
         var draggingState: DraggingState = .none
         var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
         var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
-        
         var attachedStartUnitIndex = -1
         var attachedEndUnitIndex = -1
         
@@ -34,12 +36,12 @@ struct HomeAppView: View {
     }
     
     // TODO: UnitStateのマージ
-    struct StartUnitState {
+    struct StartUnit {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var isAttached: Bool = false
-        var color: Color  // ONになったときの色
-        var icon: String
+        var fillColor: Color
+        var strokeColor: Color
+        let icon: String
         
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
@@ -50,11 +52,15 @@ struct HomeAppView: View {
         }
     }
     
-    struct EndUnitState {
+    struct EndUnit {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var isAttached: Bool = false
-        var icon: String        
+        var isGrowing: Bool = false
+        
+        var fillColor: Color
+        var strokeColor: Color
+        var icon: String
+                
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -65,21 +71,33 @@ struct HomeAppView: View {
     }
     
     @State private var anchorState = AnchorsState()
-    @State private var startUnitStates = [StartUnitState(color: .red, icon: "drop.fill"),
-                                          StartUnitState(color: .blue, icon: "flame.fill"),
-                                          StartUnitState(color: .yellow, icon: "bolt.fill")]
-    @State private var endUnitStates = [EndUnitState(icon: "lightbulb.fill"),
-                                        EndUnitState(icon: "umbrella.fill"),
-                                        EndUnitState(icon: "macpro.gen3.fill")]
+    @State private var startUnitStates = [
+        StartUnit(fillColor: .fillUnit1,
+                  strokeColor: .strokeUnit1,
+                  icon: "drop.fill"),
+        StartUnit(fillColor: .fillUnit2,
+                  strokeColor: .strokeUnit2,
+                  icon: "flame.fill"),
+        StartUnit(fillColor: .fillUnit3,
+                  strokeColor: .strokeUnit3,
+                  icon: "bolt.fill")
+    ]
+
+    
+    @State private var endUnitStates = [
+        EndUnit(fillColor: .fillUnit1,
+                strokeColor: .strokeUnit1,
+                icon: "lightbulb.fill"),
+        EndUnit(fillColor: .fillUnit2,
+                strokeColor: .strokeUnit2,
+                icon: "umbrella.fill"),
+        EndUnit(fillColor: .fillUnit3,
+                strokeColor: .strokeUnit3,
+                icon: "macpro.gen3.fill"),
+    ]
     
     var attachedColor: Color {
-        let startUnitIndex = anchorState.attachedStartUnitIndex
-        switch startUnitIndex {
-        case 0, 1, 2:
-            return startUnitStates[startUnitIndex].color
-        default:
-            return .clear
-        }
+        return .purple
     }
     
     var body: some View {
@@ -89,8 +107,8 @@ struct HomeAppView: View {
             GeometryReader { geo in
                 // positionは親ビューの相対位置であることに注意
                 Circle()
-                    .stroke(Color.anchorOutline, lineWidth: 4)
-                    .background(Circle().foregroundColor(.anchorInner))
+                    .stroke(anchorState.strokeColor, lineWidth: 4)
+                    .background(Circle().foregroundColor(anchorState.fillColor))
                     .frame(width: AnchorsState.anchorLength,
                            height: AnchorsState.anchorLength)
                     .position(CGPoint(
@@ -100,8 +118,8 @@ struct HomeAppView: View {
                     
                 
                 Circle()
-                    .stroke(Color.anchorOutline, lineWidth: 4)
-                    .background(Circle().foregroundColor(.anchorInner))
+                    .stroke(anchorState.strokeColor, lineWidth: 4)
+                    .background(Circle().foregroundColor(anchorState.fillColor))
                     .frame(width: AnchorsState.anchorLength,
                            height: AnchorsState.anchorLength)
                     .position(CGPoint(
@@ -140,9 +158,9 @@ struct HomeAppView: View {
                         return startUnitState.validFrame.contains(value.location)
                     }) {
                         anchorState.attachedStartUnitIndex = match
-                        anchorState.startAnchorFrame.origin = CGPoint(x: startUnitStates[match].frame.midX,
-                                                                    y: startUnitStates[match].frame.midY)
-                        startUnitStates[match].isAttached = true
+                        anchorState.startAnchorFrame.origin =
+                        CGPoint(x: startUnitStates[match].frame.midX,
+                                y: startUnitStates[match].frame.midY)
                     } else {
                         deactivateStartUnits()
                     }
@@ -152,9 +170,9 @@ struct HomeAppView: View {
                         return endUnitState.validFrame.contains(value.location)
                     }) {
                         anchorState.attachedEndUnitIndex = match
-                        anchorState.endAnchorFrame.origin = CGPoint(x: endUnitStates[match].frame.midX,
-                                                                    y: endUnitStates[match].frame.midY)
-                        endUnitStates[match].isAttached = true
+                        anchorState.endAnchorFrame.origin =
+                        CGPoint(x: endUnitStates[match].frame.midX,
+                                y: endUnitStates[match].frame.midY)
                     } else {
                         deactivateEndUnits()
                     }
@@ -168,24 +186,17 @@ struct HomeAppView: View {
     
     private func deactivateStartUnits() {
         anchorState.attachedStartUnitIndex = -1
-        for index in startUnitStates.indices {
-            startUnitStates[index].isAttached = false
-        }
-
     }
     
     private func deactivateEndUnits() {
         anchorState.attachedEndUnitIndex = -1
-        for index in startUnitStates.indices {
-            endUnitStates[index].isAttached = false
-        }
     }
     
     @ViewBuilder
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: startUnitStates[index].color,
+                RectangleUnitView(color: startUnitStates[index].fillColor,
                                   active: true,
                                   icon: startUnitStates[index].icon)
                     .overlay(
@@ -205,7 +216,7 @@ struct HomeAppView: View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
                 RectangleUnitView(color: attachedColor,
-                                  active: anchorState.isConnected && endUnitStates[index].isAttached,
+                                  active: anchorState.isConnected,
                                   icon: endUnitStates[index].icon)
                     .overlay(
                         GeometryReader { geo in
