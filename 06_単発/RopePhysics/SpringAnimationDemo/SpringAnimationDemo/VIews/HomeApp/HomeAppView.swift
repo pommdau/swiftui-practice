@@ -12,6 +12,8 @@ struct HomeAppView: View {
             
     struct AnchorsState {
         
+        static let anchorLength: CGFloat = 44
+        
         enum DraggingState {
             case none
             case draggingStartAnchor
@@ -87,20 +89,25 @@ struct HomeAppView: View {
             GeometryReader { geo in
                 // positionは親ビューの相対位置であることに注意
                 Circle()
-                    .frame(width: 60, height: 60)
+                    .stroke(Color.anchorOutline, lineWidth: 4)
+                    .background(Circle().foregroundColor(.anchorInner))
+                    .frame(width: AnchorsState.anchorLength,
+                           height: AnchorsState.anchorLength)
                     .position(CGPoint(
                         x: anchorState.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
-                    .foregroundColor(.black)
+                    
                 
                 Circle()
-                    .frame(width: 60, height: 60)
+                    .stroke(Color.anchorOutline, lineWidth: 4)
+                    .background(Circle().foregroundColor(.anchorInner))
+                    .frame(width: AnchorsState.anchorLength,
+                           height: AnchorsState.anchorLength)
                     .position(CGPoint(
                         x: anchorState.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
-                    .foregroundColor(.orange)
             }
             .zIndex(1)
             

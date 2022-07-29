@@ -17,7 +17,7 @@ class PhysicsManager: ObservableObject {
     }
     
     struct Spring {
-        let length: Double = 500
+        let length: Double = 300
         let k: Double = -200  // stiffness: 20
         let d: Double = -10  // damping: 減衰振動
     }
