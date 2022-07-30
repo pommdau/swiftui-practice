@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA25397F28922B7C009577F8 /* RectangleUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25397E28922B7C009577F8 /* RectangleUnitView.swift */; };
-		DA32384228939F16004E5260 /* Color+myColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32384128939F16004E5260 /* Color+myColor.swift */; };
+		DA32384228939F16004E5260 /* UnitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32384128939F16004E5260 /* UnitColors.swift */; };
 		DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */; };
 		DA721C202890249B002D55D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA721C1F2890249B002D55D1 /* ContentView.swift */; };
 		DA721C222890249C002D55D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA721C212890249C002D55D1 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		DA25397E28922B7C009577F8 /* RectangleUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleUnitView.swift; sourceTree = "<group>"; };
-		DA32384128939F16004E5260 /* Color+myColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+myColor.swift"; sourceTree = "<group>"; };
+		DA32384128939F16004E5260 /* UnitColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitColors.swift; sourceTree = "<group>"; };
 		DA721C1A2890249B002D55D1 /* SpringAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA721C1D2890249B002D55D1 /* SpringAnimationDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnimationDemoApp.swift; sourceTree = "<group>"; };
 		DA721C1F2890249B002D55D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				DA721C2F2890CFB9002D55D1 /* View+TouchAction.swift */,
-				DA32384128939F16004E5260 /* Color+myColor.swift */,
+				DA32384128939F16004E5260 /* UnitColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 				DAF3C5702891824800089EE5 /* GeometryReaderTestView.swift in Sources */,
 				DAF3C57428921AC700089EE5 /* MultiDragDemoView.swift in Sources */,
 				DA721C1E2890249B002D55D1 /* SpringAnimationDemoApp.swift in Sources */,
-				DA32384228939F16004E5260 /* Color+myColor.swift in Sources */,
+				DA32384228939F16004E5260 /* UnitColors.swift in Sources */,
 				DA25397F28922B7C009577F8 /* RectangleUnitView.swift in Sources */,
 				DAF3C572289198C900089EE5 /* DragDemoView.swift in Sources */,
 				DA7C98FE289150260094B00F /* GlowEffectView.swift in Sources */,
