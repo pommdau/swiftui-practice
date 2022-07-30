@@ -11,13 +11,9 @@ struct RectangleUnitView: View {
     
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
-    let color: Color
+    let unitColors: UnitColors
     let active: Bool
     let icon: String
-    
-    var currentColor: Color {
-        active ? color : .gray
-    }
     
     var body: some View {
         ZStack {
@@ -30,12 +26,21 @@ struct RectangleUnitView: View {
     @ViewBuilder
     private func Frame() -> some View {
         RoundedRectangle(cornerRadius: rectangleCornerRadius)
-            .stroke(currentColor, lineWidth: 4)
+            .stroke(unitColors.frameStroke, lineWidth: 2)
             .background(
                 RoundedRectangle(cornerRadius: rectangleCornerRadius)
-                    .fill(currentColor.opacity(0.5))
+                    .fill(unitColors.frameFill)
             )
             .frame(width: rectangleLength, height: rectangleLength)
+        
+        // Shadow
+        // 直接.shadowをつけるとstrokeが浮かび上がってしまうため
+        RoundedRectangle(cornerRadius: rectangleCornerRadius)
+            .foregroundColor(.black.opacity(0.3))
+            .frame(width: rectangleLength, height: rectangleLength)
+            .offset(x: 0, y: 4)
+            .blur(radius: 4)
+            .zIndex(-1)
     }
     
     @ViewBuilder
@@ -43,11 +48,11 @@ struct RectangleUnitView: View {
         ZStack {
             Image(systemName: "face.smiling.fill")
                 .resizable()
-                .foregroundColor(currentColor.opacity(0.6))
+                .foregroundColor(unitColors.iconFill)
                 .frame(width: 40, height: 40)
             Image(systemName: "face.smiling")
                 .resizable()
-                .foregroundColor(currentColor.opacity(1.0))
+                .foregroundColor(unitColors.iconStroke)
                 .frame(width: 40, height: 40)
         }
     }
@@ -57,8 +62,8 @@ struct RectangleUnitView: View {
         Image(systemName: icon)
             .resizable()
             .scaledToFit()
-            .frame(width: 24, height: 24)
-            .offset(x: -40, y: -30)
+            .frame(width: 20, height: 20)
+            .offset(x: -36, y: -36)
             .foregroundColor(.white)
             .shadow(color: .black.opacity(0.3), radius: 2, x: 2, y: 2)
     }
@@ -66,7 +71,7 @@ struct RectangleUnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleUnitView(color: .blue, active: true, icon: "drop")
+        RectangleUnitView(unitColors: .unit1, active: true, icon: "drop.fill")
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }
