@@ -168,7 +168,6 @@ struct HomeAppView: View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
                 RectangleUnitView(unitColors: startUnits[index].colors,
-                                  active: true,
                                   icon: startUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in
@@ -187,7 +186,6 @@ struct HomeAppView: View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
                 RectangleUnitView(unitColors: .offUnit,
-                                  active: anchorState.isConnected,
                                   icon: endUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in

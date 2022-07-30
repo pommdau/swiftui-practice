@@ -12,7 +12,6 @@ struct RectangleUnitView: View {
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
     let unitColors: UnitColors
-    let active: Bool
     let icon: String
     
     var body: some View {
@@ -71,7 +70,7 @@ struct RectangleUnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleUnitView(unitColors: .unit1, active: true, icon: "drop.fill")
+        RectangleUnitView(unitColors: .unit1, icon: "drop.fill")
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }
