@@ -180,7 +180,7 @@ struct HomeAppView: View {
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
-                RectangleUnitView(unitColors: startUnits[index].colors,
+                UnitView(unitColors: startUnits[index].colors,
                                   icon: startUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in
@@ -198,7 +198,7 @@ struct HomeAppView: View {
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
-                RectangleUnitView(unitColors: index == anchorManager.attachedEndUnitIndex ? currentUnitColors : .offUnit,
+                UnitView(unitColors: index == anchorManager.attachedEndUnitIndex ? currentUnitColors : .offUnit,
                                   icon: endUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RectangleUnitView: View {
+struct UnitView: View {
     
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
@@ -70,7 +70,7 @@ struct RectangleUnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleUnitView(unitColors: .unit1, icon: "drop.fill")
+        UnitView(unitColors: .unit1, icon: "drop.fill")
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }
