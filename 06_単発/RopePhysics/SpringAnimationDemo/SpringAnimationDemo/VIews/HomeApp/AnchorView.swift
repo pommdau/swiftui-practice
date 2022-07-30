@@ -1,5 +1,5 @@
 //
-//  Anchor.swift
+//  AnchorView.swift
 //  SpringAnimationDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/07/30.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Anchor: View {
+struct AnchorView: View {
     
     let colors: UnitColors
     
@@ -20,9 +20,9 @@ struct Anchor: View {
     }
 }
 
-struct Anchor_Previews: PreviewProvider {
+struct AnchorView_Previews: PreviewProvider {
     static var previews: some View {
-        Anchor(colors: .offUnit)
+        AnchorView(colors: .offUnit)
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }

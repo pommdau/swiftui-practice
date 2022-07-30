@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeAppView: View {
             
-    struct AnchorsState {
+    struct AnchorManager {
                 
         enum DraggingState {
             case none
@@ -48,7 +48,6 @@ struct HomeAppView: View {
     struct EndUnit {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var isGrowing: Bool = false
         var icon: String
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
@@ -59,8 +58,9 @@ struct HomeAppView: View {
         }
     }
     
-    @State private var anchorState = AnchorsState()
-    @State private var startUnitStates = [
+    @State private var anchorState = AnchorManager()
+    
+    @State private var startUnits = [
         StartUnit(colors: .unit1,
                   icon: "drop.fill"),
         StartUnit(colors: .unit2,
@@ -70,7 +70,7 @@ struct HomeAppView: View {
     ]
 
     
-    @State private var endUnitStates = [
+    @State private var endUnits = [
         EndUnit(icon: "lightbulb.fill"),
         EndUnit(icon: "umbrella.fill"),
         EndUnit(icon: "macpro.gen3.fill")
@@ -86,13 +86,13 @@ struct HomeAppView: View {
             GeometryReader { geo in
                 // TODO: Anchorの切り出し
                 // positionは親ビューの相対位置であることに注意
-                Anchor(colors: .offUnit)
+                AnchorView(colors: .offUnit)
                     .position(CGPoint(
                         x: anchorState.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
                                     
-                Anchor(colors: .offUnit)
+                AnchorView(colors: .offUnit)
                     .position(CGPoint(
                         x: anchorState.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
@@ -125,25 +125,25 @@ struct HomeAppView: View {
                 case .none:
                     break
                 case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
-                    if let match = startUnitStates.firstIndex(where: { startUnitState in
+                    if let match = startUnits.firstIndex(where: { startUnitState in
                         return startUnitState.validFrame.contains(value.location)
                     }) {
                         anchorState.attachedStartUnitIndex = match
                         anchorState.startAnchorFrame.origin =
-                        CGPoint(x: startUnitStates[match].frame.midX,
-                                y: startUnitStates[match].frame.midY)
+                        CGPoint(x: startUnits[match].frame.midX,
+                                y: startUnits[match].frame.midY)
                     } else {
                         deactivateStartUnits()
                     }
                 
                 case .draggingEndAnchor:  // EndUnitにつなぐかどうかの判定
-                    if let match = endUnitStates.firstIndex(where: { endUnitState in
+                    if let match = endUnits.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
                     }) {
                         anchorState.attachedEndUnitIndex = match
                         anchorState.endAnchorFrame.origin =
-                        CGPoint(x: endUnitStates[match].frame.midX,
-                                y: endUnitStates[match].frame.midY)
+                        CGPoint(x: endUnits[match].frame.midX,
+                                y: endUnits[match].frame.midY)
                     } else {
                         deactivateEndUnits()
                     }
@@ -166,15 +166,15 @@ struct HomeAppView: View {
     @ViewBuilder
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
-            ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(unitColors: startUnitStates[index].colors,
+            ForEach(0 ..< endUnits.count, id: \.self) { index in
+                RectangleUnitView(unitColors: startUnits[index].colors,
                                   active: true,
-                                  icon: startUnitStates[index].icon)
+                                  icon: startUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    startUnitStates[index].frame = geo.frame(in: .global)
+                                    startUnits[index].frame = geo.frame(in: .global)
                                 }
                         }
                     )
@@ -185,15 +185,15 @@ struct HomeAppView: View {
     @ViewBuilder
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
-            ForEach(0 ..< endUnitStates.count, id: \.self) { index in
+            ForEach(0 ..< endUnits.count, id: \.self) { index in
                 RectangleUnitView(unitColors: .offUnit,
                                   active: anchorState.isConnected,
-                                  icon: endUnitStates[index].icon)
+                                  icon: endUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in
                             Color.clear
                                 .onAppear {
-                                    endUnitStates[index].frame = geo.frame(in: .global)
+                                    endUnits[index].frame = geo.frame(in: .global)
                                 }
                         }
                     )
