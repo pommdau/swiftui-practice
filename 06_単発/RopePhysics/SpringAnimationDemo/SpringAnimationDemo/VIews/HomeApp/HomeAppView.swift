@@ -39,8 +39,7 @@ struct HomeAppView: View {
     struct StartUnit {
         let id = UUID().uuidString
         var frame: CGRect = .zero
-        var fillColor: Color
-        var strokeColor: Color
+        let unitColor: UnitColor
         let icon: String
         
         var validFrame: CGRect {
@@ -72,14 +71,11 @@ struct HomeAppView: View {
     
     @State private var anchorState = AnchorsState()
     @State private var startUnitStates = [
-        StartUnit(fillColor: .fillUnit1,
-                  strokeColor: .strokeUnit1,
+        StartUnit(unitColor: .unit1,
                   icon: "drop.fill"),
-        StartUnit(fillColor: .fillUnit2,
-                  strokeColor: .strokeUnit2,
+        StartUnit(unitColor: .unit1,
                   icon: "flame.fill"),
-        StartUnit(fillColor: .fillUnit3,
-                  strokeColor: .strokeUnit3,
+        StartUnit(unitColor: .unit1,
                   icon: "bolt.fill")
     ]
 
@@ -196,7 +192,7 @@ struct HomeAppView: View {
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(color: startUnitStates[index].fillColor,
+                RectangleUnitView(color: startUnitStates[index].unitColor.frameFill,
                                   active: true,
                                   icon: startUnitStates[index].icon)
                     .overlay(

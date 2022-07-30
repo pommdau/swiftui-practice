@@ -7,7 +7,21 @@
 
 import SwiftUI
 
-extension Color {
+struct UnitColor {
+    let frameStroke: Color
+    let frameFill: Color
+    let iconStroke: Color
+    let iconFill: Color
+}
+
+extension UnitColor {
+    static let unit1 = UnitColor(frameStroke: Color(red: 0.244, green: 0.551, blue: 0.950),
+                                 frameFill: Color(red: 0.373, green: 0.659, blue: 0.986),
+                                 iconStroke: Color(red: 0.109, green: 0.271, blue: 0.730),
+                                 iconFill: Color(red: 0.152, green: 0.377, blue: 0.903))
+}
+
+extension Color {        
     static let fillAnchor = Color(uiColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     static let strokeAnchor = Color(uiColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
     static let fillUnit1 = Color(uiColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
