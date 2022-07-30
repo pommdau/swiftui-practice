@@ -10,9 +10,7 @@ import SwiftUI
 struct HomeAppView: View {
             
     struct AnchorsState {
-        
-        static let anchorLength: CGFloat = 44
-        
+                
         enum DraggingState {
             case none
             case draggingStartAnchor
@@ -38,7 +36,6 @@ struct HomeAppView: View {
         var frame: CGRect = .zero
         let colors: UnitColors
         let icon: String
-        
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -87,26 +84,16 @@ struct HomeAppView: View {
     var body: some View {
         
         ZStack {
-            
             GeometryReader { geo in
                 // TODO: Anchorの切り出し
                 // positionは親ビューの相対位置であることに注意
-                Circle()
-                    .stroke(anchorState.colors.iconStroke, lineWidth: 4)
-                    .background(Circle().foregroundColor(anchorState.colors.iconFill))
-                    .frame(width: AnchorsState.anchorLength,
-                           height: AnchorsState.anchorLength)
+                Anchor(colors: .offUnit)
                     .position(CGPoint(
                         x: anchorState.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
-                    
-                
-                Circle()
-                    .stroke(anchorState.colors.iconStroke, lineWidth: 4)
-                    .background(Circle().foregroundColor(anchorState.colors.iconFill))
-                    .frame(width: AnchorsState.anchorLength,
-                           height: AnchorsState.anchorLength)
+                                    
+                Anchor(colors: .offUnit)
                     .position(CGPoint(
                         x: anchorState.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
                         y: anchorState.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
@@ -176,7 +163,7 @@ struct HomeAppView: View {
     private func deactivateEndUnits() {
         anchorState.attachedEndUnitIndex = -1
     }
-    
+        
     @ViewBuilder
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
@@ -214,7 +201,6 @@ struct HomeAppView: View {
             }
         }
     }
-    
 }
 
 
