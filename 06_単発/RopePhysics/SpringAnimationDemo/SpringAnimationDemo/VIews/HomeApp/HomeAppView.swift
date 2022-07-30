@@ -50,7 +50,6 @@ struct HomeAppView: View {
         var frame: CGRect = .zero
         var isGrowing: Bool = false
         var icon: String
-                
         var validFrame: CGRect {
             let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ
             let validFrame = CGRect(origin: CGPoint(x: frame.midX - length / 2,
@@ -64,9 +63,9 @@ struct HomeAppView: View {
     @State private var startUnitStates = [
         StartUnit(colors: .unit1,
                   icon: "drop.fill"),
-        StartUnit(colors: .unit1,
+        StartUnit(colors: .unit2,
                   icon: "flame.fill"),
-        StartUnit(colors: .unit1,
+        StartUnit(colors: .unit3,
                   icon: "bolt.fill")
     ]
 
@@ -168,7 +167,7 @@ struct HomeAppView: View {
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnitStates.count, id: \.self) { index in
-                RectangleUnitView(unitColors: .unit1,
+                RectangleUnitView(unitColors: startUnitStates[index].colors,
                                   active: true,
                                   icon: startUnitStates[index].icon)
                     .overlay(
