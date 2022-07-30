@@ -58,7 +58,7 @@ struct HomeAppView: View {
         }
     }
     
-    @State private var anchorState = AnchorManager()
+    @State private var anchorManager = AnchorManager()
     
     @State private var startUnits = [
         StartUnit(colors: .unit1,
@@ -68,7 +68,6 @@ struct HomeAppView: View {
         StartUnit(colors: .unit3,
                   icon: "bolt.fill")
     ]
-
     
     @State private var endUnits = [
         EndUnit(icon: "lightbulb.fill"),
@@ -76,8 +75,22 @@ struct HomeAppView: View {
         EndUnit(icon: "macpro.gen3.fill")
     ]
     
-    var attachedColor: Color {
-        return .purple
+    var currentUnitColors: UnitColors {
+        guard anchorManager.isConnected else {
+            return .offUnit
+        }
+        
+        switch anchorManager.attachedStartUnitIndex {
+        case 0:
+            return .unit1
+        case 1:
+            return .unit2
+        case 2:
+            return .unit3
+        default:
+            return .offUnit
+        }
+        
     }
     
     var body: some View {
@@ -88,14 +101,14 @@ struct HomeAppView: View {
                 // positionは親ビューの相対位置であることに注意
                 AnchorView(colors: .offUnit)
                     .position(CGPoint(
-                        x: anchorState.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
-                        y: anchorState.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
+                        x: anchorManager.startAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
+                        y: anchorManager.startAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
                                     
                 AnchorView(colors: .offUnit)
                     .position(CGPoint(
-                        x: anchorState.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
-                        y: anchorState.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
+                        x: anchorManager.endAnchorFrame.origin.x - geo.frame(in: .global).origin.x,
+                        y: anchorManager.endAnchorFrame.origin.y - geo.frame(in: .global).origin.y)
                     )
             }
             .zIndex(1)
@@ -108,28 +121,28 @@ struct HomeAppView: View {
         .gesture(DragGesture(minimumDistance: 4, coordinateSpace: .global)
             .onChanged({ (value) in
                 // Anchorのドラッグ処理
-                switch anchorState.draggingState {
+                switch anchorManager.draggingState {
                 case .none:
-                    if anchorState.startAnchorFrame.contains(value.location) {
-                        anchorState.draggingState = .draggingStartAnchor
-                    } else if anchorState.endAnchorFrame.contains(value.location) {
-                        anchorState.draggingState = .draggingEndAnchor
+                    if anchorManager.startAnchorFrame.contains(value.location) {
+                        anchorManager.draggingState = .draggingStartAnchor
+                    } else if anchorManager.endAnchorFrame.contains(value.location) {
+                        anchorManager.draggingState = .draggingEndAnchor
                     }
                 case .draggingStartAnchor:
-                    anchorState.startAnchorFrame.origin = value.location
+                    anchorManager.startAnchorFrame.origin = value.location
                 case .draggingEndAnchor:
-                    anchorState.endAnchorFrame.origin = value.location
+                    anchorManager.endAnchorFrame.origin = value.location
                 }
                                 
-                switch anchorState.draggingState {
+                switch anchorManager.draggingState {
                 case .none:
                     break
                 case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
                     if let match = startUnits.firstIndex(where: { startUnitState in
                         return startUnitState.validFrame.contains(value.location)
                     }) {
-                        anchorState.attachedStartUnitIndex = match
-                        anchorState.startAnchorFrame.origin =
+                        anchorManager.attachedStartUnitIndex = match
+                        anchorManager.startAnchorFrame.origin =
                         CGPoint(x: startUnits[match].frame.midX,
                                 y: startUnits[match].frame.midY)
                     } else {
@@ -140,8 +153,8 @@ struct HomeAppView: View {
                     if let match = endUnits.firstIndex(where: { endUnitState in
                         return endUnitState.validFrame.contains(value.location)
                     }) {
-                        anchorState.attachedEndUnitIndex = match
-                        anchorState.endAnchorFrame.origin =
+                        anchorManager.attachedEndUnitIndex = match
+                        anchorManager.endAnchorFrame.origin =
                         CGPoint(x: endUnits[match].frame.midX,
                                 y: endUnits[match].frame.midY)
                     } else {
@@ -150,17 +163,17 @@ struct HomeAppView: View {
                 }
             })
                 .onEnded({ (_) in
-                    anchorState.draggingState = .none
+                    anchorManager.draggingState = .none
                 })
         )
     }
     
     private func deactivateStartUnits() {
-        anchorState.attachedStartUnitIndex = -1
+        anchorManager.attachedStartUnitIndex = -1
     }
     
     private func deactivateEndUnits() {
-        anchorState.attachedEndUnitIndex = -1
+        anchorManager.attachedEndUnitIndex = -1
     }
         
     @ViewBuilder
@@ -185,7 +198,7 @@ struct HomeAppView: View {
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
-                RectangleUnitView(unitColors: .offUnit,
+                RectangleUnitView(unitColors: index == anchorManager.attachedEndUnitIndex ? currentUnitColors : .offUnit,
                                   icon: endUnits[index].icon)
                     .overlay(
                         GeometryReader { geo in
