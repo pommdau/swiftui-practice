@@ -15,8 +15,7 @@ struct AnchorView: View {
         Circle()
             .stroke(colors .frameStroke, lineWidth: 4)
             .background(Circle().foregroundColor(colors.frameFill))
-            .frame(width: 44,
-                   height: 44)
+            .frame(width: 44, height: 44)
     }
 }
 

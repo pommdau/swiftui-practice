@@ -94,7 +94,7 @@ struct RopeView: View {
             }
         }
     }
-        
+    
 }
 
 struct _RopeView_Previews :View {
