@@ -12,12 +12,6 @@ struct RopeView: View {
     private let lineWidth: CGFloat = 8
     private let dashPattern: [CGFloat] = [12, 14]
     
-//    /// 破線のスタート地点を変更する為のプロパティ
-//    @State private var dashPhase: CGFloat = 0
-//    /// Timerのカウントを保持するプロパティ
-//    @State private var timerCount: CGFloat = 0
-//    /// 0.1秒毎に`dashPhase`を変更処理を実行する為のTimer
-////    private let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     @State private var marching = false
     
     let color: Color
@@ -71,14 +65,17 @@ struct RopeView: View {
                         ? -dashPattern.reduce(0){$0 + $1}
                         : dashPattern.reduce(0){$0 + $1}))
                     .foregroundColor(color)
+                    .onAppear {
+                        marching = false
+                        withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                            marching.toggle()
+                            print(" marching.toggle()")
+                        }
+                    }
             }
             
         }
-        .onAppear {
-            withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
-                marching.toggle()
-            }
-        }
+
         .background(.black.opacity(0.5))
     }
     
