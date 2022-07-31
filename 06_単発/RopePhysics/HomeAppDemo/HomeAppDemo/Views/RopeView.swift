@@ -11,7 +11,7 @@ struct RopeView: View {
     
     // MARK: - Properties
         
-    let color: Color
+    let colors: UnitColors
     @Binding var isGlowing: Bool
     @State private var marching = false
     private let lineWidth: CGFloat = 4
@@ -21,14 +21,15 @@ struct RopeView: View {
     
     // MARK: - LifeCycle
     
-    init(color: Color, isGlowing: Binding<Bool>) {
-        self.color = color
+    init(colors: UnitColors, isGlowing: Binding<Bool>) {
+        self.colors = colors
         self._isGlowing = isGlowing
     }
         
     // MARK: - View
 
     var body: some View {
+        AnchorView(colors: isGlowing ? colors : .offUnit)
         TimelineView(.periodic(from: Date(), by: 1/60)) { context in
             Rope()
         }
@@ -36,15 +37,13 @@ struct RopeView: View {
     
     // MARK: @ViewBuilder
     
-    
-    
     @ViewBuilder
     private func Rope() -> some View {
         
         ZStack {
             // ロープの外枠
             RopePath
-                .stroke(isGlowing ? color : Color(uiColor: #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)),
+                .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,
                         lineWidth: lineWidth + 4)
                 .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
             
@@ -69,7 +68,7 @@ struct RopeView: View {
                         dashPhase: marching
                         ? -dashPattern.reduce(0){$0 + $1}
                         : dashPattern.reduce(0){$0 + $1}))
-                    .foregroundColor(color)
+                    .foregroundColor(colors.frameStroke)
                     .onAppear {
                         marching = false
                         withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
@@ -109,7 +108,7 @@ struct _RopeView_Previews :View {
             .zIndex(1)
             .offset(x: -150)
             
-            RopeView(color: .red, isGlowing: $isGlowing)
+            RopeView(colors: .unit1, isGlowing: $isGlowing)
         }
         
     }
