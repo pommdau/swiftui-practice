@@ -16,7 +16,6 @@ struct RopeView: View {
     @State private var marching = false
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
-    
     private var physicsManager = PhysicsManager()
     
     // MARK: - LifeCycle
@@ -30,26 +29,26 @@ struct RopeView: View {
     
     var body: some View {
         
-        ZStack {
-            Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255)
-            
-            TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
-                ZStack {
+        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
+            ZStack {
                     AnchorView(colors: isGlowing ? colors : .offUnit)
                         .position(physicsManager.pointP0)
                     AnchorView(colors: isGlowing ? colors : .offUnit)
                         .position(physicsManager.pointP2)
                     Rope()
-                }
             }
         }
         .ignoresSafeArea()
+        .background(Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255))
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
                 .onChanged({ (value) in
                     physicsManager.pointP2 = value.location
                 })
         )
+        .onAppear() {
+            physicsManager.startTimer()
+        }
     }
     
     // MARK: @ViewBuilder
@@ -100,7 +99,7 @@ struct RopeView: View {
         Path { path in
             path.move(to: physicsManager.pointP0)
             path.addQuadCurve(to: physicsManager.pointP2,
-                              control: physicsManager.pointP1)
+                              control: physicsManager.anchor.point)
         }
     }
     
@@ -132,5 +131,6 @@ struct RopeView_Previews: PreviewProvider {
     
     static var previews: some View {
         _RopeView_Previews()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

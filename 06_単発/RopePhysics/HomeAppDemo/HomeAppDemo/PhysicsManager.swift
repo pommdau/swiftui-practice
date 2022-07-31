@@ -17,7 +17,7 @@ class PhysicsManager: ObservableObject {
     }
     
     struct Spring {
-        let length: Double = 500
+        let length: Double = 300
         let k: Double = -200  // stiffness: 20
         let d: Double = -10  // damping: 減衰振動
     }
@@ -26,7 +26,7 @@ class PhysicsManager: ObservableObject {
     private let spring = Spring()
     
     var pointP0 = CGPoint(x: 40, y: 40)
-    var pointP2 = CGPoint(x: 600, y: 100)
+    var pointP2 = CGPoint(x: 400, y: 100)
     
     // P0, P2の中点をP1とする
     var pointP1: CGPoint {
@@ -55,6 +55,7 @@ class PhysicsManager: ObservableObject {
     }
     
     private func updateStatus() {
+        print("updateStatus")
         let offsetX = anchor.point.x - pointP1.x
         let offsetY = anchor.point.y - pointP1.y
         
