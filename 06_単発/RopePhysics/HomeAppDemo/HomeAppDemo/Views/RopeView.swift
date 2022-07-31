@@ -31,18 +31,25 @@ struct RopeView: View {
     var body: some View {
         
         ZStack {
-            
             Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255)
             
-            AnchorView(colors: isGlowing ? colors : .offUnit)
-                .position(physicsManager.pointP0)
-            AnchorView(colors: isGlowing ? colors : .offUnit)
-                .position(physicsManager.pointP2)
-            TimelineView(.periodic(from: Date(), by: 1/60)) { context in
-                Rope()
+            TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
+                ZStack {
+                    AnchorView(colors: isGlowing ? colors : .offUnit)
+                        .position(physicsManager.pointP0)
+                    AnchorView(colors: isGlowing ? colors : .offUnit)
+                        .position(physicsManager.pointP2)
+                    Rope()
+                }
             }
         }
-        
+        .ignoresSafeArea()
+        .gesture(
+            DragGesture(minimumDistance: 4, coordinateSpace: .global)
+                .onChanged({ (value) in
+                    physicsManager.pointP2 = value.location
+                })
+        )
     }
     
     // MARK: @ViewBuilder
