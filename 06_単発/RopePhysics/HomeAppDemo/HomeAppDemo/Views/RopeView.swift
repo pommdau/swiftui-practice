@@ -58,25 +58,25 @@ struct RopeView: View {
         
         ZStack {
             // ロープの外枠
-            RopePath
+            physicsManager.RopePath
                 .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,
                         lineWidth: lineWidth + 4)
                 .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
             
             // ロープの中の色
-            RopePath
+            physicsManager.RopePath
                 .stroke(isGlowing ? .white : .gray,
                         lineWidth: lineWidth)
             
             if isGlowing {
                 // Glowing effect
-                RopePath
+                physicsManager.RopePath
                     .stroke(lineWidth: lineWidth)
                     .foregroundColor(.white)
                     .blur(radius: lineWidth + 2)
                     .zIndex(-1)
                 // 点線の移動
-                RopePath
+                physicsManager.RopePath
                     .stroke(style: StrokeStyle(
                         lineWidth: lineWidth,
                         miterLimit: 10,
@@ -94,15 +94,7 @@ struct RopeView: View {
             }
         }
     }
-    
-    private var RopePath: Path {
-        Path { path in
-            path.move(to: physicsManager.pointP0)
-            path.addQuadCurve(to: physicsManager.pointP2,
-                              control: physicsManager.anchor.point)
-        }
-    }
-    
+        
 }
 
 struct _RopeView_Previews :View {

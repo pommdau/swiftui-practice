@@ -43,6 +43,14 @@ class PhysicsManager: ObservableObject {
     var frameRate: Double = 1 / 60
 //    var frameRate: Double = 0.1
     
+    var RopePath: Path {
+        Path { path in
+            path.move(to: pointP0)
+            path.addQuadCurve(to: pointP2,
+                              control: anchor.point)
+        }
+    }
+    
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: frameRate, repeats: true) { _ in
             self.updateStatus()
@@ -55,7 +63,6 @@ class PhysicsManager: ObservableObject {
     }
     
     private func updateStatus() {
-        print("updateStatus")
         let offsetX = anchor.point.x - pointP1.x
         let offsetY = anchor.point.y - pointP1.y
         
@@ -71,5 +78,4 @@ class PhysicsManager: ObservableObject {
         anchor.point.x = anchor.point.x + anchor.vx * frameRate
         anchor.point.y = anchor.point.y + anchor.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
     }
-    
 }
