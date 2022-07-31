@@ -10,7 +10,7 @@ import SwiftUI
 struct RopeView: View {
     
     // MARK: - Properties
-        
+    
     let colors: UnitColors
     @Binding var isGlowing: Bool
     @State private var marching = false
@@ -25,14 +25,24 @@ struct RopeView: View {
         self.colors = colors
         self._isGlowing = isGlowing
     }
-        
+    
     // MARK: - View
-
+    
     var body: some View {
-        AnchorView(colors: isGlowing ? colors : .offUnit)
-        TimelineView(.periodic(from: Date(), by: 1/60)) { context in
-            Rope()
+        
+        ZStack {
+            
+            Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255)
+            
+            AnchorView(colors: isGlowing ? colors : .offUnit)
+                .position(physicsManager.pointP0)
+            AnchorView(colors: isGlowing ? colors : .offUnit)
+                .position(physicsManager.pointP2)
+            TimelineView(.periodic(from: Date(), by: 1/60)) { context in
+                Rope()
+            }
         }
+        
     }
     
     // MARK: @ViewBuilder
@@ -76,10 +86,7 @@ struct RopeView: View {
                         }
                     }
             }
-            
         }
-
-        .background(.black.opacity(0.5))
     }
     
     private var RopePath: Path {
@@ -89,7 +96,7 @@ struct RopeView: View {
                               control: physicsManager.pointP1)
         }
     }
-
+    
 }
 
 struct _RopeView_Previews :View {
@@ -97,7 +104,7 @@ struct _RopeView_Previews :View {
     @State var isGlowing = true
     
     var body: some View {
-             
+        
         ZStack {
             Toggle(isOn: $isGlowing.animation()) {
                 HStack {
@@ -117,6 +124,6 @@ struct _RopeView_Previews :View {
 struct RopeView_Previews: PreviewProvider {    
     
     static var previews: some View {
-       _RopeView_Previews()
+        _RopeView_Previews()
     }
 }
