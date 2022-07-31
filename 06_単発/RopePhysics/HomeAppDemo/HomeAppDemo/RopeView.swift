@@ -12,12 +12,13 @@ struct RopeView: View {
     private let lineWidth: CGFloat = 8
     private let dashPattern: [CGFloat] = [12, 14]
     
-    /// 破線のスタート地点を変更する為のプロパティ
-    @State private var dashPhase: CGFloat = 0
-    /// Timerのカウントを保持するプロパティ
-    @State private var timerCount: CGFloat = 0
-    /// 0.1秒毎に`dashPhase`を変更処理を実行する為のTimer
-    private let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+//    /// 破線のスタート地点を変更する為のプロパティ
+//    @State private var dashPhase: CGFloat = 0
+//    /// Timerのカウントを保持するプロパティ
+//    @State private var timerCount: CGFloat = 0
+//    /// 0.1秒毎に`dashPhase`を変更処理を実行する為のTimer
+////    private let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    @State private var marching = false
     
     let color: Color
     @State var isGlowing: Bool
@@ -60,18 +61,22 @@ struct RopeView: View {
                     .foregroundColor(.white)
                     .blur(radius: lineWidth + 2)
                     .zIndex(-1)
-                    
                 // 点線の移動
                 RopePath
                     .stroke(style: StrokeStyle(
                         lineWidth: lineWidth,
+                        miterLimit: 10,
                         dash: dashPattern,
-                        dashPhase: dashPhase))
-                    .foregroundColor(.blue)
-                    .onReceive(timer) { _ in
-                        timerCount = timerCount > dashPattern.reduce(0){ $0 + $1 } ? 0 : timerCount + 1
-                        dashPhase = timerCount
-                    }
+                        dashPhase: marching
+                        ? -dashPattern.reduce(0){$0 + $1}
+                        : dashPattern.reduce(0){$0 + $1}))
+                    .foregroundColor(color)
+            }
+            
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                marching.toggle()
             }
         }
         .background(.black.opacity(0.5))
@@ -89,6 +94,6 @@ struct RopeView: View {
 
 struct RopeView_Previews: PreviewProvider {
     static var previews: some View {
-        RopeView(color: .blue, isGlowing: false)
+        RopeView(color: .blue, isGlowing: true)
     }
 }
