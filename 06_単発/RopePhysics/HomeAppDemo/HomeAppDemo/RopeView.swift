@@ -9,34 +9,31 @@ import SwiftUI
 
 struct RopeView: View {
     
-    private let lineWidth: CGFloat = 8
-    private let dashPattern: [CGFloat] = [12, 14]
+    // MARK: - Properties
+        
+    let color: Color
+    @Binding var isGlowing: Bool
     
     @State private var marching = false
-    
-    let color: Color
-    @State var isGlowing: Bool
-    
+    private let lineWidth: CGFloat = 4
+    private let dashPattern: [CGFloat] = [12, 14]
+            
+    // MARK: - Computed Properties
+        
+    // MARK: - View
+
     var body: some View {
         TimelineView(.periodic(from: Date(), by: 1/60)) { context in
             Rope()
         }
     }
     
+    // MARK: @ViewBuilder
+    
     @ViewBuilder
     private func Rope() -> some View {
         
         ZStack {
-             
-            // DEBUGGING
-            Button {
-                withAnimation {
-                    isGlowing.toggle()
-                }
-            } label: {
-                Text("Growing")
-            }
-                                        
             // ロープの外枠
             RopePath
                 .stroke(isGlowing ? color : Color(uiColor: #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)),
@@ -69,7 +66,6 @@ struct RopeView: View {
                         marching = false
                         withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
                             marching.toggle()
-                            print(" marching.toggle()")
                         }
                     }
             }
@@ -89,8 +85,31 @@ struct RopeView: View {
 
 }
 
-struct RopeView_Previews: PreviewProvider {
+struct _RopeView_Previews :View {
+    
+    @State var isGlowing = true
+    
+    var body: some View {
+             
+        ZStack {
+            Toggle(isOn: $isGlowing.animation()) {
+                HStack {
+                    Spacer()
+                    Text("Glowing")
+                }
+            }
+            .zIndex(1)
+            .offset(x: -150)
+            
+            RopeView(color: .red, isGlowing: $isGlowing)
+        }
+        
+    }
+}
+
+struct RopeView_Previews: PreviewProvider {    
+    
     static var previews: some View {
-        RopeView(color: .blue, isGlowing: true)
+       _RopeView_Previews()
     }
 }

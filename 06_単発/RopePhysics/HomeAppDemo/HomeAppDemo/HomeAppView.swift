@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeAppView: View {
     var body: some View {
-        RopeView(color: .blue, isGlowing: true)
+        RopeView(color: .red, isGlowing: .constant(true))
     }
 }
 
