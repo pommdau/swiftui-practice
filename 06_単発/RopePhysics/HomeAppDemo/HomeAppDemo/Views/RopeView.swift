@@ -16,8 +16,8 @@ struct RopeView: View {
     @State private var marching = false
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
+    
     private var physicsManager = PhysicsManager()
-            
     
     // MARK: - LifeCycle
     
@@ -35,6 +35,8 @@ struct RopeView: View {
     }
     
     // MARK: @ViewBuilder
+    
+    
     
     @ViewBuilder
     private func Rope() -> some View {
