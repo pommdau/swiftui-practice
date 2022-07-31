@@ -13,6 +13,7 @@
 		DA87FAB2289577F300B63545 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA87FAB1289577F300B63545 /* Preview Assets.xcassets */; };
 		DA87FAB92896387E00B63545 /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FAB82896387E00B63545 /* HomeAppView.swift */; };
 		DA87FABB2896388F00B63545 /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABA2896388F00B63545 /* RopeView.swift */; };
+		DA87FABD28965E0B00B63545 /* PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABC28965E0B00B63545 /* PhysicsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		DA87FAB1289577F300B63545 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA87FAB82896387E00B63545 /* HomeAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
 		DA87FABA2896388F00B63545 /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
+		DA87FABC28965E0B00B63545 /* PhysicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				DA87FAAC289577F300B63545 /* ContentView.swift */,
 				DA87FAB82896387E00B63545 /* HomeAppView.swift */,
 				DA87FABA2896388F00B63545 /* RopeView.swift */,
+				DA87FABC28965E0B00B63545 /* PhysicsManager.swift */,
 				DA87FAAE289577F300B63545 /* Assets.xcassets */,
 				DA87FAB0289577F300B63545 /* Preview Content */,
 			);
@@ -147,6 +150,7 @@
 				DA87FAAB289577F300B63545 /* HomeAppDemoApp.swift in Sources */,
 				DA87FABB2896388F00B63545 /* RopeView.swift in Sources */,
 				DA87FAB92896387E00B63545 /* HomeAppView.swift in Sources */,
+				DA87FABD28965E0B00B63545 /* PhysicsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

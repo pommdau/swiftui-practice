@@ -13,12 +13,18 @@ struct RopeView: View {
         
     let color: Color
     @Binding var isGlowing: Bool
-    
     @State private var marching = false
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
+    private var physicsManager = PhysicsManager()
             
-    // MARK: - Computed Properties
+    
+    // MARK: - LifeCycle
+    
+    init(color: Color, isGlowing: Binding<Bool>) {
+        self.color = color
+        self._isGlowing = isGlowing
+    }
         
     // MARK: - View
 
@@ -77,9 +83,9 @@ struct RopeView: View {
     
     private var RopePath: Path {
         Path { path in
-            path.move(to: CGPoint(x: 10, y: 100))
-            path.addQuadCurve(to: CGPoint(x: 400, y: 100),
-                              control: CGPoint(x: 200, y: 200))
+            path.move(to: physicsManager.pointP0)
+            path.addQuadCurve(to: physicsManager.pointP2,
+                              control: physicsManager.pointP1)
         }
     }
 
