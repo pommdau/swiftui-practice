@@ -19,6 +19,7 @@
 		DA97712228967588002F85FE /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712128967588002F85FE /* UnitView.swift */; };
 		DA97712728976840002F85FE /* StartUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712628976840002F85FE /* StartUnit.swift */; };
 		DA97712928976844002F85FE /* EndUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712828976844002F85FE /* EndUnit.swift */; };
+		DA97712D28976BF1002F85FE /* RopeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712C28976BF1002F85FE /* RopeView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DA97712128967588002F85FE /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 		DA97712628976840002F85FE /* StartUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUnit.swift; sourceTree = "<group>"; };
 		DA97712828976844002F85FE /* EndUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndUnit.swift; sourceTree = "<group>"; };
+		DA97712C28976BF1002F85FE /* RopeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				DA87FABA2896388F00B63545 /* RopeView.swift */,
 				DA87FABF28965FAD00B63545 /* AnchorView.swift */,
 				DA97712128967588002F85FE /* UnitView.swift */,
+				DA97712C28976BF1002F85FE /* RopeView2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				DA87FAAD289577F300B63545 /* ContentView.swift in Sources */,
 				DA87FAAB289577F300B63545 /* HomeAppDemoApp.swift in Sources */,
 				DA87FABB2896388F00B63545 /* RopeView.swift in Sources */,
+				DA97712D28976BF1002F85FE /* RopeView2.swift in Sources */,
 				DA87FAC328965FC700B63545 /* UnitColors.swift in Sources */,
 				DA97712228967588002F85FE /* UnitView.swift in Sources */,
 				DA87FAB92896387E00B63545 /* HomeAppView.swift in Sources */,
