@@ -40,7 +40,7 @@ struct HomeAppView: View {
         
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
-                HStack(spacing: 160) {
+                HStack(spacing: 140) {
                     StartUnitsView()
                     EndUnitsView()
                 }
