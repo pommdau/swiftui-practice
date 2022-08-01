@@ -52,7 +52,12 @@ struct RopeView: View {
                     .position(physicsManager.pointP0)
                 AnchorView(colors: isGlowing ? colors : .offUnit)
                     .position(physicsManager.pointP2)
-                Rope()
+                
+                RopeView2(startPoint: physicsManager.pointP0,
+                          middlePoint: physicsManager.anchor.point,
+                          endPoint: physicsManager.pointP2,
+                          colors: colors,
+                          isGlowing: isGlowing)
             }
         }
         .ignoresSafeArea()
@@ -69,48 +74,6 @@ struct RopeView: View {
     }
     
     // MARK: @ViewBuilder
-    
-    @ViewBuilder
-    private func Rope() -> some View {
-        
-        ZStack {
-            // ロープの外枠
-            physicsManager.RopePath
-                .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,
-                        lineWidth: lineWidth + 4)
-                .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
-            
-            // ロープの中の色
-            physicsManager.RopePath
-                .stroke(isGlowing ? .white : .gray,
-                        lineWidth: lineWidth)
-            
-            if isGlowing {
-                // Glowing effect
-                physicsManager.RopePath
-                    .stroke(lineWidth: lineWidth)
-                    .foregroundColor(.white)
-                    .blur(radius: lineWidth + 2)
-                    .zIndex(-1)
-                // 点線の移動
-                physicsManager.RopePath
-                    .stroke(style: StrokeStyle(
-                        lineWidth: lineWidth,
-                        miterLimit: 10,
-                        dash: dashPattern,
-                        dashPhase: marching
-                        ? -dashPattern.reduce(0){$0 + $1}
-                        : dashPattern.reduce(0){$0 + $1}))
-                    .foregroundColor(colors.frameStroke)
-                    .onAppear {
-                        marching = false
-                        withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
-                            marching.toggle()
-                        }
-                    }
-            }
-        }
-    }
     
     @ViewBuilder
     private func StartUnitsView() -> some View {
