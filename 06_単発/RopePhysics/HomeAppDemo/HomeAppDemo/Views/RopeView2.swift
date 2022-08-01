@@ -70,8 +70,8 @@ struct RopeView2: View {
             if isGlowing {
                 // Glowing effect
                 RopePath
-                    .stroke(lineWidth: lineWidth)
-                    .foregroundColor(.white)
+                    .stroke(lineWidth: lineWidth + 2)
+                    .foregroundColor(colors.frameFill)
                     .blur(radius: lineWidth + 2)
                     .zIndex(-1)
                 // 点線の移動
