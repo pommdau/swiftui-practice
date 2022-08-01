@@ -2,7 +2,7 @@
 //  RopeView.swift
 //  HomeAppDemo
 //
-//  Created by HIROKI IKEUCHI on 2022/07/31.
+//  Created by HIROKI IKEUCHI on 2022/08/01.
 //
 
 import SwiftUI
@@ -11,109 +11,91 @@ struct RopeView: View {
     
     // MARK: - Properties
     
+    let startPoint: CGPoint
+    let middlePoint: CGPoint
+    let endPoint: CGPoint
     let colors: UnitColors
-    @Binding var isGlowing: Bool
-    @State private var marching = false
+    let isGlowing: Bool
+
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
-    private var physicsManager = PhysicsManager()
+    @State private var marching = false
     
-    @State private var startUnits = [
-        StartUnit(colors: .unit1, icon: "drop.fill"),
-        StartUnit(colors: .unit2, icon: "flame.fill"),
-        StartUnit(colors: .unit3, icon: "bolt.fill")
-    ]
-    
-    @State private var endUnits = [
-        EndUnit(icon: "lightbulb.fill"),
-        EndUnit(icon: "umbrella.fill"),
-        EndUnit(icon: "macpro.gen3.fill")
-    ]
+    // MARK: - Computed Properties
+            
+    var RopePath: Path {
+        Path { path in
+            path.move(to: startPoint)
+            path.addQuadCurve(to: endPoint,
+                              control: middlePoint)
+        }
+    }
     
     // MARK: - LifeCycle
     
-    init(colors: UnitColors, isGlowing: Binding<Bool>) {
+    init(startPoint: CGPoint,
+         middlePoint: CGPoint,
+         endPoint: CGPoint,
+         colors: UnitColors,
+         isGlowing: Bool) {
+        self.startPoint = startPoint
+        self.middlePoint = middlePoint
+        self.endPoint = endPoint
         self.colors = colors
-        self._isGlowing = isGlowing
+        self.isGlowing = isGlowing
     }
     
     // MARK: - View
+    
     var body: some View {
-        
-        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
-            ZStack {
-                
-                HStack(spacing: 200) {
-                    StartUnitsView()
-                    EndUnitsView()
-                }
-                
-                AnchorView(colors: isGlowing ? colors : .offUnit)
-                    .position(physicsManager.pointP0)
-                AnchorView(colors: isGlowing ? colors : .offUnit)
-                    .position(physicsManager.pointP2)
-                
-                RopeView2(startPoint: physicsManager.pointP0,
-                          middlePoint: physicsManager.anchor.point,
-                          endPoint: physicsManager.pointP2,
-                          colors: colors,
-                          isGlowing: isGlowing)
-            }
-        }
-        .ignoresSafeArea()
-        .background(Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255))
-        .gesture(
-            DragGesture(minimumDistance: 4, coordinateSpace: .global)
-                .onChanged({ (value) in
-                    physicsManager.pointP2 = value.location
-                })
-        )
-        .onAppear() {
-            physicsManager.startTimer()
-        }
-    }
-    
-    // MARK: @ViewBuilder
-    
-    @ViewBuilder
-    private func StartUnitsView() -> some View {
-        VStack(spacing: 20) {
-            ForEach(0 ..< endUnits.count, id: \.self) { index in
-                UnitView(unitColors: startUnits[index].colors,
-                         icon: startUnits[index].icon)
-                .overlay(
-                    GeometryReader { geo in
-                        Color.clear
-                            .onAppear {
-                                startUnits[index].frame = geo.frame(in: .global)
-                            }
+        ZStack {
+            
+            AnchorView(colors: isGlowing ? colors : .offUnit)
+                .position(startPoint)
+            
+            AnchorView(colors: isGlowing ? colors : .offUnit)
+                .position(endPoint)
+            
+            // ロープの外枠
+            RopePath
+                .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,
+                        lineWidth: lineWidth + 4)
+                .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
+            
+            // ロープの中の色
+            RopePath
+                .stroke(isGlowing ? .white : .gray,
+                        lineWidth: lineWidth)
+            
+            if isGlowing {
+                // Glowing effect
+                RopePath
+                    .stroke(lineWidth: lineWidth + 2)
+                    .foregroundColor(colors.frameFill)
+                    .blur(radius: lineWidth + 2)
+                    .zIndex(-1)
+                // 点線の移動
+                RopePath
+                    .stroke(style: StrokeStyle(
+                        lineWidth: lineWidth,
+                        miterLimit: 10,
+                        dash: dashPattern,
+                        dashPhase: marching
+                        ? -dashPattern.reduce(0){$0 + $1}
+                        : dashPattern.reduce(0){$0 + $1}))
+                    .foregroundColor(colors.frameStroke)
+                    .onAppear {
+                        marching = false
+                        withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                            marching.toggle()
+                        }
                     }
-                )
             }
         }
     }
-    
-    @ViewBuilder
-    private func EndUnitsView() -> some View {
-        VStack(spacing: 20) {
-            ForEach(0 ..< endUnits.count, id: \.self) { index in
-                UnitView(unitColors: isGlowing ? colors : .offUnit,
-                         icon: endUnits[index].icon)
-                .overlay(
-                    GeometryReader { geo in
-                        Color.clear
-                            .onAppear {
-                                endUnits[index].frame = geo.frame(in: .global)
-                            }
-                    }
-                )
-            }
-        }
-    }
-    
 }
 
-struct _RopeView_Previews :View {
+struct _RopeView2_Previews: View {
     
     @State var isGlowing = true
     
@@ -129,16 +111,17 @@ struct _RopeView_Previews :View {
             .zIndex(1)
             .offset(x: -150)
             
-            RopeView(colors: .unit1, isGlowing: $isGlowing)
+            RopeView(startPoint: .init(x: 100, y: 100),
+                      middlePoint: .init(x: 200, y: 300),
+                      endPoint: .init(x: 400, y: 100),
+                      colors: .unit2,
+                      isGlowing: isGlowing)
         }
-        
     }
 }
 
-struct RopeView_Previews: PreviewProvider {    
-    
+struct RopeView2_Previews: PreviewProvider {
     static var previews: some View {
-        _RopeView_Previews()
-            .previewInterfaceOrientation(.landscapeLeft)
+        _RopeView2_Previews()
     }
 }

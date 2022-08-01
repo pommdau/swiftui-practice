@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-class PhysicsManager: ObservableObject {
-    
+// MARK: - Definition
+
+extension PhysicsManager {
     struct Anchor {
         let mass: Double = 1  // 質量
         var point: CGPoint = .zero
@@ -17,19 +18,29 @@ class PhysicsManager: ObservableObject {
     }
     
     struct Spring {
-        let length: Double = 300
+        let length: Double = 400
         let k: Double = -200  // stiffness: 20
         let d: Double = -10  // damping: 減衰振動
     }
+}
+
+class PhysicsManager: ObservableObject {
+    
+    // MARK: - Properties
+                
+    var pointP0: CGPoint
+    var pointP2: CGPoint
+    var anchor = Anchor(point: .zero)
+    var frameRate: Double = 1 / 60
+//    var frameRate: Double = 0.1
     
     private var timer: Timer? = nil
     private let spring = Spring()
     
-    var pointP0 = CGPoint(x: 40, y: 40)
-    var pointP2 = CGPoint(x: 400, y: 100)
-    
+    // MARK: - Computed Properties
+        
     // P0, P2の中点をP1とする
-    var pointP1: CGPoint {
+    private var pointP1: CGPoint {
         let distance = sqrt(
             pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
         )
@@ -38,11 +49,7 @@ class PhysicsManager: ObservableObject {
         return .init(x: (pointP0.x + pointP2.x) / 2,
                      y: (pointP0.y + pointP2.y) / 2 + decline)
     }
-    
-    var anchor = Anchor(point: .init(x: 250, y: 400))
-    var frameRate: Double = 1 / 60
-//    var frameRate: Double = 0.1
-    
+
     var RopePath: Path {
         Path { path in
             path.move(to: pointP0)
@@ -50,6 +57,15 @@ class PhysicsManager: ObservableObject {
                               control: anchor.point)
         }
     }
+    
+    // MARK: - LifeCycle
+    
+    init(pointP0: CGPoint, pointP2: CGPoint) {
+        self.pointP0 = pointP0
+        self.pointP2 = pointP2
+    }
+    
+    // MARK: - Timer
     
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: frameRate, repeats: true) { _ in
@@ -61,6 +77,8 @@ class PhysicsManager: ObservableObject {
         timer?.invalidate()
         timer = nil
     }
+    
+    // MARK: - Helpers
     
     private func updateStatus() {
         let offsetX = anchor.point.x - pointP1.x
@@ -77,5 +95,9 @@ class PhysicsManager: ObservableObject {
         anchor.vy = anchor.vy + ay * frameRate
         anchor.point.x = anchor.point.x + anchor.vx * frameRate
         anchor.point.y = anchor.point.y + anchor.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
+    }
+    
+    private func calculate() -> CGPoint {
+        return .zero
     }
 }

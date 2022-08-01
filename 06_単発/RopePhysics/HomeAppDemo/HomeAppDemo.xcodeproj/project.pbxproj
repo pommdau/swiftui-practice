@@ -11,15 +11,14 @@
 		DA87FAAD289577F300B63545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FAAC289577F300B63545 /* ContentView.swift */; };
 		DA87FAAF289577F300B63545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA87FAAE289577F300B63545 /* Assets.xcassets */; };
 		DA87FAB2289577F300B63545 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA87FAB1289577F300B63545 /* Preview Assets.xcassets */; };
-		DA87FAB92896387E00B63545 /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FAB82896387E00B63545 /* HomeAppView.swift */; };
-		DA87FABB2896388F00B63545 /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABA2896388F00B63545 /* RopeView.swift */; };
+		DA87FABB2896388F00B63545 /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABA2896388F00B63545 /* HomeAppView.swift */; };
 		DA87FABD28965E0B00B63545 /* PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABC28965E0B00B63545 /* PhysicsManager.swift */; };
 		DA87FAC028965FAD00B63545 /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FABF28965FAD00B63545 /* AnchorView.swift */; };
 		DA87FAC328965FC700B63545 /* UnitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87FAC228965FC700B63545 /* UnitColors.swift */; };
 		DA97712228967588002F85FE /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712128967588002F85FE /* UnitView.swift */; };
 		DA97712728976840002F85FE /* StartUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712628976840002F85FE /* StartUnit.swift */; };
 		DA97712928976844002F85FE /* EndUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712828976844002F85FE /* EndUnit.swift */; };
-		DA97712D28976BF1002F85FE /* RopeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712C28976BF1002F85FE /* RopeView2.swift */; };
+		DA97712D28976BF1002F85FE /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712C28976BF1002F85FE /* RopeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,15 +27,14 @@
 		DA87FAAC289577F300B63545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA87FAAE289577F300B63545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA87FAB1289577F300B63545 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DA87FAB82896387E00B63545 /* HomeAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
-		DA87FABA2896388F00B63545 /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
+		DA87FABA2896388F00B63545 /* HomeAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
 		DA87FABC28965E0B00B63545 /* PhysicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsManager.swift; sourceTree = "<group>"; };
 		DA87FABF28965FAD00B63545 /* AnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
 		DA87FAC228965FC700B63545 /* UnitColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitColors.swift; sourceTree = "<group>"; };
 		DA97712128967588002F85FE /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 		DA97712628976840002F85FE /* StartUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUnit.swift; sourceTree = "<group>"; };
 		DA97712828976844002F85FE /* EndUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndUnit.swift; sourceTree = "<group>"; };
-		DA97712C28976BF1002F85FE /* RopeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView2.swift; sourceTree = "<group>"; };
+		DA97712C28976BF1002F85FE /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +71,7 @@
 				DA87FAAC289577F300B63545 /* ContentView.swift */,
 				DA87FAC128965FBE00B63545 /* Models */,
 				DA87FABE28965F9C00B63545 /* Views */,
-				DA87FABC28965E0B00B63545 /* PhysicsManager.swift */,
+				DA97712E2897786E002F85FE /* Controllers */,
 				DA87FAAE289577F300B63545 /* Assets.xcassets */,
 				DA87FAB0289577F300B63545 /* Preview Content */,
 			);
@@ -91,11 +89,10 @@
 		DA87FABE28965F9C00B63545 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA87FAB82896387E00B63545 /* HomeAppView.swift */,
-				DA87FABA2896388F00B63545 /* RopeView.swift */,
+				DA87FABA2896388F00B63545 /* HomeAppView.swift */,
 				DA87FABF28965FAD00B63545 /* AnchorView.swift */,
 				DA97712128967588002F85FE /* UnitView.swift */,
-				DA97712C28976BF1002F85FE /* RopeView2.swift */,
+				DA97712C28976BF1002F85FE /* RopeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,6 +105,14 @@
 				DA97712828976844002F85FE /* EndUnit.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DA97712E2897786E002F85FE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA87FABC28965E0B00B63545 /* PhysicsManager.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,11 +187,10 @@
 			files = (
 				DA87FAAD289577F300B63545 /* ContentView.swift in Sources */,
 				DA87FAAB289577F300B63545 /* HomeAppDemoApp.swift in Sources */,
-				DA87FABB2896388F00B63545 /* RopeView.swift in Sources */,
-				DA97712D28976BF1002F85FE /* RopeView2.swift in Sources */,
+				DA87FABB2896388F00B63545 /* HomeAppView.swift in Sources */,
+				DA97712D28976BF1002F85FE /* RopeView.swift in Sources */,
 				DA87FAC328965FC700B63545 /* UnitColors.swift in Sources */,
 				DA97712228967588002F85FE /* UnitView.swift in Sources */,
-				DA87FAB92896387E00B63545 /* HomeAppView.swift in Sources */,
 				DA87FABD28965E0B00B63545 /* PhysicsManager.swift in Sources */,
 				DA87FAC028965FAD00B63545 /* AnchorView.swift in Sources */,
 				DA97712728976840002F85FE /* StartUnit.swift in Sources */,
