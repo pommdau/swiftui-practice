@@ -62,8 +62,9 @@ struct HomeAppView: View {
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
                 .onChanged({ (value) in
+                    
+                    // アンカーの移動
                     switch anchor.draggingState {
-                        
                     case .none:
                         let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - 22,
                                                       y: physicsManager.pointP0.y - 22,
@@ -83,6 +84,33 @@ struct HomeAppView: View {
                     case .draggingEndAnchor:
                         physicsManager.pointP2 = value.location
                     }
+                    
+                    switch anchor.draggingState {
+                    case .none:
+                        break
+                    case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
+                        if let match = startUnits.firstIndex(where: { startUnitState in
+                            return startUnitState.validFrame.contains(value.location)
+                        }) {
+                            anchor.attachedStartUnitIndex = match
+                            physicsManager.pointP0 = CGPoint(x: startUnits[match].frame.midX,
+                                                             y: startUnits[match].frame.midY)
+                        } else {
+                            deactivateStartUnits()
+                        }
+                    case .draggingEndAnchor:  // EndUnitにつなぐかどうかの判定
+                        if let match = endUnits.firstIndex(where: { endUnitState in
+                            return endUnitState.validFrame.contains(value.location)
+                        }) {
+                            anchor.attachedEndUnitIndex = match
+                            physicsManager.pointP2 =
+                            CGPoint(x: endUnits[match].frame.midX,
+                                    y: endUnits[match].frame.midY)
+                        } else {
+                            deactivateEndUnits()
+                        }
+                    }
+
                 })
                 .onEnded({ _ in
                     anchor.draggingState = .none
@@ -91,6 +119,14 @@ struct HomeAppView: View {
         .onAppear() {
             physicsManager.startTimer()
         }
+    }
+    
+    private func deactivateStartUnits() {
+        anchor.attachedStartUnitIndex = -1
+    }
+    
+    private func deactivateEndUnits() {
+        anchor.attachedEndUnitIndex = -1
     }
     
     // MARK: @ViewBuilder
