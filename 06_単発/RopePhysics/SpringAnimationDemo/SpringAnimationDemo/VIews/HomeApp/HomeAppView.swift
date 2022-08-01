@@ -61,12 +61,9 @@ struct HomeAppView: View {
     @State private var anchorManager = AnchorManager()
     
     @State private var startUnits = [
-        StartUnit(colors: .unit1,
-                  icon: "drop.fill"),
-        StartUnit(colors: .unit2,
-                  icon: "flame.fill"),
-        StartUnit(colors: .unit3,
-                  icon: "bolt.fill")
+        StartUnit(colors: .unit1, icon: "drop.fill"),
+        StartUnit(colors: .unit2, icon: "flame.fill"),
+        StartUnit(colors: .unit3, icon: "bolt.fill")
     ]
     
     @State private var endUnits = [
