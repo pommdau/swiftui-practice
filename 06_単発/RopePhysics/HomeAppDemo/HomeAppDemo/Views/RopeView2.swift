@@ -15,7 +15,7 @@ struct RopeView2: View {
     let middlePoint: CGPoint
     let endPoint: CGPoint
     let colors: UnitColors
-    @Binding private var isGlowing: Bool
+    let isGlowing: Bool
 
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
@@ -37,12 +37,12 @@ struct RopeView2: View {
          middlePoint: CGPoint,
          endPoint: CGPoint,
          colors: UnitColors,
-         isGlowing: Binding<Bool>) {
+         isGlowing: Bool) {
         self.startPoint = startPoint
         self.middlePoint = middlePoint
         self.endPoint = endPoint
         self.colors = colors
-        self._isGlowing = isGlowing
+        self.isGlowing = isGlowing
     }
     
     // MARK: - View
@@ -115,7 +115,7 @@ struct _RopeView2_Previews: View {
                       middlePoint: .init(x: 200, y: 300),
                       endPoint: .init(x: 400, y: 100),
                       colors: .unit2,
-                      isGlowing: $isGlowing)
+                      isGlowing: isGlowing)
         }
     }
 }
