@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AnchorView: View {
     
+    static let radius: CGFloat = 44
     let colors: UnitColors
     
     var body: some View {
@@ -17,10 +18,10 @@ struct AnchorView: View {
             Circle()
                 .stroke(colors .iconStroke, lineWidth: 4)
                 .background(Circle().foregroundColor(colors.iconFill))
-                .frame(width: 44, height: 44)
+                .frame(width: Self.radius, height: Self.radius)
             Circle()
                 .foregroundColor(.black.opacity(0.5))
-                .frame(width: 44, height: 44)
+                .frame(width: Self.radius, height: Self.radius)
                 .offset(x: 0, y: 6)
                 .blur(radius: 4)
                 .zIndex(-1)

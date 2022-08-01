@@ -13,7 +13,7 @@ struct ContentView: View {
         Text("Hello, world!")
             .padding()
             .onAppear {
-                let url = URL(fileURLWithPath: "/Users/ikeh/Downloads/demo.mov")
+                let url = URL(fileURLWithPath: "/Users/ikeh/Downloads/HomeAppDemo.mov")
                 encodeVideo(at: url) { url, error in
                     print("stop")
                 }

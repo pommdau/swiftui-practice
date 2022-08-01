@@ -65,13 +65,15 @@ struct HomeAppView: View {
                     // アンカーの移動
                     switch anchor.draggingState {
                     case .none:
-                        let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - 22,
-                                                      y: physicsManager.pointP0.y - 22,
-                                                      width: 44, height: 44)
+                        let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - AnchorView.radius / 2,
+                                                      y: physicsManager.pointP0.y - AnchorView.radius / 2,
+                                                      width: AnchorView.radius,
+                                                      height: AnchorView.radius)
                         
-                        let endAnchorFrame = CGRect(x: physicsManager.pointP2.x - 22,
-                                                    y: physicsManager.pointP2.y - 22,
-                                                    width: 44, height: 44)
+                        let endAnchorFrame = CGRect(x: physicsManager.pointP2.x - AnchorView.radius / 2,
+                                                    y: physicsManager.pointP2.y - AnchorView.radius / 2,
+                                                    width: AnchorView.radius,
+                                                    height: AnchorView.radius)
                         
                         if startAnchorFrame.contains(value.location) {
                             anchor.draggingState = .draggingStartAnchor
