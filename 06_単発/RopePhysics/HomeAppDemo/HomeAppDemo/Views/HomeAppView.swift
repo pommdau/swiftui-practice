@@ -18,6 +18,8 @@ struct HomeAppView: View {
     private let dashPattern: [CGFloat] = [12, 14]
     private var physicsManager = PhysicsManager(pointP0: .init(x: 100, y: 100),
                                                 pointP2: .init(x: 400, y: 100))
+
+    @State private var anchor = Anchor()
     
     @State private var startUnits = [
         StartUnit(colors: .unit1, icon: "drop.fill"),
@@ -44,9 +46,9 @@ struct HomeAppView: View {
                 }
                 
                 AnchorView(colors: isGlowing ? colors : .offUnit)
-                    .position(physicsManager.pointP0)
-                AnchorView(colors: isGlowing ? colors : .offUnit)
                     .position(physicsManager.pointP2)
+                AnchorView(colors: isGlowing ? colors : .offUnit)
+                    .position(physicsManager.pointP0)
                 
                 RopeView(startPoint: physicsManager.pointP0,
                           middlePoint: physicsManager.anchor.point,
@@ -60,7 +62,30 @@ struct HomeAppView: View {
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
                 .onChanged({ (value) in
-                    physicsManager.pointP2 = value.location
+                    switch anchor.draggingState {
+                        
+                    case .none:
+                        let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - 22,
+                                                      y: physicsManager.pointP0.y - 22,
+                                                      width: 44, height: 44)
+                        
+                        let endAnchorFrame = CGRect(x: physicsManager.pointP2.x - 22,
+                                                    y: physicsManager.pointP2.y - 22,
+                                                    width: 44, height: 44)
+                        
+                        if startAnchorFrame.contains(value.location) {
+                            anchor.draggingState = .draggingStartAnchor
+                        } else if endAnchorFrame.contains(value.location) {
+                            anchor.draggingState = .draggingEndAnchor
+                        }
+                    case .draggingStartAnchor:
+                        physicsManager.pointP0 = value.location
+                    case .draggingEndAnchor:
+                        physicsManager.pointP2 = value.location
+                    }
+                })
+                .onEnded({ _ in
+                    anchor.draggingState = .none
                 })
         )
         .onAppear() {

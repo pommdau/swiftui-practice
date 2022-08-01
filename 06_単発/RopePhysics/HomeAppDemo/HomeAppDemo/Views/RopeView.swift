@@ -49,13 +49,7 @@ struct RopeView: View {
     
     var body: some View {
         ZStack {
-            
-            AnchorView(colors: isGlowing ? colors : .offUnit)
-                .position(startPoint)
-            
-            AnchorView(colors: isGlowing ? colors : .offUnit)
-                .position(endPoint)
-            
+                    
             // ロープの外枠
             RopePath
                 .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,

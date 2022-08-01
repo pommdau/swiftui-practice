@@ -19,6 +19,7 @@
 		DA97712728976840002F85FE /* StartUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712628976840002F85FE /* StartUnit.swift */; };
 		DA97712928976844002F85FE /* EndUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712828976844002F85FE /* EndUnit.swift */; };
 		DA97712D28976BF1002F85FE /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712C28976BF1002F85FE /* RopeView.swift */; };
+		DA977130289784BC002F85FE /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA97712F289784BC002F85FE /* Anchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DA97712628976840002F85FE /* StartUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUnit.swift; sourceTree = "<group>"; };
 		DA97712828976844002F85FE /* EndUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndUnit.swift; sourceTree = "<group>"; };
 		DA97712C28976BF1002F85FE /* RopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
+		DA97712F289784BC002F85FE /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				DA87FAC228965FC700B63545 /* UnitColors.swift */,
 				DA97712628976840002F85FE /* StartUnit.swift */,
 				DA97712828976844002F85FE /* EndUnit.swift */,
+				DA97712F289784BC002F85FE /* Anchor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				DA87FAC028965FAD00B63545 /* AnchorView.swift in Sources */,
 				DA97712728976840002F85FE /* StartUnit.swift in Sources */,
 				DA97712928976844002F85FE /* EndUnit.swift in Sources */,
+				DA977130289784BC002F85FE /* Anchor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
