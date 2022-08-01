@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UnitColors {
+struct UnitColors: Equatable {
     let frameStroke: Color
     let frameFill: Color
     let iconStroke: Color

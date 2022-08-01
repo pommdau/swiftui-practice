@@ -11,7 +11,7 @@ import Foundation
 struct StartUnit {
     let id = UUID().uuidString
     var frame: CGRect = .zero
-    let colors: UnitColors
+    var colors: UnitColors
     let icon: String
     var validFrame: CGRect {
         let length: CGFloat = 40  // 当たり判定: ニコちゃんマークの大きさ

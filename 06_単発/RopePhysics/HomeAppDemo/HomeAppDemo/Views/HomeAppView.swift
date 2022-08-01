@@ -11,8 +11,8 @@ struct HomeAppView: View {
     
     // MARK: - Properties
     
-    @State private var colors: UnitColors = .unit3
-    @State private var isGlowing: Bool = true
+    @State private var colors: UnitColors = .offUnit
+    
     @State private var marching = false
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
@@ -28,9 +28,9 @@ struct HomeAppView: View {
     ]
     
     @State private var endUnits = [
-        EndUnit(icon: "lightbulb.fill"),
-        EndUnit(icon: "umbrella.fill"),
-        EndUnit(icon: "macpro.gen3.fill")
+        EndUnit(colors: .offUnit, icon: "lightbulb.fill"),
+        EndUnit(colors: .offUnit, icon: "umbrella.fill"),
+        EndUnit(colors: .offUnit, icon: "macpro.gen3.fill")
     ]
     
     // MARK: - LifeCycle
@@ -45,16 +45,15 @@ struct HomeAppView: View {
                     EndUnitsView()
                 }
                 
-                AnchorView(colors: isGlowing ? colors : .offUnit)
+                AnchorView(colors: colors)
                     .position(physicsManager.pointP2)
-                AnchorView(colors: isGlowing ? colors : .offUnit)
+                AnchorView(colors: colors)
                     .position(physicsManager.pointP0)
                 
                 RopeView(startPoint: physicsManager.pointP0,
                           middlePoint: physicsManager.anchor.point,
                           endPoint: physicsManager.pointP2,
-                          colors: colors,
-                          isGlowing: isGlowing)
+                         colors: $colors)
             }
         }
         .ignoresSafeArea()
@@ -79,6 +78,7 @@ struct HomeAppView: View {
                         } else if endAnchorFrame.contains(value.location) {
                             anchor.draggingState = .draggingEndAnchor
                         }
+                        
                     case .draggingStartAnchor:
                         physicsManager.pointP0 = value.location
                     case .draggingEndAnchor:
@@ -110,7 +110,17 @@ struct HomeAppView: View {
                             deactivateEndUnits()
                         }
                     }
-
+                    
+                    if anchor.isConnected {
+                        colors = startUnits[anchor.attachedStartUnitIndex].colors
+                        endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
+                    } else {
+                        colors = .offUnit
+                        for i in endUnits.indices {
+                            endUnits[i].colors = .offUnit
+                        }
+                    }
+                    
                 })
                 .onEnded({ _ in
                     anchor.draggingState = .none
@@ -135,8 +145,8 @@ struct HomeAppView: View {
     private func StartUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
-                UnitView(unitColors: startUnits[index].colors,
-                         icon: startUnits[index].icon)
+                UnitView(icon: startUnits[index].icon,
+                    unitColors: $startUnits[index].colors)
                 .overlay(
                     GeometryReader { geo in
                         Color.clear
@@ -153,8 +163,9 @@ struct HomeAppView: View {
     private func EndUnitsView() -> some View {
         VStack(spacing: 20) {
             ForEach(0 ..< endUnits.count, id: \.self) { index in
-                UnitView(unitColors: isGlowing ? colors : .offUnit,
-                         icon: endUnits[index].icon)
+                UnitView(
+                    icon: endUnits[index].icon,
+                    unitColors: $endUnits[index].colors)
                 .overlay(
                     GeometryReader { geo in
                         Color.clear

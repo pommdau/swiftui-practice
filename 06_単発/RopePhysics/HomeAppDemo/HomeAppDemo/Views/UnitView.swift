@@ -11,8 +11,8 @@ struct UnitView: View {
     
     private let rectangleCornerRadius: CGFloat = 20
     private let rectangleLength: CGFloat = 120
-    let unitColors: UnitColors
     let icon: String
+    @Binding var unitColors: UnitColors
     
     var body: some View {
         ZStack {
@@ -70,7 +70,7 @@ struct UnitView: View {
 
 struct RectangleUnitView_Previews: PreviewProvider {
     static var previews: some View {
-        UnitView(unitColors: .unit1, icon: "drop.fill")
+        UnitView(icon: "drop.fill", unitColors: .constant(.unit2))
             .previewLayout(.fixed(width: 300, height: 300))
     }
 }
