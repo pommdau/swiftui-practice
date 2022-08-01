@@ -94,8 +94,6 @@ struct HomeAppView: View {
                             return startUnitState.validFrame.contains(value.location)
                         }) {
                             anchor.attachedStartUnitIndex = match
-                            physicsManager.pointP0 = CGPoint(x: startUnits[match].frame.midX,
-                                                             y: startUnits[match].frame.midY)
                         } else {
                             deactivateStartUnits()
                         }
@@ -104,18 +102,15 @@ struct HomeAppView: View {
                             return endUnitState.validFrame.contains(value.location)
                         }) {
                             anchor.attachedEndUnitIndex = match
-                            physicsManager.pointP2 =
-                            CGPoint(x: endUnits[match].frame.midX,
-                                    y: endUnits[match].frame.midY)
                         } else {
                             deactivateEndUnits()
                         }
                     }
                     
                     if anchor.isConnected {
-//                        withAnimation {
-//                            colors = startUnits[anchor.attachedStartUnitIndex].colors
-//                        }
+                        withAnimation {
+                            colors = startUnits[anchor.attachedStartUnitIndex].colors
+                        }
                         colors = startUnits[anchor.attachedStartUnitIndex].colors
                         endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
                     } else {
@@ -127,6 +122,24 @@ struct HomeAppView: View {
                     
                 })
                 .onEnded({ _ in
+                    
+                    switch anchor.draggingState {
+                    case .none:
+                        break
+                    case .draggingStartAnchor:
+                        let index = anchor.attachedStartUnitIndex
+                        if index != -1 {
+                            physicsManager.pointP0 = CGPoint(x: startUnits[index].frame.midX,
+                                                             y: startUnits[index].frame.midY)
+                        }
+                    case .draggingEndAnchor:
+                        let index = anchor.attachedEndUnitIndex
+                        if index != -1 {
+                            physicsManager.pointP2 =
+                            CGPoint(x: endUnits[index].frame.midX,
+                                    y: endUnits[index].frame.midY)
+                        }
+                    }
                     anchor.draggingState = .none
                 })
         )
