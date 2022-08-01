@@ -18,6 +18,18 @@ struct RopeView: View {
     private let dashPattern: [CGFloat] = [12, 14]
     private var physicsManager = PhysicsManager()
     
+    @State private var startUnits = [
+        StartUnit(colors: .unit1, icon: "drop.fill"),
+        StartUnit(colors: .unit2, icon: "flame.fill"),
+        StartUnit(colors: .unit3, icon: "bolt.fill")
+    ]
+    
+    @State private var endUnits = [
+        EndUnit(icon: "lightbulb.fill"),
+        EndUnit(icon: "umbrella.fill"),
+        EndUnit(icon: "macpro.gen3.fill")
+    ]
+    
     // MARK: - LifeCycle
     
     init(colors: UnitColors, isGlowing: Binding<Bool>) {
@@ -26,16 +38,18 @@ struct RopeView: View {
     }
     
     // MARK: - View
-    
     var body: some View {
         
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
-                    AnchorView(colors: isGlowing ? colors : .offUnit)
-                        .position(physicsManager.pointP0)
-                    AnchorView(colors: isGlowing ? colors : .offUnit)
-                        .position(physicsManager.pointP2)
-                    Rope()
+                
+                StartUnitsView()
+                
+                AnchorView(colors: isGlowing ? colors : .offUnit)
+                    .position(physicsManager.pointP0)
+                AnchorView(colors: isGlowing ? colors : .offUnit)
+                    .position(physicsManager.pointP2)
+                Rope()
             }
         }
         .ignoresSafeArea()
@@ -91,6 +105,24 @@ struct RopeView: View {
                             marching.toggle()
                         }
                     }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func StartUnitsView() -> some View {
+        VStack(spacing: 20) {
+            ForEach(0 ..< endUnits.count, id: \.self) { index in
+                UnitView(unitColors: startUnits[index].colors,
+                         icon: startUnits[index].icon)
+                .overlay(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                startUnits[index].frame = geo.frame(in: .global)
+                            }
+                    }
+                )
             }
         }
     }
