@@ -58,7 +58,6 @@ struct HomeAppView: View {
             }
         }
         .ignoresSafeArea()
-        .background(Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255))
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
                 .onChanged({ (value) in
@@ -108,11 +107,10 @@ struct HomeAppView: View {
                     }
                     
                     if anchor.isConnected {
-                        withAnimation {
+                        withAnimation(.linear(duration: 0.5)) {
                             colors = startUnits[anchor.attachedStartUnitIndex].colors
+                            endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
                         }
-                        colors = startUnits[anchor.attachedStartUnitIndex].colors
-                        endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
                     } else {
                         colors = .offUnit
                         for i in endUnits.indices {

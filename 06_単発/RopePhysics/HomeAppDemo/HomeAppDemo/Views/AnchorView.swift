@@ -12,10 +12,19 @@ struct AnchorView: View {
     let colors: UnitColors
     
     var body: some View {
-        Circle()
-            .stroke(colors .iconStroke, lineWidth: 4)
-            .background(Circle().foregroundColor(colors.iconFill))
-            .frame(width: 44, height: 44)
+        
+        ZStack {
+            Circle()
+                .stroke(colors .iconStroke, lineWidth: 4)
+                .background(Circle().foregroundColor(colors.iconFill))
+                .frame(width: 44, height: 44)
+            Circle()
+                .foregroundColor(.black.opacity(0.5))
+                .frame(width: 44, height: 44)
+                .offset(x: 0, y: 6)
+                .blur(radius: 4)
+                .zIndex(-1)
+        }
     }
 }
 
