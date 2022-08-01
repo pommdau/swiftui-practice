@@ -18,7 +18,7 @@ extension PhysicsManager {
     }
     
     struct Spring {
-        let length: Double = 400
+        let length: Double = 240
         let k: Double = -200  // stiffness: 20
         let d: Double = -10  // damping: 減衰振動
     }

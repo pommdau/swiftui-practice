@@ -40,10 +40,11 @@ struct HomeAppView: View {
         
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
-                HStack(spacing: 200) {
+                HStack(spacing: 160) {
                     StartUnitsView()
                     EndUnitsView()
                 }
+                .offset(x: 0, y: -200)
                 
                 AnchorView(colors: colors)
                     .position(physicsManager.pointP2)
@@ -112,6 +113,9 @@ struct HomeAppView: View {
                     }
                     
                     if anchor.isConnected {
+//                        withAnimation {
+//                            colors = startUnits[anchor.attachedStartUnitIndex].colors
+//                        }
                         colors = startUnits[anchor.attachedStartUnitIndex].colors
                         endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
                     } else {
@@ -185,6 +189,6 @@ struct RopeView_Previews: PreviewProvider {
     
     static var previews: some View {
         HomeAppView()
-            .previewInterfaceOrientation(.landscapeLeft)
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

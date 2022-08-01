@@ -13,8 +13,8 @@ struct AnchorView: View {
     
     var body: some View {
         Circle()
-            .stroke(colors .frameStroke, lineWidth: 4)
-            .background(Circle().foregroundColor(colors.frameFill))
+            .stroke(colors .iconStroke, lineWidth: 4)
+            .background(Circle().foregroundColor(colors.iconFill))
             .frame(width: 44, height: 44)
     }
 }

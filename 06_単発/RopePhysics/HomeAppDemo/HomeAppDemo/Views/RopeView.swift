@@ -54,20 +54,20 @@ struct RopeView: View {
                     
             // ロープの外枠
             RopePath
-                .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.frameStroke,
+                .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.iconFill,
                         lineWidth: lineWidth + 4)
                 .shadow(color: .black.opacity(1.0), radius: 8, x: 0, y: 15)
             
             // ロープの中の色
             RopePath
-                .stroke(isGlowing ? .white : .gray,
+                .stroke(isGlowing ? .white : UnitColors.offUnit.iconFill,
                         lineWidth: lineWidth)
             
             if isGlowing {
                 // Glowing effect
                 RopePath
-                    .stroke(lineWidth: lineWidth + 2)
-                    .foregroundColor(colors.frameFill)
+                    .stroke(lineWidth: lineWidth + 6)
+                    .foregroundColor(.white)
                     .blur(radius: lineWidth + 2)
                     .zIndex(-1)
                 // 点線の移動
@@ -82,7 +82,7 @@ struct RopeView: View {
                     .foregroundColor(colors.frameStroke)
                     .onAppear {
                         marching = false
-                        withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
+                        withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: false)) {
                             marching.toggle()
                         }
                     }
@@ -96,12 +96,25 @@ struct _RopeView2_Previews: View {
     @State var colors: UnitColors = .unit1
     
     var body: some View {        
-        ZStack {
+        VStack {
+            Button {
+                colors = .offUnit
+            } label: {
+                Text("OffUnit")
+            }
+            
+            Button {
+                colors = .unit1
+            } label: {
+                Text("Unit1")
+            }
+            
             RopeView(startPoint: .init(x: 100, y: 100),
                       middlePoint: .init(x: 200, y: 300),
                       endPoint: .init(x: 400, y: 100),
                      colors: $colors)
         }
+        .background(.black.opacity(0.5))
     }
 }
 
