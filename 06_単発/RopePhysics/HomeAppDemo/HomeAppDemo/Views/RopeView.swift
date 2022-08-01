@@ -43,7 +43,10 @@ struct RopeView: View {
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
                 
-                StartUnitsView()
+                HStack(spacing: 200) {
+                    StartUnitsView()
+                    EndUnitsView()
+                }
                 
                 AnchorView(colors: isGlowing ? colors : .offUnit)
                     .position(physicsManager.pointP0)
@@ -120,6 +123,24 @@ struct RopeView: View {
                         Color.clear
                             .onAppear {
                                 startUnits[index].frame = geo.frame(in: .global)
+                            }
+                    }
+                )
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func EndUnitsView() -> some View {
+        VStack(spacing: 20) {
+            ForEach(0 ..< endUnits.count, id: \.self) { index in
+                UnitView(unitColors: isGlowing ? colors : .offUnit,
+                         icon: endUnits[index].icon)
+                .overlay(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                endUnits[index].frame = geo.frame(in: .global)
                             }
                     }
                 )
