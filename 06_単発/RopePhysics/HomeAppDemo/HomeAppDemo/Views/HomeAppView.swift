@@ -40,7 +40,7 @@ struct HomeAppView: View {
         
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
-                HStack(spacing: 160) {
+                HStack(spacing: 140) {
                     StartUnitsView()
                     EndUnitsView()
                 }
@@ -58,7 +58,6 @@ struct HomeAppView: View {
             }
         }
         .ignoresSafeArea()
-        .background(Color(red: 247 / 255, green: 245 / 255, blue: 230 / 255))
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
                 .onChanged({ (value) in
@@ -66,13 +65,15 @@ struct HomeAppView: View {
                     // アンカーの移動
                     switch anchor.draggingState {
                     case .none:
-                        let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - 22,
-                                                      y: physicsManager.pointP0.y - 22,
-                                                      width: 44, height: 44)
+                        let startAnchorFrame = CGRect(x: physicsManager.pointP0.x - AnchorView.radius / 2,
+                                                      y: physicsManager.pointP0.y - AnchorView.radius / 2,
+                                                      width: AnchorView.radius,
+                                                      height: AnchorView.radius)
                         
-                        let endAnchorFrame = CGRect(x: physicsManager.pointP2.x - 22,
-                                                    y: physicsManager.pointP2.y - 22,
-                                                    width: 44, height: 44)
+                        let endAnchorFrame = CGRect(x: physicsManager.pointP2.x - AnchorView.radius / 2,
+                                                    y: physicsManager.pointP2.y - AnchorView.radius / 2,
+                                                    width: AnchorView.radius,
+                                                    height: AnchorView.radius)
                         
                         if startAnchorFrame.contains(value.location) {
                             anchor.draggingState = .draggingStartAnchor
@@ -94,8 +95,6 @@ struct HomeAppView: View {
                             return startUnitState.validFrame.contains(value.location)
                         }) {
                             anchor.attachedStartUnitIndex = match
-                            physicsManager.pointP0 = CGPoint(x: startUnits[match].frame.midX,
-                                                             y: startUnits[match].frame.midY)
                         } else {
                             deactivateStartUnits()
                         }
@@ -104,20 +103,16 @@ struct HomeAppView: View {
                             return endUnitState.validFrame.contains(value.location)
                         }) {
                             anchor.attachedEndUnitIndex = match
-                            physicsManager.pointP2 =
-                            CGPoint(x: endUnits[match].frame.midX,
-                                    y: endUnits[match].frame.midY)
                         } else {
                             deactivateEndUnits()
                         }
                     }
                     
                     if anchor.isConnected {
-//                        withAnimation {
-//                            colors = startUnits[anchor.attachedStartUnitIndex].colors
-//                        }
-                        colors = startUnits[anchor.attachedStartUnitIndex].colors
-                        endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
+                        withAnimation(.linear(duration: 0.5)) {
+                            colors = startUnits[anchor.attachedStartUnitIndex].colors
+                            endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
+                        }
                     } else {
                         colors = .offUnit
                         for i in endUnits.indices {
@@ -127,6 +122,24 @@ struct HomeAppView: View {
                     
                 })
                 .onEnded({ _ in
+                    
+                    switch anchor.draggingState {
+                    case .none:
+                        break
+                    case .draggingStartAnchor:
+                        let index = anchor.attachedStartUnitIndex
+                        if index != -1 {
+                            physicsManager.pointP0 = CGPoint(x: startUnits[index].frame.midX,
+                                                             y: startUnits[index].frame.midY)
+                        }
+                    case .draggingEndAnchor:
+                        let index = anchor.attachedEndUnitIndex
+                        if index != -1 {
+                            physicsManager.pointP2 =
+                            CGPoint(x: endUnits[index].frame.midX,
+                                    y: endUnits[index].frame.midY)
+                        }
+                    }
                     anchor.draggingState = .none
                 })
         )

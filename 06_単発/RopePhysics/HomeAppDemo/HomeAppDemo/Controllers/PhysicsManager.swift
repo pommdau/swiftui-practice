@@ -18,7 +18,7 @@ extension PhysicsManager {
     }
     
     struct Spring {
-        let length: Double = 240
+        let length: Double = 400
         let k: Double = -200  // stiffness: 20
         let d: Double = -10  // damping: 減衰振動
     }
@@ -44,7 +44,7 @@ class PhysicsManager: ObservableObject {
         let distance = sqrt(
             pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
         )
-        let decline = max(0, spring.length - distance / 2)  // 近似値？
+        let decline = max(0, spring.length - distance)  // 近似値？
         
         return .init(x: (pointP0.x + pointP2.x) / 2,
                      y: (pointP0.y + pointP2.y) / 2 + decline)

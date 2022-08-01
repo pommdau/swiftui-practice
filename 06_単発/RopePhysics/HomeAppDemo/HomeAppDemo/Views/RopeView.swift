@@ -20,7 +20,7 @@ struct RopeView: View {
         return colors != .offUnit
     }
 
-    private let lineWidth: CGFloat = 4
+    private let lineWidth: CGFloat = 2
     private let dashPattern: [CGFloat] = [12, 14]
     @State private var marching = false
     
