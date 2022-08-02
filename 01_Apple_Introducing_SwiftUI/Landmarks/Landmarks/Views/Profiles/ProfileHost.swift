@@ -16,6 +16,14 @@ struct ProfileHost: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
+                
+                if editMode?.wrappedValue == .active {
+                    Button("Cancel", role: .cancel) {
+                        draftProfile = modelData.profile  // 元のデータを取得して、onDisappearの処理、つまり元のデータに更新する
+                        editMode?.animation().wrappedValue = .inactive
+                    }
+                }
+                
                 Spacer()
                 // The EditButton controls the same editMode environment value that you accessed in the previous step.
                 EditButton()
@@ -25,6 +33,12 @@ struct ProfileHost: View {
                 ProfileSummary(profile: modelData.profile)
             } else {
                 ProfileEditor(profile: $draftProfile)
+                    .onAppear {
+                        draftProfile = modelData.profile
+                    }
+                    .onDisappear {
+                        modelData.profile = draftProfile
+                    }
             }
         }
         .padding()
