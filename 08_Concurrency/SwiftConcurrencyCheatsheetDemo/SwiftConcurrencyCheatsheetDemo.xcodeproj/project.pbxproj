@@ -11,6 +11,7 @@
 		DAF870E0289ADC8F0077856C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF870DF289ADC8F0077856C /* ContentView.swift */; };
 		DAF870E2289ADC900077856C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF870E1289ADC900077856C /* Assets.xcassets */; };
 		DAF870E5289ADC900077856C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF870E4289ADC900077856C /* Preview Assets.xcassets */; };
+		DAF870EC289ADCCE0077856C /* Case9View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF870EB289ADCCE0077856C /* Case9View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DAF870DF289ADC8F0077856C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DAF870E1289ADC900077856C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAF870E4289ADC900077856C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DAF870EB289ADCCE0077856C /* Case9View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case9View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				DAF870DD289ADC8F0077856C /* SwiftConcurrencyCheatsheetDemoApp.swift */,
 				DAF870DF289ADC8F0077856C /* ContentView.swift */,
+				DAF870EB289ADCCE0077856C /* Case9View.swift */,
 				DAF870E1289ADC900077856C /* Assets.xcassets */,
 				DAF870E3289ADC900077856C /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF870EC289ADCCE0077856C /* Case9View.swift in Sources */,
 				DAF870E0289ADC8F0077856C /* ContentView.swift in Sources */,
 				DAF870DE289ADC8F0077856C /* SwiftConcurrencyCheatsheetDemoApp.swift in Sources */,
 			);
