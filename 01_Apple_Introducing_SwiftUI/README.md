@@ -1,5 +1,6 @@
-# Introducing SwiftUI
+## Introducing SwiftUI
 - https://developer.apple.com/tutorials/swiftui/
+    - **I did until "Interfacing with UIKit"**
 
 ## List
 - モデルをIdentifiableに準拠させることでListでの`id`指定が必要なくなる
