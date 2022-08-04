@@ -25,32 +25,32 @@ struct QuadraticBezierGraphView: View {
     }
     
     var pointA: CGPoint {
-        let ax = (1 - tValue) * pointP0.x + tValue * pointP1.x
-        let ay = (1 - tValue) * pointP0.y + tValue * pointP1.y
-        return .init(x: ax, y: ay)
+        let x = (1 - tValue) * pointP0.x + tValue * pointP1.x
+        let y = (1 - tValue) * pointP0.y + tValue * pointP1.y
+        return .init(x: x, y: y)
     }
     
     var pointB: CGPoint {
-        let ax = (1 - tValue) * pointP1.x + tValue * pointP2.x
-        let ay = (1 - tValue) * pointP1.y + tValue * pointP2.y
-        return .init(x: ax, y: ay)
+        let x = (1 - tValue) * pointP1.x + tValue * pointP2.x
+        let y = (1 - tValue) * pointP1.y + tValue * pointP2.y
+        return .init(x: x, y: y)
     }
     
     var pointP: CGPoint {
-        let px = pow((1 - tValue), 2) * pointP0.x +
+        let x = pow((1 - tValue), 2) * pointP0.x +
         2 * (1 - tValue) * tValue * pointP1.x +
         pow(tValue, 2) * pointP2.x
         
-        let py = pow((1 - tValue), 2) * pointP0.y +
+        let y = pow((1 - tValue), 2) * pointP0.y +
         2 * (1 - tValue) * tValue * pointP1.y +
         pow(tValue, 2) * pointP2.y
         
-        return .init(x: px, y: py)
+        return .init(x: x, y: y)
     }
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {                
+            ZStack {
                 Points()
                     .zIndex(1)
                 QuadraticBezierLine()
