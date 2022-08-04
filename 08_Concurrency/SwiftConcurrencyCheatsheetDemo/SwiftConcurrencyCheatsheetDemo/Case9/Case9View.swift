@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct Case9View: View {
-    
+        
     @State private var firstMessage: String = "1st messaage"
     @State private var secondMessage: String = "2nd messaage"
     
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Case9 View"/*@END_MENU_TOKEN@*/)
+            Text("Case9 View")
                 .font(.title)
             
             Text(firstMessage)
