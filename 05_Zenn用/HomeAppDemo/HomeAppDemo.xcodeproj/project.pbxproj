@@ -14,6 +14,9 @@
 		DA200C55289BEB54001ACEF7 /* LinearInterpolationGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C53289BEB54001ACEF7 /* LinearInterpolationGraphView.swift */; };
 		DA200C56289BEB54001ACEF7 /* LinearInterpolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C54289BEB54001ACEF7 /* LinearInterpolationView.swift */; };
 		DA200C5A289BECD4001ACEF7 /* tValueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C59289BECD4001ACEF7 /* tValueText.swift */; };
+		DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */; };
+		DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */; };
+		DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		DA200C53289BEB54001ACEF7 /* LinearInterpolationGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearInterpolationGraphView.swift; sourceTree = "<group>"; };
 		DA200C54289BEB54001ACEF7 /* LinearInterpolationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearInterpolationView.swift; sourceTree = "<group>"; };
 		DA200C59289BECD4001ACEF7 /* tValueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tValueText.swift; sourceTree = "<group>"; };
+		DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierGraphView.swift; sourceTree = "<group>"; };
+		DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierView.swift; sourceTree = "<group>"; };
+		DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+covert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,7 @@
 		DA200C3F289BE68F001ACEF7 /* HomeAppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA200C5F289C0985001ACEF7 /* Extensions */,
 				DA200C40289BE68F001ACEF7 /* HomeAppDemoApp.swift */,
 				DA200C42289BE68F001ACEF7 /* ContentView.swift */,
 				DA200C4E289BEB21001ACEF7 /* Beziers */,
@@ -80,8 +87,18 @@
 				DA200C59289BECD4001ACEF7 /* tValueText.swift */,
 				DA200C54289BEB54001ACEF7 /* LinearInterpolationView.swift */,
 				DA200C53289BEB54001ACEF7 /* LinearInterpolationGraphView.swift */,
+				DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */,
+				DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */,
 			);
 			path = Beziers;
+			sourceTree = "<group>";
+		};
+		DA200C5F289C0985001ACEF7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +172,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA200C55289BEB54001ACEF7 /* LinearInterpolationGraphView.swift in Sources */,
+				DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */,
+				DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */,
 				DA200C43289BE68F001ACEF7 /* ContentView.swift in Sources */,
 				DA200C56289BEB54001ACEF7 /* LinearInterpolationView.swift in Sources */,
 				DA200C41289BE68F001ACEF7 /* HomeAppDemoApp.swift in Sources */,
+				DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */,
 				DA200C5A289BECD4001ACEF7 /* tValueText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
