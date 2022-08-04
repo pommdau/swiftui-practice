@@ -17,6 +17,7 @@
 		DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */; };
 		DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */; };
 		DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */; };
+		DA200C66289C0E9B001ACEF7 /* RopeViewWithoutSpring.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C65289C0E9B001ACEF7 /* RopeViewWithoutSpring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierGraphView.swift; sourceTree = "<group>"; };
 		DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierView.swift; sourceTree = "<group>"; };
 		DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+covert.swift"; sourceTree = "<group>"; };
+		DA200C65289C0E9B001ACEF7 /* RopeViewWithoutSpring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeViewWithoutSpring.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				DA200C40289BE68F001ACEF7 /* HomeAppDemoApp.swift */,
 				DA200C42289BE68F001ACEF7 /* ContentView.swift */,
 				DA200C4E289BEB21001ACEF7 /* Beziers */,
+				DA200C62289C0E75001ACEF7 /* SpringAnimation */,
 				DA200C44289BE690001ACEF7 /* Assets.xcassets */,
 				DA200C46289BE690001ACEF7 /* Preview Content */,
 			);
@@ -99,6 +102,14 @@
 				DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DA200C62289C0E75001ACEF7 /* SpringAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				DA200C65289C0E9B001ACEF7 /* RopeViewWithoutSpring.swift */,
+			);
+			path = SpringAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */,
 				DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */,
 				DA200C43289BE68F001ACEF7 /* ContentView.swift in Sources */,
+				DA200C66289C0E9B001ACEF7 /* RopeViewWithoutSpring.swift in Sources */,
 				DA200C56289BEB54001ACEF7 /* LinearInterpolationView.swift in Sources */,
 				DA200C41289BE68F001ACEF7 /* HomeAppDemoApp.swift in Sources */,
 				DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */,

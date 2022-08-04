@@ -36,73 +36,75 @@ struct LinearInterpolationGraphView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                
-                // 点P0
-                ZStack {
-                    Circle()
-                        .frame(width: pointRadius, height: pointRadius)
-                        .foregroundColor(.red)
-                    Text("P0")
-                        .foregroundColor(.black)
-                        .offset(y: 30)
-                        .frame(minWidth: 40)
-                }
-                .position(
-                    CGPoint(x: geometry.size.width * pointP0.x,
-                            y: geometry.size.height * pointP0.y)
-                )
-                .zIndex(1)
-                
-                // 点P1
-                ZStack {
-                    Circle()
-                        .frame(width: pointRadius, height: pointRadius)
-                        .foregroundColor(.red)
-                    Text("P1")
-                        .foregroundColor(.black)
-                        .offset(y: 30)
-                        .frame(minWidth: 40)
-                }
-                .position(
-                    CGPoint(x: geometry.size.width * pointP1.x,
-                            y: geometry.size.height * pointP1.y)
-                )
-                .zIndex(1)
-                
-                // 点P
-                ZStack {
-                    Circle()
-                        .frame(width: pointRadius, height: pointRadius)
-                        .foregroundColor(.blue)
-                    Text("P")
-                        .foregroundColor(.black)
-                        .offset(y: 30)
-                        .frame(minWidth: 40)
-                }
-                .position(
-                    CGPoint(x: geometry.size.width * pointP.x,
-                            y: geometry.size.height * pointP.y)
-                )
-                .zIndex(1)
-                
-                // 線形補間
-                Path { path in
-                    path.move(to: .zero)
-                    path.addLine(to: CGPoint(x: geometry.size.width,
-                                             y: geometry.size.height))
-                }
-                .stroke(lineWidth: graphWidth)
-                .foregroundStyle(
-                    .linearGradient(
-                        colors: [.pink, .blue],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                
+                Points()
+                    .zIndex(1)
+                LinearInterpolationLine()
                 Text("P = (\(pointP.x), \(pointP.y))")
                     .offset(x: 0, y: 120)
             }
+        }
+    }
+    
+    // MARK: View Parts
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        GeometryReader { geometry in
+            // 点P0
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("P0")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(pointP0.convert(inCanvasSize: geometry.size))
+            
+            // 点P1
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("P1")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(pointP1.convert(inCanvasSize: geometry.size))
+            
+            // 点P
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.blue)
+                Text("P")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(pointP.convert(inCanvasSize: geometry.size))
+        }
+    }
+    
+    @ViewBuilder
+    private func LinearInterpolationLine() -> some View {
+        GeometryReader { geometry in
+            // 線形補間
+            Path { path in
+                path.move(to: .zero)
+                path.addLine(to: CGPoint(x: geometry.size.width,
+                                         y: geometry.size.height))
+            }
+            .stroke(lineWidth: graphWidth)
+            .foregroundStyle(
+                .linearGradient(
+                    colors: [.pink, .blue],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
         }
     }
 }
@@ -116,6 +118,3 @@ struct LinearInterpolationGraphViewView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 600, height: 600))
     }
 }
-
-
-
