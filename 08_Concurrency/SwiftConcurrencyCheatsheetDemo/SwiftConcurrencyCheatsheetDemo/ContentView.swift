@@ -11,7 +11,8 @@ struct ContentView: View {
     var body: some View {
 //        Case9View()
 //        Case10View()
-        Case11View()
+//        Case11View()
+        MultipleDonwloadView()
     }
 }
 
