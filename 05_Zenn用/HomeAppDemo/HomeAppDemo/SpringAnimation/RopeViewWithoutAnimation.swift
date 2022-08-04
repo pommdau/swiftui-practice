@@ -1,5 +1,5 @@
 //
-//  RopeViewWithoutSpring.swift
+//  RopeViewWithoutAnimation.swift
 //  HomeAppDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/08/04.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct RopeViewWithoutSpring: View {
+struct RopeViewWithoutAnimation: View {
     
     private let pointRadius: CGFloat = 20
     private let ropeLength: CGFloat = 400
@@ -130,7 +130,7 @@ struct RopeViewWithoutSpring: View {
 
 struct RopeViewWithoutSpring_Previews: PreviewProvider {
     static var previews: some View {
-        RopeViewWithoutSpring()
+        RopeViewWithoutAnimation()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
