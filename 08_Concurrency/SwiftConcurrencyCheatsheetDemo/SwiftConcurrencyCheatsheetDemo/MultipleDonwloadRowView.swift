@@ -23,7 +23,19 @@ struct MultipleDonwloadRowView: View {
     var body: some View {
         HStack {
             Text(name)
-
+            if state == .downloading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding(.leading, 8)
+            } else if state == .downloaded {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.green)
+            } else if state == .error {
+                Image(systemName: "exclamationmark.triangle")
+                    .foregroundColor(.orange)
+            }
+                         
+            
             Spacer()
             
             Button {
@@ -42,20 +54,15 @@ struct MultipleDonwloadRowView: View {
                 }
             } label: {
                 switch state {
-                case .none:
+                case .none, .error:
                     Text("ダウンロード")
                 case .downloading:
                     HStack {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .padding(.trailing, 8)
                         Text("キャンセル")
                     }
                 case .downloaded:
                     Text("アンインストール…")
                         .foregroundColor(.red)
-                case .error:
-                    Image(systemName: "exclamationmark.triangle")
                 }
             }
             .buttonStyle(BorderlessButtonStyle())
@@ -86,6 +93,8 @@ struct MultipleDonwloadRowView_Previews: PreviewProvider {
             MultipleDonwloadRowView(name: "sample_file", state: .downloading)
                 .previewLayout(.fixed(width: 300, height: 100))
             MultipleDonwloadRowView(name: "sample_file", state: .downloaded)
+                .previewLayout(.fixed(width: 300, height: 100))
+            MultipleDonwloadRowView(name: "sample_file", state: .error)
                 .previewLayout(.fixed(width: 300, height: 100))
         }
     }
