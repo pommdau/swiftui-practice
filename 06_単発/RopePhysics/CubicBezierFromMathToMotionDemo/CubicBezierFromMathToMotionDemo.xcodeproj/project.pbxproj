@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA200C58289BEC2E001ACEF7 /* View+TouchAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C57289BEC2E001ACEF7 /* View+TouchAction.swift */; };
 		DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */; };
 		DA4C75FD288FAE45000C7FF4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4C75FC288FAE45000C7FF4 /* README.md */; };
 		DA4CE5E0288FB8E600C90E5C /* CubicBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4CE5DF288FB8E600C90E5C /* CubicBezierView.swift */; };
@@ -20,10 +21,10 @@
 		DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */; };
 		DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */; };
 		DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */; };
-		DAD1B16E288FDF500090AB37 /* View+TouchAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1B16D288FDF500090AB37 /* View+TouchAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA200C57289BEC2E001ACEF7 /* View+TouchAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "View+TouchAction.swift"; path = "../../../SpringAnimationDemo/SpringAnimationDemo/Extensions/View+TouchAction.swift"; sourceTree = "<group>"; };
 		DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		DA4C75FC288FAE45000C7FF4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA4CE5DF288FB8E600C90E5C /* CubicBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierView.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		DA6C85CF288FA4BF005D344F /* LinearInterpolationGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearInterpolationGraphView.swift; sourceTree = "<group>"; };
 		DAA62F02288FAA1800F60F13 /* QuadraticBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierView.swift; sourceTree = "<group>"; };
 		DAA62F04288FAA2000F60F13 /* QuadraticBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraticBezierGraphView.swift; sourceTree = "<group>"; };
-		DAD1B16D288FDF500090AB37 /* View+TouchAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+TouchAction.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4C75FA288FACFD000C7FF4 /* CGPoint+Extensions.swift */,
-				DAD1B16D288FDF500090AB37 /* View+TouchAction.swift */,
+				DA200C57289BEC2E001ACEF7 /* View+TouchAction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA200C58289BEC2E001ACEF7 /* View+TouchAction.swift in Sources */,
 				DA4CE5E4288FDC4E00C90E5C /* RopeView.swift in Sources */,
 				DA4C75FB288FACFD000C7FF4 /* CGPoint+Extensions.swift in Sources */,
 				DA6C85C2288F8E73005D344F /* ContentView.swift in Sources */,
@@ -191,7 +192,6 @@
 				DAA62F05288FAA2000F60F13 /* QuadraticBezierGraphView.swift in Sources */,
 				DA4CE5E2288FB8EC00C90E5C /* CubicBezierGraphView.swift in Sources */,
 				DAA62F03288FAA1800F60F13 /* QuadraticBezierView.swift in Sources */,
-				DAD1B16E288FDF500090AB37 /* View+TouchAction.swift in Sources */,
 				DA6C85D0288FA4BF005D344F /* LinearInterpolationGraphView.swift in Sources */,
 				DA6C85CE288F8EF4005D344F /* LinearInterpolationView.swift in Sources */,
 				DA6C85C0288F8E73005D344F /* CubicBezierFromMathToMotionDemoApp.swift in Sources */,
