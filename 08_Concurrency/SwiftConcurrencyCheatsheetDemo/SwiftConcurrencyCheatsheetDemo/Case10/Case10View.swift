@@ -37,10 +37,39 @@ struct Case10View: View {
     }
     
     private func getNewMessages(for messages: [String]) async throws -> [String] {
-        
-        return ["1", "2"]                
+        try await withThrowingTaskGroup(of: String.self) { group in
+            for message in messages {
+                // すぐに以下のChild Task: getNewMessageは並行に実行されます
+                group.addTask {
+                    print("group.addTask")
+                    return try await getNewMessage(for: message)
+                }
+            }
+            Thread.sleep(forTimeInterval: 2.0)
+            print("var newMessages: [String] = []")
+            var newMessages: [String] = []
+            // group から Child Task の結果を取り出すときに await して待ち合わせます
+            for try await newMessage in group {
+                print("newMessages.append(newMessage)")
+                newMessages.append(newMessage)
+            }
+            
+            return newMessages
+        }
     }
     
+    private func getNewMessage(for message: String,
+                               throwingError: Bool = false) async throws -> String {
+        print("getNewMessage")
+        if throwingError {
+            throw NSError(domain: "error message", code: -1, userInfo: nil)
+        }
+
+        // 重い処理の想定
+        Thread.sleep(forTimeInterval: 0.5)
+
+        return "\(message) +"
+    }
 }
 
 struct Case10View_Previews: PreviewProvider {
