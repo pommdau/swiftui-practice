@@ -50,8 +50,7 @@ struct QuadraticBezierGraphView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                
+            ZStack {                
                 Points()
                     .zIndex(1)
                 QuadraticBezierLine()
@@ -65,26 +64,84 @@ struct QuadraticBezierGraphView: View {
     @ViewBuilder
     private func Points() -> some View {
         GeometryReader { geometry in
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .position(
-                    pointA.convert(inCanvasSize: geometry.size)
-                )
-                .foregroundColor(.red)
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("P0")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointP0.convert(inCanvasSize: geometry.size)
+            )
             
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .position(
-                    pointB.convert(inCanvasSize: geometry.size)
-                )
-                .foregroundColor(.red)
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("P1")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointP1.convert(inCanvasSize: geometry.size)
+            )
             
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .position(
-                    pointP.convert(inCanvasSize: geometry.size)
-                )
-                .foregroundColor(.blue)
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("P2")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointP2.convert(inCanvasSize: geometry.size)
+            )
+            
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("A")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointA.convert(inCanvasSize: geometry.size)
+            )
+            
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    .foregroundColor(.red)
+                Text("B")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointB.convert(inCanvasSize: geometry.size)
+            )
+            
+            ZStack {
+                Circle()
+                    .frame(width: pointRadius, height: pointRadius)
+                    
+                    .foregroundColor(.blue)
+                Text("P")
+                    .foregroundColor(.black)
+                    .offset(y: 30)
+                    .frame(minWidth: 40)
+            }
+            .position(
+                pointP.convert(inCanvasSize: geometry.size)
+            )
         }
     }
     

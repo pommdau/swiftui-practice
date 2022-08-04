@@ -9,20 +9,20 @@ import SwiftUI
 
 struct QuadraticBezierView: View {
     
-    private let graphWidth: CGFloat = 300
+    private let graphLength: CGFloat = 300
     @State private var tValue: CGFloat = 0.3
-    @State private var isXValueChanging = true
     
     var body: some View {
         VStack {
             QuadraticBezierGraphView(tValue: $tValue)
-                .frame(width: graphWidth, height: graphWidth)
+                .frame(width: graphLength, height: graphLength)
+            
             VStack(alignment: .leading) {
                 tValueText(tValue: $tValue)
                 Slider(value: $tValue)
                     .padding()
             }
-            .frame(width: graphWidth)
+            .frame(width: graphLength)
         }
     }
 }
