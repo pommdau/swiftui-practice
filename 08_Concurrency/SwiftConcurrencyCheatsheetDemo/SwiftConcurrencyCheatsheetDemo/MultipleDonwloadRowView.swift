@@ -9,24 +9,84 @@ import SwiftUI
 
 struct MultipleDonwloadRowView: View {
     
+    enum DownloadState {
+        case none
+        case downloading
+        case downloaded
+        case error
+    }
+    
+    @State private var task: Task<(), Never>?
     let name: String
+    @State var state: DownloadState = .none
     
     var body: some View {
         HStack {
             Text(name)
+
             Spacer()
+            
             Button {
-                print("donwload")
+                task = Task {
+                    do {
+                        state = .downloading
+                        let _ = try await downloadFile(for: name)
+                        state = .downloaded
+                    } catch {
+                        if Task.isCancelled {
+                            print("キャンセルボタンが押されました")
+                        } else {
+                            print("エラーが発生しました。")
+                        }
+                    }
+                }
             } label: {
-                Image(systemName: "square.and.arrow.down")
+                switch state {
+                case .none:
+                    Text("ダウンロード")
+                case .downloading:
+                    HStack {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .padding(.trailing, 8)
+                        Text("キャンセル")
+                    }
+                case .downloaded:
+                    Text("アンインストール…")
+                        .foregroundColor(.red)
+                case .error:
+                    Image(systemName: "exclamationmark.triangle")
+                }
             }
+            .buttonStyle(BorderlessButtonStyle())
         }
+    }
+    
+    // TODO: replace String to URL
+    private func downloadFile(for file: String,
+                              throwingError: Bool = false) async throws -> String {
+        print("getNewMessage")
+        if throwingError {
+            throw NSError(domain: "error message", code: -1, userInfo: nil)
+        }
+        
+        // ダミーの重い処理
+        //        try await Task.sleep(nanoseconds: 3 * 1_000_000_000)  // 3s
+        try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+        
+        return "\(file) +"
     }
 }
 
 struct MultipleDonwloadRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MultipleDonwloadRowView(name: "Filex")
-            .previewLayout(.fixed(width: 300, height: 200))
+        Group {
+            MultipleDonwloadRowView(name: "sample_file", state: .none)
+                .previewLayout(.fixed(width: 300, height: 100))
+            MultipleDonwloadRowView(name: "sample_file", state: .downloading)
+                .previewLayout(.fixed(width: 300, height: 100))
+            MultipleDonwloadRowView(name: "sample_file", state: .downloaded)
+                .previewLayout(.fixed(width: 300, height: 100))
+        }
     }
 }
