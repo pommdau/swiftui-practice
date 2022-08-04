@@ -41,6 +41,7 @@ struct Case11View: View {
             }
             
             Button {
+                print("cancel button")
                 task?.cancel()
                 task = nil
             } label: {
@@ -58,7 +59,6 @@ struct Case11View: View {
                     return try await getNewMessage(for: message)
                 }
             }
-//            Thread.sleep(forTimeInterval: 2.0)
             print("var newMessages: [String] = []")
             var newMessages: [String] = []
             // group から Child Task の結果を取り出すときに await して待ち合わせます
@@ -78,11 +78,8 @@ struct Case11View: View {
             throw NSError(domain: "error message", code: -1, userInfo: nil)
         }
 
-        // 重い処理の想定
-//        Thread.sleep(forTimeInterval: 2.0)
-        for i in 0...10000000 {
-            let _ = i + 1
-        }
+        // ダミーの重い処理
+        try await Task.sleep(nanoseconds: 3 * 1_000_000_000)
 
         return "\(message) +"
     }

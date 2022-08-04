@@ -29,6 +29,7 @@
 		DAF870F0289B4EF20077856C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DAF870F4289B5A6A0077856C /* Case10View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case10View.swift; sourceTree = "<group>"; };
 		DAF870F6289B62E80077856C /* Case11View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case11View.swift; sourceTree = "<group>"; };
+		DAF870F9289B6A800077856C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +46,7 @@
 		DAF870D1289ADC8F0077856C = {
 			isa = PBXGroup;
 			children = (
+				DAF870F9289B6A800077856C /* README.md */,
 				DAF870DC289ADC8F0077856C /* SwiftConcurrencyCheatsheetDemo */,
 				DAF870DB289ADC8F0077856C /* Products */,
 			);
