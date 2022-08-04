@@ -34,24 +34,11 @@ struct MultipleDonwloadRowView: View {
                 Image(systemName: "exclamationmark.triangle")
                     .foregroundColor(.orange)
             }
-                         
-            
+
             Spacer()
             
             Button {
-                task = Task {
-                    do {
-                        state = .downloading
-                        let _ = try await downloadFile(for: name)
-                        state = .downloaded
-                    } catch {
-                        if Task.isCancelled {
-                            print("キャンセルボタンが押されました")
-                        } else {
-                            print("エラーが発生しました。")
-                        }
-                    }
-                }
+                handleButtonTapped()
             } label: {
                 switch state {
                 case .none, .error:
@@ -66,6 +53,32 @@ struct MultipleDonwloadRowView: View {
                 }
             }
             .buttonStyle(BorderlessButtonStyle())
+        }
+    }
+    
+    private func handleButtonTapped() {
+        
+        switch state {
+        case .none, .error:
+            task = Task {
+                do {
+                    state = .downloading
+                    let _ = try await downloadFile(for: name)
+                    state = .downloaded
+                } catch {
+                    if Task.isCancelled {
+                        state = .none
+                    } else {
+                        state = .error
+                    }
+                }
+            }
+        case .downloading:
+            task?.cancel()
+            task = nil
+        case .downloaded:
+            print("uninstall")
+            state = .none
         }
     }
     
