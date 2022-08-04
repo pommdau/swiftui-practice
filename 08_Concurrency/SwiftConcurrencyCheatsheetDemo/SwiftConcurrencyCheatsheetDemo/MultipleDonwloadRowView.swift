@@ -17,8 +17,11 @@ struct MultipleDonwloadRowView: View {
     }
     
     @State private var task: Task<(), Never>?
+    @State private var isShowingErrorPopover = false
+    
     let name: String
     @State var state: DownloadState = .none
+    
     
     var body: some View {
         HStack {
@@ -31,8 +34,16 @@ struct MultipleDonwloadRowView: View {
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(.green)
             } else if state == .error {
-                Image(systemName: "exclamationmark.triangle")
-                    .foregroundColor(.orange)
+                Button {
+                    isShowingErrorPopover = true
+                } label: {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundColor(.orange)
+                }
+                .popover(isPresented: $isShowingErrorPopover, arrowEdge: .leading) {
+                    Text("吹き出しです")
+                        .padding()
+                }
             }
 
             Spacer()
@@ -52,8 +63,8 @@ struct MultipleDonwloadRowView: View {
                         .foregroundColor(.red)
                 }
             }
-            .buttonStyle(BorderlessButtonStyle())
         }
+        .buttonStyle(BorderlessButtonStyle())
     }
     
     private func handleButtonTapped() {
@@ -63,7 +74,8 @@ struct MultipleDonwloadRowView: View {
             task = Task {
                 do {
                     state = .downloading
-                    let _ = try await downloadFile(for: name)
+                    let _ = try await downloadFile(for: name,
+                                                   throwingError: true)
                     state = .downloaded
                 } catch {
                     if Task.isCancelled {
