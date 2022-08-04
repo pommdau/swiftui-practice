@@ -13,6 +13,7 @@ struct MultipleDonwloadRowView: View {
         case none
         case downloading
         case downloaded
+        case uninstalling
         case error
     }
     
@@ -41,7 +42,7 @@ struct MultipleDonwloadRowView: View {
                         .foregroundColor(.orange)
                 }
                 .popover(isPresented: $isShowingErrorPopover, arrowEdge: .leading) {
-                    Text("吹き出しです")
+                    Text("ダウンロードに失敗しました。再度ダウンロードをおこなってください。")
                         .padding()
                 }
             }
@@ -54,7 +55,7 @@ struct MultipleDonwloadRowView: View {
                 switch state {
                 case .none, .error:
                     Text("ダウンロード")
-                case .downloading:
+                case .downloading, .uninstalling:
                     HStack {
                         Text("キャンセル")
                     }
@@ -75,7 +76,7 @@ struct MultipleDonwloadRowView: View {
                 do {
                     state = .downloading
                     let _ = try await downloadFile(for: name,
-                                                   throwingError: true)
+                                                   throwingError: false)
                     state = .downloaded
                 } catch {
                     if Task.isCancelled {
@@ -85,18 +86,44 @@ struct MultipleDonwloadRowView: View {
                     }
                 }
             }
-        case .downloading:
+        case .downloading, .uninstalling:
             task?.cancel()
             task = nil
         case .downloaded:
-            print("uninstall")
-            state = .none
+            task = Task {
+                do {
+                    state = .downloading
+                    let _ = try await downloadFile(for: name,
+                                                   throwingError: false)
+                    state = .none
+                } catch {
+                    if Task.isCancelled {
+                        state = .downloaded
+                    } else {
+                        state = .error
+                    }
+                }
+            }
         }
     }
     
     // TODO: replace String to URL
     private func downloadFile(for file: String,
                               throwingError: Bool = false) async throws -> String {
+        print("getNewMessage")
+        if throwingError {
+            throw NSError(domain: "error message", code: -1, userInfo: nil)
+        }
+        
+        // ダミーの重い処理
+        //        try await Task.sleep(nanoseconds: 3 * 1_000_000_000)  // 3s
+        try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+        
+        return "\(file) +"
+    }
+    
+    private func uninstallFile(for file: String,
+                               throwingError: Bool = false) async throws -> String {
         print("getNewMessage")
         if throwingError {
             throw NSError(domain: "error message", code: -1, userInfo: nil)
