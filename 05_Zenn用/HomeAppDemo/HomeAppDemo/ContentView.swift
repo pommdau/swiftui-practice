@@ -11,7 +11,8 @@ struct ContentView: View {
     var body: some View {
 //        LinearInterpolationView()
 //        QuadraticBezierView()
-        RopeViewWithoutAnimation()
+//        RopeViewWithoutAnimation()
+        SpringView()
     }
 }
 
