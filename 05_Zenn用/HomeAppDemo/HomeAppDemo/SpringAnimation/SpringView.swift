@@ -24,39 +24,9 @@ struct SpringView: View {
     var body: some View {
         
         ZStack {
-            VStack(alignment: .leading) {                
-                VStack(alignment: .leading) {
-                    Text("Stiffness(k): \(pointsManager.spring.k)")
-                    Slider(value: $pointsManager.spring.k,
-                           in: -300...(-10),
-                           step: 1,
-                           minimumValueLabel: Text("-300"),
-                           maximumValueLabel: Text("-10"),
-                           label: { EmptyView() })
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Mass(m): \(pointsManager.point.mass)")
-                    Slider(value: $pointsManager.point.mass,
-                           in: 1...10,
-                           step: 1,
-                           minimumValueLabel: Text("1"),
-                           maximumValueLabel: Text("10"),
-                           label: { EmptyView() })
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Dumping(d): \(pointsManager.spring.d)")
-                    Slider(value: $pointsManager.spring.d,
-                           in: -5...0,
-                           step: 0.1,
-                           minimumValueLabel: Text("-5"),
-                           maximumValueLabel: Text("0"),
-                           label: { EmptyView() })
-                }
-            }
-            .offset(y: 100)
-            .padding()
+            ControlView()
+                .offset(y: 100)
+                .padding()
             
             TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
                 ZStack {
@@ -95,6 +65,41 @@ struct SpringView: View {
             .frame(width: pointRadius, height: pointRadius)
             .foregroundColor(.blue)
             .position(pointsManager.standardPoint)
+    }
+    
+    @ViewBuilder
+    private func ControlView() -> some View {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                Text("Stiffness(k): \(pointsManager.spring.k)")
+                Slider(value: $pointsManager.spring.k,
+                       in: -300...(-10),
+                       step: 1,
+                       minimumValueLabel: Text("-300"),
+                       maximumValueLabel: Text("-10"),
+                       label: { EmptyView() })
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Mass(m): \(pointsManager.point.mass)")
+                Slider(value: $pointsManager.point.mass,
+                       in: 1...10,
+                       step: 1,
+                       minimumValueLabel: Text("1"),
+                       maximumValueLabel: Text("10"),
+                       label: { EmptyView() })
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Dumping(d): \(pointsManager.spring.d)")
+                Slider(value: $pointsManager.spring.d,
+                       in: -5...0,
+                       step: 0.1,
+                       minimumValueLabel: Text("-5"),
+                       maximumValueLabel: Text("0"),
+                       label: { EmptyView() })
+            }
+        }
     }
 }
 
