@@ -24,10 +24,7 @@ struct SpringView: View {
     var body: some View {
         
         ZStack {
-            VStack(alignment: .leading) {
-                Toggle("Dumping", isOn: $pointsManager.usingDumping)
-                    .frame(width: 130)
-                
+            VStack(alignment: .leading) {                
                 VStack(alignment: .leading) {
                     Text("Stiffness(k): \(pointsManager.spring.k)")
                     Slider(value: $pointsManager.spring.k,
@@ -45,6 +42,16 @@ struct SpringView: View {
                            step: 1,
                            minimumValueLabel: Text("1"),
                            maximumValueLabel: Text("10"),
+                           label: { EmptyView() })
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Dumping(d): \(pointsManager.spring.d)")
+                    Slider(value: $pointsManager.spring.d,
+                           in: -5...0,
+                           step: 0.1,
+                           minimumValueLabel: Text("-5"),
+                           maximumValueLabel: Text("0"),
                            label: { EmptyView() })
                 }
             }

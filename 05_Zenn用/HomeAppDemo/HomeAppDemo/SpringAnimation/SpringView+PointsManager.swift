@@ -34,7 +34,6 @@ extension SpringView {
         // MARK: Public Properties
         
         @Published var spring = Spring()
-        @Published var usingDumping: Bool = true
         @Published var point = Point()
         let standardPoint = CGPoint(x: 200, y: 200)
         var frameRate: Double = 1 / 60
@@ -60,12 +59,8 @@ extension SpringView {
             
             
             let ax: CGFloat
-            if usingDumping {
-                let fDampingX = spring.d * point.vx
-                ax = (fSpringX + fDampingX) / point.mass  // 加速度
-            } else {
-                ax = fSpringX / point.mass
-            }
+            let fDampingX = spring.d * point.vx
+            ax = (fSpringX + fDampingX) / point.mass  // 加速度
             
             point.vx = point.vx + ax * frameRate
             point.x = point.x + point.vx * frameRate
