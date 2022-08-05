@@ -15,7 +15,7 @@ extension SpringView {
         // MARK: - Definition
         
         struct Point {
-            let mass: Double = 1  // 質量
+            var mass: Double = 1  // 質量
             var x: Double = 100
             var vx: Double = 0
         }
@@ -30,13 +30,13 @@ extension SpringView {
         // MARK: Private Properties
         
         private var timer: Timer? = nil
-        @Published var spring = Spring()
-        @Published var usingDumping: Bool = true
         
         // MARK: Public Properties
         
-        var point = Point()
-        let standardPoint = CGPoint(x: 200, y: 400)
+        @Published var spring = Spring()
+        @Published var usingDumping: Bool = true
+        @Published var point = Point()
+        let standardPoint = CGPoint(x: 200, y: 200)
         var frameRate: Double = 1 / 60
         
         // MARK: - Timer Methods

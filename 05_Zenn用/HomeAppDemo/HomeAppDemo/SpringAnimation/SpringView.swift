@@ -29,11 +29,22 @@ struct SpringView: View {
                     .frame(width: 130)
                 
                 VStack(alignment: .leading) {
-                    Text("Spring-k: \(pointsManager.spring.k)")
+                    Text("Stiffness(k): \(pointsManager.spring.k)")
                     Slider(value: $pointsManager.spring.k,
                            in: -300...(-10),
+                           step: 1,
                            minimumValueLabel: Text("-300"),
                            maximumValueLabel: Text("-10"),
+                           label: { EmptyView() })
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Mass(m): \(pointsManager.point.mass)")
+                    Slider(value: $pointsManager.point.mass,
+                           in: 1...10,
+                           step: 1,
+                           minimumValueLabel: Text("1"),
+                           maximumValueLabel: Text("10"),
                            label: { EmptyView() })
                 }
             }
