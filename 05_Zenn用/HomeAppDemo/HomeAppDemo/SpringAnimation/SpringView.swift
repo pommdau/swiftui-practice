@@ -11,25 +11,21 @@ struct SpringView: View {
     
     @ObservedObject var physicsManager = PhysicsManager()
     private let standardPoint = CGPoint(x: 200, y: 400)
+    private let pointRadius: CGFloat = 20
     
     var body: some View {
-        ZStack {
-            Color.yellow
-                .contentShape(Rectangle())
-                .ignoresSafeArea()
-            
+        ZStack {            
             TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { _ in
                 VStack {
-//                    Text("\(physicsManager.point.y)")
                     ZStack {
                         Circle()
                             .position(CGPoint(x: standardPoint.x + physicsManager.point.x,
                                               y: standardPoint.y))
-                            .frame(width: 30, height: 30)
+                            .frame(width: pointRadius, height: pointRadius)
                             .foregroundColor(.red)
                         Circle()
                             .position(standardPoint)
-                            .frame(width: 30, height: 30)
+                            .frame(width: pointRadius, height: pointRadius)
                             .foregroundColor(.blue)
                     }
                 }
@@ -42,8 +38,8 @@ struct SpringView: View {
             physicsManager.startTimer()
         }
         .onTapGesture(coordinateSpace: .local) { location in
-            physicsManager.point.x = location.x
             physicsManager.point.vx = 0
+            physicsManager.point.x = location.x - standardPoint.x
         }
     }
 }
