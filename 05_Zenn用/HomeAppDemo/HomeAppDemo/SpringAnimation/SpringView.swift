@@ -34,6 +34,7 @@ struct SpringView: View {
                     .position(physicsManager.standardPoint)
                     .frame(width: pointRadius, height: pointRadius)
                     .foregroundColor(.blue)
+                
             }
         }
         .position(x: 0, y: 0)
@@ -47,6 +48,12 @@ struct SpringView: View {
             physicsManager.point.vx = 0
             physicsManager.point.x = location.x
         }
+        .gesture(
+            DragGesture(minimumDistance: 4, coordinateSpace: .global)
+                .onChanged({ (value) in
+                    print(value)
+                })
+        )
     }
 }
 
