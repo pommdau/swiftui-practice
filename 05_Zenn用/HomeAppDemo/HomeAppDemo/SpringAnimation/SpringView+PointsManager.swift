@@ -1,5 +1,5 @@
 //
-//  PhysicsManager+PhysicsManager.swift
+//  SpringView+PointsManager.swift
 //  HomeAppDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/08/06.
@@ -10,7 +10,7 @@ import SwiftUI
 extension SpringView {
     
     // TimerをPropertyに持つのでstructではなくclassで定義
-    class PhysicsManager: ObservableObject {
+    class PointsManager: ObservableObject {
         
         // MARK: - Definition
         
@@ -36,8 +36,8 @@ extension SpringView {
         
         // MARK: Public Properties
         
-        let standardPoint = CGPoint(x: 200, y: 400)
         var point = Point()
+        let standardPoint = CGPoint(x: 200, y: 400)
         var frameRate: Double = 1 / 60
         
         // MARK: - Timer Methods

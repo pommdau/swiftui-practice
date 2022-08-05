@@ -17,13 +17,13 @@ struct SpringView: View {
     
     // MARK: Public Properties
     
-    @ObservedObject var physicsManager = PhysicsManager()
+    @ObservedObject var pointsManager = PointsManager()
         
     // MARK: - View
     
     var body: some View {
         
-        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
+        TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
             ZStack {
                 Points()
             }
@@ -31,11 +31,11 @@ struct SpringView: View {
         .ignoresSafeArea()
         .background(.gray.opacity(0.5))
         .onAppear {
-            physicsManager.startTimer()
+            pointsManager.startTimer()
         }
         .onTapGesture(coordinateSpace: .global) { location in
-            physicsManager.point.vx = 0
-            physicsManager.point.x = location.x
+            pointsManager.point.vx = 0
+            pointsManager.point.x = location.x
         }
         .gesture(
             DragGesture(minimumDistance: 4, coordinateSpace: .global)
@@ -50,12 +50,12 @@ struct SpringView: View {
         Circle()
             .frame(width: pointRadius, height: pointRadius)
             .foregroundColor(.red)
-            .position(CGPoint(x: physicsManager.point.x,
-                              y: physicsManager.standardPoint.y))
+            .position(CGPoint(x: pointsManager.point.x,
+                              y: pointsManager.standardPoint.y))
         Circle()
             .frame(width: pointRadius, height: pointRadius)
             .foregroundColor(.blue)
-            .position(physicsManager.standardPoint)
+            .position(pointsManager.standardPoint)
     }
 }
 
