@@ -24,8 +24,21 @@ struct SpringView: View {
     var body: some View {
         
         ZStack {
-            Toggle("Dumping", isOn: $pointsManager.usingDumping)
-                .frame(width: 130)
+            VStack(alignment: .leading) {
+                Toggle("Dumping", isOn: $pointsManager.usingDumping)
+                    .frame(width: 130)
+                
+                VStack(alignment: .leading) {
+                    Text("Spring-k: \(pointsManager.spring.k)")
+                    Slider(value: $pointsManager.spring.k,
+                           in: -300...(-10),
+                           minimumValueLabel: Text("-300"),
+                           maximumValueLabel: Text("-10"),
+                           label: { EmptyView() })
+                }
+            }
+            .offset(y: 100)
+            .padding()
             
             TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
                 ZStack {

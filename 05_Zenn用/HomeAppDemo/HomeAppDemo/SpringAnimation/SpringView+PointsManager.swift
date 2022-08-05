@@ -21,9 +21,8 @@ extension SpringView {
         }
 
         struct Spring {
-            let springLength: Double = 0
-            let k: Double = -200  // stiffness: 20
-            let d: Double = -2.0  // damping: 減衰振動
+            var k: Double = -200  // stiffness
+            var d: Double = -2.0  // damping: 減衰振動
         }
         
         // MARK: - Properties
@@ -31,7 +30,7 @@ extension SpringView {
         // MARK: Private Properties
         
         private var timer: Timer? = nil
-        private let spring = Spring()
+        @Published var spring = Spring()
         @Published var usingDumping: Bool = true
         
         // MARK: Public Properties
