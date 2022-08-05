@@ -23,22 +23,11 @@ struct SpringView: View {
     
     var body: some View {
         
-        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { _ in
+        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
-                Circle()
-                    .position(CGPoint(x: physicsManager.point.x,
-                                      y: physicsManager.standardPoint.y))
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Circle()
-                    .position(physicsManager.standardPoint)
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.blue)
-                
+                Points()
             }
         }
-        .position(x: 0, y: 0)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
         .background(.gray.opacity(0.5))
         .onAppear {
@@ -54,6 +43,19 @@ struct SpringView: View {
                     print(value)
                 })
         )
+    }
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        Circle()
+            .frame(width: pointRadius, height: pointRadius)
+            .foregroundColor(.red)
+            .position(CGPoint(x: physicsManager.point.x,
+                              y: physicsManager.standardPoint.y))
+        Circle()
+            .frame(width: pointRadius, height: pointRadius)
+            .foregroundColor(.blue)
+            .position(physicsManager.standardPoint)
     }
 }
 
