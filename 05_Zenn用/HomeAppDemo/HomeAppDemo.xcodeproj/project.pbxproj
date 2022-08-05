@@ -19,6 +19,7 @@
 		DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */; };
 		DA200C66289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C65289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift */; };
 		DA200C68289C3283001ACEF7 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C67289C3283001ACEF7 /* SpringView.swift */; };
+		DA835E2B289D73B200AF46CB /* PhysicsManager+PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA835E2A289D73B200AF46CB /* PhysicsManager+PhysicsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DA200C60289C099D001ACEF7 /* CGPoint+covert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+covert.swift"; sourceTree = "<group>"; };
 		DA200C65289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeViewWithoutAnimation.swift; sourceTree = "<group>"; };
 		DA200C67289C3283001ACEF7 /* SpringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringView.swift; sourceTree = "<group>"; };
+		DA835E2A289D73B200AF46CB /* PhysicsManager+PhysicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsManager+PhysicsManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				DA200C65289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift */,
 				DA200C67289C3283001ACEF7 /* SpringView.swift */,
+				DA835E2A289D73B200AF46CB /* PhysicsManager+PhysicsManager.swift */,
 			);
 			path = SpringAnimation;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */,
 				DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */,
 				DA200C43289BE68F001ACEF7 /* ContentView.swift in Sources */,
+				DA835E2B289D73B200AF46CB /* PhysicsManager+PhysicsManager.swift in Sources */,
 				DA200C66289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift in Sources */,
 				DA200C68289C3283001ACEF7 /* SpringView.swift in Sources */,
 				DA200C56289BEB54001ACEF7 /* LinearInterpolationView.swift in Sources */,
