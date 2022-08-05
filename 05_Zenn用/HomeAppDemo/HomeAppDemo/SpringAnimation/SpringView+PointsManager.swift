@@ -32,7 +32,7 @@ extension SpringView {
         
         private var timer: Timer? = nil
         private let spring = Spring()
-        private let usingDumping: Bool = true
+        @Published var usingDumping: Bool = true
         
         // MARK: Public Properties
         

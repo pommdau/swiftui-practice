@@ -23,15 +23,23 @@ struct SpringView: View {
     
     var body: some View {
         
-        TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
-            ZStack {
-                Points()
+        ZStack {
+            Toggle("Dumping", isOn: $pointsManager.usingDumping)
+                .frame(width: 130)
+            
+            TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
+                ZStack {
+                    Points()
+                }
             }
         }
         .ignoresSafeArea()
         .background(.gray.opacity(0.5))
         .onAppear {
             pointsManager.startTimer()
+        }
+        .onDisappear {
+            pointsManager.stopTimer()
         }
         .onTapGesture(coordinateSpace: .global) { location in
             pointsManager.point.vx = 0
