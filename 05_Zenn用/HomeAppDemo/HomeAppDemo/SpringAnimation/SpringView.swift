@@ -24,6 +24,12 @@ struct SpringView: View {
     var body: some View {
         
         ZStack {
+            
+            // 画面全体でTapGestureを行うために下記を追加
+            Color.clear
+                  .contentShape(Rectangle())
+                  .ignoresSafeArea()
+            
             ControlView()
                 .offset(y: 100)
                 .padding()
@@ -45,12 +51,6 @@ struct SpringView: View {
             pointsManager.point.vx = 0
             pointsManager.point.x = location.x
         }
-        .gesture(
-            DragGesture(minimumDistance: 4, coordinateSpace: .global)
-                .onChanged({ (value) in
-                    print(value)
-                })
-        )
     }
     
     @ViewBuilder

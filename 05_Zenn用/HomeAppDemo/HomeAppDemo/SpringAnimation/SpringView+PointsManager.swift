@@ -56,12 +56,9 @@ extension SpringView {
         private func updateStatus() {
             let offsetX = point.x - standardPoint.x
             let fSpringX = spring.k * offsetX  // フックの法則
-            
-            
             let ax: CGFloat
             let fDampingX = spring.d * point.vx
             ax = (fSpringX + fDampingX) / point.mass  // 加速度
-            
             point.vx = point.vx + ax * frameRate
             point.x = point.x + point.vx * frameRate
         }

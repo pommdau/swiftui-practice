@@ -37,6 +37,7 @@ struct RopeViewWithAnimation: View {
                     ControlView()
                         .padding()
                         .offset(y: 200)
+                        .zIndex(-1)
                 }
             }
         }
