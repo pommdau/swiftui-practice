@@ -36,11 +36,12 @@ extension RopeViewWithAnimation {
         // MARK: Private Properties
         
         private var timer: Timer? = nil
-        private let ropeLength: CGFloat = 400
+
         
         // MARK: Public Properties
         
         @Published var spring = Spring()
+        var ropeLength: CGFloat = 400
         var frameRate: Double = 1 / 60
         var pointP0: CGPoint
         var pointP2: CGPoint

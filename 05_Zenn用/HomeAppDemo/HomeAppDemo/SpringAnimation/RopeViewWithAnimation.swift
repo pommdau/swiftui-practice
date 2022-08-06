@@ -14,7 +14,7 @@ struct RopeViewWithAnimation: View {
     
     // MARK: Private Properties
     
-    private let pointRadius: CGFloat = 20
+    private let pointRadius: CGFloat = 24
     @ObservedObject private var pointsManager =
     PointsManager(pointP0: .init(x: 100, y: 100),
                   pointP2: .init(x: 300, y: 150))
@@ -36,6 +36,7 @@ struct RopeViewWithAnimation: View {
                     Points()
                     ControlView()
                         .padding()
+                        .offset(y: 200)
                 }
             }
         }
@@ -115,9 +116,48 @@ extension RopeViewWithAnimation {
     private func ControlView() -> some View {
         VStack(alignment: .leading) {
             Toggle("Support Views", isOn: $showingSupportViews)
+            
+            VStack(alignment: .leading) {
+                Text("Stiffness(k): \(pointsManager.spring.k)")
+                Slider(value: $pointsManager.spring.k,
+                       in: -300...(-10),
+                       step: 1,
+                       minimumValueLabel: Text("-300"),
+                       maximumValueLabel: Text("-10"),
+                       label: { EmptyView() })
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Mass(m): \(pointsManager.controlPoint.mass)")
+                Slider(value: $pointsManager.controlPoint.mass,
+                       in: 1...10,
+                       step: 1,
+                       minimumValueLabel: Text("1"),
+                       maximumValueLabel: Text("10"),
+                       label: { EmptyView() })
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Dumping(d): \(pointsManager.spring.d)")
+                Slider(value: $pointsManager.spring.d,
+                       in: -5...0,
+                       step: 0.1,
+                       minimumValueLabel: Text("-5"),
+                       maximumValueLabel: Text("0"),
+                       label: { EmptyView() })
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Rope length: \(pointsManager.ropeLength)")
+                Slider(value: $pointsManager.ropeLength,
+                       in: 0...800,
+                       step: 1,
+                       minimumValueLabel: Text("0"),
+                       maximumValueLabel: Text("800"),
+                       label: { EmptyView() })
+            }
         }
     }
-    
 }
 
 // MARK: - Gestures
