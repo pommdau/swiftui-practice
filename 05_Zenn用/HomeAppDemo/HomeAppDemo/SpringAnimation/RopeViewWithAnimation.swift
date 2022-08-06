@@ -42,17 +42,12 @@ struct RopeViewWithAnimation: View {
         .onDisappear {
             pointsManager.stopTimer()
         }
-        .onTapGesture(coordinateSpace: .global) { location in
-//            pointsManager.point.vx = 0
-//            pointsManager.point.x = location.x
-        }
-        .gesture(
-            DragGesture(minimumDistance: 4, coordinateSpace: .global)
-                .onChanged({ (value) in
-                    print(value)
-                })
-        )
     }
+}
+
+// MARK: - ViewBuilders
+
+extension RopeViewWithAnimation {
     
     @ViewBuilder
     private func Points() -> some View {
@@ -109,6 +104,11 @@ struct RopeViewWithAnimation: View {
         .foregroundColor(.gray.opacity(0.5))
     }
     
+}
+
+// MARK: - Gestures
+
+extension RopeViewWithAnimation {
     var dragGestureForPointP0: some Gesture {
         DragGesture()
             .onChanged{ value in
