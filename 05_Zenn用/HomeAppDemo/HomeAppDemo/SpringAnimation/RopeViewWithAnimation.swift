@@ -18,7 +18,8 @@ struct RopeViewWithAnimation: View {
     
     // MARK: Public Properties
     
-    @ObservedObject var pointsManager = PointsManager(pointP0: .init(x: 100, y: 100), pointP2: .init(x: 300, y: 150))
+    @ObservedObject var pointsManager = PointsManager(pointP0: .init(x: 100, y: 100),
+                                                      pointP2: .init(x: 300, y: 150))
         
     // MARK: - View
     
@@ -28,6 +29,7 @@ struct RopeViewWithAnimation: View {
             TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
                 ZStack {
                     QuadraticBezierLine()
+                    AuxiliaryLine()
                     Points()
                 }
             }
@@ -58,11 +60,13 @@ struct RopeViewWithAnimation: View {
             .frame(width: pointRadius, height: pointRadius)
             .foregroundColor(.red)
             .position(pointsManager.pointP0)
+            .gesture(dragGestureForPointP0)
                         
         Circle()
             .frame(width: pointRadius, height: pointRadius)
             .foregroundColor(.red)
             .position(pointsManager.pointP2)
+            .gesture(dragGestureForPointP2)
         
         Circle()
             .frame(width: pointRadius, height: pointRadius)
@@ -93,6 +97,51 @@ struct RopeViewWithAnimation: View {
         )
     }
     
+    // 補助線
+    @ViewBuilder
+    private func AuxiliaryLine() -> some View {
+        Path { path in
+            path.move(to: pointsManager.pointP0)
+            path.addLine(to: pointsManager.controlPoint.point)
+            path.addLine(to: pointsManager.pointP2)
+        }
+        .stroke(lineWidth: 6)
+        .foregroundColor(.gray.opacity(0.5))
+    }
+    
+    var dragGestureForPointP0: some Gesture {
+        DragGesture()
+            .onChanged{ value in
+                pointsManager.pointP0 = CGPoint(
+                    x: value.startLocation.x
+                    + value.translation.width,
+                    y: value.startLocation.y
+                    + value.translation.height
+                )
+            }
+            .onEnded{ value in
+                pointsManager.pointP0 = CGPoint(
+                    x: value.startLocation.x + value.translation.width,
+                    y: value.startLocation.y + value.translation.height
+                )
+            }
+    }
+    
+    var dragGestureForPointP2: some Gesture {
+        DragGesture()
+            .onChanged{ value in
+                pointsManager.pointP2 = CGPoint(
+                    x: value.startLocation.x + value.translation.width,
+                    y: value.startLocation.y + value.translation.height
+                )
+            }
+            .onEnded{ value in
+                pointsManager.pointP2 = CGPoint(
+                    x: value.startLocation.x + value.translation.width,
+                    y: value.startLocation.y + value.translation.height
+                )
+            }
+    }
 }
 
 struct RopeViewWithAnimation_Previews: PreviewProvider {

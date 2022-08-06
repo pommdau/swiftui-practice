@@ -51,8 +51,7 @@ struct RopeViewWithoutAnimation: View {
                     y: value.startLocation.y
                     + value.translation.height
                 )
-            }
-        
+            }        
     }
     
     var dragGestureP2: some Gesture {
