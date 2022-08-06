@@ -15,12 +15,13 @@ struct RopeViewWithAnimation: View {
     // MARK: Private Properties
     
     private let pointRadius: CGFloat = 20
-    
+    @ObservedObject private var pointsManager =
+    PointsManager(pointP0: .init(x: 100, y: 100),
+                  pointP2: .init(x: 300, y: 150))
+    @State private var showingSupportViews = false
+        
     // MARK: Public Properties
     
-    @ObservedObject var pointsManager = PointsManager(pointP0: .init(x: 100, y: 100),
-                                                      pointP2: .init(x: 300, y: 150))
-        
     // MARK: - View
     
     var body: some View {
@@ -29,8 +30,12 @@ struct RopeViewWithAnimation: View {
             TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
                 ZStack {
                     QuadraticBezierLine()
-                    AuxiliaryLine()
+                    if showingSupportViews {
+                        AuxiliaryLine()
+                    }
                     Points()
+                    ControlView()
+                        .padding()
                 }
             }
         }
@@ -63,15 +68,17 @@ extension RopeViewWithAnimation {
             .position(pointsManager.pointP2)
             .gesture(dragGestureForPointP2)
         
-        Circle()
-            .frame(width: pointRadius, height: pointRadius)
-            .foregroundColor(.green)
-            .position(pointsManager.pointP1)
-        
-        Circle()
-            .frame(width: pointRadius, height: pointRadius)
-            .foregroundColor(.red)
-            .position(pointsManager.controlPoint.point)
+        if showingSupportViews {
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .foregroundColor(.green)
+                .position(pointsManager.pointP1)
+            
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .foregroundColor(.red)
+                .position(pointsManager.controlPoint.point)
+        }
     }
     
     @ViewBuilder
@@ -102,6 +109,13 @@ extension RopeViewWithAnimation {
         }
         .stroke(lineWidth: 6)
         .foregroundColor(.gray.opacity(0.5))
+    }
+    
+    @ViewBuilder
+    private func ControlView() -> some View {
+        VStack(alignment: .leading) {
+            Toggle("Support Views", isOn: $showingSupportViews)
+        }
     }
     
 }

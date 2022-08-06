@@ -28,7 +28,7 @@ extension RopeViewWithAnimation {
 
         struct Spring {
             var k: Double = -200  // stiffness
-            var d: Double = -2.0  // damping: 減衰振動
+            var d: Double = -10.0  // damping: 減衰振動
         }
         
         // MARK: - Properties
