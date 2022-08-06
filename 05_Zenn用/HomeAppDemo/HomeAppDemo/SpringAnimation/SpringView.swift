@@ -35,7 +35,6 @@ struct SpringView: View {
             }
         }
         .ignoresSafeArea()
-        .background(.gray.opacity(0.5))
         .onAppear {
             pointsManager.startTimer()
         }
