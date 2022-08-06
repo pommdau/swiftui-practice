@@ -20,11 +20,15 @@ extension RopeViewWithAnimation {
             var y: Double = 0
             var vx: Double = 0
             var vy: Double = 0
+            
+            var point: CGPoint {
+                return .init(x: x, y: y)
+            }
         }
 
         struct Spring {
             var k: Double = -200  // stiffness
-            var d: Double = -0  // damping: 減衰振動
+            var d: Double = -2.0  // damping: 減衰振動
         }
         
         // MARK: - Properties
@@ -43,7 +47,7 @@ extension RopeViewWithAnimation {
         var controlPoint: Point = Point()  // 実際に使用する二次ベジェ曲線の制御点
         
         // 基準になる二次ベジェ曲線の制御点。controlPointがこの点に収束する。
-        private var pointP1: CGPoint {
+        var pointP1: CGPoint {
             let distance = sqrt(
                 pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
             )
