@@ -198,6 +198,8 @@ extension RopeViewWithAnimation {
     }
 }
 
+// MARK: - Previews
+
 struct RopeViewWithAnimation_Previews: PreviewProvider {
     static var previews: some View {
         RopeViewWithAnimation()

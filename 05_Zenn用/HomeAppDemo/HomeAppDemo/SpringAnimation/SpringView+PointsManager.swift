@@ -35,7 +35,7 @@ extension SpringView {
         
         @Published var spring = Spring()
         @Published var point = Point()
-        let standardPoint = CGPoint(x: 200, y: 200)
+        let standardPoint = CGPoint(x: 200, y: 200)  // 基準点
         var frameRate: Double = 1 / 60
         
         // MARK: - Timer Methods
@@ -54,13 +54,18 @@ extension SpringView {
         // MARK: - Helpers
                                
         private func updateStatus() {
-            let offsetX = point.x - standardPoint.x
-            let fSpringX = spring.k * offsetX  // フックの法則
-            let ax: CGFloat
-            let fDampingX = spring.d * point.vx
-            ax = (fSpringX + fDampingX) / point.mass  // 加速度
-            point.vx = point.vx + ax * frameRate
-            point.x = point.x + point.vx * frameRate
+            let offsetX = point.x - standardPoint.x  // 基準点からどれだけはなれているか(frameRate秒前)
+            let fSpringX = spring.k * offsetX  // フックの法則(frameRate秒前)
+            let fDampingX = spring.d * point.vx  // 減衰(frameRate秒前)
+            let ax = (fSpringX + fDampingX) / point.mass  // 加速度(frameRate秒前)
+            
+            // "x = v0*t + 1/2 * at**2"と思うが1/2をつけるとバネが発散してしまう、なぜ…？
+//            point.x = point.x + point.vx * frameRate + ax * frameRate * frameRate
+//            -> point.x = point.x + (point.vx + ax * frameRate) * frameRate
+//            -> point.x = point.x + ax * frameRate　と同様
+            
+            point.vx = point.vx + ax * frameRate  // 速度(現在)
+            point.x = point.x + point.vx * frameRate  // 点(現在)の位置の算出
         }
     }
 }
