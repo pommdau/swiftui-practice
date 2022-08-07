@@ -73,9 +73,9 @@
 		DA200C3F289BE68F001ACEF7 /* HomeAppDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DA200C5F289C0985001ACEF7 /* Extensions */,
 				DA200C40289BE68F001ACEF7 /* HomeAppDemoApp.swift */,
 				DA200C42289BE68F001ACEF7 /* ContentView.swift */,
+				DA200C5F289C0985001ACEF7 /* Extensions */,
 				DA200C4E289BEB21001ACEF7 /* Beziers */,
 				DA200C62289C0E75001ACEF7 /* SpringAnimation */,
 				DA200C44289BE690001ACEF7 /* Assets.xcassets */,

@@ -35,7 +35,7 @@ extension SpringView {
         
         @Published var spring = Spring()
         @Published var point = Point()
-        let standardPoint = CGPoint(x: 200, y: 200)
+        let standardPoint = CGPoint(x: 200, y: 200)  // 基準点
         var frameRate: Double = 1 / 60
         
         // MARK: - Timer Methods
@@ -54,13 +54,12 @@ extension SpringView {
         // MARK: - Helpers
                                
         private func updateStatus() {
-            let offsetX = point.x - standardPoint.x
+            let offsetX = point.x - standardPoint.x  // 基準点からどれだけはなれているか
             let fSpringX = spring.k * offsetX  // フックの法則
-            let ax: CGFloat
-            let fDampingX = spring.d * point.vx
-            ax = (fSpringX + fDampingX) / point.mass  // 加速度
-            point.vx = point.vx + ax * frameRate
-            point.x = point.x + point.vx * frameRate
+            let fDampingX = spring.d * point.vx  // 減衰
+            let ax = (fSpringX + fDampingX) / point.mass  // 加速度
+            point.vx = point.vx + ax * frameRate  // frameRate秒後の点の速度
+            point.x = point.x + point.vx * frameRate  // frameRate秒後の点の位置
         }
     }
 }
