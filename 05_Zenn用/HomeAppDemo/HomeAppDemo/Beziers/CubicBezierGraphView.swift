@@ -9,178 +9,179 @@ import SwiftUI
 
 struct CubicBezierGraphView: View {
     
+    // MARK: - Properties
+    
+    // MARK: Public Properties
+    
     @Binding var tValue: CGFloat
+    
+    // MARK: Private Properties
+    
     private let pointRadius: CGFloat = 14
-    
-    var pointP0: CGPoint {
-        return .init(x: 0, y: 0)
+        
+    private var pointP0: CGPoint {
+        return .init(x: 0, y: 1.0)
     }
     
-    var pointP1: CGPoint {
-        return .init(x: 0.5, y: 1.0)
+    private var pointP1: CGPoint {
+        return .init(x: 0.25, y: 0.25)
     }
     
-    var pointP2: CGPoint {
+    private var pointP2: CGPoint {
+        return .init(x: 0.75, y: 0.75)
+    }
+    
+    private var pointP3: CGPoint {
         return .init(x: 1.0, y: 0.0)
     }
     
-    var pointA: CGPoint {
+    // MARK: Computed Properties
+    
+    var pointR0: CGPoint {
         let x = (1 - tValue) * pointP0.x + tValue * pointP1.x
         let y = (1 - tValue) * pointP0.y + tValue * pointP1.y
         return .init(x: x, y: y)
     }
     
-    var pointB: CGPoint {
+    var pointR1: CGPoint {
         let x = (1 - tValue) * pointP1.x + tValue * pointP2.x
         let y = (1 - tValue) * pointP1.y + tValue * pointP2.y
         return .init(x: x, y: y)
     }
     
-    var pointP: CGPoint {
-        let x = pow((1 - tValue), 2) * pointP0.x +
-        2 * (1 - tValue) * tValue * pointP1.x +
-        pow(tValue, 2) * pointP2.x
-        
-        let y = pow((1 - tValue), 2) * pointP0.y +
-        2 * (1 - tValue) * tValue * pointP1.y +
-        pow(tValue, 2) * pointP2.y
-        
+    var pointR2: CGPoint {
+        let x = (1 - tValue) * pointP2.x + tValue * pointP3.x
+        let y = (1 - tValue) * pointP2.y + tValue * pointP3.y
         return .init(x: x, y: y)
     }
     
+    var pointG0: CGPoint {
+        let px = pow((1 - tValue), 2) * pointP0.x +
+        2 * (1 - tValue) * tValue * pointP1.x +
+        pow(tValue, 2) * pointP2.x
+
+        let py = pow((1 - tValue), 2) * pointP0.y +
+        2 * (1 - tValue) * tValue * pointP1.y +
+        pow(tValue, 2) * pointP2.y
+
+        return .init(x: px, y: py)
+    }
+    
+    var pointG1: CGPoint {
+        let px = pow((1 - tValue), 2) * pointP1.x +
+        2 * (1 - tValue) * tValue * pointP2.x +
+        pow(tValue, 2) * pointP3.x
+
+        let py = pow((1 - tValue), 2) * pointP1.y +
+        2 * (1 - tValue) * tValue * pointP2.y +
+        pow(tValue, 2) * pointP3.y
+
+        return .init(x: px, y: py)
+    }
+        
+    var pointP: CGPoint {
+        let px = pow((1 - tValue), 3) * pointP0.x +
+        tValue * pointP1.x * 3 * pow((1 - tValue), 2) +
+        pointP2.x * 3 * (1 - tValue) * pow(tValue, 2) +
+        pointP3.x * pow(tValue, 3)
+
+        let py = pow((1 - tValue), 3) * pointP0.y +
+        tValue * pointP1.y * 3 * pow((1 - tValue), 2) +
+        pointP2.y * 3 * (1 - tValue) * pow(tValue, 2) +
+        pointP3.y * pow(tValue, 3)
+
+        return .init(x: px, y: py)
+    }
+    
+    // MARK: - View
+        
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Points()
                     .zIndex(1)
-                QuadraticBezierLine()
-                AuxiliaryLine()
+//                CubicBezierLine()
+//                AuxiliaryLine()
             }
         }
     }
     
-    // MARK: View Parts
+    // MARK: ViewBuilder Methods
+    
+    @ViewBuilder
+    private func Point(label: String, color: Color, position: CGPoint) -> some View {
+        ZStack {
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .foregroundColor(color)
+            Text(label)
+                .foregroundColor(.black)
+                .offset(y: 30)
+                .frame(minWidth: 40)
+        }
+        .position(position)
+    }
     
     @ViewBuilder
     private func Points() -> some View {
+        
         GeometryReader { geometry in
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P0")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP0.convert(inCanvasSize: geometry.size)
-            )
             
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P1")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP1.convert(inCanvasSize: geometry.size)
-            )
+            // P0 ~ P3
+            Point(label: "P0", color: .black, position: pointP0.convert(inCanvasSize: geometry.size))
+            Point(label: "P1", color: .black, position: pointP1.convert(inCanvasSize: geometry.size))
+            Point(label: "P2", color: .black, position: pointP2.convert(inCanvasSize: geometry.size))
+            Point(label: "P3", color: .black, position: pointP3.convert(inCanvasSize: geometry.size))
+
+            // A, B, C, D
             
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P2")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP2.convert(inCanvasSize: geometry.size)
-            )
+            Point(label: "R0", color: .red, position: pointR0.convert(inCanvasSize: geometry.size))
+            Point(label: "R1", color: .red, position: pointR1.convert(inCanvasSize: geometry.size))
+            Point(label: "R2", color: .red, position: pointR2.convert(inCanvasSize: geometry.size))
+
+            Point(label: "G0", color: .green, position: pointG0.convert(inCanvasSize: geometry.size))
+            Point(label: "G1", color: .green, position: pointG1.convert(inCanvasSize: geometry.size))
             
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("A")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointA.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("B")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointB.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    
-                    .foregroundColor(.blue)
-                Text("P")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP.convert(inCanvasSize: geometry.size)
-            )
+            Point(label: "P", color: .blue, position: pointP.convert(inCanvasSize: geometry.size))
         }
     }
     
-    @ViewBuilder
-    private func QuadraticBezierLine() -> some View {
-        GeometryReader { geometry in
-            Path { path in
-                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
-                path.addQuadCurve(to: pointP2.convert(inCanvasSize: geometry.size),
-                                  control: pointP1.convert(inCanvasSize: geometry.size))
-                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
-            }
-            .stroke(lineWidth: 6)
-            .foregroundStyle(
-                .linearGradient(
-                    colors: [.pink, .blue, .pink],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-            )
-        }
-    }
+//    @ViewBuilder
+//    private func CubicBezierLine() -> some View {
+//        GeometryReader { geometry in
+//            Path { path in
+//                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+//                path.addQuadCurve(to: pointP2.convert(inCanvasSize: geometry.size),
+//                                  control: pointP1.convert(inCanvasSize: geometry.size))
+//                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+//            }
+//            .stroke(lineWidth: 6)
+//            .foregroundStyle(
+//                .linearGradient(
+//                    colors: [.pink, .blue, .pink],
+//                    startPoint: .leading,
+//                    endPoint: .trailing
+//                )
+//            )
+//        }
+//    }
 
-    @ViewBuilder
-    private func AuxiliaryLine() -> some View {
-        GeometryReader { geometry in
-            // 補助線
-            Path { path in
-                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
-                path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
-                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
-                
-                path.move(to: pointA.convert(inCanvasSize: geometry.size))
-                path.addLine(to: pointB.convert(inCanvasSize: geometry.size))
-            }
-            .stroke(lineWidth: 6)
-            .foregroundColor(.gray.opacity(0.5))
-        }
-    }
+//    @ViewBuilder
+//    private func AuxiliaryLine() -> some View {
+//        GeometryReader { geometry in
+//            // 補助線
+//            Path { path in
+//                path.move(to: pointP0.convert(inCanvasSize: geometry.size))
+//                path.addLine(to: pointP1.convert(inCanvasSize: geometry.size))
+//                path.addLine(to: pointP2.convert(inCanvasSize: geometry.size))
+//
+//                path.move(to: pointA.convert(inCanvasSize: geometry.size))
+//                path.addLine(to: pointB.convert(inCanvasSize: geometry.size))
+//            }
+//            .stroke(lineWidth: 6)
+//            .foregroundColor(.gray.opacity(0.5))
+//        }
+//    }
 }
 
 struct CubicBezierGraphView_Previews: PreviewProvider {
