@@ -192,6 +192,3 @@ struct CubicBezierGraphView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 600, height: 600))
     }
 }
-
-
-
