@@ -37,25 +37,25 @@ struct CubicBezierGraphView: View {
     
     // MARK: Computed Properties
     
-    var pointR0: CGPoint {
+    private var pointR0: CGPoint {
         let x = (1 - tValue) * pointP0.x + tValue * pointP1.x
         let y = (1 - tValue) * pointP0.y + tValue * pointP1.y
         return .init(x: x, y: y)
     }
     
-    var pointR1: CGPoint {
+    private var pointR1: CGPoint {
         let x = (1 - tValue) * pointP1.x + tValue * pointP2.x
         let y = (1 - tValue) * pointP1.y + tValue * pointP2.y
         return .init(x: x, y: y)
     }
     
-    var pointR2: CGPoint {
+    private var pointR2: CGPoint {
         let x = (1 - tValue) * pointP2.x + tValue * pointP3.x
         let y = (1 - tValue) * pointP2.y + tValue * pointP3.y
         return .init(x: x, y: y)
     }
     
-    var pointG0: CGPoint {
+    private var pointG0: CGPoint {
         let px = pow((1 - tValue), 2) * pointP0.x +
         2 * (1 - tValue) * tValue * pointP1.x +
         pow(tValue, 2) * pointP2.x
@@ -67,7 +67,7 @@ struct CubicBezierGraphView: View {
         return .init(x: px, y: py)
     }
     
-    var pointG1: CGPoint {
+    private var pointG1: CGPoint {
         let px = pow((1 - tValue), 2) * pointP1.x +
         2 * (1 - tValue) * tValue * pointP2.x +
         pow(tValue, 2) * pointP3.x
@@ -79,7 +79,7 @@ struct CubicBezierGraphView: View {
         return .init(x: px, y: py)
     }
         
-    var pointP: CGPoint {
+    private var pointP: CGPoint {
         let px = pow((1 - tValue), 3) * pointP0.x +
         tValue * pointP1.x * 3 * pow((1 - tValue), 2) +
         pointP2.x * 3 * (1 - tValue) * pow(tValue, 2) +

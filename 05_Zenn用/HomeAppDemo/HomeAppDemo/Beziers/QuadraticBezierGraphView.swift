@@ -10,33 +10,34 @@ import SwiftUI
 struct QuadraticBezierGraphView: View {
     
     @Binding var tValue: CGFloat
+    
     private let pointRadius: CGFloat = 14
     
-    var pointP0: CGPoint {
+    private var pointP0: CGPoint {
         return .init(x: 0, y: 0)
     }
     
-    var pointP1: CGPoint {
+    private var pointP1: CGPoint {
         return .init(x: 0.5, y: 1.0)
     }
     
-    var pointP2: CGPoint {
+    private var pointP2: CGPoint {
         return .init(x: 1.0, y: 0.0)
     }
     
-    var pointA: CGPoint {
+    private var pointA: CGPoint {
         let x = (1 - tValue) * pointP0.x + tValue * pointP1.x
         let y = (1 - tValue) * pointP0.y + tValue * pointP1.y
         return .init(x: x, y: y)
     }
     
-    var pointB: CGPoint {
+    private var pointB: CGPoint {
         let x = (1 - tValue) * pointP1.x + tValue * pointP2.x
         let y = (1 - tValue) * pointP1.y + tValue * pointP2.y
         return .init(x: x, y: y)
     }
     
-    var pointP: CGPoint {
+    private var pointP: CGPoint {
         let x = pow((1 - tValue), 2) * pointP0.x +
         2 * (1 - tValue) * tValue * pointP1.x +
         pow(tValue, 2) * pointP2.x
@@ -62,86 +63,28 @@ struct QuadraticBezierGraphView: View {
     // MARK: View Parts
     
     @ViewBuilder
+    private func Point(label: String, color: Color, position: CGPoint) -> some View {
+        ZStack {
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .foregroundColor(color)
+            Text(label)
+                .foregroundColor(.black)
+                .offset(y: 30)
+                .frame(minWidth: 40)
+        }
+        .position(position)
+    }
+    
+    @ViewBuilder
     private func Points() -> some View {
         GeometryReader { geometry in
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P0")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP0.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P1")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP1.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("P2")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP2.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("A")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointA.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    .foregroundColor(.red)
-                Text("B")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointB.convert(inCanvasSize: geometry.size)
-            )
-            
-            ZStack {
-                Circle()
-                    .frame(width: pointRadius, height: pointRadius)
-                    
-                    .foregroundColor(.blue)
-                Text("P")
-                    .foregroundColor(.black)
-                    .offset(y: 30)
-                    .frame(minWidth: 40)
-            }
-            .position(
-                pointP.convert(inCanvasSize: geometry.size)
-            )
+            Point(label: "P0", color: .red, position: pointP0.convert(inCanvasSize: geometry.size))
+            Point(label: "P1", color: .red, position: pointP1.convert(inCanvasSize: geometry.size))
+            Point(label: "P2", color: .red, position: pointP2.convert(inCanvasSize: geometry.size))
+            Point(label: "A", color: .red, position: pointA.convert(inCanvasSize: geometry.size))
+            Point(label: "B", color: .red, position: pointB.convert(inCanvasSize: geometry.size))
+            Point(label: "P", color: .blue, position: pointP.convert(inCanvasSize: geometry.size))
         }
     }
     
