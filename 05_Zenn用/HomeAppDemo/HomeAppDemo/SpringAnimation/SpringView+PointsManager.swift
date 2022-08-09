@@ -58,12 +58,6 @@ extension SpringView {
             let fSpringX = spring.k * offsetX  // フックの法則(frameRate秒前)
             let fDampingX = spring.d * point.vx  // 減衰(frameRate秒前)
             let ax = (fSpringX + fDampingX) / point.mass  // 加速度(frameRate秒前)
-            
-            // "x = v0*t + 1/2 * at**2"と思うが1/2をつけるとバネが発散してしまう、なぜ…？
-//            point.x = point.x + point.vx * frameRate + ax * frameRate * frameRate
-//            -> point.x = point.x + (point.vx + ax * frameRate) * frameRate
-//            -> point.x = point.x + ax * frameRate　と同様
-            
             point.vx = point.vx + ax * frameRate  // 速度(現在)
             point.x = point.x + point.vx * frameRate  // 点(現在)の位置の算出
         }
