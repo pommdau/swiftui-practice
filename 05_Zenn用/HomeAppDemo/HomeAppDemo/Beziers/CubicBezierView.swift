@@ -23,6 +23,7 @@ struct CubicBezierView: View {
                     .padding()
             }
             .frame(width: graphLength)
+            .padding(.top, 40)
         }
     }
 }
