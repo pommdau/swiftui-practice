@@ -21,12 +21,12 @@ struct RopeView: View {
     }
 
     private let lineWidth: CGFloat = 2
-    private let dashPattern: [CGFloat] = [12, 14]
+    private let dashPattern: [CGFloat] = [14, 12]
     @State private var marching = false
     
     // MARK: - Computed Properties
             
-    var RopePath: Path {
+    private var RopePath: Path {
         Path { path in
             path.move(to: pointP0)
             path.addQuadCurve(to: pointP2,
@@ -39,8 +39,7 @@ struct RopeView: View {
     init(pointP0: CGPoint,
          pointP1: CGPoint,
          pointP2: CGPoint,
-         colors: Binding<UnitColors>
-    ) {
+         colors: Binding<UnitColors>) {
         self.pointP0 = pointP0
         self.pointP1 = pointP1
         self.pointP2 = pointP2
@@ -51,7 +50,6 @@ struct RopeView: View {
     
     var body: some View {
         ZStack {
-                    
             // ロープの外枠
             RopePath
                 .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.iconFill,
@@ -60,7 +58,7 @@ struct RopeView: View {
             
             // ロープの中の色
             RopePath
-                .stroke(isGlowing ? .white : UnitColors.offUnit.iconFill,
+                .stroke(colors.frameStroke,
                         lineWidth: lineWidth)
             
             if isGlowing {
@@ -73,13 +71,13 @@ struct RopeView: View {
                 // 移動する破線
                 RopePath
                     .stroke(style: StrokeStyle(
-                        lineWidth: lineWidth + 2,
+                        lineWidth: lineWidth,
                         miterLimit: 10,
                         dash: dashPattern,
                         dashPhase: marching
                         ? -dashPattern.reduce(0){$0 + $1}
                         : dashPattern.reduce(0){$0 + $1}))
-                    .foregroundColor(colors.frameStroke)
+                    .foregroundColor(isGlowing ? .white : colors.frameStroke)
                     .onAppear {
                         marching = false
                         withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: false)) {
