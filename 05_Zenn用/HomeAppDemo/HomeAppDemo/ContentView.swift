@@ -13,7 +13,8 @@ struct ContentView: View {
 //        QuadraticBezierView()
 //        RopeViewWithoutAnimation()
 //        SpringView()
-        RopeViewWithAnimation()
+//        RopeViewWithAnimation()
+        HomeAppView()
     }
 }
 

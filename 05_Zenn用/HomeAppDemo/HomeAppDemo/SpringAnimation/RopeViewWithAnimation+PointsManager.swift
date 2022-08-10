@@ -84,8 +84,8 @@ extension RopeViewWithAnimation {
         private func updateStatus() {
             let offsetX = controlPoint.x - pointP1.x
             let offsetY = controlPoint.y - pointP1.y
-            let fSpringX = spring.k * offsetX  // フックの法則
-            let fSpringY = spring.k * offsetY  // フックの法則
+            let fSpringX = spring.k * offsetX
+            let fSpringY = spring.k * offsetY
             let fDampingX = spring.d * controlPoint.vx
             let fDampingY = spring.d * controlPoint.vy
             let ax = (fSpringX + fDampingX) / controlPoint.mass
