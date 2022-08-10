@@ -1,15 +1,15 @@
 //
-//  StartUnit.swift
+//  Unit.swift
 //  HomeAppDemo
 //
-//  Created by HIROKI IKEUCHI on 2022/08/01.
+//  Created by HIROKI IKEUCHI on 2022/08/10.
 //
 
-import CoreGraphics
 import Foundation
+import CoreGraphics
 
-struct StartUnit {
-    let id = UUID().uuidString
+struct Unit {
+    let id = UUID()
     var frame: CGRect = .zero
     var colors: UnitColors
     let icon: String
@@ -21,4 +21,3 @@ struct StartUnit {
         return validFrame
     }
 }
-

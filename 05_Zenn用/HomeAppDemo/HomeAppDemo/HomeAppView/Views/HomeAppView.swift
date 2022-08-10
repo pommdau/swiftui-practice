@@ -22,15 +22,15 @@ struct HomeAppView: View {
     @State private var anchor = Anchor()
     
     @State private var startUnits = [
-        StartUnit(colors: .unit1, icon: "drop.fill"),
-        StartUnit(colors: .unit2, icon: "flame.fill"),
-        StartUnit(colors: .unit3, icon: "bolt.fill")
+        Unit(colors: .unit1, icon: "drop.fill"),
+        Unit(colors: .unit2, icon: "flame.fill"),
+        Unit(colors: .unit3, icon: "bolt.fill")
     ]
     
     @State private var endUnits = [
-        EndUnit(colors: .offUnit, icon: "lightbulb.fill"),
-        EndUnit(colors: .offUnit, icon: "umbrella.fill"),
-        EndUnit(colors: .offUnit, icon: "macpro.gen3.fill")
+        Unit(colors: .offUnit, icon: "lightbulb.fill"),
+        Unit(colors: .offUnit, icon: "umbrella.fill"),
+        Unit(colors: .offUnit, icon: "macpro.gen3.fill")
     ]
     
     // MARK: - LifeCycle

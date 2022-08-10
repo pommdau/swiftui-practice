@@ -36,4 +36,3 @@ extension UnitColors {
                                     iconStroke: Color(red: 0.366, green: 0.354, blue: 0.385),
                                     iconFill: Color(red: 0.460, green: 0.452, blue: 0.473))
 }
-
