@@ -70,10 +70,10 @@ struct RopeView: View {
                     .foregroundColor(.white)
                     .blur(radius: lineWidth + 2)
                     .zIndex(-1)
-                // 点線の移動
+                // 移動する破線
                 RopePath
                     .stroke(style: StrokeStyle(
-                        lineWidth: lineWidth,
+                        lineWidth: lineWidth + 2,
                         miterLimit: 10,
                         dash: dashPattern,
                         dashPhase: marching
