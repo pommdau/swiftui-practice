@@ -150,9 +150,9 @@
 		DA5E672528A2C189007674BC /* HomeAppView */ = {
 			isa = PBXGroup;
 			children = (
-				DA5E673828A32CC3007674BC /* Controllers */,
-				DA5E672F28A32CAD007674BC /* Views */,
 				DA5E672628A32C7E007674BC /* Models */,
+				DA5E672F28A32CAD007674BC /* Views */,
+				DA5E673828A32CC3007674BC /* Controllers */,
 			);
 			path = HomeAppView;
 			sourceTree = "<group>";
@@ -160,8 +160,8 @@
 		DA5E672628A32C7E007674BC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DA5E672A28A32C94007674BC /* Anchor.swift */,
 				DA5E673D28A356D4007674BC /* Unit.swift */,
+				DA5E672A28A32C94007674BC /* Anchor.swift */,
 				DA5E672928A32C94007674BC /* UnitColors.swift */,
 			);
 			path = Models;
@@ -170,10 +170,10 @@
 		DA5E672F28A32CAD007674BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA5E673028A32CAD007674BC /* UnitView.swift */,
-				DA5E673128A32CAD007674BC /* RopeView.swift */,
-				DA5E673228A32CAD007674BC /* AnchorView.swift */,
 				DA5E673328A32CAD007674BC /* HomeAppView.swift */,
+				DA5E673028A32CAD007674BC /* UnitView.swift */,
+				DA5E673228A32CAD007674BC /* AnchorView.swift */,
+				DA5E673128A32CAD007674BC /* RopeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

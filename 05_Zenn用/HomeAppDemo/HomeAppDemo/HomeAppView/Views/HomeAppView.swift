@@ -21,13 +21,13 @@ struct HomeAppView: View {
 
     @State private var anchor = Anchor()
     
-    @State private var startUnits = [
+    @State private var inputUnits = [
         Unit(colors: .unit1, icon: "drop.fill"),
         Unit(colors: .unit2, icon: "flame.fill"),
         Unit(colors: .unit3, icon: "bolt.fill")
     ]
     
-    @State private var endUnits = [
+    @State private var outputUnits = [
         Unit(colors: .offUnit, icon: "lightbulb.fill"),
         Unit(colors: .offUnit, icon: "umbrella.fill"),
         Unit(colors: .offUnit, icon: "macpro.gen3.fill")
@@ -41,8 +41,8 @@ struct HomeAppView: View {
         TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
             ZStack {
                 HStack(spacing: 140) {
-                    StartUnitsView()
-                    EndUnitsView()
+                    InputUnitsView()
+                    OutputUnitsView()
                 }
                 .offset(x: 0, y: -200)
                 
@@ -90,17 +90,17 @@ struct HomeAppView: View {
                     switch anchor.draggingState {
                     case .none:
                         break
-                    case .draggingStartAnchor:  // StartUnitにつなぐかどうかの判定
-                        if let match = startUnits.firstIndex(where: { startUnitState in
-                            return startUnitState.validFrame.contains(value.location)
+                    case .draggingStartAnchor:  // InputUnitにつなぐかどうかの判定
+                        if let match = inputUnits.firstIndex(where: { inputUnit in
+                            return inputUnit.validFrame.contains(value.location)
                         }) {
                             anchor.attachedStartUnitIndex = match
                         } else {
                             deactivateStartUnits()
                         }
-                    case .draggingEndAnchor:  // EndUnitにつなぐかどうかの判定
-                        if let match = endUnits.firstIndex(where: { endUnitState in
-                            return endUnitState.validFrame.contains(value.location)
+                    case .draggingEndAnchor:  // OutputUnitにつなぐかどうかの判定
+                        if let match = outputUnits.firstIndex(where: { outputUnit in
+                            return outputUnit.validFrame.contains(value.location)
                         }) {
                             anchor.attachedEndUnitIndex = match
                         } else {
@@ -110,13 +110,13 @@ struct HomeAppView: View {
                     
                     if anchor.isConnected {
                         withAnimation(.linear(duration: 0.5)) {
-                            colors = startUnits[anchor.attachedStartUnitIndex].colors
-                            endUnits[anchor.attachedEndUnitIndex].colors = startUnits[anchor.attachedStartUnitIndex].colors
+                            colors = inputUnits[anchor.attachedStartUnitIndex].colors
+                            outputUnits[anchor.attachedEndUnitIndex].colors = inputUnits[anchor.attachedStartUnitIndex].colors
                         }
                     } else {
                         colors = .offUnit
-                        for i in endUnits.indices {
-                            endUnits[i].colors = .offUnit
+                        for i in outputUnits.indices {
+                            outputUnits[i].colors = .offUnit
                         }
                     }
                     
@@ -129,15 +129,15 @@ struct HomeAppView: View {
                     case .draggingStartAnchor:
                         let index = anchor.attachedStartUnitIndex
                         if index != -1 {
-                            physicsManager.pointP0 = CGPoint(x: startUnits[index].frame.midX,
-                                                             y: startUnits[index].frame.midY)
+                            physicsManager.pointP0 = CGPoint(x: inputUnits[index].frame.midX,
+                                                             y: inputUnits[index].frame.midY)
                         }
                     case .draggingEndAnchor:
                         let index = anchor.attachedEndUnitIndex
                         if index != -1 {
                             physicsManager.pointP2 =
-                            CGPoint(x: endUnits[index].frame.midX,
-                                    y: endUnits[index].frame.midY)
+                            CGPoint(x: outputUnits[index].frame.midX,
+                                    y: outputUnits[index].frame.midY)
                         }
                     }
                     anchor.draggingState = .none
@@ -159,16 +159,16 @@ struct HomeAppView: View {
     // MARK: @ViewBuilder
     
     @ViewBuilder
-    private func StartUnitsView() -> some View {
+    private func InputUnitsView() -> some View {
         VStack(spacing: 20) {
-            ForEach(0 ..< endUnits.count, id: \.self) { index in
-                UnitView(icon: startUnits[index].icon,
-                    unitColors: $startUnits[index].colors)
+            ForEach(0 ..< outputUnits.count, id: \.self) { index in
+                UnitView(icon: inputUnits[index].icon,
+                    unitColors: $inputUnits[index].colors)
                 .overlay(
                     GeometryReader { geo in
                         Color.clear
                             .onAppear {
-                                startUnits[index].frame = geo.frame(in: .global)
+                                inputUnits[index].frame = geo.frame(in: .global)
                             }
                     }
                 )
@@ -177,17 +177,17 @@ struct HomeAppView: View {
     }
     
     @ViewBuilder
-    private func EndUnitsView() -> some View {
+    private func OutputUnitsView() -> some View {
         VStack(spacing: 20) {
-            ForEach(0 ..< endUnits.count, id: \.self) { index in
+            ForEach(0 ..< outputUnits.count, id: \.self) { index in
                 UnitView(
-                    icon: endUnits[index].icon,
-                    unitColors: $endUnits[index].colors)
+                    icon: outputUnits[index].icon,
+                    unitColors: $outputUnits[index].colors)
                 .overlay(
                     GeometryReader { geo in
                         Color.clear
                             .onAppear {
-                                endUnits[index].frame = geo.frame(in: .global)
+                                outputUnits[index].frame = geo.frame(in: .global)
                             }
                     }
                 )
