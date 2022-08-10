@@ -24,7 +24,7 @@
 		DA5E672228A2A8CF007674BC /* CubicBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672128A2A8CF007674BC /* CubicBezierView.swift */; };
 		DA5E672428A2A8D6007674BC /* CubicBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672328A2A8D6007674BC /* CubicBezierGraphView.swift */; };
 		DA5E672D28A32C94007674BC /* UnitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672928A32C94007674BC /* UnitColors.swift */; };
-		DA5E672E28A32C94007674BC /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672A28A32C94007674BC /* Anchor.swift */; };
+		DA5E672E28A32C94007674BC /* AnchorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672A28A32C94007674BC /* AnchorManager.swift */; };
 		DA5E673428A32CAD007674BC /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673028A32CAD007674BC /* UnitView.swift */; };
 		DA5E673528A32CAD007674BC /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673128A32CAD007674BC /* RopeView.swift */; };
 		DA5E673628A32CAD007674BC /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673228A32CAD007674BC /* AnchorView.swift */; };
@@ -53,7 +53,7 @@
 		DA5E672128A2A8CF007674BC /* CubicBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierView.swift; sourceTree = "<group>"; };
 		DA5E672328A2A8D6007674BC /* CubicBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierGraphView.swift; sourceTree = "<group>"; };
 		DA5E672928A32C94007674BC /* UnitColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitColors.swift; sourceTree = "<group>"; };
-		DA5E672A28A32C94007674BC /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
+		DA5E672A28A32C94007674BC /* AnchorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorManager.swift; sourceTree = "<group>"; };
 		DA5E673028A32CAD007674BC /* UnitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 		DA5E673128A32CAD007674BC /* RopeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
 		DA5E673228A32CAD007674BC /* AnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5E673D28A356D4007674BC /* Unit.swift */,
-				DA5E672A28A32C94007674BC /* Anchor.swift */,
+				DA5E672A28A32C94007674BC /* AnchorManager.swift */,
 				DA5E672928A32C94007674BC /* UnitColors.swift */,
 			);
 			path = Models;
@@ -264,7 +264,7 @@
 				DA5E672428A2A8D6007674BC /* CubicBezierGraphView.swift in Sources */,
 				DA200C43289BE68F001ACEF7 /* ContentView.swift in Sources */,
 				DA835E2B289D73B200AF46CB /* SpringView+PointsManager.swift in Sources */,
-				DA5E672E28A32C94007674BC /* Anchor.swift in Sources */,
+				DA5E672E28A32C94007674BC /* AnchorManager.swift in Sources */,
 				DA200C66289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift in Sources */,
 				DA4578EA289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift in Sources */,
 				DA5E673728A32CAD007674BC /* HomeAppView.swift in Sources */,

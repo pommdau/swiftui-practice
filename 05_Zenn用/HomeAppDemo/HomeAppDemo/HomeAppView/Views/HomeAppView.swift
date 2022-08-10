@@ -18,8 +18,7 @@ struct HomeAppView: View {
     private let dashPattern: [CGFloat] = [12, 14]
     private var physicsManager = PhysicsManager(pointP0: .init(x: 100, y: 100),
                                                 pointP2: .init(x: 400, y: 100))
-    
-    @State private var anchor = Anchor()
+    @State private var anchorManager = AnchorManager()
     
     @State private var inputUnits = [
         Unit(colors: .unit1, icon: "drop.fill"),
@@ -52,7 +51,7 @@ struct HomeAppView: View {
                     .position(physicsManager.pointP0)
                 
                 RopeView(pointP0: physicsManager.pointP0,
-                         pointP1: physicsManager.anchor.point,
+                         pointP1: physicsManager.controlAnchor.point,
                          pointP2: physicsManager.pointP2,
                          colors: $colors)
             }
@@ -63,7 +62,7 @@ struct HomeAppView: View {
                 .onChanged({ (value) in
                     
                     // アンカーの移動
-                    switch anchor.draggingState {
+                    switch anchorManager.draggingState {
                     case .none:
                         let inputAnchorFrame = CGRect(x: physicsManager.pointP0.x - AnchorView.radius / 2,
                                                       y: physicsManager.pointP0.y - AnchorView.radius / 2,
@@ -76,9 +75,9 @@ struct HomeAppView: View {
                                                        height: AnchorView.radius)
                         
                         if inputAnchorFrame.contains(value.location) {
-                            anchor.draggingState = .draggingInputAnchor
+                            anchorManager.draggingState = .draggingInputAnchor
                         } else if outputAnchorFrame.contains(value.location) {
-                            anchor.draggingState = .draggingOutputAnchor
+                            anchorManager.draggingState = .draggingOutputAnchor
                         }
                         
                     case .draggingInputAnchor:
@@ -87,14 +86,14 @@ struct HomeAppView: View {
                         physicsManager.pointP2 = value.location
                     }
                     
-                    switch anchor.draggingState {
+                    switch anchorManager.draggingState {
                     case .none:
                         break
                     case .draggingInputAnchor:  // InputUnitにつなぐかどうかの判定
                         if let match = inputUnits.firstIndex(where: { inputUnit in
                             return inputUnit.validFrame.contains(value.location)
                         }) {
-                            anchor.connectedInputUnitIndex = match
+                            anchorManager.connectedInputUnitIndex = match
                         } else {
                             deactivateInputUnits()
                         }
@@ -102,16 +101,16 @@ struct HomeAppView: View {
                         if let match = outputUnits.firstIndex(where: { outputUnit in
                             return outputUnit.validFrame.contains(value.location)
                         }) {
-                            anchor.connectedOuputUnitIndex = match
+                            anchorManager.connectedOuputUnitIndex = match
                         } else {
                             deactivateOutputUnits()
                         }
                     }
                     
-                    if anchor.isConnected {
+                    if anchorManager.isConnected {
                         withAnimation(.linear(duration: 0.5)) {
-                            colors = inputUnits[anchor.connectedInputUnitIndex].colors
-                            outputUnits[anchor.connectedOuputUnitIndex].colors = inputUnits[anchor.connectedInputUnitIndex].colors
+                            colors = inputUnits[anchorManager.connectedInputUnitIndex].colors
+                            outputUnits[anchorManager.connectedOuputUnitIndex].colors = inputUnits[anchorManager.connectedInputUnitIndex].colors
                         }
                     } else {
                         colors = .offUnit
@@ -121,26 +120,25 @@ struct HomeAppView: View {
                     }
                     
                 })
-                .onEnded({ _ in
-                    
-                    switch anchor.draggingState {
+                .onEnded({ _ in                    
+                    switch anchorManager.draggingState {
                     case .none:
                         break
                     case .draggingInputAnchor:
-                        let index = anchor.connectedInputUnitIndex
+                        let index = anchorManager.connectedInputUnitIndex
                         if index != -1 {
                             physicsManager.pointP0 = CGPoint(x: inputUnits[index].frame.midX,
                                                              y: inputUnits[index].frame.midY)
                         }
                     case .draggingOutputAnchor:
-                        let index = anchor.connectedOuputUnitIndex
+                        let index = anchorManager.connectedOuputUnitIndex
                         if index != -1 {
                             physicsManager.pointP2 =
                             CGPoint(x: outputUnits[index].frame.midX,
                                     y: outputUnits[index].frame.midY)
                         }
                     }
-                    anchor.draggingState = .none
+                    anchorManager.draggingState = .none
                 })
         )
         .onAppear() {
@@ -149,11 +147,11 @@ struct HomeAppView: View {
     }
     
     private func deactivateInputUnits() {
-        anchor.connectedInputUnitIndex = -1
+        anchorManager.connectedInputUnitIndex = -1
     }
     
     private func deactivateOutputUnits() {
-        anchor.connectedOuputUnitIndex = -1
+        anchorManager.connectedOuputUnitIndex = -1
     }
     
     // MARK: @ViewBuilder

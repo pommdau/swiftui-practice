@@ -28,9 +28,8 @@ extension HomeAppView {
                     
         var pointP0: CGPoint
         var pointP2: CGPoint
-        var anchor = Anchor(point: .zero)
+        var controlAnchor = Anchor(point: .zero)
         var frameRate: Double = 1 / 60
-    //    var frameRate: Double = 0.1
         
         private var timer: Timer? = nil
         private let spring = Spring()
@@ -42,7 +41,7 @@ extension HomeAppView {
             let distance = sqrt(
                 pow(pointP2.x - pointP0.x, 2) + pow(pointP2.y - pointP0.y, 2)
             )
-            let decline = max(0, spring.length - distance)  // 近似値？
+            let decline = max(0, spring.length - distance)
             
             return .init(x: (pointP0.x + pointP2.x) / 2,
                          y: (pointP0.y + pointP2.y) / 2 + decline)
@@ -52,7 +51,7 @@ extension HomeAppView {
             Path { path in
                 path.move(to: pointP0)
                 path.addQuadCurve(to: pointP2,
-                                  control: anchor.point)
+                                  control: controlAnchor.point)
             }
         }
         
@@ -79,25 +78,18 @@ extension HomeAppView {
         // MARK: - Helpers
         
         private func updateStatus() {
-            let offsetX = anchor.point.x - pointP1.x
-            let offsetY = anchor.point.y - pointP1.y
-            
-            let fSpringX = spring.k * offsetX  // フックの法則
+            let offsetX = controlAnchor.point.x - pointP1.x
+            let offsetY = controlAnchor.point.y - pointP1.y
+            let fSpringX = spring.k * offsetX
             let fSpringY = spring.k * offsetY
-            let fDampingX = spring.d * anchor.vx
-            let fDampingY = spring.d * anchor.vy
-            let ax = (fSpringX + fDampingX) / anchor.mass  // 加速度
-            let ay = (fSpringY + fDampingY) / anchor.mass  // 加速度
-            
-            anchor.vx = anchor.vx + ax * frameRate
-            anchor.vy = anchor.vy + ay * frameRate
-            anchor.point.x = anchor.point.x + anchor.vx * frameRate
-            anchor.point.y = anchor.point.y + anchor.vy * frameRate  // x=v0t+1/2at^2ではなく前の位置を使用する(同じ意味ではある)
-        }
-        
-        private func calculate() -> CGPoint {
-            return .zero
+            let fDampingX = spring.d * controlAnchor.vx
+            let fDampingY = spring.d * controlAnchor.vy
+            let ax = (fSpringX + fDampingX) / controlAnchor.mass
+            let ay = (fSpringY + fDampingY) / controlAnchor.mass
+            controlAnchor.vx = controlAnchor.vx + ax * frameRate
+            controlAnchor.vy = controlAnchor.vy + ay * frameRate
+            controlAnchor.point.x = controlAnchor.point.x + controlAnchor.vx * frameRate
+            controlAnchor.point.y = controlAnchor.point.y + controlAnchor.vy * frameRate
         }
     }
-
 }

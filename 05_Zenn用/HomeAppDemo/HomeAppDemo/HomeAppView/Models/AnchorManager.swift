@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-struct Anchor {
+struct AnchorManager {
     
     // MARK: - Definition
     
