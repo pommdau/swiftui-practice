@@ -31,10 +31,9 @@ struct HomeAppView: View {
         Unit(colors: .offUnit, icon: "umbrella.fill"),
         Unit(colors: .offUnit, icon: "macpro.gen3.fill")
     ]
-    
-    // MARK: - LifeCycle
-    
+        
     // MARK: - View
+    
     var body: some View {
         
         TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
