@@ -21,12 +21,12 @@ struct RopeView: View {
     }
 
     private let lineWidth: CGFloat = 2
-    private let dashPattern: [CGFloat] = [12, 14]
+    private let dashPattern: [CGFloat] = [14, 12]
     @State private var marching = false
     
     // MARK: - Computed Properties
             
-    var RopePath: Path {
+    private var RopePath: Path {
         Path { path in
             path.move(to: pointP0)
             path.addQuadCurve(to: pointP2,
@@ -39,8 +39,7 @@ struct RopeView: View {
     init(pointP0: CGPoint,
          pointP1: CGPoint,
          pointP2: CGPoint,
-         colors: Binding<UnitColors>
-    ) {
+         colors: Binding<UnitColors>) {
         self.pointP0 = pointP0
         self.pointP1 = pointP1
         self.pointP2 = pointP2
@@ -51,7 +50,6 @@ struct RopeView: View {
     
     var body: some View {
         ZStack {
-                    
             // ロープの外枠
             RopePath
                 .stroke(isGlowing ? colors.frameStroke : UnitColors.offUnit.iconFill,
@@ -60,17 +58,17 @@ struct RopeView: View {
             
             // ロープの中の色
             RopePath
-                .stroke(isGlowing ? .white : UnitColors.offUnit.iconFill,
+                .stroke(colors.frameStroke,
                         lineWidth: lineWidth)
             
             if isGlowing {
                 // Glowing effect
                 RopePath
                     .stroke(lineWidth: lineWidth + 6)
-                    .foregroundColor(.white)
-                    .blur(radius: lineWidth + 2)
+                    .foregroundColor(colors.frameFill)
+                    .blur(radius: lineWidth + 6)
                     .zIndex(-1)
-                // 点線の移動
+                // 移動する破線
                 RopePath
                     .stroke(style: StrokeStyle(
                         lineWidth: lineWidth,
@@ -79,7 +77,7 @@ struct RopeView: View {
                         dashPhase: marching
                         ? -dashPattern.reduce(0){$0 + $1}
                         : dashPattern.reduce(0){$0 + $1}))
-                    .foregroundColor(colors.frameStroke)
+                    .foregroundColor(isGlowing ? .white : colors.frameStroke)
                     .onAppear {
                         marching = false
                         withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: false)) {
@@ -97,16 +95,38 @@ struct _RopeView2_Previews: View {
     
     var body: some View {        
         VStack {
-            Button {
-                colors = .offUnit
-            } label: {
-                Text("OffUnit")
-            }
-            
-            Button {
-                colors = .unit1
-            } label: {
-                Text("Unit1")
+            VStack {
+                Button {
+                    withAnimation {
+                        colors = .offUnit
+                    }
+                } label: {
+                    Text("OffUnit")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit1
+                    }
+                } label: {
+                    Text("Unit1")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit2
+                    }
+                } label: {
+                    Text("Unit2")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit3
+                    }
+                } label: {
+                    Text("Unit3")
+                }
             }
             
             RopeView(pointP0: .init(x: 100, y: 100),
@@ -114,7 +134,7 @@ struct _RopeView2_Previews: View {
                      pointP2: .init(x: 400, y: 100),
                      colors: $colors)
         }
-        .background(.black.opacity(0.5))
+        .background(.black.opacity(0.3))
     }
 }
 

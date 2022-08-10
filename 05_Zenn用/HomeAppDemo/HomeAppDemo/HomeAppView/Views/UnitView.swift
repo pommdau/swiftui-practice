@@ -45,10 +45,12 @@ struct UnitView: View {
     @ViewBuilder
     private func CenterIcon() -> some View {
         ZStack {
+//            Image(systemName: "poweroutlet.type.f")  // iOS 16+
             Image(systemName: "face.smiling.fill")
                 .resizable()
                 .foregroundColor(unitColors.iconFill)
                 .frame(width: 40, height: 40)
+//            Image(systemName: "poweroutlet.type.f.fill")  // iOS 16+
             Image(systemName: "face.smiling")
                 .resizable()
                 .foregroundColor(unitColors.iconStroke)
