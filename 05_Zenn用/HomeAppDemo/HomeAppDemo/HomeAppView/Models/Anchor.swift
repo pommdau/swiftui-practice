@@ -13,8 +13,8 @@ struct Anchor {
     
     enum DraggingState {
         case none
-        case draggingStartAnchor
-        case draggingEndAnchor
+        case draggingInputAnchor
+        case draggingOutputAnchor
     }
 
     // MARK: - Properties
@@ -22,10 +22,10 @@ struct Anchor {
     var startAnchorFrame: CGRect = CGRect(x: 100, y: 100, width: 60, height: 60)
     var endAnchorFrame: CGRect = CGRect(x: 200, y: 200, width: 60, height: 60)
     var draggingState: DraggingState = .none
-    var attachedStartUnitIndex = -1
-    var attachedEndUnitIndex = -1
+    var connectedInputUnitIndex = -1
+    var connectedOuputUnitIndex = -1
     
     var isConnected: Bool {
-        return attachedStartUnitIndex >= 0 && attachedEndUnitIndex >= 0
+        return connectedInputUnitIndex >= 0 && connectedOuputUnitIndex >= 0
     }
 }
