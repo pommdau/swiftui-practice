@@ -47,9 +47,13 @@ struct SpringView: View {
         .onDisappear {
             pointsManager.stopTimer()
         }
-        .onTapGesture(coordinateSpace: .global) { location in
+//        .onTapGesture(coordinateSpace: .global) { location in
+//            pointsManager.point.vx = 0
+//            pointsManager.point.x = location.x
+//        }
+        .onTapGesture() {
             pointsManager.point.vx = 0
-            pointsManager.point.x = location.x
+            pointsManager.point.x = 300
         }
     }
     

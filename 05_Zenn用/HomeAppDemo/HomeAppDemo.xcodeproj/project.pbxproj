@@ -21,6 +21,16 @@
 		DA200C68289C3283001ACEF7 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA200C67289C3283001ACEF7 /* SpringView.swift */; };
 		DA4578E8289EBBA200E4DA5A /* RopeViewWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578E7289EBBA200E4DA5A /* RopeViewWithAnimation.swift */; };
 		DA4578EA289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4578E9289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift */; };
+		DA5E672228A2A8CF007674BC /* CubicBezierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672128A2A8CF007674BC /* CubicBezierView.swift */; };
+		DA5E672428A2A8D6007674BC /* CubicBezierGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672328A2A8D6007674BC /* CubicBezierGraphView.swift */; };
+		DA5E672D28A32C94007674BC /* UnitColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672928A32C94007674BC /* UnitColors.swift */; };
+		DA5E672E28A32C94007674BC /* AnchorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E672A28A32C94007674BC /* AnchorManager.swift */; };
+		DA5E673428A32CAD007674BC /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673028A32CAD007674BC /* UnitView.swift */; };
+		DA5E673528A32CAD007674BC /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673128A32CAD007674BC /* RopeView.swift */; };
+		DA5E673628A32CAD007674BC /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673228A32CAD007674BC /* AnchorView.swift */; };
+		DA5E673728A32CAD007674BC /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673328A32CAD007674BC /* HomeAppView.swift */; };
+		DA5E673C28A35655007674BC /* HomeAppView+PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */; };
+		DA5E673E28A356D4007674BC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673D28A356D4007674BC /* Unit.swift */; };
 		DA835E2B289D73B200AF46CB /* SpringView+PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA835E2A289D73B200AF46CB /* SpringView+PointsManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +50,16 @@
 		DA200C67289C3283001ACEF7 /* SpringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringView.swift; sourceTree = "<group>"; };
 		DA4578E7289EBBA200E4DA5A /* RopeViewWithAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeViewWithAnimation.swift; sourceTree = "<group>"; };
 		DA4578E9289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RopeViewWithAnimation+PointsManager.swift"; sourceTree = "<group>"; };
+		DA5E672128A2A8CF007674BC /* CubicBezierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierView.swift; sourceTree = "<group>"; };
+		DA5E672328A2A8D6007674BC /* CubicBezierGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicBezierGraphView.swift; sourceTree = "<group>"; };
+		DA5E672928A32C94007674BC /* UnitColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitColors.swift; sourceTree = "<group>"; };
+		DA5E672A28A32C94007674BC /* AnchorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorManager.swift; sourceTree = "<group>"; };
+		DA5E673028A32CAD007674BC /* UnitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
+		DA5E673128A32CAD007674BC /* RopeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
+		DA5E673228A32CAD007674BC /* AnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
+		DA5E673328A32CAD007674BC /* HomeAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
+		DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeAppView+PointsManager.swift"; sourceTree = "<group>"; };
+		DA5E673D28A356D4007674BC /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		DA835E2A289D73B200AF46CB /* SpringView+PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpringView+PointsManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +98,7 @@
 				DA200C5F289C0985001ACEF7 /* Extensions */,
 				DA200C4E289BEB21001ACEF7 /* Beziers */,
 				DA200C62289C0E75001ACEF7 /* SpringAnimation */,
+				DA5E672528A2C189007674BC /* HomeAppView */,
 				DA200C44289BE690001ACEF7 /* Assets.xcassets */,
 				DA200C46289BE690001ACEF7 /* Preview Content */,
 			);
@@ -100,6 +121,8 @@
 				DA200C53289BEB54001ACEF7 /* LinearInterpolationGraphView.swift */,
 				DA200C5D289C0927001ACEF7 /* QuadraticBezierView.swift */,
 				DA200C5B289C0920001ACEF7 /* QuadraticBezierGraphView.swift */,
+				DA5E672128A2A8CF007674BC /* CubicBezierView.swift */,
+				DA5E672328A2A8D6007674BC /* CubicBezierGraphView.swift */,
 			);
 			path = Beziers;
 			sourceTree = "<group>";
@@ -122,6 +145,45 @@
 				DA4578E9289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift */,
 			);
 			path = SpringAnimation;
+			sourceTree = "<group>";
+		};
+		DA5E672528A2C189007674BC /* HomeAppView */ = {
+			isa = PBXGroup;
+			children = (
+				DA5E672628A32C7E007674BC /* Models */,
+				DA5E672F28A32CAD007674BC /* Views */,
+				DA5E673828A32CC3007674BC /* Controllers */,
+			);
+			path = HomeAppView;
+			sourceTree = "<group>";
+		};
+		DA5E672628A32C7E007674BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA5E673D28A356D4007674BC /* Unit.swift */,
+				DA5E672A28A32C94007674BC /* AnchorManager.swift */,
+				DA5E672928A32C94007674BC /* UnitColors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA5E672F28A32CAD007674BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA5E673328A32CAD007674BC /* HomeAppView.swift */,
+				DA5E673028A32CAD007674BC /* UnitView.swift */,
+				DA5E673228A32CAD007674BC /* AnchorView.swift */,
+				DA5E673128A32CAD007674BC /* RopeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DA5E673828A32CC3007674BC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,18 +256,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5E672228A2A8CF007674BC /* CubicBezierView.swift in Sources */,
 				DA200C55289BEB54001ACEF7 /* LinearInterpolationGraphView.swift in Sources */,
 				DA200C61289C099D001ACEF7 /* CGPoint+covert.swift in Sources */,
+				DA5E673628A32CAD007674BC /* AnchorView.swift in Sources */,
 				DA200C5C289C0920001ACEF7 /* QuadraticBezierGraphView.swift in Sources */,
+				DA5E672428A2A8D6007674BC /* CubicBezierGraphView.swift in Sources */,
 				DA200C43289BE68F001ACEF7 /* ContentView.swift in Sources */,
 				DA835E2B289D73B200AF46CB /* SpringView+PointsManager.swift in Sources */,
+				DA5E672E28A32C94007674BC /* AnchorManager.swift in Sources */,
 				DA200C66289C0E9B001ACEF7 /* RopeViewWithoutAnimation.swift in Sources */,
 				DA4578EA289EBBD700E4DA5A /* RopeViewWithAnimation+PointsManager.swift in Sources */,
+				DA5E673728A32CAD007674BC /* HomeAppView.swift in Sources */,
+				DA5E673428A32CAD007674BC /* UnitView.swift in Sources */,
+				DA5E673E28A356D4007674BC /* Unit.swift in Sources */,
+				DA5E672D28A32C94007674BC /* UnitColors.swift in Sources */,
 				DA200C68289C3283001ACEF7 /* SpringView.swift in Sources */,
 				DA200C56289BEB54001ACEF7 /* LinearInterpolationView.swift in Sources */,
 				DA200C41289BE68F001ACEF7 /* HomeAppDemoApp.swift in Sources */,
 				DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */,
 				DA200C5A289BECD4001ACEF7 /* tValueText.swift in Sources */,
+				DA5E673528A32CAD007674BC /* RopeView.swift in Sources */,
+				DA5E673C28A35655007674BC /* HomeAppView+PointsManager.swift in Sources */,
 				DA4578E8289EBBA200E4DA5A /* RopeViewWithAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +415,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -373,7 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
