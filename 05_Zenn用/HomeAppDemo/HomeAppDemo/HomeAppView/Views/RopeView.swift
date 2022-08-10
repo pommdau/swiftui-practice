@@ -65,8 +65,8 @@ struct RopeView: View {
                 // Glowing effect
                 RopePath
                     .stroke(lineWidth: lineWidth + 6)
-                    .foregroundColor(.white)
-                    .blur(radius: lineWidth + 2)
+                    .foregroundColor(colors.frameFill)
+                    .blur(radius: lineWidth + 6)
                     .zIndex(-1)
                 // 移動する破線
                 RopePath
@@ -95,16 +95,38 @@ struct _RopeView2_Previews: View {
     
     var body: some View {        
         VStack {
-            Button {
-                colors = .offUnit
-            } label: {
-                Text("OffUnit")
-            }
-            
-            Button {
-                colors = .unit1
-            } label: {
-                Text("Unit1")
+            VStack {
+                Button {
+                    withAnimation {
+                        colors = .offUnit
+                    }
+                } label: {
+                    Text("OffUnit")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit1
+                    }
+                } label: {
+                    Text("Unit1")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit2
+                    }
+                } label: {
+                    Text("Unit2")
+                }
+                
+                Button {
+                    withAnimation {
+                        colors = .unit3
+                    }
+                } label: {
+                    Text("Unit3")
+                }
             }
             
             RopeView(pointP0: .init(x: 100, y: 100),
@@ -112,7 +134,7 @@ struct _RopeView2_Previews: View {
                      pointP2: .init(x: 400, y: 100),
                      colors: $colors)
         }
-        .background(.black.opacity(0.5))
+        .background(.black.opacity(0.3))
     }
 }
 
