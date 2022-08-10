@@ -1,5 +1,5 @@
 //
-//  HomeAppView+PhysicsManager.swift
+//  HomeAppView+PointsManager.swift
 //  HomeAppDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/08/10.
@@ -9,7 +9,7 @@ import SwiftUI
 
 extension HomeAppView {
 
-    class PhysicsManager: ObservableObject {
+    class PointsManager: ObservableObject {
         
         struct Anchor {
             let mass: Double = 1  // 質量

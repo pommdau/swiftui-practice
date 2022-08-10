@@ -16,7 +16,7 @@ struct HomeAppView: View {
     @State private var marching = false
     private let lineWidth: CGFloat = 4
     private let dashPattern: [CGFloat] = [12, 14]
-    private var physicsManager = PhysicsManager(pointP0: .init(x: 100, y: 100),
+    private var pointsManager = PointsManager(pointP0: .init(x: 100, y: 100),
                                                 pointP2: .init(x: 400, y: 100))
     @State private var anchorManager = AnchorManager()
     
@@ -37,22 +37,25 @@ struct HomeAppView: View {
     // MARK: - View
     var body: some View {
         
-        TimelineView(.periodic(from: Date(), by: physicsManager.frameRate)) { context in
+        TimelineView(.periodic(from: Date(), by: pointsManager.frameRate)) { context in
             ZStack {
-                HStack(spacing: 140) {
+                HStack {
                     InputUnitsView()
+                        .padding(.leading, 20)
+                    Spacer()
                     OutputUnitsView()
+                        .padding(.trailing, 20)
                 }
                 .offset(x: 0, y: -200)
                 
                 AnchorView(colors: colors)
-                    .position(physicsManager.pointP2)
+                    .position(pointsManager.pointP2)
                 AnchorView(colors: colors)
-                    .position(physicsManager.pointP0)
+                    .position(pointsManager.pointP0)
                 
-                RopeView(pointP0: physicsManager.pointP0,
-                         pointP1: physicsManager.controlAnchor.point,
-                         pointP2: physicsManager.pointP2,
+                RopeView(pointP0: pointsManager.pointP0,
+                         pointP1: pointsManager.controlAnchor.point,
+                         pointP2: pointsManager.pointP2,
                          colors: $colors)
             }
         }
@@ -64,13 +67,13 @@ struct HomeAppView: View {
                     // アンカーの移動
                     switch anchorManager.draggingState {
                     case .none:
-                        let inputAnchorFrame = CGRect(x: physicsManager.pointP0.x - AnchorView.radius / 2,
-                                                      y: physicsManager.pointP0.y - AnchorView.radius / 2,
+                        let inputAnchorFrame = CGRect(x: pointsManager.pointP0.x - AnchorView.radius / 2,
+                                                      y: pointsManager.pointP0.y - AnchorView.radius / 2,
                                                       width: AnchorView.radius,
                                                       height: AnchorView.radius)
                         
-                        let outputAnchorFrame = CGRect(x: physicsManager.pointP2.x - AnchorView.radius / 2,
-                                                       y: physicsManager.pointP2.y - AnchorView.radius / 2,
+                        let outputAnchorFrame = CGRect(x: pointsManager.pointP2.x - AnchorView.radius / 2,
+                                                       y: pointsManager.pointP2.y - AnchorView.radius / 2,
                                                        width: AnchorView.radius,
                                                        height: AnchorView.radius)
                         
@@ -81,9 +84,9 @@ struct HomeAppView: View {
                         }
                         
                     case .draggingInputAnchor:
-                        physicsManager.pointP0 = value.location
+                        pointsManager.pointP0 = value.location
                     case .draggingOutputAnchor:
-                        physicsManager.pointP2 = value.location
+                        pointsManager.pointP2 = value.location
                     }
                     
                     switch anchorManager.draggingState {
@@ -120,20 +123,20 @@ struct HomeAppView: View {
                     }
                     
                 })
-                .onEnded({ _ in                    
+                .onEnded({ _ in
                     switch anchorManager.draggingState {
                     case .none:
                         break
                     case .draggingInputAnchor:
                         let index = anchorManager.connectedInputUnitIndex
                         if index != -1 {
-                            physicsManager.pointP0 = CGPoint(x: inputUnits[index].frame.midX,
+                            pointsManager.pointP0 = CGPoint(x: inputUnits[index].frame.midX,
                                                              y: inputUnits[index].frame.midY)
                         }
                     case .draggingOutputAnchor:
                         let index = anchorManager.connectedOuputUnitIndex
                         if index != -1 {
-                            physicsManager.pointP2 =
+                            pointsManager.pointP2 =
                             CGPoint(x: outputUnits[index].frame.midX,
                                     y: outputUnits[index].frame.midY)
                         }
@@ -142,7 +145,7 @@ struct HomeAppView: View {
                 })
         )
         .onAppear() {
-            physicsManager.startTimer()
+            pointsManager.startTimer()
         }
     }
     
@@ -194,7 +197,6 @@ struct HomeAppView: View {
     }
     
 }
-
 
 struct RopeView_Previews: PreviewProvider {    
     

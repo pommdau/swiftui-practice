@@ -29,7 +29,7 @@
 		DA5E673528A32CAD007674BC /* RopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673128A32CAD007674BC /* RopeView.swift */; };
 		DA5E673628A32CAD007674BC /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673228A32CAD007674BC /* AnchorView.swift */; };
 		DA5E673728A32CAD007674BC /* HomeAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673328A32CAD007674BC /* HomeAppView.swift */; };
-		DA5E673C28A35655007674BC /* HomeAppView+PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673B28A35655007674BC /* HomeAppView+PhysicsManager.swift */; };
+		DA5E673C28A35655007674BC /* HomeAppView+PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */; };
 		DA5E673E28A356D4007674BC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5E673D28A356D4007674BC /* Unit.swift */; };
 		DA835E2B289D73B200AF46CB /* SpringView+PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA835E2A289D73B200AF46CB /* SpringView+PointsManager.swift */; };
 /* End PBXBuildFile section */
@@ -58,7 +58,7 @@
 		DA5E673128A32CAD007674BC /* RopeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RopeView.swift; sourceTree = "<group>"; };
 		DA5E673228A32CAD007674BC /* AnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
 		DA5E673328A32CAD007674BC /* HomeAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAppView.swift; sourceTree = "<group>"; };
-		DA5E673B28A35655007674BC /* HomeAppView+PhysicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeAppView+PhysicsManager.swift"; sourceTree = "<group>"; };
+		DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeAppView+PointsManager.swift"; sourceTree = "<group>"; };
 		DA5E673D28A356D4007674BC /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		DA835E2A289D73B200AF46CB /* SpringView+PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpringView+PointsManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,7 +181,7 @@
 		DA5E673828A32CC3007674BC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DA5E673B28A35655007674BC /* HomeAppView+PhysicsManager.swift */,
+				DA5E673B28A35655007674BC /* HomeAppView+PointsManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				DA200C5E289C0927001ACEF7 /* QuadraticBezierView.swift in Sources */,
 				DA200C5A289BECD4001ACEF7 /* tValueText.swift in Sources */,
 				DA5E673528A32CAD007674BC /* RopeView.swift in Sources */,
-				DA5E673C28A35655007674BC /* HomeAppView+PhysicsManager.swift in Sources */,
+				DA5E673C28A35655007674BC /* HomeAppView+PointsManager.swift in Sources */,
 				DA4578E8289EBBA200E4DA5A /* RopeViewWithAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
