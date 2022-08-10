@@ -11,9 +11,9 @@ struct RopeView: View {
     
     // MARK: - Properties
     
-    let startPoint: CGPoint
-    let middlePoint: CGPoint
-    let endPoint: CGPoint
+    let pointP0: CGPoint
+    let pointP1: CGPoint
+    let pointP2: CGPoint
     @Binding var colors: UnitColors
     
     var isGlowing: Bool {
@@ -28,22 +28,22 @@ struct RopeView: View {
             
     var RopePath: Path {
         Path { path in
-            path.move(to: startPoint)
-            path.addQuadCurve(to: endPoint,
-                              control: middlePoint)
+            path.move(to: pointP0)
+            path.addQuadCurve(to: pointP2,
+                              control: pointP1)
         }
     }
     
     // MARK: - LifeCycle
     
-    init(startPoint: CGPoint,
-         middlePoint: CGPoint,
-         endPoint: CGPoint,
+    init(pointP0: CGPoint,
+         pointP1: CGPoint,
+         pointP2: CGPoint,
          colors: Binding<UnitColors>
     ) {
-        self.startPoint = startPoint
-        self.middlePoint = middlePoint
-        self.endPoint = endPoint
+        self.pointP0 = pointP0
+        self.pointP1 = pointP1
+        self.pointP2 = pointP2
         self._colors = colors
     }
     
@@ -109,9 +109,9 @@ struct _RopeView2_Previews: View {
                 Text("Unit1")
             }
             
-            RopeView(startPoint: .init(x: 100, y: 100),
-                      middlePoint: .init(x: 200, y: 300),
-                      endPoint: .init(x: 400, y: 100),
+            RopeView(pointP0: .init(x: 100, y: 100),
+                     pointP1: .init(x: 200, y: 300),
+                     pointP2: .init(x: 400, y: 100),
                      colors: $colors)
         }
         .background(.black.opacity(0.5))

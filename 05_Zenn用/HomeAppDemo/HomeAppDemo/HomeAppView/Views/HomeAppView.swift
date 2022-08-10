@@ -51,9 +51,9 @@ struct HomeAppView: View {
                 AnchorView(colors: colors)
                     .position(physicsManager.pointP0)
                 
-                RopeView(startPoint: physicsManager.pointP0,
-                         middlePoint: physicsManager.anchor.point,
-                         endPoint: physicsManager.pointP2,
+                RopeView(pointP0: physicsManager.pointP0,
+                         pointP1: physicsManager.anchor.point,
+                         pointP2: physicsManager.pointP2,
                          colors: $colors)
             }
         }
