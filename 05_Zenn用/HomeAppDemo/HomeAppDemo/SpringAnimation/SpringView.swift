@@ -47,6 +47,7 @@ struct SpringView: View {
         .onDisappear {
             pointsManager.stopTimer()
         }
+// iOS 16+
 //        .onTapGesture(coordinateSpace: .global) { location in
 //            pointsManager.point.vx = 0
 //            pointsManager.point.x = location.x

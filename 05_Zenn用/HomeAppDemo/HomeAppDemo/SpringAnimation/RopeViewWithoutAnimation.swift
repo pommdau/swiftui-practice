@@ -34,7 +34,7 @@ struct RopeViewWithoutAnimation: View {
         }
     }
     
-    var dragGestureP0: some Gesture {
+    private var dragGestureP0: some Gesture {
         DragGesture()
             .onChanged{ value in
                 pointP0 = CGPoint(
@@ -54,7 +54,7 @@ struct RopeViewWithoutAnimation: View {
             }
     }
     
-    var dragGestureP2: some Gesture {
+    private var dragGestureP2: some Gesture {
         DragGesture()
             .onChanged{ value in
                 pointP2 = CGPoint(
@@ -75,24 +75,27 @@ struct RopeViewWithoutAnimation: View {
     }
     
     @ViewBuilder
-    private func Points() -> some View {
+    private func Point(label: String, color: Color, position: CGPoint) -> some View {
         ZStack {
             Circle()
                 .frame(width: pointRadius, height: pointRadius)
-                .foregroundColor(.red)
-                .position(pointP0)
+                .foregroundColor(color)
+            Text(label)
+                .foregroundColor(.black)
+                .offset(y: 30)
+                .frame(minWidth: 40)
+        }
+        .position(position)
+    }
+    
+    @ViewBuilder
+    private func Points() -> some View {
+        ZStack {
+            Point(label: "P0", color: .red, position: pointP0)
                 .gesture(dragGestureP0)
-            
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .foregroundColor(.red)
-                .position(pointP2)
+            Point(label: "P1", color: .red, position: pointP1)
+            Point(label: "P2", color: .red, position: pointP2)
                 .gesture(dragGestureP2)
-            
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .foregroundColor(.red)
-                .position(pointP1)
         }
     }
     

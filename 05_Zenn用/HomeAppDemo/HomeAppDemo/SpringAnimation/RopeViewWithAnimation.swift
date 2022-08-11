@@ -18,7 +18,7 @@ struct RopeViewWithAnimation: View {
     @ObservedObject private var pointsManager =
     PointsManager(pointP0: .init(x: 100, y: 100),
                   pointP2: .init(x: 300, y: 150))
-    @State private var showingSupportViews = false
+    @State private var showingSupportViews = true
         
     // MARK: Public Properties
     
@@ -56,29 +56,36 @@ struct RopeViewWithAnimation: View {
 extension RopeViewWithAnimation {
     
     @ViewBuilder
+    private func Point(label: String,
+                       offset: CGSize = .init(width: 30, height: 0),
+                       color: Color,
+                       position: CGPoint) -> some View {
+        ZStack {
+            Circle()
+                .frame(width: pointRadius, height: pointRadius)
+                .foregroundColor(color)
+            Text(label)
+                .foregroundColor(.black)
+                .offset(offset)
+                .frame(minWidth: 40)
+        }
+        .position(position)
+    }
+    
+    @ViewBuilder
     private func Points() -> some View {
-        Circle()
-            .frame(width: pointRadius, height: pointRadius)
-            .foregroundColor(.red)
-            .position(pointsManager.pointP0)
+        Point(label: "P0", color: .red, position: pointsManager.pointP0)
             .gesture(dragGestureForPointP0)
-                        
-        Circle()
-            .frame(width: pointRadius, height: pointRadius)
-            .foregroundColor(.red)
-            .position(pointsManager.pointP2)
+        
+        Point(label: "P2", color: .red, position: pointsManager.pointP2)
             .gesture(dragGestureForPointP2)
         
         if showingSupportViews {
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .foregroundColor(.green)
-                .position(pointsManager.pointP1)
-            
-            Circle()
-                .frame(width: pointRadius, height: pointRadius)
-                .foregroundColor(.red)
-                .position(pointsManager.controlPoint.point)
+            Point(label: "P1", color: .green, position: pointsManager.pointP1)
+            Point(label: "ControlPoint",
+                  offset: .init(width: 40, height: 24),
+                  color: .red,
+                  position: pointsManager.controlPoint.point)
         }
     }
     
