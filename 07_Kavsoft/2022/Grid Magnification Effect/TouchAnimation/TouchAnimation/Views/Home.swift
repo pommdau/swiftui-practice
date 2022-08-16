@@ -60,6 +60,9 @@ struct Home: View {
                                 .offset(x: (location.x - transformedLocation.x),
                                         y: (location.y - transformedLocation.y))
                             
+                            // MARK: For effect2 simply replace scale location
+//                                .scaleEffect(scale)
+                            
                         }
                         .padding(5)
                         .frame(height: width)
@@ -86,9 +89,15 @@ struct Home: View {
         let b = location.y - rect.midY
         let root = sqrt(a * a + b * b)
         let diagonalValue = sqrt(pow(size.width, 2) + pow(size.height, 2))
-                
+
         // MARK: For more detail, devide diagonal value
-        let scale = root / (diagonalValue / 2)  // nomarization: 正規化？
+        
+        // MARK: Main Grid Magnification Effect
+        // Simply Give Any Number (This will be the Circle Size)
+        // For the Video I'm Giving 150
+        let scale = (root - 150) / 150
+        // MARK: For All Other Effects
+//        let scale = root / (diagonalValue / 2)  // nomarization: 正規化？
         let modifiedScale = location == .zero ? 1 : (1 - scale)
         
         // MARK: To avoid SwiftUI transform warning
