@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Home: View {
     
+    @Binding var animationEffect: AnimationEffect
+    
     // MARK: Gesture State
     @GestureState var location: CGPoint = .zero
         

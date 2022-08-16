@@ -7,9 +7,33 @@
 
 import SwiftUI
 
+enum AnimationEffect {
+    case one
+    case two
+    case three
+}
+
 struct ContentView: View {
+        
+    @State private var animationEffect: AnimationEffect = .one
+    
     var body: some View {
-        Home()
+        VStack {
+            VStack {
+                HStack {
+                    Text("Animation Effect")
+                    Spacer()
+                }
+                Picker(selection: $animationEffect, label: Text("Animation"), content: {
+                    Text("Animation 1").tag(AnimationEffect.one)
+                    Text("Animation 2").tag(AnimationEffect.two)
+                    Text("Animation 3").tag(AnimationEffect.three)
+                })
+                .pickerStyle(SegmentedPickerStyle())
+            }
+            Home(animationEffect: $animationEffect)
+        }
+        .padding()
     }
 }
 
