@@ -31,6 +31,7 @@ struct ContentView: View {
                 })
                 .pickerStyle(SegmentedPickerStyle())
             }
+            Spacer()
             Home(animationEffect: $animationEffect)
         }
         .padding()

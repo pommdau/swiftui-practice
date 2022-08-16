@@ -15,7 +15,18 @@ struct Home: View {
     @GestureState var location: CGPoint = .zero
         
     var body: some View {
-                
+        switch animationEffect {
+        case .one:
+            View1()
+        case .two:
+            Text("two")
+        case .three:
+            Text("three")
+        }
+    }
+    
+    @ViewBuilder
+    private func View1() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
@@ -83,7 +94,7 @@ struct Home: View {
         .preferredColorScheme(.dark)
         .animation(.easeInOut, value: location == .zero)
     }
-        
+    
     // MARK: Calculating scale for each item with the help of pythagorean theorem(ピタゴラスの定理)
     
     func itemScale(rect: CGRect, size: CGSize) -> CGFloat {
