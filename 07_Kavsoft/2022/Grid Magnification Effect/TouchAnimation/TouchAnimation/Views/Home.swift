@@ -38,9 +38,28 @@ struct Home: View {
                             let rect = innerProxy.frame(in: .named("GESTURE"))
                             let scale = itemScale(rect: rect, size: size)
                             
+                            // MARK: Instead of manual caluculation,
+                            // we're going to use UIKit's CGAffineTransform
+                            let transformedRect = rect.applying(
+                                .init(scaleX: scale, y: scale)
+                            )
+                            
+                            // MARK: Transforming location too
+                            let transformedLocation = location.applying(
+                                .init(scaleX: scale, y: scale)
+                            )
+                            
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(.orange)
                                 .scaleEffect(scale)
+                            
+                            // MARK: For Effect 1
+                            // We Need to Re-Locate Every Item To Currently Draaging Postion
+                                .offset(x: (transformedRect.midX - rect.midX),
+                                        y: (transformedRect.midY - rect.midY))
+                                .offset(x: (location.x - transformedLocation.x),
+                                        y: (location.y - transformedLocation.y))
+                            
                         }
                         .padding(5)
                         .frame(height: width)
