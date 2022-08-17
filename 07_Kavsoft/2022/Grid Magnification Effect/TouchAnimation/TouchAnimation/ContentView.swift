@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum AnimationEffect {
+    case main
     case one
     case two
     case three
@@ -15,7 +16,7 @@ enum AnimationEffect {
 
 struct ContentView: View {
         
-    @State private var animationEffect: AnimationEffect = .three
+    @State private var animationEffect: AnimationEffect = .two
     
     var body: some View {
         VStack {

@@ -16,17 +16,83 @@ struct Home: View {
         
     var body: some View {
         switch animationEffect {
+        case .main:
+            MainEffectView()
         case .one:
-            View1()
+            MainEffectView()
         case .two:
-            Text("two")
+            Effect2View()
         case .three:
-            View3()
+            Effect3View()
         }
     }
     
     @ViewBuilder
-    private func View3() -> some View {
+    private func Effect2View() -> some View {
+        GeometryReader { proxy in
+            let size = proxy.size
+            
+            //  MARK: To Fit Into Whole View
+            // Calculating Item Count with the help of Height & Width
+            // In a Row We Have 10 Items
+            let width = (size.width / 10)
+            
+            // Multiplying Each Row Count
+            let itemCount = Int((size.height / width).rounded()) * 10
+            
+            // MARK: For solid linear gradient
+            // we're going to use mask
+            LinearGradient(colors: [.cyan, .yellow, .mint, .pink, .purple],
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+            .mask {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 10),
+                          spacing: 0) {
+                    ForEach(0..<itemCount, id: \.self) { _ in
+                        GeometryReader { innerProxy in
+                            let rect = innerProxy.frame(in: .named("GESTURE"))
+                            let scale = itemScale(rect: rect, size: size)
+                            
+                            // MARK: Instead of manual caluculation,
+                            // we're going to use UIKit's CGAffineTransform
+                            let transformedRect = rect.applying(
+                                .init(scaleX: scale, y: scale)
+                            )
+                            
+                            // MARK: Transforming location too
+                            let transformedLocation = location.applying(
+                                .init(scaleX: scale, y: scale)
+                            )
+                            
+                            RoundedRectangle(cornerRadius: 4)
+                                .scaleEffect(scale)
+                            // MARK: For Effect 1
+                            // We Need to Re-Locate Every Item To Currently Draaging Postion
+                                .offset(x: (transformedRect.midX - rect.midX),
+                                        y: (transformedRect.midY - rect.midY))
+                                .offset(x: (location.x - transformedLocation.x),
+                                        y: (location.y - transformedLocation.y))
+                        }
+                        .padding(5)
+                        .frame(height: width)
+                    }
+                }
+            }
+        }
+        .padding(15)
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .updating($location, body: { value, out, _ in
+                    out = value.location
+                })
+        )
+        .coordinateSpace(name: "GESTURE")
+        .preferredColorScheme(.dark)
+        .animation(.easeInOut, value: location == .zero)
+    }
+    
+    @ViewBuilder
+    private func Effect3View() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
@@ -75,7 +141,7 @@ struct Home: View {
     }
     
     @ViewBuilder
-    private func View1() -> some View {
+    private func MainEffectView() -> some View {
         GeometryReader { proxy in
             let size = proxy.size
             
@@ -148,7 +214,7 @@ struct Home: View {
     
     func itemScale(rect: CGRect, size: CGSize) -> CGFloat {
         switch animationEffect {
-        case .one, .two:
+        case .main, .one:
             let a = location.x - rect.midX
             let b = location.y - rect.midY
             let root = sqrt(a * a + b * b)
@@ -167,7 +233,7 @@ struct Home: View {
             // MARK: To avoid SwiftUI transform warning
             return modifiedScale > 0 ? modifiedScale : 0.001
             
-        case .three:
+        case .two, .three:
             let a = location.x - rect.midX
             let b = location.y - rect.midY
             let root = sqrt(a * a + b * b)  // タッチした場所から離れているほど値は大きくアンル
