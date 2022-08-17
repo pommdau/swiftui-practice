@@ -15,7 +15,7 @@ enum AnimationEffect {
 
 struct ContentView: View {
         
-    @State private var animationEffect: AnimationEffect = .one
+    @State private var animationEffect: AnimationEffect = .three
     
     var body: some View {
         VStack {
