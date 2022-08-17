@@ -5,3 +5,11 @@
     - [【SwiftUI】Viewの切り取りとマスク](https://capibara1969.com/1939/)
 - `.animation`
     - [animation\(\_:value:\)](https://developer.apple.com/documentation/swiftui/path/animation(_:value:))
+- [CGRectApplyAffineTransform\(\_:\_:\)](https://developer.apple.com/documentation/coregraphics/1455875-cgrectapplyaffinetransform)
+    - [CGAffineTransform](https://developer.apple.com/documentation/corefoundation/cgaffinetransform)
+
+```swift
+let transformedLocation = location.applying(
+    .init(scaleX: scale, y: scale)
+)
+```
