@@ -146,7 +146,7 @@ struct Home: View {
     
     // MARK: Calculating scale for each item with the help of pythagorean theorem(ピタゴラスの定理)
     
-    func itemScale(rect: CGRect, size: CGSize) -> CGFloat {        
+    func itemScale(rect: CGRect, size: CGSize) -> CGFloat {
         switch animationEffect {
         case .one, .two:
             let a = location.x - rect.midX
