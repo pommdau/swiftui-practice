@@ -22,8 +22,11 @@ struct DetailEditView: View {
                            step: 1) {
                         Text("Length")  // For VoiceOver
                     }
+                           .accessibilityValue("\(Int(data.lengthInMinutes)) minutes")
+                    
                     Spacer()
                     Text("\(Int(data.lengthInMinutes)) minutes")
+                        .accessibilityHidden(true)  // VoiceOverに必要な情報がSliderが持っている
                 }
             }
             
@@ -45,6 +48,7 @@ struct DetailEditView: View {
                         }
                     } label: {
                         Image(systemName: "plus.circle.fill")
+                            .accessibilityLabel("Add attendee")
                     }
                     .disabled(newAttendeeName.isEmpty)
                 }
