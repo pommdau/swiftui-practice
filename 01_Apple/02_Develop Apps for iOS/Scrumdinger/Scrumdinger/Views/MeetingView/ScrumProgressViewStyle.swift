@@ -1,5 +1,5 @@
 //
-//  ScrumpProgressViewStyle.swift
+//  ScrumProgressViewStyle.swift
 //  Scrumdinger
 //
 //  Created by HIROKI IKEUCHI on 2022/08/21.
