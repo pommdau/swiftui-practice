@@ -67,7 +67,7 @@ struct DetailView: View {
                             Button("Cancel") {
                                 isPresentingEditView = false
                             }
-                        }                        
+                        }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
                                 isPresentingEditView = false
