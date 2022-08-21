@@ -28,6 +28,7 @@ struct DetailEditView: View {
                     Text("\(Int(data.lengthInMinutes)) minutes")
                         .accessibilityHidden(true)  // VoiceOverに必要な情報がSliderが持っている
                 }
+                ThemePicker(selection: $data.theme)
             }
             
             Section(header: Text("Attendees")) {
