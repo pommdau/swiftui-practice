@@ -11,7 +11,9 @@ struct DetailView: View {
     
     // MARK: - Properties
         
-    let scrum: DailyScrum
+    @Binding var scrum: DailyScrum
+    
+    @State private var data = DailyScrum.Data()  // 編集対象のデータ
     @State private var isPresentingEditView = false
     
     // MARK: - View
@@ -56,11 +58,12 @@ struct DetailView: View {
         .toolbar {
             Button("Edit") {
                 isPresentingEditView = true
+                data = scrum.data
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationView {
-                DetailEditView()
+                DetailEditView(data: $data)
                     .navigationTitle(scrum.title)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
@@ -71,6 +74,7 @@ struct DetailView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
                                 isPresentingEditView = false
+                                scrum.update(from: data)
                             }
                         }
                     }
@@ -82,7 +86,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(scrum: DailyScrum.sampleData[0])
+            DetailView(scrum: .constant(DailyScrum.sampleData[0]))
         }
     }
 }
