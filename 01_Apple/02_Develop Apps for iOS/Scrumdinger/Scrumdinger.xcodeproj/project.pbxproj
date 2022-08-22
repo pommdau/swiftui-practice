@@ -25,6 +25,7 @@
 		DA7BF9CC28B256B80054A605 /* MeetingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BF9CB28B256B80054A605 /* MeetingFooterView.swift */; };
 		DA7BF9CE28B259680054A605 /* AVPlayer+Ding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BF9CD28B259680054A605 /* AVPlayer+Ding.swift */; };
 		DA7BF9D128B259840054A605 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7BF9D028B259840054A605 /* ding.wav */; };
+		DAE4413C28B4248400B1F63B /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE4413B28B4248400B1F63B /* History.swift */; };
 		DAE5C74228AF4D5A0082AD68 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5C74128AF4D5A0082AD68 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		DA7BF9CB28B256B80054A605 /* MeetingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingFooterView.swift; sourceTree = "<group>"; };
 		DA7BF9CD28B259680054A605 /* AVPlayer+Ding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ding.swift"; sourceTree = "<group>"; };
 		DA7BF9D028B259840054A605 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
+		DAE4413B28B4248400B1F63B /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		DAE5C74128AF4D5A0082AD68 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				DA4B3C2328A0DC140011130C /* Theme.swift */,
 				DA4B3C2528A0DE360011130C /* DailyScrum.swift */,
 				DA7BF9C928B254B80054A605 /* ScrumTimer.swift */,
+				DAE4413B28B4248400B1F63B /* History.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE4413C28B4248400B1F63B /* History.swift in Sources */,
 				DA1FC65A28B1F1B200572387 /* ThemePicker.swift in Sources */,
 				DA4B3C2628A0DE360011130C /* DailyScrum.swift in Sources */,
 				DA7BF9CC28B256B80054A605 /* MeetingFooterView.swift in Sources */,
