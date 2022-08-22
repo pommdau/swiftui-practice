@@ -62,13 +62,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA1FC65828B1F13E00572387 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		DA3D2F9328A0AE1A0053CC3B = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				DA3D2F9F28A0AE1A0053CC3B /* ScrumdingerApp.swift */,
-				DA1FC65828B1F13E00572387 /* Helpers */,
 				DA4B3C2228A0DC090011130C /* Models */,
 				DA4B3C2728A0DE550011130C /* Views */,
 				DA3D2FA328A0AE1B0053CC3B /* Assets.xcassets */,
