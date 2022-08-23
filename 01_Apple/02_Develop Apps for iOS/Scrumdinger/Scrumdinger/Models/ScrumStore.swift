@@ -44,7 +44,7 @@ class ScrumStore: ObservableObject {
         }
     }
     
-    static func sace(scrums: [DailyScrum], completion: @escaping (Result<Int, Error>) -> Void) {
+    static func save(scrums: [DailyScrum], completion: @escaping (Result<Int, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try JSONEncoder().encode(scrums)
