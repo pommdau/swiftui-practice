@@ -21,6 +21,7 @@ class ScrumStore: ObservableObject {
     }
     
     static func load(completion: @escaping (Result<[DailyScrum], Error>) -> Void) {
+                
         DispatchQueue.global(qos: .background).async {
             do {
                 let fileURL = try fileURL()
