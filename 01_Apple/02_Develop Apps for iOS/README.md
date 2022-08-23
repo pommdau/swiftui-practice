@@ -13,3 +13,9 @@ xcrun simctl get_app_container booted com.example.apple-samplecode.Scrumdinger d
 // 実際
 xcrun simctl get_app_container booted com.gmail.ikeh1024.Scrumdinger data
 ```
+
+- `.task`のmodifier
+    - [task\(priority:\_:\)](https://developer.apple.com/documentation/swiftui/view/task(priority:_:))
+    - `onAppear`的な使い方であってるかな？
+
+>Adds an asynchronous task to perform before this view appears.
