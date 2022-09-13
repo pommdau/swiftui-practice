@@ -84,6 +84,7 @@
 		DAD3E77528D085F400DF2B51 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3E77428D085F400DF2B51 /* LandmarkList.swift */; };
 		DAD3E77728D08E2800DF2B51 /* LandmarkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3E77628D08E2800DF2B51 /* LandmarkCommands.swift */; };
 		DAD3E77828D08E2F00DF2B51 /* LandmarkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3E77628D08E2800DF2B51 /* LandmarkCommands.swift */; };
+		DAD3E77A28D0949A00DF2B51 /* LandmarkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3E77928D0949A00DF2B51 /* LandmarkSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		DAD3E77028D0800300DF2B51 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		DAD3E77428D085F400DF2B51 /* LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkList.swift; sourceTree = "<group>"; };
 		DAD3E77628D08E2800DF2B51 /* LandmarkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCommands.swift; sourceTree = "<group>"; };
+		DAD3E77928D0949A00DF2B51 /* LandmarkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +410,7 @@
 				DAD3E76128D07C4F00DF2B51 /* MacLandmarks.entitlements */,
 				DAD3E75E28D07C4F00DF2B51 /* Preview Content */,
 				DAD3E77628D08E2800DF2B51 /* LandmarkCommands.swift */,
+				DAD3E77928D0949A00DF2B51 /* LandmarkSettings.swift */,
 			);
 			path = MacLandmarks;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			files = (
 				DAD3E76A28D07FA200DF2B51 /* MapView.swift in Sources */,
 				DAD3E76D28D07FA200DF2B51 /* Profile.swift in Sources */,
+				DAD3E77A28D0949A00DF2B51 /* LandmarkSettings.swift in Sources */,
 				DAD3E76628D07FA200DF2B51 /* FavoriteButton.swift in Sources */,
 				DAD3E76528D07FA200DF2B51 /* LandmarkRow.swift in Sources */,
 				DAD3E77728D08E2800DF2B51 /* LandmarkCommands.swift in Sources */,
