@@ -29,6 +29,7 @@ struct LandmarksApp: App {
         #endif
         
         #if os(macOS)
+        // 設定はmacOSのみ
         Settings {
             LandmarkSettings()
         }
