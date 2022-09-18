@@ -24,6 +24,7 @@
 		DAD139AD28D6B14100B061C2 /* TableViewDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TableViewDemo.entitlements; sourceTree = "<group>"; };
 		DAD139B428D6B45700B061C2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DAD139B628D6B8D500B061C2 /* EditSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSegmentControl.swift; sourceTree = "<group>"; };
+		DAD139B828D6C85900B061C2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		DAD1399828D6B14000B061C2 = {
 			isa = PBXGroup;
 			children = (
+				DAD139B828D6C85900B061C2 /* README.md */,
 				DAD139A328D6B14000B061C2 /* TableViewDemo */,
 				DAD139A228D6B14000B061C2 /* Products */,
 			);
