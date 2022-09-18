@@ -8,22 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    struct Person: Identifiable {
-        let givenName: String
-        let familyName: String
-        let emailAddress: String
-        let id = UUID()
-    }
-    private var people = [
+
+    @State private var people = [
         Person(givenName: "Juan", familyName: "Chavez", emailAddress: "juanchavez@icloud.com"),
         Person(givenName: "Mei", familyName: "Chen", emailAddress: "meichen@icloud.com"),
         Person(givenName: "Tom", familyName: "Clark", emailAddress: "tomclark@icloud.com"),
         Person(givenName: "Gita", familyName: "Kumar", emailAddress: "gitakumar@icloud.com")
     ]
+    
+    @State private var selectedPeople = Set<Person.ID>()
 
     var body: some View {
         VStack {
-            Table(people) {
+            Table(people, selection: $selectedPeople) {
                 TableColumn("Given Name", value: \.givenName)
                 TableColumn("Family Name", value: \.familyName)
                 TableColumn("E-Mail Address", value: \.emailAddress)
@@ -34,6 +31,9 @@ struct ContentView: View {
                 .padding(.bottom, 8)
             HStack {
                 Button {
+                    withAnimation {
+                        people.append(Person(givenName: "NewPerson", familyName: "(New)", emailAddress: "(New)"))
+                    }
                 } label: {
                     Image(systemName: "plus")
                 }
