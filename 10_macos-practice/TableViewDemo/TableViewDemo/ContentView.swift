@@ -57,10 +57,8 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button {
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
+                MySegmentControl()
+                    .frame(width: 60)
             }
             .buttonStyle(.plain)
         }

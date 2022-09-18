@@ -12,6 +12,7 @@
 		DAD139A928D6B14100B061C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD139A828D6B14100B061C2 /* Assets.xcassets */; };
 		DAD139AC28D6B14100B061C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD139AB28D6B14100B061C2 /* Preview Assets.xcassets */; };
 		DAD139B528D6B45700B061C2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD139B428D6B45700B061C2 /* Person.swift */; };
+		DAD139B728D6B8D500B061C2 /* MySegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD139B628D6B8D500B061C2 /* MySegmentControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DAD139AB28D6B14100B061C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DAD139AD28D6B14100B061C2 /* TableViewDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TableViewDemo.entitlements; sourceTree = "<group>"; };
 		DAD139B428D6B45700B061C2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DAD139B628D6B8D500B061C2 /* MySegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				DAD139A428D6B14000B061C2 /* TableViewDemoApp.swift */,
 				DAD139A628D6B14000B061C2 /* ContentView.swift */,
+				DAD139B628D6B8D500B061C2 /* MySegmentControl.swift */,
 				DAD139A828D6B14100B061C2 /* Assets.xcassets */,
 				DAD139AD28D6B14100B061C2 /* TableViewDemo.entitlements */,
 				DAD139AA28D6B14100B061C2 /* Preview Content */,
@@ -145,6 +148,7 @@
 				DAD139B528D6B45700B061C2 /* Person.swift in Sources */,
 				DAD139A728D6B14000B061C2 /* ContentView.swift in Sources */,
 				DAD139A528D6B14000B061C2 /* TableViewDemoApp.swift in Sources */,
+				DAD139B728D6B8D500B061C2 /* MySegmentControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
