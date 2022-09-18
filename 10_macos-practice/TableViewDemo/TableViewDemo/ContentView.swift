@@ -57,7 +57,9 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                MySegmentControl()
+                MySegmentControl(buttonPressedAction: { selected in
+                    print(selected)
+                })
                     .frame(width: 60)
             }
             .buttonStyle(.plain)

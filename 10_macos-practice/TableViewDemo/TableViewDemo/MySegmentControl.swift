@@ -11,9 +11,22 @@ import SwiftUI
 
 struct MySegmentControl: NSViewRepresentable {
     
-    func makeCoordinator() -> MySegmentControl.Coordinator {
-        Coordinator(parent: self)
+    enum ButtonStyle: Int {
+        case plus = 0
+        case minus = 1
     }
+    
+    private var buttonPressedAction: (Int) -> ()
+    
+    init(buttonPressedAction: @escaping (Int) -> ()) {
+        self.buttonPressedAction = buttonPressedAction
+    }
+    
+    func makeCoordinator() -> MySegmentControl.Coordinator {
+        Coordinator(parent: self, buttonPressedAction: buttonPressedAction)
+    }
+    
+    // 一度だけ初期化時に呼ばれる
     func makeNSView(context: NSViewRepresentableContext<MySegmentControl>) -> NSSegmentedControl {
         let control = NSSegmentedControl(
             images: [
@@ -26,15 +39,25 @@ struct MySegmentControl: NSViewRepresentable {
         )
         return control
     }
+    
+    // Updates the state of the specified view controller with new information from SwiftUI.
     func updateNSView(_ nsView: NSSegmentedControl, context: NSViewRepresentableContext<MySegmentControl>) {
+        
     }
+    
     class Coordinator {
         let parent: MySegmentControl
-        init(parent: MySegmentControl) {
+        private var buttonPressedAction: (Int) -> ()
+        
+        init(parent: MySegmentControl,
+             buttonPressedAction: @escaping (Int) -> ()) {
             self.parent = parent
+            self.buttonPressedAction = buttonPressedAction
         }
         @objc
         func onChange(_ control: NSSegmentedControl) {
+            print("onChange")
+            buttonPressedAction(control.selectedSegment)
         }
     }
 }
