@@ -29,30 +29,34 @@ struct ContentView: View {
             
             Divider()
                 .padding(.bottom, 8)
-            HStack {
-                EditSegmentControl(segmentButtonPressed: { selectedSegment in
-                    switch selectedSegment {
-                    case .plus:
-                        withAnimation {
-                            people.append(Person(givenName: "NewPerson", familyName: "(New)", emailAddress: "(New)"))
-                        }
-                    case .minus:
-                        selectedPeople.forEach { personID in
-                            if let index = people.firstIndex(where: { $0.id == personID }) {
-                                _ = withAnimation {
-                                    people.remove(at: index)
-                                }
-                            }
-                        }
-                    }
-                })
-                .frame(width: 60)
-                
-                Spacer()
-            }
+            EditSegmentsButton()
         }
         .padding()
         .background(.background)
+    }
+
+    @ViewBuilder
+    private func EditSegmentsButton() -> some View {
+        HStack {
+            EditSegmentControl(segmentButtonPressed: { selectedSegment in
+                switch selectedSegment {
+                case .plus:
+                    withAnimation {
+                        people.append(Person(givenName: "NewPerson", familyName: "(New)", emailAddress: "(New)"))
+                    }
+                case .minus:
+                    selectedPeople.forEach { personID in
+                        if let index = people.firstIndex(where: { $0.id == personID }) {
+                            _ = withAnimation {
+                                people.remove(at: index)
+                            }
+                        }
+                    }
+                }
+            })
+            .frame(width: 60)
+            Spacer()
+        }
     }
 }
 

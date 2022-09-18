@@ -58,11 +58,11 @@
 			children = (
 				DAD139A428D6B14000B061C2 /* TableViewDemoApp.swift */,
 				DAD139A628D6B14000B061C2 /* ContentView.swift */,
+				DAD139B428D6B45700B061C2 /* Person.swift */,
 				DAD139B628D6B8D500B061C2 /* EditSegmentControl.swift */,
 				DAD139A828D6B14100B061C2 /* Assets.xcassets */,
 				DAD139AD28D6B14100B061C2 /* TableViewDemo.entitlements */,
 				DAD139AA28D6B14100B061C2 /* Preview Content */,
-				DAD139B428D6B45700B061C2 /* Person.swift */,
 			);
 			path = TableViewDemo;
 			sourceTree = "<group>";
