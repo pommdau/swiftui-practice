@@ -38,11 +38,22 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .padding(.leading, 4)
+                .frame(width: 20, height: 20)
+                .background(.red)
                 
                 Button {
+                    selectedPeople.forEach { personID in
+                        if let index = people.firstIndex(where: { $0.id == personID }) {
+                            _ = withAnimation {
+                                people.remove(at: index)
+                            }
+                        }
+                    }
                 } label: {
                     Image(systemName: "minus")
+                        .frame(minWidth: 20, minHeight: 20)
                 }
+                .background(.green)
                 
                 Spacer()
                 
