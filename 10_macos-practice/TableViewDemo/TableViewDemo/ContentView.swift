@@ -30,39 +30,26 @@ struct ContentView: View {
             Divider()
                 .padding(.bottom, 8)
             HStack {
-                Button {
-                    withAnimation {
-                        people.append(Person(givenName: "NewPerson", familyName: "(New)", emailAddress: "(New)"))
-                    }
-                } label: {
-                    Image(systemName: "plus")
-                }
-                .padding(.leading, 4)
-                .frame(width: 20, height: 20)
-                .background(.red)
-                
-                Button {
-                    selectedPeople.forEach { personID in
-                        if let index = people.firstIndex(where: { $0.id == personID }) {
-                            _ = withAnimation {
-                                people.remove(at: index)
+                EditSegmentControl(segmentButtonPressed: { selectedSegment in
+                    switch selectedSegment {
+                    case .plus:
+                        withAnimation {
+                            people.append(Person(givenName: "NewPerson", familyName: "(New)", emailAddress: "(New)"))
+                        }
+                    case .minus:
+                        selectedPeople.forEach { personID in
+                            if let index = people.firstIndex(where: { $0.id == personID }) {
+                                _ = withAnimation {
+                                    people.remove(at: index)
+                                }
                             }
                         }
                     }
-                } label: {
-                    Image(systemName: "minus")
-                        .frame(minWidth: 20, minHeight: 20)
-                }
-                .background(.green)
+                })
+                .frame(width: 60)
                 
                 Spacer()
-                
-                MySegmentControl(buttonPressedAction: { selected in
-                    print(selected)
-                })
-                    .frame(width: 60)
             }
-            .buttonStyle(.plain)
         }
         .padding()
         .background(.background)
