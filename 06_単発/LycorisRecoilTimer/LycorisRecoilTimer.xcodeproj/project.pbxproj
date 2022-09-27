@@ -11,6 +11,8 @@
 		DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D45428E2BD7C004CD870 /* ContentView.swift */; };
 		DAB2D45728E2BD7D004CD870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB2D45628E2BD7D004CD870 /* Assets.xcassets */; };
 		DAB2D45A28E2BD7D004CD870 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB2D45928E2BD7D004CD870 /* Preview Assets.xcassets */; };
+		DAB2D46128E2BF24004CD870 /* HalfCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46028E2BF24004CD870 /* HalfCircle.swift */; };
+		DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46228E2CED0004CD870 /* Robot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		DAB2D45428E2BD7C004CD870 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DAB2D45628E2BD7D004CD870 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAB2D45928E2BD7D004CD870 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DAB2D46028E2BF24004CD870 /* HalfCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HalfCircle.swift; path = Assets.xcassets/HalfCircle.swift; sourceTree = "<group>"; };
+		DAB2D46228E2CED0004CD870 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */,
 				DAB2D45428E2BD7C004CD870 /* ContentView.swift */,
+				DAB2D46028E2BF24004CD870 /* HalfCircle.swift */,
+				DAB2D46228E2CED0004CD870 /* Robot.swift */,
 				DAB2D45628E2BD7D004CD870 /* Assets.xcassets */,
 				DAB2D45828E2BD7D004CD870 /* Preview Content */,
 			);
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */,
 				DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */,
 				DAB2D45328E2BD7C004CD870 /* LycorisRecoilTimerApp.swift in Sources */,
+				DAB2D46128E2BF24004CD870 /* HalfCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
