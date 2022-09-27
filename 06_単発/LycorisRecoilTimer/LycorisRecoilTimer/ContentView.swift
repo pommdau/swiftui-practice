@@ -24,21 +24,7 @@ struct ContentView: View {
                     .blurText(radius: 8)
                     .padding(.horizontal)
                 
-                HStack(alignment: .center) {
-                    Robot()
-                }
-                .foregroundColor(.black)
-                .padding()
-                
-                Text("PLEASE ENJOY\nTHE PARTY!")
-                    .lineLimit(2)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .frame(width: 200)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
-                    .blurText(radius: 8)
+                Robot()
                     .padding(.horizontal)
                 
                 Text("EXPLOSION!!!")
