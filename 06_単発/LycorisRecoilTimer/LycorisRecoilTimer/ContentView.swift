@@ -21,7 +21,7 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.01)
                     .foregroundColor(.white)
-                    .blurText(radius: 8)
+                    .glowEffect(radius: 8)
                     .padding(.horizontal)
                 
                 Robot()
@@ -33,7 +33,7 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.01)
                     .foregroundColor(.white)
-                    .blurText(radius: 8)
+                    .glowEffect(radius: 8)
                     .padding(.horizontal)
             }
         }

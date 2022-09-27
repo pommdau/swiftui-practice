@@ -8,60 +8,66 @@
 import SwiftUI
 
 struct Robot: View {
+    
     var body: some View {
         
-        ZStack {
-            GeometryReader { geometry in
-                let maxPathWidth: CGFloat = 200
-                let width = geometry.size.width
-                let scale = width / maxPathWidth
-
-                Circle()
-                    .foregroundColor(.blue)
-                    .frame(width: width * 0.18)
-                    .offset(x: width * 0.235, y: width * 0.2)
-                
-                Circle()
-                    .foregroundColor(.blue)
-                    .frame(width: width * 0.18)
-                    .offset(x: width * 0.59, y: width * 0.2)
-                
-                Text("00:17:75")
-                    .lineLimit(1)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .frame(width: width * 0.58)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
-                    .blurText(radius: 8)
-                    .offset(x: width * 0.215, y: width * 0.41)
-                
-                Text("PLEASE ENJOY\nTHE PARTY!")
-                    .lineLimit(2)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .frame(width: width * 0.55)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
-                    .blurText(radius: 8)
-                    .offset(x: width * 0.23, y: width * 0.67)
-                
-                createRobotPath(scale: scale)
-                    .fill(.black)
-                    .zIndex(-1)
-            }
-            //        .background(.red)
+        GeometryReader { geometry in
+            let maxPathWidth: CGFloat = 200
+            let width = min(geometry.size.width, geometry.size.height)
+            let scale = width / maxPathWidth
+            
+            Circle()
+                .foregroundColor(.robotBlueEye)
+                .glowEffect(radius: 6)
+                .frame(width: width * 0.18)
+                .offset(x: width * 0.235, y: width * 0.2)
+            
+            Circle()
+                .foregroundColor(.robotBlueEye)
+                .glowEffect(radius: 6)
+                .frame(width: width * 0.18)
+                .offset(x: width * 0.59, y: width * 0.2)
+            
+            Text("00:17:75")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .fontWeight(.bold)
+                .minimumScaleFactor(0.01)
+                .frame(width: width * 0.58)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .glowEffect(radius: 8)
+                .offset(x: width * 0.215, y: width * 0.41)
+            
+            Text("PLEASE ENJOY\nTHE PARTY!")
+                .lineLimit(2)
+                .font(.system(size: 100))
+                .fontWeight(.bold)
+                .minimumScaleFactor(0.01)
+                .frame(width: width * 0.55)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .glowEffect(radius: 8)
+                .offset(x: width * 0.23, y: width * 0.67)
+            
+            createRobotPath(scale: scale)
+                .fill(.black)
+                .zIndex(-1)
         }
+        //        .background(.red)
+        
     }
 }
 
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
-        Robot()
-            .background(.red)
-            .frame(width: 300)
+        VStack {
+            Spacer()
+            Robot()
+                .background(.red)
+                .frame(width: 300)
+            Spacer()
+        }
     }
 }
 
@@ -77,7 +83,7 @@ extension Robot {
     
     func createDebugPath(scale: CGFloat) -> Path {
         
-//        let offset = CGSize(width: 100, height: 200)
+        //        let offset = CGSize(width: 100, height: 200)
         let offset: CGSize = .zero
         
         return Path { path in
@@ -92,9 +98,9 @@ extension Robot {
     // maxWidth=200でSVGを作成している
     func createRobotPath(scale: CGFloat) -> Path {
         
-//        let offset = CGSize(width: 100, height: 200)
+        //        let offset = CGSize(width: 100, height: 200)
         let offset: CGSize = .zero
-                
+        
         return Path { path in
             path.move(to: CGPoint(x: 36.0400, y: 0.5000).convert(scale: scale, offset: offset))
             path.addLine(to: CGPoint(x: 164.6500, y: 0.5000).convert(scale: scale, offset: offset))

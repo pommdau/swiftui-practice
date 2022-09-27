@@ -1,5 +1,5 @@
 //
-//  View+blurText.swift
+//  View+glowEffect.swift
 //  LycorisRecoilTimer
 //
 //  Created by HIROKI IKEUCHI on 2022/09/27.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func blurText(radius: CGFloat) -> some View {
+    func glowEffect(radius: CGFloat) -> some View {
         ZStack {
             self
             self.blur(radius: radius)
@@ -16,11 +16,9 @@ extension View {
     }
 }
 
-
-
 struct BlurText_Previews: PreviewProvider {
     static var previews: some View {
         Text("SampleText")
-            .blurText(radius: 8)
+            .glowEffect(radius: 8)
     }
 }

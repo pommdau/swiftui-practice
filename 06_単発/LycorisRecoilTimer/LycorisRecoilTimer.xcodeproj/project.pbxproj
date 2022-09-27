@@ -11,10 +11,10 @@
 		DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D45428E2BD7C004CD870 /* ContentView.swift */; };
 		DAB2D45728E2BD7D004CD870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB2D45628E2BD7D004CD870 /* Assets.xcassets */; };
 		DAB2D45A28E2BD7D004CD870 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB2D45928E2BD7D004CD870 /* Preview Assets.xcassets */; };
-		DAB2D46128E2BF24004CD870 /* HalfCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46028E2BF24004CD870 /* HalfCircle.swift */; };
 		DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46228E2CED0004CD870 /* Robot.swift */; };
-		DAB2D46528E2DF00004CD870 /* View+blurText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46428E2DF00004CD870 /* View+blurText.swift */; };
+		DAB2D46528E2DF00004CD870 /* View+glowEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */; };
 		DAB2D46728E2E8E3004CD870 /* CGPoint+convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */; };
+		DAB2D46A28E2F6AA004CD870 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46928E2F6AA004CD870 /* Color+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +23,10 @@
 		DAB2D45428E2BD7C004CD870 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DAB2D45628E2BD7D004CD870 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAB2D45928E2BD7D004CD870 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DAB2D46028E2BF24004CD870 /* HalfCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HalfCircle.swift; path = Assets.xcassets/HalfCircle.swift; sourceTree = "<group>"; };
 		DAB2D46228E2CED0004CD870 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
-		DAB2D46428E2DF00004CD870 /* View+blurText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+blurText.swift"; sourceTree = "<group>"; };
+		DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+glowEffect.swift"; sourceTree = "<group>"; };
 		DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+convert.swift"; sourceTree = "<group>"; };
+		DAB2D46928E2F6AA004CD870 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +59,10 @@
 		DAB2D45128E2BD7C004CD870 /* LycorisRecoilTimer */ = {
 			isa = PBXGroup;
 			children = (
+				DAB2D46828E2F69B004CD870 /* Extensions */,
 				DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */,
 				DAB2D45428E2BD7C004CD870 /* ContentView.swift */,
-				DAB2D46428E2DF00004CD870 /* View+blurText.swift */,
-				DAB2D46028E2BF24004CD870 /* HalfCircle.swift */,
 				DAB2D46228E2CED0004CD870 /* Robot.swift */,
-				DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */,
 				DAB2D45628E2BD7D004CD870 /* Assets.xcassets */,
 				DAB2D45828E2BD7D004CD870 /* Preview Content */,
 			);
@@ -77,6 +75,16 @@
 				DAB2D45928E2BD7D004CD870 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DAB2D46828E2F69B004CD870 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */,
+				DAB2D46928E2F6AA004CD870 /* Color+extension.swift */,
+				DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,10 +159,10 @@
 			files = (
 				DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */,
 				DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */,
-				DAB2D46528E2DF00004CD870 /* View+blurText.swift in Sources */,
+				DAB2D46A28E2F6AA004CD870 /* Color+extension.swift in Sources */,
+				DAB2D46528E2DF00004CD870 /* View+glowEffect.swift in Sources */,
 				DAB2D45328E2BD7C004CD870 /* LycorisRecoilTimerApp.swift in Sources */,
 				DAB2D46728E2E8E3004CD870 /* CGPoint+convert.swift in Sources */,
-				DAB2D46128E2BF24004CD870 /* HalfCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
