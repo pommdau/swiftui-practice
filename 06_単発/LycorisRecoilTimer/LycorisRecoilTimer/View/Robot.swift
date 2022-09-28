@@ -28,7 +28,7 @@ struct Robot: View {
                                 height: Self.calculateOffsetY(viewHeight: geometry.size.height,
                                                               svgHeight: (Self.svgSize * scale).height))
             
-            Toggle("", isOn: $timerIsOver)
+            Toggle("", isOn: $timerIsOver.animation())
             
             Circle()
                 .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)

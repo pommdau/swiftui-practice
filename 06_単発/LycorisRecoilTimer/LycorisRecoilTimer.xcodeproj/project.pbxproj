@@ -20,6 +20,7 @@
 		DAD6D5A628E435B0000B20CE /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A528E435B0000B20CE /* CGSize.swift */; };
 		DAD6D5A828E43AC5000B20CE /* GlowEffectTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */; };
 		DAD6D5AA28E46A57000B20CE /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A928E46A57000B20CE /* TimerPicker.swift */; };
+		DAD6D5AE28E46EAE000B20CE /* TimerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		DAD6D5A528E435B0000B20CE /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowEffectTextModifier.swift; sourceTree = "<group>"; };
 		DAD6D5A928E46A57000B20CE /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
+		DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				DAD6D5AC28E46C8C000B20CE /* ViewModel */,
 				DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */,
 				DAB2D45428E2BD7C004CD870 /* ContentView.swift */,
+				DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */,
 				DAB2D45628E2BD7D004CD870 /* Assets.xcassets */,
 				DAB2D45828E2BD7D004CD870 /* Preview Content */,
 			);
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAB2D46C28E3CB5B004CD870 /* TimerView.swift in Sources */,
+				DAD6D5AE28E46EAE000B20CE /* TimerEditView.swift in Sources */,
 				DAD6D5A828E43AC5000B20CE /* GlowEffectTextModifier.swift in Sources */,
 				DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */,
 				DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */,
