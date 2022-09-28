@@ -19,6 +19,7 @@
 		DAB2D46E28E3CB73004CD870 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */; };
 		DAD6D5A628E435B0000B20CE /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A528E435B0000B20CE /* CGSize.swift */; };
 		DAD6D5A828E43AC5000B20CE /* GlowEffectTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */; };
+		DAD6D5AA28E46A57000B20CE /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A928E46A57000B20CE /* TimerPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		DAD6D5A528E435B0000B20CE /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowEffectTextModifier.swift; sourceTree = "<group>"; };
+		DAD6D5A928E46A57000B20CE /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +69,11 @@
 		DAB2D45128E2BD7C004CD870 /* LycorisRecoilTimer */ = {
 			isa = PBXGroup;
 			children = (
+				DAD6D5AB28E46C6B000B20CE /* View */,
 				DAB2D46828E2F69B004CD870 /* Extensions */,
+				DAD6D5AC28E46C8C000B20CE /* ViewModel */,
 				DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */,
 				DAB2D45428E2BD7C004CD870 /* ContentView.swift */,
-				DAB2D46B28E3CB5B004CD870 /* TimerView.swift */,
-				DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */,
-				DAB2D46228E2CED0004CD870 /* Robot.swift */,
 				DAB2D45628E2BD7D004CD870 /* Assets.xcassets */,
 				DAB2D45828E2BD7D004CD870 /* Preview Content */,
 			);
@@ -92,11 +93,29 @@
 			children = (
 				DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */,
 				DAB2D46928E2F6AA004CD870 /* Color+extension.swift */,
-				DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */,
 				DAD6D5A528E435B0000B20CE /* CGSize.swift */,
-				DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DAD6D5AB28E46C6B000B20CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAD6D5A928E46A57000B20CE /* TimerPicker.swift */,
+				DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */,
+				DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */,
+				DAB2D46B28E3CB5B004CD870 /* TimerView.swift */,
+				DAB2D46228E2CED0004CD870 /* Robot.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DAD6D5AC28E46C8C000B20CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +195,7 @@
 				DAB2D46A28E2F6AA004CD870 /* Color+extension.swift in Sources */,
 				DAB2D46E28E3CB73004CD870 /* TimerViewModel.swift in Sources */,
 				DAB2D46528E2DF00004CD870 /* View+glowEffect.swift in Sources */,
+				DAD6D5AA28E46A57000B20CE /* TimerPicker.swift in Sources */,
 				DAB2D45328E2BD7C004CD870 /* LycorisRecoilTimerApp.swift in Sources */,
 				DAD6D5A628E435B0000B20CE /* CGSize.swift in Sources */,
 				DAB2D46728E2E8E3004CD870 /* CGPoint+convert.swift in Sources */,

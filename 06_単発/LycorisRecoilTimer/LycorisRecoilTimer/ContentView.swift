@@ -11,14 +11,20 @@ struct ContentView: View {
     
     @StateObject private var viewModel = TimerViewModel()
     
-    var body: some View {        
-        TimerView()
-
-//        Text(viewModel.timerText)
-//            .font(.system(.title, design: .monospaced))
-//            .onAppear() {
-//                viewModel.startTimer()
-//            }
+    @State private var hour: Int = 0
+    @State private var minute: Int = 0
+    @State private var second: Int = 0
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Text("設定時間")
+                .font(.title)
+                .padding(.vertical)
+            Text("\(String(format: "%02d", hour))時 \(String(format: "%02d", minute))分 \(String(format: "%02d", second))秒")
+                .font(.title2)
+            TimePicker(hour: $hour, minute: $minute, second: $second)
+                .frame(width: 200)
+        }
     }
 }
 
