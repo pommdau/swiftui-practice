@@ -15,10 +15,10 @@ final class TimerViewModel: ObservableObject {
     @Published var timeBuffer = Time()
     
     private var timer: Timer? = nil
-    private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 0.77
+    private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 3.0
     
     func rightEyeClicked() {
-        
+        startTimer()
     }
     
     private func startTimer() {

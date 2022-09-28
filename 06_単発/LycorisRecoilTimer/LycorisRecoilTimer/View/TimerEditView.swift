@@ -15,10 +15,10 @@ struct TimerEditView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("設定時間")
+            Text("Remaining time")
                 .font(.title)
                 .padding(.vertical)
-            Text("\(String(format: "%02d", hour))時 \(String(format: "%02d", minute))分 \(String(format: "%02d", second))秒")
+            Text("\(String(format: "%02d", hour)) : \(String(format: "%02d", minute)) : \(String(format: "%02d", second))")
                 .font(.title2)
             TimePicker(hour: $hour, minute: $minute, second: $second)
                 .frame(width: 200)

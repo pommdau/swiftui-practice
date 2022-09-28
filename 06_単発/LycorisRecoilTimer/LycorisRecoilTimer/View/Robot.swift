@@ -10,7 +10,7 @@ import SwiftUI
 struct Robot: View {
     
     @Binding var timerString: String
-    @Binding var timerIsOver: Bool
+    @Binding var isTimeOver: Bool
     
     var leftEyeTapped: () -> () = {}
     var rightEyeTapped: () -> () = {}
@@ -32,7 +32,7 @@ struct Robot: View {
                                 height: Self.calculateOffsetY(viewHeight: geometry.size.height,
                                                               svgHeight: (Self.svgSize * scale).height))
             Circle()
-                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
+                .foregroundColor(isTimeOver ? .robotPinkEye : .robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
                 .position(x: width * 0.32, y: width * 0.29 + offset.height)
@@ -41,7 +41,7 @@ struct Robot: View {
                 }
             
             Circle()
-                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
+                .foregroundColor(isTimeOver ? .robotPinkEye : .robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
                 .position(x: width * 0.69, y: width * 0.29 + offset.height)
@@ -57,7 +57,7 @@ struct Robot: View {
             robotBodyText(viewWidth: width, offset: offset)
             
             createRobotPath(scale: scale, offset: offset)
-                .fill(timerIsOver ? .white : .black)
+                .fill(isTimeOver ? .white : .black)
                 .zIndex(-1)
         }
     }
@@ -67,8 +67,8 @@ extension Robot {
     
     @ViewBuilder
     private func timerText() -> some View {
-        if timerIsOver {
-            Text("00:00:00")
+        if isTimeOver {
+            Text(timerString)
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .fontWeight(.light)
@@ -82,7 +82,7 @@ extension Robot {
     
     @ViewBuilder
     private func robotBodyText(viewWidth width: CGFloat, offset: CGSize) -> some View {
-        if timerIsOver {
+        if isTimeOver {
             Text("TIME UP!")
                 .lineLimit(1)
                 .font(.system(size: 100))
@@ -105,13 +105,13 @@ struct Robot_Previews: PreviewProvider {
     static var previews: some View {
         
         Robot(timerString: .constant("xx:xx:xx"),
-              timerIsOver: .constant(false))
+              isTimeOver: .constant(false))
         .background(.red)
         .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
                    .previewDisplayName("iPhone 12")
 
         Robot(timerString: .constant("xx:xx:xx"),
-              timerIsOver: .constant(true))
+              isTimeOver: .constant(true))
         .background(.red)
         .frame(width: 400, height: 600)
 

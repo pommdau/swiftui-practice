@@ -17,7 +17,7 @@ struct TimerView: View {
             HeadertText()
                 .padding(.horizontal)
             Robot(timerString: $viewModel.timerText,
-                  timerIsOver: $viewModel.isTimeOver,
+                  isTimeOver: $viewModel.isTimeOver,
                   leftEyeTapped: {
                 isPresentingTimerEditView = true
                 viewModel.timeBuffer = viewModel.time
