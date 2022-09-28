@@ -9,7 +9,11 @@ import SwiftUI
 
 struct Robot: View {
     
-    @State private var timerIsOver = true
+    @Binding var timerString: String
+    @Binding var timerIsOver: Bool
+    
+    var leftEyeTapped: () -> () = {}
+    var rightEyeTapped: () -> () = {}
     
     private static func calculateOffsetY(viewHeight: CGFloat, svgHeight: CGFloat) -> CGFloat {
         if viewHeight > svgHeight {
@@ -27,20 +31,23 @@ struct Robot: View {
             let offset = CGSize(width: 0,
                                 height: Self.calculateOffsetY(viewHeight: geometry.size.height,
                                                               svgHeight: (Self.svgSize * scale).height))
-            
-            Toggle("", isOn: $timerIsOver.animation())
+            Circle()
+                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
+                .glowEffect(radius: 6)
+                .frame(width: width * 0.18)
+                .position(x: width * 0.32, y: width * 0.29 + offset.height)
+                .onTapGesture {
+
+                }
             
             Circle()
                 .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
-                .offset(x: width * 0.235, y: width * 0.2 + offset.height)
-            
-            Circle()
-                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
-                .glowEffect(radius: 6)
-                .frame(width: width * 0.18)
-                .offset(x: width * 0.59, y: width * 0.2 + offset.height)
+                .position(x: width * 0.69, y: width * 0.29 + offset.height)
+                .onTapGesture {
+                    
+                }
             
             timerText()
                 .frame(width: width * 0.58)
@@ -68,7 +75,7 @@ extension Robot {
                 .minimumScaleFactor(0.01)
                 .foregroundColor(.black)
         } else {
-            Text("00:17:75")
+            Text(timerString)
                 .glowEffectText()
         }
     }
@@ -96,14 +103,18 @@ extension Robot {
 
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            Spacer()
-            Robot()
-                .background(.red)
-                .frame(width: 400, height: 600)
-            
-            Spacer()
-        }
+        
+        Robot(timerString: .constant("xx:xx:xx"),
+              timerIsOver: .constant(false))
+        .background(.red)
+        .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+                   .previewDisplayName("iPhone 12")
+
+        Robot(timerString: .constant("xx:xx:xx"),
+              timerIsOver: .constant(true))
+        .background(.red)
+        .frame(width: 400, height: 600)
+
     }
 }
 

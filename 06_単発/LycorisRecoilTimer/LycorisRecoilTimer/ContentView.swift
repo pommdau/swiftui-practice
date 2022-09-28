@@ -15,18 +15,21 @@ struct ContentView: View {
     @State private var isPresentingTimerEditView = false
     
     var body: some View {
-        VStack {
-            Text("\(time.hour):\(time.minute):\(time.second)")
-            Button {
-                isPresentingTimerEditView = true
-                timeBuffer = time
-            } label: {
-                Text("TimerEditView")
-            }
-        }
-        .sheet(isPresented: $isPresentingTimerEditView) {
-            timerEditView()
-        }
+        
+        TimerView()
+        
+//        VStack {
+//            Text("\(time.hour):\(time.minute):\(time.second)")
+//            Button {
+//                isPresentingTimerEditView = true
+//                timeBuffer = time
+//            } label: {
+//                Text("TimerEditView")
+//            }
+//        }
+//        .sheet(isPresented: $isPresentingTimerEditView) {
+//            timerEditView()
+//        }
     }
     
     @ViewBuilder
