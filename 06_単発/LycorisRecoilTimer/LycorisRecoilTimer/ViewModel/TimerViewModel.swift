@@ -11,12 +11,17 @@ final class TimerViewModel: ObservableObject {
             
     @Published var timerText: String = "xx:xx:xx"
     @Published var isTimeOver: Bool = false
-    @Published var time: Time = Time()
+    @Published var time = Time()    
+    @Published var timeBuffer = Time()
     
     private var timer: Timer? = nil
     private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 0.77
     
-    func startTimer() {
+    func rightEyeClicked() {
+        
+    }
+    
+    private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             guard let startTime = self.startTime else {
                 return
@@ -36,7 +41,7 @@ final class TimerViewModel: ObservableObject {
         }
     }
     
-    func stopTimer() {
+    private func stopTimer() {
         self.isTimeOver = false
         timer?.invalidate()
         timer = nil

@@ -10,8 +10,6 @@ import SwiftUI
 struct TimerView: View {
     
     @StateObject private var viewModel = TimerViewModel()
-    
-    @State private var timeBuffer = Time()
     @State private var isPresentingTimerEditView = false
     
     var body: some View {
@@ -22,9 +20,11 @@ struct TimerView: View {
                   timerIsOver: $viewModel.isTimeOver,
                   leftEyeTapped: {
                 isPresentingTimerEditView = true
-                timeBuffer = viewModel.time
+                viewModel.timeBuffer = viewModel.time
             },
-                  rightEyeTapped: {})
+                  rightEyeTapped: {
+                viewModel.rightEyeClicked()
+            })
                 .padding(.horizontal)
             FooterText()
                 .padding(.horizontal)
@@ -39,7 +39,7 @@ struct TimerView: View {
     @ViewBuilder
     private func timerEditView() -> some View {
         NavigationView {
-            TimerEditView(hour: $timeBuffer.hour, minute: $timeBuffer.minute, second: $timeBuffer.second)
+            TimerEditView(hour: $viewModel.timeBuffer.hour, minute: $viewModel.timeBuffer.minute, second: $viewModel.timeBuffer.second)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {
@@ -49,7 +49,7 @@ struct TimerView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Done") {
                             isPresentingTimerEditView = false
-                            viewModel.time = timeBuffer
+                            viewModel.time = viewModel.timeBuffer
                         }
                     }
                 }
