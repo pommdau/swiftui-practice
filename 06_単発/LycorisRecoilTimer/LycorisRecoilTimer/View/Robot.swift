@@ -37,7 +37,7 @@ struct Robot: View {
                 .frame(width: width * 0.18)
                 .position(x: width * 0.32, y: width * 0.29 + offset.height)
                 .onTapGesture {
-
+                    leftEyeTapped()                    
                 }
             
             Circle()
@@ -46,7 +46,7 @@ struct Robot: View {
                 .frame(width: width * 0.18)
                 .position(x: width * 0.69, y: width * 0.29 + offset.height)
                 .onTapGesture {
-                    
+                    rightEyeTapped()
                 }
             
             timerText()
