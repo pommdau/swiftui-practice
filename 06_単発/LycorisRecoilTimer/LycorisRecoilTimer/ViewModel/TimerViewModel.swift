@@ -8,19 +8,11 @@
 import Foundation
 
 final class TimerViewModel: ObservableObject {
-    
-    enum State {
-        case ready
-        case inProgress
-        case pause
-        case isOver
-    }
-    
+            
     @Published var timerText: String = "xx:xx:xx"
-    @Published var state: State = .ready
-
     private var timer: Timer? = nil
     private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 0.77
+    @Published var isTimerValid: Bool = false
     
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
@@ -30,7 +22,7 @@ final class TimerViewModel: ObservableObject {
             let remainTime = startTime - Date.timeIntervalSinceReferenceDate
             
             if remainTime <= 0 {
-                self.state = .isOver
+                self.isTimerValid = true
                 self.timerText = "TIME UP!"
                 self.stopTimer()
             } else {
@@ -43,6 +35,7 @@ final class TimerViewModel: ObservableObject {
     }
     
     func stopTimer() {
+        self.isTimerValid = false
         timer?.invalidate()
         timer = nil
     }

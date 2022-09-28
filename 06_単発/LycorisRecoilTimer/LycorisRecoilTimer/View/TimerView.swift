@@ -13,21 +13,46 @@ struct TimerView: View {
     
     var body: some View {
         ZStack {
+                                    
             Color.red
                 .ignoresSafeArea()
             VStack {
-                
-                Text("PUNISHMENT")
-                    .glowEffectText()
+                Toggle(isOn: $viewModel.isTimerValid) {
+                    Text("HogeHoge")
+                }
+                HeadertText()
                     .padding(.horizontal)
-                
                 Robot()
                     .padding(.horizontal)
-                
-                Text("EXPLOSION!!!")
-                    .glowEffectText()
+                FooterText()
                     .padding(.horizontal)
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func HeadertText() -> some View {
+        if viewModel.isTimerValid {
+            Text("PUNISHMENT")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .minimumScaleFactor(0.01)
+        } else {
+            Text("PUNISHMENT")
+                .glowEffectText()
+        }
+    }
+    
+    @ViewBuilder
+    private func FooterText() -> some View {
+        if viewModel.isTimerValid {
+            Text("EXPLOSION!!!")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .minimumScaleFactor(0.01)
+        } else {
+            Text("EXPLOSION!!!")
+                .glowEffectText()
         }
     }
 }
