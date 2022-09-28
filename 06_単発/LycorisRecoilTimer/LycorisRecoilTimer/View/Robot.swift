@@ -9,9 +9,8 @@ import SwiftUI
 
 struct Robot: View {
     
-    @Binding var timerString: String
-    @Binding var isTimeOver: Bool
-    
+    let timerString: String
+    let isTimeOver: Bool
     var leftEyeTapped: () -> () = {}
     var rightEyeTapped: () -> () = {}
     
@@ -70,13 +69,19 @@ extension Robot {
         if isTimeOver {
             Text(timerString)
                 .lineLimit(1)
-                .font(.system(size: 100))
-                .fontWeight(.light)
+                .font(.system(size: 100, design: .monospaced))
+                .fontWeight(.bold)
                 .minimumScaleFactor(0.01)
                 .foregroundColor(.black)
         } else {
+
             Text(timerString)
-                .glowEffectText()
+                .lineLimit(1)
+                .font(.system(size: 100, design: .monospaced))
+                .fontWeight(.bold)
+                .minimumScaleFactor(0.01)
+                .glowEffect(radius: 8)
+                .foregroundColor(.white)
         }
     }
     
@@ -104,14 +109,14 @@ extension Robot {
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
         
-        Robot(timerString: .constant("xx:xx:xx"),
-              isTimeOver: .constant(false))
+        Robot(timerString: "98:76:54",
+              isTimeOver: false)
         .background(.red)
         .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
                    .previewDisplayName("iPhone 12")
 
-        Robot(timerString: .constant("xx:xx:xx"),
-              isTimeOver: .constant(true))
+        Robot(timerString: "98:76:54",
+              isTimeOver: true)
         .background(.red)
         .frame(width: 400, height: 600)
 

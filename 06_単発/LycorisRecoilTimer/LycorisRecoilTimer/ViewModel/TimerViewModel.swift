@@ -12,10 +12,10 @@ final class TimerViewModel: ObservableObject {
     @Published var timerText: String = "xx:xx:xx"
     @Published var isTimeOver: Bool = false
     @Published var time = Time()    
-    @Published var timeBuffer = Time()
+    var timeBuffer = Time()
     
     private var timer: Timer? = nil
-    private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 3.0
+    private var startTime: TimeInterval? = Date.timeIntervalSinceReferenceDate + 5.0
     
     func rightEyeClicked() {
         startTimer()
@@ -30,7 +30,7 @@ final class TimerViewModel: ObservableObject {
             
             if remainTime <= 0 {
                 self.isTimeOver = true
-                self.timerText = "TIME UP!"
+                self.timerText = "00:00:00"
                 self.stopTimer()
             } else {
                 let min = Int(remainTime / 60)
@@ -42,7 +42,6 @@ final class TimerViewModel: ObservableObject {
     }
     
     private func stopTimer() {
-        self.isTimeOver = false
         timer?.invalidate()
         timer = nil
     }
