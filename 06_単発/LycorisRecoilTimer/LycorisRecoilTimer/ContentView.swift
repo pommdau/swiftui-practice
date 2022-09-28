@@ -7,26 +7,19 @@
 
 import SwiftUI
 
-class Time: ObservableObject {
-    @Published var hour: Int = 0
-    @Published var minute: Int = 0
-    @Published var second: Int = 0
-}
-
 struct ContentView: View {
     
     @StateObject private var viewModel = TimerViewModel()
-    
-    @State private var hour: Int = 0
-    @State private var minute: Int = 0
-    @State private var second: Int = 0
+    @State private var time = Time()
+    @State private var timeBuffer = Time()
     @State private var isPresentingTimerEditView = false
     
     var body: some View {
         VStack {
-            Text("HogeHoge")
+            Text("\(time.hour):\(time.minute):\(time.second)")
             Button {
-                isPresentingTimerEditView.toggle()
+                isPresentingTimerEditView = true
+                timeBuffer = time
             } label: {
                 Text("TimerEditView")
             }
@@ -39,7 +32,7 @@ struct ContentView: View {
     @ViewBuilder
     private func timerEditView() -> some View {
         NavigationView {
-            TimerEditView(hour: $hour, minute: $minute, second: $second)
+            TimerEditView(hour: $timeBuffer.hour, minute: $timeBuffer.minute, second: $timeBuffer.second)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {
@@ -49,6 +42,7 @@ struct ContentView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Done") {
                             isPresentingTimerEditView = false
+                            time = timeBuffer
                         }
                     }
                 }
