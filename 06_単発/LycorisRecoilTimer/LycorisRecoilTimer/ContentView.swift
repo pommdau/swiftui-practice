@@ -8,35 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        
-        ZStack {            
-            Color.red
-                .ignoresSafeArea()
-            VStack {
-                
-                Text("PUNISHMENT")
-                    .lineLimit(1)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .foregroundColor(.white)
-                    .glowEffect(radius: 8)
-                    .padding(.horizontal)
-                
-                Robot()
-                    .padding(.horizontal)
-                
-                Text("EXPLOSION!!!")
-                    .lineLimit(1)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .foregroundColor(.white)
-                    .glowEffect(radius: 8)
-                    .padding(.horizontal)
-            }
-        }
+    
+    @StateObject private var viewModel = TimerViewModel()
+    
+    var body: some View {        
+        TimerView()
+
+//        Text(viewModel.timerText)
+//            .font(.system(.title, design: .monospaced))
+//            .onAppear() {
+//                viewModel.startTimer()
+//            }
     }
 }
 

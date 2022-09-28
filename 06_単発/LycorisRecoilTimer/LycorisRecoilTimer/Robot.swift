@@ -9,24 +9,34 @@ import SwiftUI
 
 struct Robot: View {
     
+    private static func calculateOffsetY(viewHeight: CGFloat, svgHeight: CGFloat) -> CGFloat {
+        if viewHeight > svgHeight {
+            return (viewHeight / 2) - (svgHeight / 2)
+        } else {
+            return .zero
+        }
+    }
+    
     var body: some View {
         
         GeometryReader { geometry in
-            let maxPathWidth: CGFloat = 200
             let width = min(geometry.size.width, geometry.size.height)
-            let scale = width / maxPathWidth
+            let scale = width / Self.svgSize.width
+            let offset = CGSize(width: 0,
+                                height: Self.calculateOffsetY(viewHeight: geometry.size.height,
+                                                              svgHeight: (Self.svgSize * scale).height))
             
             Circle()
                 .foregroundColor(.robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
-                .offset(x: width * 0.235, y: width * 0.2)
+                .offset(x: width * 0.235, y: width * 0.2 + offset.height)
             
             Circle()
                 .foregroundColor(.robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
-                .offset(x: width * 0.59, y: width * 0.2)
+                .offset(x: width * 0.59, y: width * 0.2 + offset.height)
             
             Text("00:17:75")
                 .lineLimit(1)
@@ -37,7 +47,7 @@ struct Robot: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .glowEffect(radius: 8)
-                .offset(x: width * 0.215, y: width * 0.41)
+                .offset(x: width * 0.215, y: width * 0.41 + offset.height)
             
             Text("PLEASE ENJOY\nTHE PARTY!")
                 .lineLimit(2)
@@ -48,9 +58,9 @@ struct Robot: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .glowEffect(radius: 8)
-                .offset(x: width * 0.23, y: width * 0.67)
+                .offset(x: width * 0.23, y: width * 0.67 + offset.height)
             
-            createRobotPath(scale: scale)
+            createRobotPath(scale: scale, offset: offset)
                 .fill(.black)
                 .zIndex(-1)
         }
@@ -65,7 +75,8 @@ struct Robot_Previews: PreviewProvider {
             Spacer()
             Robot()
                 .background(.red)
-                .frame(width: 300)
+                .frame(width: 300, height: 400)
+            
             Spacer()
         }
     }
@@ -81,6 +92,8 @@ extension CGPoint {
 
 extension Robot {
     
+    static let svgSize = CGSize(width: 200, height: 232.48)
+    
     func createDebugPath(scale: CGFloat) -> Path {
         
         //        let offset = CGSize(width: 100, height: 200)
@@ -95,12 +108,8 @@ extension Robot {
         }
     }
     
-    // maxWidth=200でSVGを作成している
-    func createRobotPath(scale: CGFloat) -> Path {
-        
-        //        let offset = CGSize(width: 100, height: 200)
-        let offset: CGSize = .zero
-        
+    func createRobotPath(scale: CGFloat, offset: CGSize) -> Path {
+                
         return Path { path in
             path.move(to: CGPoint(x: 36.0400, y: 0.5000).convert(scale: scale, offset: offset))
             path.addLine(to: CGPoint(x: 164.6500, y: 0.5000).convert(scale: scale, offset: offset))
