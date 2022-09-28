@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Robot: View {
     
+    @State private var timerIsOver = true
+    
     private static func calculateOffsetY(viewHeight: CGFloat, svgHeight: CGFloat) -> CGFloat {
         if viewHeight > svgHeight {
             return (viewHeight / 2) - (svgHeight / 2)
@@ -18,7 +20,7 @@ struct Robot: View {
     }
     
     var body: some View {
-        
+                
         GeometryReader { geometry in
             let width = min(geometry.size.width, geometry.size.height)
             let scale = width / Self.svgSize.width
@@ -26,47 +28,70 @@ struct Robot: View {
                                 height: Self.calculateOffsetY(viewHeight: geometry.size.height,
                                                               svgHeight: (Self.svgSize * scale).height))
             
+            Toggle("", isOn: $timerIsOver)
+            
             Circle()
-                .foregroundColor(.robotBlueEye)
+                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
                 .offset(x: width * 0.235, y: width * 0.2 + offset.height)
             
             Circle()
-                .foregroundColor(.robotBlueEye)
+                .foregroundColor(timerIsOver ? .robotPinkEye : .robotBlueEye)
                 .glowEffect(radius: 6)
                 .frame(width: width * 0.18)
                 .offset(x: width * 0.59, y: width * 0.2 + offset.height)
             
-            Text("00:17:75")
-                .lineLimit(1)
-                .font(.system(size: 100))
-                .fontWeight(.bold)
-                .minimumScaleFactor(0.01)
+            timerText()
                 .frame(width: width * 0.58)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
-                .glowEffect(radius: 8)
                 .offset(x: width * 0.215, y: width * 0.41 + offset.height)
+
             
-            Text("PLEASE ENJOY\nTHE PARTY!")
-                .lineLimit(2)
-                .font(.system(size: 100))
-                .fontWeight(.bold)
-                .minimumScaleFactor(0.01)
-                .frame(width: width * 0.55)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
-                .glowEffect(radius: 8)
-                .offset(x: width * 0.23, y: width * 0.67 + offset.height)
+            robotBodyText(viewWidth: width, offset: offset)
             
             createRobotPath(scale: scale, offset: offset)
-                .fill(.black)
+                .fill(timerIsOver ? .white : .black)
                 .zIndex(-1)
         }
-        //        .background(.red)
-        
     }
+}
+
+extension Robot {
+    
+    @ViewBuilder
+    private func timerText() -> some View {
+        if timerIsOver {
+            Text("00:00:00")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .fontWeight(.light)
+                .minimumScaleFactor(0.01)
+                .foregroundColor(.black)
+        } else {
+            Text("00:17:75")
+                .glowEffectText()
+        }
+    }
+    
+    @ViewBuilder
+    private func robotBodyText(viewWidth width: CGFloat, offset: CGSize) -> some View {
+        if timerIsOver {
+            Text("TIME UP!")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .fontWeight(.light)
+                .minimumScaleFactor(0.01)
+                .foregroundColor(.red)
+                .frame(width: width * 0.30)
+                .offset(x: width * 0.35, y: width * 0.73 + offset.height)
+        } else {
+            Text("PLEASE ENJOY\nTHE PARTY!")
+                .glowEffectText(lineLimit: 2)
+                .frame(width: width * 0.55)
+                .offset(x: width * 0.23, y: width * 0.68 + offset.height)
+        }
+    }
+    
 }
 
 struct Robot_Previews: PreviewProvider {
@@ -75,7 +100,7 @@ struct Robot_Previews: PreviewProvider {
             Spacer()
             Robot()
                 .background(.red)
-                .frame(width: 300, height: 400)
+                .frame(width: 400, height: 600)
             
             Spacer()
         }

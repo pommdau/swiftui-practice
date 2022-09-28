@@ -18,24 +18,14 @@ struct TimerView: View {
             VStack {
                 
                 Text("PUNISHMENT")
-                    .lineLimit(1)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .foregroundColor(.white)
-                    .glowEffect(radius: 8)
+                    .glowEffectText()
                     .padding(.horizontal)
                 
                 Robot()
                     .padding(.horizontal)
                 
                 Text("EXPLOSION!!!")
-                    .lineLimit(1)
-                    .font(.system(size: 100))
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.01)
-                    .foregroundColor(.white)
-                    .glowEffect(radius: 8)
+                    .glowEffectText()
                     .padding(.horizontal)
             }
         }
