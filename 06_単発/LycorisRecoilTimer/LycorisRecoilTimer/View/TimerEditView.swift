@@ -16,9 +16,9 @@ struct TimerEditView: View {
             Text("Remaining time")
                 .font(.title)
                 .padding(.vertical)
-            Text("\(String(format: "%02d", time.hour)) : \(String(format: "%02d", time.minute)) : \(String(format: "%02d", time.second))")
+            Text("\(String(format: "%02d", time.minute)) : \(String(format: "%02d", time.second))")
                 .font(.title2)
-            TimePicker(hour: $time.hour, minute: $time.minute, second: $time.second)
+            TimePicker(minute: $time.minute, second: $time.second)
                 .frame(width: 200)
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -27,6 +27,6 @@ struct TimerEditView: View {
 
 struct TimerEditView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerEditView(time:.constant(Time(hour: 22, minute: 49, second: 54)))
+        TimerEditView(time:.constant(Time(minute: 49, second: 54)))
     }
 }

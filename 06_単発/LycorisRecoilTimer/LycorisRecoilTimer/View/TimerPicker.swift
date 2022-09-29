@@ -10,7 +10,6 @@ import SwiftUI
 
 struct TimePicker: UIViewRepresentable {
     
-    var hour: Binding<Int>
     var minute: Binding<Int>
     var second: Binding<Int>
     
@@ -29,9 +28,8 @@ struct TimePicker: UIViewRepresentable {
     }
     
     func updateUIView(_ view: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {
-        view.selectRow(hour.wrappedValue, inComponent: 0, animated: false)
-        view.selectRow(minute.wrappedValue, inComponent: 1, animated: false)
-        view.selectRow(second.wrappedValue, inComponent: 2, animated: false)
+        view.selectRow(minute.wrappedValue, inComponent: 0, animated: false)
+        view.selectRow(second.wrappedValue, inComponent: 1, animated: false)
     }
     
     class Coordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -47,9 +45,7 @@ struct TimePicker: UIViewRepresentable {
         
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             switch component {
-            case 0:
-                return 24
-            case 1, 2:
+            case 0, 1:
                 return 60
             default:
                 return 0
@@ -67,10 +63,8 @@ struct TimePicker: UIViewRepresentable {
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             switch component {
             case 0:
-                return parent.hour.wrappedValue = row
-            case 1:
                 return parent.minute.wrappedValue = row
-            case 2:
+            case 1:
                 parent.second.wrappedValue = row
             default:
                 break

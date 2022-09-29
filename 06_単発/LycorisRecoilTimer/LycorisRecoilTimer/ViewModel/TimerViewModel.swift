@@ -10,11 +10,11 @@ import Foundation
 final class TimerViewModel: ObservableObject {
                 
     @Published var isTimeOver: Bool = false
-    @Published var time = Time(seconds: 3)
+    @Published var time = Time(second: 3)
     @Published var timeBuffer = Time()
     
     var timerText: String {
-        return String(format: "%02d:%02d:%02d", time.hour, time.minute, time.second)
+        return String(format: "%02d:%02d:%02d", time.minute, time.second, time.millisecond)
     }
     
     var isTimerValid: Bool {
@@ -44,7 +44,7 @@ final class TimerViewModel: ObservableObject {
                 self.isTimeOver = true
                 self.stopTimer()
             } else {
-                self.time = Time(seconds: Int(remainTime))
+                self.time = Time(seconds: remainTime)
             }
         }
     }

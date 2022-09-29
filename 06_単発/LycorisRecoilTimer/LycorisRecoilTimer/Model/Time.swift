@@ -8,26 +8,27 @@
 import Foundation
 
 struct Time {
-    var hour: Int
     var minute: Int
     var second: Int
+    var millisecond: Int
     
     var totalSeconds: Double {
-        return Double(hour * 3600 + minute * 60 + second)
+        return Double(minute * 60 + second + millisecond / 60)
     }
     
-    init(hour: Int = 0, minute: Int = 0, second: Int = 0) {
-        self.hour = hour
+    init(minute: Int = 0, second: Int = 0, millisecond: Int = 0) {
         self.minute = minute
         self.second = second
+        self.millisecond = millisecond
     }
     
-    init(seconds: Int) {
-        let hour = Int(seconds / 3600)
-        let minute = (seconds % 3600) / 60
-        let second = seconds % 60        
-        self.hour = hour
+    init(seconds: Double) {
+        let minute = (Int(seconds) % 3600) / 60
+        let second = Int(seconds) % 60
+        let millisecond = Int( (seconds - floor(seconds)) * 100)
+        
         self.minute = minute
         self.second = second
+        self.millisecond = millisecond
     }
 }
