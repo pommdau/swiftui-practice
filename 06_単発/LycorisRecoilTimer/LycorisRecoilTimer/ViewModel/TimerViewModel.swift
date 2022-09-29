@@ -18,22 +18,18 @@ final class TimerViewModel: ObservableObject {
     }
         
     private var timer: Timer? = nil
-    private var startTime: TimeInterval = Date.timeIntervalSinceReferenceDate + 5.0
+    private var startTime: TimeInterval = Date.timeIntervalSinceReferenceDate
     
     func rightEyeClicked() {
-        startTimer()
+        if let _ = timer {
+            pauseTimer()
+        } else {
+            startTimer()
+        }
     }
     
     private func startTimer() {
-        
-        // タイマーがすでに動いている場合は一時停止
-        if timer != nil {
-            stopTimer()
-            let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
-            self.time = Time(seconds: remainTime)
-            return
-        }
-                
+        isTimeOver = false
         startTime = Date.timeIntervalSinceReferenceDate + time.totalSeconds
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
@@ -44,6 +40,12 @@ final class TimerViewModel: ObservableObject {
                 self.time = Time(seconds: remainTime)
             }
         }
+    }
+    
+    private func pauseTimer() {
+        stopTimer()
+        let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
+        self.time = Time(seconds: remainTime)
     }
     
     private func stopTimer() {
