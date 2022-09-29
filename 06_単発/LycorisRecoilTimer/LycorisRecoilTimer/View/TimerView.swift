@@ -13,23 +13,27 @@ struct TimerView: View {
     @State private var isPresentingTimerEditView = false
     
     var body: some View {
-        VStack {
-            HeadertText()
+        ZStack {
+            Color.red
+            VStack {
+                HeadertText()
+                    .padding()
+                Robot(timerString: viewModel.timerText,
+                      isTimeOver: viewModel.isTimeOver,
+                      leftEyeTapped: {
+                    isPresentingTimerEditView = true
+                    viewModel.timeBuffer = viewModel.time
+                },
+                      rightEyeTapped: {
+                    viewModel.rightEyeClicked()
+                })
                 .padding(.horizontal)
-            Robot(timerString: viewModel.timerText,
-                  isTimeOver: viewModel.isTimeOver,
-                  leftEyeTapped: {
-                isPresentingTimerEditView = true
-                viewModel.timeBuffer = viewModel.time
-            },
-                  rightEyeTapped: {
-                viewModel.rightEyeClicked()
-            })
-                .padding(.horizontal)
-            FooterText()
-                .padding(.horizontal)
+                FooterText()
+                    .padding()
+            }
         }
-        .background(.red)
+        .ignoresSafeArea(edges: [.bottom, .leading, .trailing])
+
         .sheet(isPresented: $isPresentingTimerEditView) {
             timerEditView()
         }
