@@ -14,16 +14,7 @@ final class TimerViewModel: ObservableObject {
     @Published var timeBuffer = Time()
     
     var timerText: String {
-        return String(format: "%02d:%02d:%02d", time.minute, time.second, time.millisecond)
-    }
-    
-    var isTimerValid: Bool {
-        if let timer = timer,
-           timer.isValid {
-            return true
-        } else {
-            return false
-        }
+        return String(format: "%02d:%02d:%02d", time.minute, time.second, Int(time.millisecond * 100))
     }
         
     private var timer: Timer? = nil
@@ -35,7 +26,13 @@ final class TimerViewModel: ObservableObject {
     
     private func startTimer() {
         
-//        guard isTimerValid else { return }
+        // タイマーがすでに動いている場合は一時停止
+        if timer != nil {
+            stopTimer()
+            let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
+            self.time = Time(seconds: remainTime)
+            return
+        }
                 
         startTime = Date.timeIntervalSinceReferenceDate + time.totalSeconds
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
