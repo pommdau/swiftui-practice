@@ -50,8 +50,7 @@ struct Robot: View {
             
             timerText()
                 .frame(width: width * 0.58)
-                .offset(x: width * 0.215, y: width * 0.41 + offset.height)
-
+                .offset(x: width * 0.21, y: width * 0.41 + offset.height)
             
             robotBodyText(viewWidth: width, offset: offset)
             
@@ -69,16 +68,17 @@ extension Robot {
         if isTimeOver {
             Text(timerString)
                 .lineLimit(1)
-                .font(.system(size: 100, design: .monospaced))
-                .fontWeight(.bold)
+//                .font(.system(size: 100, design: .monospaced))
+//                .fontWeight(.bold)
+                .font(Font(UIFont.monospacedDigitSystemFont(ofSize: 100, weight: .regular)))
                 .minimumScaleFactor(0.01)
                 .foregroundColor(.black)
         } else {
-
             Text(timerString)
                 .lineLimit(1)
-                .font(.system(size: 100, design: .monospaced))
-                .fontWeight(.bold)
+//                .font(.system(size: 100, design: .monospaced))
+//                .fontWeight(.bold)
+                .font(Font(UIFont.monospacedDigitSystemFont(ofSize: 100, weight: .regular)))
                 .minimumScaleFactor(0.01)
                 .glowEffect(radius: 8)
                 .foregroundColor(.white)
@@ -109,13 +109,13 @@ extension Robot {
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
         
-        Robot(timerString: "98:76:54",
+        Robot(timerString: "15:86:10",
               isTimeOver: false)
         .background(.red)
         .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
                    .previewDisplayName("iPhone 12")
 
-        Robot(timerString: "98:76:54",
+        Robot(timerString: "15:86:10",
               isTimeOver: true)
         .background(.red)
         .frame(width: 400, height: 600)

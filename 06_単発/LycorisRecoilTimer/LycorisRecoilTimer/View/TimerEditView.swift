@@ -19,7 +19,7 @@ struct TimerEditView: View {
             Text("\(String(format: "%02d", time.minute)) : \(String(format: "%02d", time.second))")
                 .font(.title2)
             TimePicker(minute: $time.minute, second: $time.second)
-                .frame(width: 200)
+                .frame(width: 180)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
