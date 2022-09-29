@@ -39,7 +39,7 @@ struct TimerView: View {
     @ViewBuilder
     private func timerEditView() -> some View {
         NavigationView {
-            TimerEditView(hour: $viewModel.timeBuffer.hour, minute: $viewModel.timeBuffer.minute, second: $viewModel.timeBuffer.second)
+            TimerEditView(time: $viewModel.timeBuffer)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {

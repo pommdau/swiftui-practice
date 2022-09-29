@@ -10,8 +10,8 @@ import Foundation
 final class TimerViewModel: ObservableObject {
                 
     @Published var isTimeOver: Bool = false
-    @Published var time = Time()
-    var timeBuffer = Time()
+    @Published var time = Time(seconds: 3)
+    @Published var timeBuffer = Time()
     
     var timerText: String {
         return String(format: "%02d:%02d:%02d", time.hour, time.minute, time.second)
