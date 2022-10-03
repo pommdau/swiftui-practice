@@ -12,7 +12,7 @@ struct Time {
     var second: Int
     var millisecond: Double
     
-    var totalSeconds: Double {
+    var seconds: Double {
         return Double(minute * 60 + second) + millisecond
     }
     

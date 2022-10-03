@@ -8,6 +8,12 @@
 import Foundation
 
 final class TimerViewModel: ObservableObject {
+    
+    enum TimerState {
+        case inReady
+        case inProgress
+        case isTimerOver
+    }
                 
     @Published var isTimeOver: Bool = false
     @Published var time = Time(second: 3)
@@ -30,7 +36,7 @@ final class TimerViewModel: ObservableObject {
     
     private func startTimer() {
         isTimeOver = false
-        startTime = Date.timeIntervalSinceReferenceDate + time.totalSeconds
+        startTime = Date.timeIntervalSinceReferenceDate + time.seconds
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
             if remainTime <= 0 {
