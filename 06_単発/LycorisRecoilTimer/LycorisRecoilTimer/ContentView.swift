@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let timeRemaining: Duration = .seconds(610.9)
+    
     var body: some View {
-        TimerView()
+        durationText()
+    }
+    
+    @ViewBuilder
+    private func durationText() -> some View {
+        let durationString = timeRemaining.formatted(
+            .time(
+                pattern: .minuteSecond(padMinuteToLength: 2, fractionalSecondsLength: 2)
+            )
+        )
+        Text(durationString)
     }
 }
 
