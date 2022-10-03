@@ -10,7 +10,7 @@ import SwiftUI
 struct Robot: View {
     
     let timerString: String
-    let isTimeOver: Bool
+    let timerState: TimerState
     var leftEyeTapped: () -> () = {}
     var rightEyeTapped: () -> () = {}
     
@@ -30,60 +30,101 @@ struct Robot: View {
             let offset = CGSize(width: 0,
                                 height: Self.calculateOffsetY(viewHeight: geometry.size.height,
                                                               svgHeight: (Self.svgSize * scale).height))
-            Circle()
-                .foregroundColor(isTimeOver ? .robotPinkEye : .robotBlueEye)
-                .glowEffect(radius: 6)
+            eye()
                 .frame(width: width * 0.18)
                 .position(x: width * 0.32, y: width * 0.29 + offset.height)
                 .onTapGesture {
                     leftEyeTapped()                    
                 }
             
-            Circle()
-                .foregroundColor(isTimeOver ? .robotPinkEye : .robotBlueEye)
-                .glowEffect(radius: 6)
+            eye()
                 .frame(width: width * 0.18)
                 .position(x: width * 0.69, y: width * 0.29 + offset.height)
-                .onTapGesture {
-                    rightEyeTapped()
-                }
             
             timerText()
                 .frame(width: width * 0.58)
                 .offset(x: width * 0.21, y: width * 0.41 + offset.height)
             
             robotBodyText(viewWidth: width, offset: offset)
+                .onTapGesture {
+                    rightEyeTapped()
+                }
             
             createRobotPath(scale: scale, offset: offset)
-                .fill(isTimeOver ? .white : .black)
+                .fill(robotColor(state: timerState))
                 .zIndex(-1)
         }
     }
 }
 
 extension Robot {
+        
+    private func eyeColor(state: TimerState) -> Color {
+        switch state {
+        case .inReady:
+            return .green
+        case .inProgress:
+            return .robotBlueEye
+        case .isTimerOver:
+            return .robotPinkEye
+        }
+    }
+    
+    private func robotColor(state: TimerState) -> Color {
+        switch state {
+        case .inReady, .inProgress:
+            return .black
+        case .isTimerOver:
+            return .white
+        }
+    }
+    
+    @ViewBuilder
+    private func eye() -> some View {
+        Circle()
+            .foregroundColor(eyeColor(state: timerState))
+            .glowEffect(radius: 6)
+    }
     
     @ViewBuilder
     private func timerText() -> some View {
-        if isTimeOver {
-            Text(timerString)
-                .lineLimit(1)
-                .font(.system(size: 100, weight: .light).monospacedDigit())
-                .minimumScaleFactor(0.01)
-                .foregroundColor(.black)
-        } else {
+        
+        switch timerState {
+        case .inReady, .inProgress:
             Text(timerString)
                 .lineLimit(1)
                 .font(.system(size: 100, weight: .light).monospacedDigit())
                 .minimumScaleFactor(0.01)
                 .glowEffect(radius: 8)
                 .foregroundColor(.white)
+        case .isTimerOver:
+            Text(timerString)
+                .lineLimit(1)
+                .font(.system(size: 100, weight: .light).monospacedDigit())
+                .minimumScaleFactor(0.01)
+                .foregroundColor(.black)
         }
     }
     
     @ViewBuilder
     private func robotBodyText(viewWidth width: CGFloat, offset: CGSize) -> some View {
-        if isTimeOver {
+        
+        switch timerState {
+        case .inReady:
+            Text("Touch to start")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .fontWeight(.light)
+                .minimumScaleFactor(0.01)
+                .foregroundColor(.white)
+                .frame(width: width * 0.5)
+                .offset(x: width * 0.25, y: width * 0.7 + offset.height)
+        case .inProgress:
+            Text("PLEASE ENJOY\nTHE PARTY!")
+                .glowEffectText(lineLimit: 2)
+                .frame(width: width * 0.55)
+                .offset(x: width * 0.23, y: width * 0.68 + offset.height)
+        case .isTimerOver:
             Text("TIME UP!")
                 .lineLimit(1)
                 .font(.system(size: 100))
@@ -92,11 +133,6 @@ extension Robot {
                 .foregroundColor(.red)
                 .frame(width: width * 0.30)
                 .offset(x: width * 0.35, y: width * 0.73 + offset.height)
-        } else {
-            Text("PLEASE ENJOY\nTHE PARTY!")
-                .glowEffectText(lineLimit: 2)
-                .frame(width: width * 0.55)
-                .offset(x: width * 0.23, y: width * 0.68 + offset.height)
         }
     }
     
@@ -104,18 +140,18 @@ extension Robot {
 
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
+
+        Robot(timerString: "15:86:10",
+              timerState: .inReady)
+        .background(.green)
+        .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+                   .previewDisplayName("iPhone 12")
         
         Robot(timerString: "15:86:10",
-              isTimeOver: false)
+              timerState: .inProgress)
         .background(.red)
         .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
                    .previewDisplayName("iPhone 12")
-
-        Robot(timerString: "15:86:10",
-              isTimeOver: true)
-        .background(.red)
-        .frame(width: 400, height: 600)
-
     }
 }
 

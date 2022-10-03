@@ -14,15 +14,15 @@ struct TimerView: View {
     
     var body: some View {
         ZStack {
-            Color.red
+            backgroundColor(state: viewModel.state)
             VStack {
                 HeadertText()
                     .padding()
                 Robot(timerString: viewModel.timerText,
-                      isTimeOver: viewModel.state == .isTimerOver,
+                      timerState: viewModel.state,
                       leftEyeTapped: {
                     isPresentingTimerEditView = true
-                    viewModel.timeBuffer = viewModel.time
+                    viewModel.remainTimeBuffer = viewModel.remainTime
                 },
                       rightEyeTapped: {
                     viewModel.rightEyeClicked()
@@ -43,7 +43,7 @@ struct TimerView: View {
     @ViewBuilder
     private func timerEditView() -> some View {
         NavigationView {
-            TimerEditView(time: $viewModel.timeBuffer)
+            TimerEditView(time: $viewModel.remainTimeBuffer)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {
@@ -53,7 +53,7 @@ struct TimerView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Done") {
                             isPresentingTimerEditView = false
-                            viewModel.time = viewModel.timeBuffer
+                            viewModel.remainTime = viewModel.remainTimeBuffer
                         }
                     }
                 }
@@ -85,6 +85,15 @@ struct TimerView: View {
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
+        }
+    }
+    
+    private func backgroundColor(state: TimerState) -> Color {
+        switch state {
+        case .inReady:
+            return .green
+        case .inProgress, .isTimerOver:
+            return .red
         }
     }
 }

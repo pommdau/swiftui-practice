@@ -14,26 +14,15 @@ enum TimerState {
 }
 
 final class TimerViewModel: ObservableObject {
-    
-    
-    
+            
     @Published var state: TimerState = .inReady
-    @Published var time = Time(second: 3)
-    @Published var timeBuffer = Time()
+    @Published var remainTime = Time(second: 3)
+    @Published var remainTimeBuffer = Time()
     private var timer: Timer? = nil
     private var startTime: TimeInterval = Date.timeIntervalSinceReferenceDate
     
-    var _remainTime: Time {
-        let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
-        if remainTime < 0 {
-            return Time(seconds: 0)
-        } else {
-            return Time(seconds: remainTime)
-        }
-    }
-    
     var timerText: String {
-        time.displayText
+        remainTime.displayText
     }
     
     func rightEyeClicked() {
@@ -49,7 +38,7 @@ final class TimerViewModel: ObservableObject {
     
     private func startTimer() {
         state = .inProgress
-        startTime = Date.timeIntervalSinceReferenceDate + time.seconds
+        startTime = Date.timeIntervalSinceReferenceDate + remainTime.seconds
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
             if remainTime <= 0 {
@@ -57,7 +46,7 @@ final class TimerViewModel: ObservableObject {
                 self.stopTimer()
             } else {
                 // 残り時間の更新
-                self.time = Time(seconds: remainTime)
+                self.remainTime = Time(seconds: remainTime)
             }
         }
     }
@@ -67,7 +56,7 @@ final class TimerViewModel: ObservableObject {
         stopTimer()
         let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
         // 残り時間の更新
-        self.time = Time(seconds: remainTime)
+        self.remainTime = Time(seconds: remainTime)
     }
     
     private func stopTimer() {
