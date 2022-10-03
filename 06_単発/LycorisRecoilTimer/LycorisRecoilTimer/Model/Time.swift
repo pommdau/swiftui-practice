@@ -27,11 +27,8 @@ struct Time {
     }
     
     init(seconds: Double) {
-        let minute = (Int(seconds) % 3600) / 60
-        let second = Int(seconds) % 60
-        let millisecond = (seconds - floor(seconds))
-        self.minute = minute
-        self.second = second
-        self.millisecond = millisecond
+        self.minute = (Int(seconds) % 3600) / 60
+        self.second = Int(seconds) % 60
+        self.millisecond = seconds.truncatingRemainder(dividingBy: 1)
     }
 }
