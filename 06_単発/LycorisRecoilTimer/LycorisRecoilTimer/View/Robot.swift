@@ -45,10 +45,7 @@ struct Robot: View {
                 .frame(width: width * 0.58)
                 .offset(x: width * 0.21, y: width * 0.41 + offset.height)
             
-            robotBodyText(viewWidth: width, offset: offset)
-                .onTapGesture {
-                    rightEyeTapped()
-                }
+            robotBodyText(viewWidth: width, offset: offset, tappedAction: rightEyeTapped)
             
             createRobotPath(scale: scale, offset: offset)
                 .fill(robotColor(state: timerState))
@@ -107,35 +104,48 @@ extension Robot {
     }
     
     @ViewBuilder
-    private func robotBodyText(viewWidth width: CGFloat, offset: CGSize) -> some View {
+    private func robotBodyText(viewWidth width: CGFloat,
+                               offset: CGSize,
+                               tappedAction: @escaping () -> ()) -> some View {
         
         switch timerState {
         case .inReady:
-            Text("Touch to start")
-                .lineLimit(1)
-                .font(.system(size: 100))
-                .fontWeight(.light)
-                .minimumScaleFactor(0.01)
-                .foregroundColor(.white)
-                .frame(width: width * 0.5)
-                .offset(x: width * 0.25, y: width * 0.7 + offset.height)
+            Button {
+                tappedAction()
+            } label: {
+                Text("Touch to start")
+                    .lineLimit(1)
+                    .font(.system(size: 100))
+                    .fontWeight(.light)
+                    .minimumScaleFactor(0.01)
+                    .foregroundColor(.white)
+            }
+            .frame(width: width * 0.5)
+            .offset(x: width * 0.25, y: width * 0.7 + offset.height)
         case .inProgress:
-            Text("PLEASE ENJOY\nTHE PARTY!")
-                .glowEffectText(lineLimit: 2)
-                .frame(width: width * 0.55)
-                .offset(x: width * 0.23, y: width * 0.68 + offset.height)
+            Button {
+                tappedAction()
+            } label: {
+                Text("PLEASE ENJOY\nTHE PARTY!")
+                    .glowEffectText(lineLimit: 2)
+            }
+            .frame(width: width * 0.55)
+            .offset(x: width * 0.23, y: width * 0.68 + offset.height)
         case .isTimerOver:
-            Text("TIME UP!")
-                .lineLimit(1)
-                .font(.system(size: 100))
-                .fontWeight(.light)
-                .minimumScaleFactor(0.01)
-                .foregroundColor(.red)
-                .frame(width: width * 0.30)
-                .offset(x: width * 0.35, y: width * 0.73 + offset.height)
+            Button {
+                tappedAction()
+            } label: {
+                Text("TIME UP!")
+                    .lineLimit(1)
+                    .font(.system(size: 100))
+                    .fontWeight(.light)
+                    .minimumScaleFactor(0.01)
+                    .foregroundColor(.red)
+            }
+            .frame(width: width * 0.30)
+            .offset(x: width * 0.35, y: width * 0.73 + offset.height)
         }
     }
-    
 }
 
 struct Robot_Previews: PreviewProvider {

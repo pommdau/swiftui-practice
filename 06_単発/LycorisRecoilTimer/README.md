@@ -4,6 +4,8 @@ https://user-images.githubusercontent.com/29433103/193056952-fc71ec66-4e31-41a3-
 
 ## スクリーンショット
 
+## Picker問題
+- [iOS15でPickerを横に並べるとタップ領域が重なってしまう](https://swiswiswift.com/2022-01-02/)
 
 ## 参考
 - 等幅フォント
