@@ -7,50 +7,66 @@
 
 import Foundation
 
+enum TimerState {
+    case inReady
+    case inProgress
+    case isTimerOver
+}
+
 final class TimerViewModel: ObservableObject {
     
-    enum TimerState {
-        case inReady
-        case inProgress
-        case isTimerOver
-    }
-                
-    @Published var isTimeOver: Bool = false
+    
+    
+    @Published var state: TimerState = .inReady
     @Published var time = Time(second: 3)
     @Published var timeBuffer = Time()
-    
-    var timerText: String {
-        return String(format: "%02d:%02d:%02d", time.minute, time.second, Int(time.millisecond * 100))
-    }
-        
     private var timer: Timer? = nil
     private var startTime: TimeInterval = Date.timeIntervalSinceReferenceDate
     
-    func rightEyeClicked() {
-        if let _ = timer {
-            pauseTimer()
+    var _remainTime: Time {
+        let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
+        if remainTime < 0 {
+            return Time(seconds: 0)
         } else {
+            return Time(seconds: remainTime)
+        }
+    }
+    
+    var timerText: String {
+        time.displayText
+    }
+    
+    func rightEyeClicked() {
+        switch state {
+        case .inReady:
             startTimer()
+        case .inProgress:
+            pauseTimer()
+        case .isTimerOver:
+            state = .inReady
         }
     }
     
     private func startTimer() {
-        isTimeOver = false
+        state = .inProgress
         startTime = Date.timeIntervalSinceReferenceDate + time.seconds
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
             if remainTime <= 0 {
-                self.isTimeOver = true
+                self.state = .isTimerOver
                 self.stopTimer()
             } else {
+                // 残り時間の更新
                 self.time = Time(seconds: remainTime)
             }
         }
     }
-    
+                
     private func pauseTimer() {
+        state = .inReady
         stopTimer()
         let remainTime = self.startTime - Date.timeIntervalSinceReferenceDate
+        // 残り時間の更新
         self.time = Time(seconds: remainTime)
     }
     

@@ -16,6 +16,10 @@ struct Time {
         return Double(minute * 60 + second) + millisecond
     }
     
+    var displayText: String {
+        return String(format: "%02d:%02d:%02d", minute, second, Int(millisecond * 100))
+    }
+    
     init(minute: Int = 0, second: Int = 0, millisecond: Double = 0) {
         self.minute = minute
         self.second = second

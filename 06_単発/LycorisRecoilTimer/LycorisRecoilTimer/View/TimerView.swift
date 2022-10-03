@@ -19,7 +19,7 @@ struct TimerView: View {
                 HeadertText()
                     .padding()
                 Robot(timerString: viewModel.timerText,
-                      isTimeOver: viewModel.isTimeOver,
+                      isTimeOver: viewModel.state == .isTimerOver,
                       leftEyeTapped: {
                     isPresentingTimerEditView = true
                     viewModel.timeBuffer = viewModel.time
@@ -62,27 +62,29 @@ struct TimerView: View {
     
     @ViewBuilder
     private func HeadertText() -> some View {
-        if viewModel.isTimeOver {
+        switch viewModel.state {
+        case .inReady, .inProgress:
+            Text("PUNISHMENT")
+                .glowEffectText()
+        case .isTimerOver:
             Text("PUNISHMENT")
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
-        } else {
-            Text("PUNISHMENT")
-                .glowEffectText()
         }
     }
     
     @ViewBuilder
     private func FooterText() -> some View {
-        if viewModel.isTimeOver {
+        switch viewModel.state {
+        case .inReady, .inProgress:
+            Text("EXPLOSION!!!")
+                .glowEffectText()
+        case .isTimerOver:
             Text("EXPLOSION!!!")
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
-        } else {
-            Text("EXPLOSION!!!")
-                .glowEffectText()
         }
     }
 }
