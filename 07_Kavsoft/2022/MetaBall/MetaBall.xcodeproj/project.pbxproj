@@ -11,6 +11,7 @@
 		DA4B4A4028EBEB2D0065AB84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B4A3F28EBEB2D0065AB84 /* ContentView.swift */; };
 		DA4B4A4228EBEB2D0065AB84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4B4A4128EBEB2D0065AB84 /* Assets.xcassets */; };
 		DA4B4A4528EBEB2D0065AB84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4B4A4428EBEB2D0065AB84 /* Preview Assets.xcassets */; };
+		DA4B4A4D28EBECB50065AB84 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B4A4C28EBECB50065AB84 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DA4B4A3F28EBEB2D0065AB84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA4B4A4128EBEB2D0065AB84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA4B4A4428EBEB2D0065AB84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA4B4A4C28EBECB50065AB84 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		DA4B4A3C28EBEB2D0065AB84 /* MetaBall */ = {
 			isa = PBXGroup;
 			children = (
+				DA4B4A4B28EBECB00065AB84 /* View */,
 				DA4B4A3D28EBEB2D0065AB84 /* MetaBallApp.swift */,
 				DA4B4A3F28EBEB2D0065AB84 /* ContentView.swift */,
 				DA4B4A4128EBEB2D0065AB84 /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				DA4B4A4428EBEB2D0065AB84 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA4B4A4B28EBECB00065AB84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA4B4A4C28EBECB50065AB84 /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4B4A4028EBEB2D0065AB84 /* ContentView.swift in Sources */,
+				DA4B4A4D28EBECB50065AB84 /* Home.swift in Sources */,
 				DA4B4A3E28EBEB2D0065AB84 /* MetaBallApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
