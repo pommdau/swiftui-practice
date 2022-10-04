@@ -9,10 +9,8 @@ import SwiftUI
 
 struct Robot: View {
     
-    let timerString: String
-    let timerState: TimerState
-    var leftEyeTapped: () -> () = {}
-    var rightEyeTapped: () -> () = {}
+    @StateObject private var viewModel = TimerViewModel()
+    @State private var isPresentingTimerEditView = false
     
     private static func calculateOffsetY(viewHeight: CGFloat, svgHeight: CGFloat) -> CGFloat {
         if viewHeight > svgHeight {
@@ -23,67 +21,128 @@ struct Robot: View {
     }
     
     var body: some View {
+        
+        ZStack {
+            Color.background(state: viewModel.state)
+            
+            VStack {
+                HeadertText()
+                    .padding()
                 
-        GeometryReader { geometry in
-            let width = min(geometry.size.width, geometry.size.height)
-            let scale = width / Self.svgSize.width
-            let offset = CGSize(width: 0,
-                                height: Self.calculateOffsetY(viewHeight: geometry.size.height,
-                                                              svgHeight: (Self.svgSize * scale).height))
-            eye()
-                .frame(width: width * 0.18)
-                .position(x: width * 0.32, y: width * 0.29 + offset.height)
-                .onTapGesture {
-                    leftEyeTapped()                    
+                GeometryReader { geometry in
+                    let width = min(geometry.size.width, geometry.size.height)
+                    let scale = width / Self.svgSize.width
+                    let offset = CGSize(width: 0,
+                                        height: Self.calculateOffsetY(viewHeight: geometry.size.height,
+                                                                      svgHeight: (Self.svgSize * scale).height))
+                    eye()
+                        .frame(width: width * 0.18)
+                        .position(x: width * 0.32, y: width * 0.29 + offset.height)
+                        .onTapGesture {
+                            isPresentingTimerEditView = true
+                        }
+                    
+                    eye()
+                        .frame(width: width * 0.18)
+                        .position(x: width * 0.69, y: width * 0.29 + offset.height)
+                    
+                    timerText()
+                        .frame(width: width * 0.58)
+                        .offset(x: width * 0.21, y: width * 0.41 + offset.height)
+                    
+                    robotBodyText(viewWidth: width,
+                                  offset: offset,
+                                  tappedAction: viewModel.rightEyeClicked)
+                    
+                    createRobotPath(scale: scale, offset: offset)
+                        .fill(Color.body(state: viewModel.state))
+                        .zIndex(-1)
                 }
-            
-            eye()
-                .frame(width: width * 0.18)
-                .position(x: width * 0.69, y: width * 0.29 + offset.height)
-            
-            timerText()
-                .frame(width: width * 0.58)
-                .offset(x: width * 0.21, y: width * 0.41 + offset.height)
-            
-            robotBodyText(viewWidth: width, offset: offset, tappedAction: rightEyeTapped)
-            
-            createRobotPath(scale: scale, offset: offset)
-                .fill(robotColor(state: timerState))
-                .zIndex(-1)
+                .padding(.horizontal)
+                
+                FooterText()
+                    .padding()
+            }
+        }
+        .ignoresSafeArea(edges: [.bottom, .leading, .trailing])
+
+        .sheet(isPresented: $isPresentingTimerEditView) {
+            timerEditView()
         }
     }
 }
 
+// MARK: - @ViewBuilder
+
 extension Robot {
-            
-    private func robotColor(state: TimerState) -> Color {
-        switch state {
+    
+    @ViewBuilder
+    private func timerEditView() -> some View {
+        NavigationView {
+            TimerEditView(time: $viewModel.remainTimeBuffer)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            isPresentingTimerEditView = false
+                        }
+                    }
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") {
+                            isPresentingTimerEditView = false
+                            viewModel.remainTime = viewModel.remainTimeBuffer
+                        }
+                    }
+                }
+        }
+    }
+    
+    @ViewBuilder
+    private func HeadertText() -> some View {
+        switch viewModel.state {
         case .inReady, .inProgress:
-            return .black
+            Text("PUNISHMENT")
+                .glowEffectText()
         case .isTimerOver:
-            return .white
+            Text("PUNISHMENT")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .minimumScaleFactor(0.01)
+        }
+    }
+    
+    @ViewBuilder
+    private func FooterText() -> some View {
+        switch viewModel.state {
+        case .inReady, .inProgress:
+            Text("EXPLOSION!!!")
+                .glowEffectText()
+        case .isTimerOver:
+            Text("EXPLOSION!!!")
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .minimumScaleFactor(0.01)
         }
     }
     
     @ViewBuilder
     private func eye() -> some View {
         Circle()
-            .foregroundColor(.eye(state: timerState))
+            .foregroundColor(.eye(state: viewModel.state))
             .glowEffect(radius: 6)
     }
     
     @ViewBuilder
     private func timerText() -> some View {        
-        switch timerState {
+        switch viewModel.state {
         case .inReady, .inProgress:
-            Text(timerString)
+            Text(viewModel.timerText)
                 .lineLimit(1)
                 .font(.system(size: 100, weight: .light).monospacedDigit())
                 .minimumScaleFactor(0.01)
                 .glowEffect(radius: 8)
                 .foregroundColor(.white)
         case .isTimerOver:
-            Text(timerString)
+            Text(viewModel.timerText)
                 .lineLimit(1)
                 .font(.system(size: 100, weight: .light).monospacedDigit())
                 .minimumScaleFactor(0.01)
@@ -96,7 +155,7 @@ extension Robot {
                                offset: CGSize,
                                tappedAction: @escaping () -> ()) -> some View {
         
-        switch timerState {
+        switch viewModel.state {
         case .inReady:
             Button {
                 tappedAction()
@@ -139,17 +198,15 @@ extension Robot {
 struct Robot_Previews: PreviewProvider {
     static var previews: some View {
 
-        Robot(timerString: "15:86:10",
-              timerState: .inReady)
-        .background(.green)
-        .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-                   .previewDisplayName("iPhone 12")
+        Robot()
+            .background(.green)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            .previewDisplayName("iPhone 12")
         
-        Robot(timerString: "15:86:10",
-              timerState: .inProgress)
-        .background(.red)
-        .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-                   .previewDisplayName("iPhone 12")
+        Robot()
+            .background(.red)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            .previewDisplayName("iPhone 12")
     }
 }
 
