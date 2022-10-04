@@ -10,22 +10,42 @@ import SwiftUI
 struct MorphingView: View {
     
     @State private var currentImage: CustomShape = .cloud
-    
+    @State private var turnOffImageMorph: Bool = false
+
     var body: some View {
         VStack {
-            // MARK: Morphing shapes with the help of Canvas and Filters
-            Canvas { context, size in
-                if let resolvedImage = context.resolveSymbol(id: 1) {
-                    context.draw(resolvedImage,
-                                 at: CGPoint(x: size.width / 2, y: size.height / 2),
-                                 anchor: .center)
-                }
-            } symbols: {
-                // MARK: Giving images with ID
-                ResolvedImage(currentImage: $currentImage)
-                    .tag(1)
+            
+            // Morph is simple
+            // Simply Mask the canvas sha;e as image mask
+            GeometryReader { proxy in
+                let size = proxy.size
+                Image("iJustine")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .offset(x: -20, y: 40)
+                    .frame(width: size.width, height: size.height)
+                    .clipped()
+                    .overlay(content: {
+                        Rectangle()
+                            .fill(.white)
+                            .opacity(turnOffImageMorph ? 1 : 0)
+                    })
+                    .mask {
+                        // MARK: Morphing shapes with the help of Canvas and Filters
+                        Canvas { context, size in
+                            if let resolvedImage = context.resolveSymbol(id: 1) {
+                                context.draw(resolvedImage,
+                                             at: CGPoint(x: size.width / 2, y: size.height / 2),
+                                             anchor: .center)
+                            }
+                        } symbols: {
+                            // MARK: Giving images with ID
+                            ResolvedImage(currentImage: $currentImage)
+                                .tag(1)
+                        }
+                    }
             }
-            .frame(height: 350)
+            .frame(height: 400)
             
             Picker("", selection: $currentImage) {
                 ForEach(CustomShape.allCases, id: \.rawValue) { shape in
@@ -35,6 +55,12 @@ struct MorphingView: View {
             }
             .pickerStyle(.segmented)
             .padding(15)
+            .padding(.top, -50)
+            
+            Toggle("Turn Off Image Morph", isOn: $turnOffImageMorph)
+                .fontWeight(.semibold)
+                .padding(.horizontal, 15)
+                .padding(.top, 10)
         }
         .offset(y: -50)
         .frame(maxHeight: .infinity, alignment: .top)
