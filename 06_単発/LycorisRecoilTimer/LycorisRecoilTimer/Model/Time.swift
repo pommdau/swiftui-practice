@@ -12,8 +12,12 @@ struct Time {
     var second: Int
     var millisecond: Double
     
-    var totalSeconds: Double {
+    var seconds: Double {
         return Double(minute * 60 + second) + millisecond
+    }
+    
+    var displayText: String {
+        return String(format: "%02d:%02d:%02d", minute, second, Int(millisecond * 100))
     }
     
     init(minute: Int = 0, second: Int = 0, millisecond: Double = 0) {
@@ -23,11 +27,8 @@ struct Time {
     }
     
     init(seconds: Double) {
-        let minute = (Int(seconds) % 3600) / 60
-        let second = Int(seconds) % 60
-        let millisecond = (seconds - floor(seconds))
-        self.minute = minute
-        self.second = second
-        self.millisecond = millisecond
+        self.minute = (Int(seconds) % 3600) / 60
+        self.second = Int(seconds) % 60
+        self.millisecond = seconds.truncatingRemainder(dividingBy: 1)
     }
 }
