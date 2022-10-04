@@ -27,7 +27,7 @@ struct TimerView: View {
                       rightEyeTapped: {
                     viewModel.rightEyeClicked()
                 })
-                .padding(.horizontal)
+                .padding(.horizontal)   
                 FooterText()
                     .padding()
             }

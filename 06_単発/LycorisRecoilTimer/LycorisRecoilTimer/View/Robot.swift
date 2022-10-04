@@ -55,18 +55,7 @@ struct Robot: View {
 }
 
 extension Robot {
-        
-    private func eyeColor(state: TimerState) -> Color {
-        switch state {
-        case .inReady:
-            return .green
-        case .inProgress:
-            return .robotBlueEye
-        case .isTimerOver:
-            return .robotPinkEye
-        }
-    }
-    
+            
     private func robotColor(state: TimerState) -> Color {
         switch state {
         case .inReady, .inProgress:
@@ -79,13 +68,12 @@ extension Robot {
     @ViewBuilder
     private func eye() -> some View {
         Circle()
-            .foregroundColor(eyeColor(state: timerState))
+            .foregroundColor(.eye(state: timerState))
             .glowEffect(radius: 6)
     }
     
     @ViewBuilder
-    private func timerText() -> some View {
-        
+    private func timerText() -> some View {        
         switch timerState {
         case .inReady, .inProgress:
             Text(timerString)

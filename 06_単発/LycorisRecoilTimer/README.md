@@ -4,6 +4,12 @@ https://user-images.githubusercontent.com/29433103/193056952-fc71ec66-4e31-41a3-
 
 ## スクリーンショット
 
+<img width="400" alt="image" src="https://i.imgur.com/Gu0v9o0.png">
+
+<img width="400" alt="image" src="https://i.imgur.com/bzytQhZ.png">
+
+<img width="400" alt="image" src="https://i.imgur.com/V2FREcF.png">
+
 ## Picker問題
 - [iOS15でPickerを横に並べるとタップ領域が重なってしまう](https://swiswiswift.com/2022-01-02/)
 
