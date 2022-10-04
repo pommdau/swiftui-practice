@@ -98,12 +98,14 @@ extension Robot {
     
     @ViewBuilder
     private func HeadertText() -> some View {
+        let text = "PUNISHMENT"
+        
         switch viewModel.state {
         case .inReady, .inProgress:
-            Text("PUNISHMENT")
-                .glowEffectText()
+            Text(text)
+                .mainLabel()
         case .isTimerOver:
-            Text("PUNISHMENT")
+            Text(text)
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
@@ -112,12 +114,19 @@ extension Robot {
     
     @ViewBuilder
     private func FooterText() -> some View {
+        let text = "EXPLOSION!!!"
+    
         switch viewModel.state {
         case .inReady, .inProgress:
-            Text("EXPLOSION!!!")
-                .glowEffectText()
+            Text(text)
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .fontWeight(.regular)
+                .minimumScaleFactor(0.01)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
         case .isTimerOver:
-            Text("EXPLOSION!!!")
+            Text(text)
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
@@ -174,7 +183,7 @@ extension Robot {
                 tappedAction()
             } label: {
                 Text("PLEASE ENJOY\nTHE PARTY!")
-                    .glowEffectText(lineLimit: 2)
+                    .mainLabel(lineLimit: 2)
             }
             .frame(width: width * 0.55)
             .offset(x: width * 0.23, y: width * 0.68 + offset.height)

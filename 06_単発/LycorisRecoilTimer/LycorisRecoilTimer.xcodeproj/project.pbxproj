@@ -17,7 +17,7 @@
 		DAB2D46A28E2F6AA004CD870 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46928E2F6AA004CD870 /* Color+extension.swift */; };
 		DAB2D46E28E3CB73004CD870 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */; };
 		DAD6D5A628E435B0000B20CE /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A528E435B0000B20CE /* CGSize.swift */; };
-		DAD6D5A828E43AC5000B20CE /* GlowEffectTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */; };
+		DAD6D5A828E43AC5000B20CE /* MainLabelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A728E43AC5000B20CE /* MainLabelModifier.swift */; };
 		DAD6D5AA28E46A57000B20CE /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5A928E46A57000B20CE /* TimerPicker.swift */; };
 		DAD6D5AE28E46EAE000B20CE /* TimerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */; };
 		DAD6D5B128E471DB000B20CE /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6D5B028E471DB000B20CE /* Time.swift */; };
@@ -35,7 +35,7 @@
 		DAB2D46928E2F6AA004CD870 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		DAB2D46D28E3CB73004CD870 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		DAD6D5A528E435B0000B20CE /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
-		DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowEffectTextModifier.swift; sourceTree = "<group>"; };
+		DAD6D5A728E43AC5000B20CE /* MainLabelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLabelModifier.swift; sourceTree = "<group>"; };
 		DAD6D5A928E46A57000B20CE /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
 		DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEditView.swift; sourceTree = "<group>"; };
 		DAD6D5B028E471DB000B20CE /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 				DAD6D5A928E46A57000B20CE /* TimerPicker.swift */,
 				DAD6D5AD28E46EAE000B20CE /* TimerEditView.swift */,
 				DAB2D46428E2DF00004CD870 /* View+glowEffect.swift */,
-				DAD6D5A728E43AC5000B20CE /* GlowEffectTextModifier.swift */,
+				DAD6D5A728E43AC5000B20CE /* MainLabelModifier.swift */,
 				DAB2D46228E2CED0004CD870 /* Robot.swift */,
 			);
 			path = View;
@@ -200,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD6D5AE28E46EAE000B20CE /* TimerEditView.swift in Sources */,
-				DAD6D5A828E43AC5000B20CE /* GlowEffectTextModifier.swift in Sources */,
+				DAD6D5A828E43AC5000B20CE /* MainLabelModifier.swift in Sources */,
 				DAB2D46328E2CED0004CD870 /* Robot.swift in Sources */,
 				DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */,
 				DAB2D46A28E2F6AA004CD870 /* Color+extension.swift in Sources */,
