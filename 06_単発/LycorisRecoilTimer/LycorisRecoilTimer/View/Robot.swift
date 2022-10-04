@@ -72,7 +72,7 @@ struct Robot: View {
                                   y: geometry.size.height / 2)
                         .offset(x: 0,
                                 y: -standatdOffset.height * 0.09)
-
+                                        
 //                    robotBodyText(viewWidth: width,
 //                                  offset: offset,
 //                                  tappedAction: viewModel.rightEyeClicked)
@@ -129,12 +129,16 @@ extension Robot {
         switch viewModel.state {
         case .inReady, .inProgress:
             Text(text)
-                .mainLabel()
+                .lineLimit(1)
+                .font(.system(size: 100))
+                .minimumScaleFactor(0.01)
+                .foregroundColor(.white)
         case .isTimerOver:
             Text(text)
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
+                .foregroundColor(.black)
         }
     }
     
@@ -156,6 +160,7 @@ extension Robot {
                 .lineLimit(1)
                 .font(.system(size: 100))
                 .minimumScaleFactor(0.01)
+                .foregroundColor(.black)
         }
     }
     
@@ -163,7 +168,6 @@ extension Robot {
     private func eye() -> some View {
         Circle()
             .foregroundColor(.eye(state: viewModel.state))
-            .glowEffect(radius: 6)
     }
     
     @ViewBuilder
@@ -174,7 +178,6 @@ extension Robot {
                 .lineLimit(1)
                 .font(.system(size: 100, weight: .light).monospacedDigit())
                 .minimumScaleFactor(0.01)
-                .glowEffect(radius: 8)
                 .foregroundColor(.white)
         case .isTimerOver:
             Text(viewModel.timerText)
