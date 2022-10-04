@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1B2C9628EBC4AB000F3F59 /* Path+robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B2C9528EBC4AB000F3F59 /* Path+robot.swift */; };
 		DAB2D45328E2BD7C004CD870 /* LycorisRecoilTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */; };
 		DAB2D45528E2BD7C004CD870 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D45428E2BD7C004CD870 /* ContentView.swift */; };
 		DAB2D45728E2BD7D004CD870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB2D45628E2BD7D004CD870 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA1B2C9528EBC4AB000F3F59 /* Path+robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path+robot.swift"; sourceTree = "<group>"; };
 		DAB2D44F28E2BD7C004CD870 /* LycorisRecoilTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LycorisRecoilTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB2D45228E2BD7C004CD870 /* LycorisRecoilTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LycorisRecoilTimerApp.swift; sourceTree = "<group>"; };
 		DAB2D45428E2BD7C004CD870 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				DAB2D46628E2E8E3004CD870 /* CGPoint+convert.swift */,
 				DAB2D46928E2F6AA004CD870 /* Color+extension.swift */,
 				DAD6D5A528E435B0000B20CE /* CGSize.swift */,
+				DA1B2C9528EBC4AB000F3F59 /* Path+robot.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				DAD6D5B128E471DB000B20CE /* Time.swift in Sources */,
 				DAB2D46E28E3CB73004CD870 /* TimerViewModel.swift in Sources */,
 				DAB2D46528E2DF00004CD870 /* View+glowEffect.swift in Sources */,
+				DA1B2C9628EBC4AB000F3F59 /* Path+robot.swift in Sources */,
 				DAD6D5AA28E46A57000B20CE /* TimerPicker.swift in Sources */,
 				DAB2D45328E2BD7C004CD870 /* LycorisRecoilTimerApp.swift in Sources */,
 				DAD6D5A628E435B0000B20CE /* CGSize.swift in Sources */,
