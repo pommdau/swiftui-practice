@@ -45,6 +45,8 @@ struct Robot: View {
                     let length = min(geometry.size.width, geometry.size.height)
                     let scale = Self.calculateScale(geometrySize: geometry.size,
                                                     svgSize: Self.originalPathSize)
+                    let center = CGPoint(x: geometry.size.width / 2,
+                                         y: geometry.size.height / 2)
                     let standatdOffset = CGSize(width: Self.originalPathSize.width * scale,
                                                 height: Self.originalPathSize.height * scale)
                     
@@ -54,22 +56,19 @@ struct Robot: View {
                         eye()
                     }
                     .frame(width: length * 0.18)
-                    .position(x: geometry.size.width / 2,
-                              y: geometry.size.height / 2)
+                    .position(center)
                     .offset(x: -standatdOffset.width * 0.18,
                             y: -standatdOffset.height * 0.25)
                                         
                     eye()
                         .frame(width: length * 0.18)
-                        .position(x: geometry.size.width / 2,
-                                  y: geometry.size.height / 2)
+                        .position(center)
                         .offset(x: standatdOffset.width * 0.18,
                                 y: -standatdOffset.height * 0.25)
                     
                     timerText()
                         .frame(width: length * 0.58)
-                        .position(x: geometry.size.width / 2,
-                                  y: geometry.size.height / 2)
+                        .position(center)
                         .offset(x: 0,
                                 y: -standatdOffset.height * 0.09)
                                         
