@@ -32,8 +32,8 @@ class BullsEyeGame {
 
   @discardableResult
   func check(guess: Int) -> Int {
-    let difference = guess - targetValue
-    //    let difference = abs(targetValue - guess)
+//    let difference = guess - targetValue
+    let difference = abs(targetValue - guess)
     scoreRound = 100 - difference
     scoreTotal += scoreRound
     return difference
