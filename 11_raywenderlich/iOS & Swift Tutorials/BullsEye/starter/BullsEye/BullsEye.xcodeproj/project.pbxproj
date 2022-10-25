@@ -16,6 +16,7 @@
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */; };
+		DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA1FC85029055CE100B7DDB9 /* BullsEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeTests.swift; sourceTree = "<group>"; };
+		DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeSlowTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */,
+				DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */,
 			);
 			path = BullsEyeTests;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */,
+				DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
