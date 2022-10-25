@@ -21,26 +21,21 @@ final class BullsEyeSlowTests: XCTestCase {
 //    let urlString = "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
     let urlString = "http://www.randomnumberapi.com/test"  // DEBUG
     let url = URL(string: urlString)!
-    
-    let promise = expectation(description: "Status code: 200")
+    let promise = expectation(description: "Completion handler invoked")
+    var statusCode: Int?
+    var responseError: Error?
     
     // when
     let dataTask = sut.dataTask(with: url) { _, response, error in
-      // then
-      if let error = error {
-        XCTFail("Error: \(error.localizedDescription)")
-        return
-      } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-        if statusCode == 200 {
-          promise.fulfill()
-        } else {
-          XCTFail("Status code: \(statusCode)")
-        }
-      }
+      statusCode = (response as? HTTPURLResponse)?.statusCode
+      responseError = error
+      promise.fulfill()
     }
-    
     dataTask.resume()
     wait(for: [promise], timeout: 5)
+    
+    // then
+    XCTAssertNil(responseError)  // errorがあればFail
+    XCTAssertEqual(statusCode, 200)
   }
-  
 }
