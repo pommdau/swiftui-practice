@@ -18,6 +18,7 @@
 		DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */; };
 		DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */; };
 		DA1FC877290A154800B7DDB9 /* BullsEyeFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */; };
+		DA1FC87D290A18CA00B7DDB9 /* BullsEyeMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC87C290A18CA00B7DDB9 /* BullsEyeMockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeTests.swift; sourceTree = "<group>"; };
 		DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeSlowTests.swift; sourceTree = "<group>"; };
 		DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeFakeTests.swift; sourceTree = "<group>"; };
+		DA1FC87C290A18CA00B7DDB9 /* BullsEyeMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeMockTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +114,9 @@
 		DA1FC85129055CE100B7DDB9 /* BullsEyeTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */,
+				DA1FC87C290A18CA00B7DDB9 /* BullsEyeMockTests.swift */,
 				DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */,
+				DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */,
 				DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */,
 			);
 			path = BullsEyeTests;
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1FC87D290A18CA00B7DDB9 /* BullsEyeMockTests.swift in Sources */,
 				DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */,
 				DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */,
 				DA1FC877290A154800B7DDB9 /* BullsEyeFakeTests.swift in Sources */,
