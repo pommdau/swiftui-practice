@@ -17,6 +17,7 @@
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */; };
 		DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */; };
+		DA1FC877290A154800B7DDB9 /* BullsEyeFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		DA1FC85029055CE100B7DDB9 /* BullsEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeTests.swift; sourceTree = "<group>"; };
 		DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeSlowTests.swift; sourceTree = "<group>"; };
+		DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeFakeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		DA1FC85129055CE100B7DDB9 /* BullsEyeTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA1FC876290A154800B7DDB9 /* BullsEyeFakeTests.swift */,
 				DA1FC85229055CE100B7DDB9 /* BullsEyeTests.swift */,
 				DA1FC859290785BC00B7DDB9 /* BullsEyeSlowTests.swift */,
 			);
@@ -254,6 +257,7 @@
 			files = (
 				DA1FC85329055CE100B7DDB9 /* BullsEyeTests.swift in Sources */,
 				DA1FC85A290785BC00B7DDB9 /* BullsEyeSlowTests.swift in Sources */,
+				DA1FC877290A154800B7DDB9 /* BullsEyeFakeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
