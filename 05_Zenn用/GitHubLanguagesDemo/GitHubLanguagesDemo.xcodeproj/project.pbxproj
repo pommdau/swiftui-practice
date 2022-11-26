@@ -65,8 +65,8 @@
 		DAC6D7632931FFCD003BC645 /* GitHubLanguagesDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DAC6D78429320819003BC645 /* Utils */,
 				DAC6D7642931FFCD003BC645 /* GitHubLanguagesDemoApp.swift */,
+				DAC6D78429320819003BC645 /* Utils */,
 				DAC6D778293200B4003BC645 /* GitHubLanguageColor */,
 				DAC6D7752932003A003BC645 /* Views */,
 				DAC6D77F29320107003BC645 /* Models */,

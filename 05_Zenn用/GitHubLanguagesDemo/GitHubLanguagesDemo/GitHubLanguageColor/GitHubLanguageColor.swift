@@ -34,16 +34,17 @@ struct GitHubLanguageColor {
     // MARK: - LifeCycle
 
     private init() {
-        // ref: https://github.com/anuraghazra/github-readme-stats/blob/master/src/common/languageColors.json
+        // ref: https://raw.githubusercontent.com/ozh/github-colors/master/colors.json
         guard let url = Bundle.main.url(forResource: "github-lang-colors", withExtension: "json"),
               let data = try? Data(contentsOf: url),
-              let json = try? JSONSerialization.jsonObject(with: data) as? [String: String]
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: [String: String?]]  // color: nullがあるためString?としている
         else {
             fatalError("github-lang-colors.jsonの読み込みに失敗しました。")
         }
         
-        self.languages = json.map { name, hex in
-            Language(name: name, hex: hex)
+        self.languages = json.map { name, details in
+            let color = details["color"] as? String ?? "#000000"  // 未定義の場合は黒#000000とする
+            return Language(name: name, hex: color)
         }
         .sorted(by: { first, second in
             first.name < second.name
