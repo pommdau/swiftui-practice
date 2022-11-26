@@ -17,14 +17,14 @@ struct LanguagesBar: View {
             BarMark(
                 x: .value("Amount", language.percentage)
             )
+            .foregroundStyle(GitHubLanguageColor.shared.getColor(withName: language.name) ?? .accentColor)
             .foregroundStyle(by:
                     .value(
                         "Language Category",
-                        "\(language.name) \((language.percentage * 100).truncate(places: 2))%"
+                        "\(language.name) \((language.percentage * 100).truncate(places: 1))%"
                     )
             )
         }
-        .frame(height: 200)
     }
 }
 

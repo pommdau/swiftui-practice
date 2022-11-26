@@ -60,7 +60,11 @@ struct GitHubLanguageColor {
         let language = languages.first { language in
             name == language.name
         }
-
+        
+        if language == nil {
+            print("stop")
+        }
+        
         return language?.color
     }
 }
