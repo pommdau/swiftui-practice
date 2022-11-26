@@ -33,7 +33,7 @@ extension Language {
         }
         
         let languages: [Language] = json.map { name, amount in
-            let percentage = max(0.01, Double(amount) / sum)
+            let percentage = max(0.01, (Double(amount) / sum))
             return Language(name: name, amount: amount, percentage: percentage)
         }.sorted(by: { first, second in
             // 使用率が大きい順にソート

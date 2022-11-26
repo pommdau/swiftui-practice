@@ -17,6 +17,7 @@
 		DAC6D77E293200B4003BC645 /* github-lang-colors.json in Resources */ = {isa = PBXBuildFile; fileRef = DAC6D77B293200B4003BC645 /* github-lang-colors.json */; };
 		DAC6D7812932010D003BC645 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6D7802932010D003BC645 /* Language.swift */; };
 		DAC6D783293204A5003BC645 /* sample-repository-languages.json in Resources */ = {isa = PBXBuildFile; fileRef = DAC6D782293203C1003BC645 /* sample-repository-languages.json */; };
+		DAC6D78629320836003BC645 /* Double+Truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6D78529320836003BC645 /* Double+Truncate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DAC6D77B293200B4003BC645 /* github-lang-colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "github-lang-colors.json"; sourceTree = "<group>"; };
 		DAC6D7802932010D003BC645 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		DAC6D782293203C1003BC645 /* sample-repository-languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "sample-repository-languages.json"; sourceTree = "<group>"; };
+		DAC6D78529320836003BC645 /* Double+Truncate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Truncate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		DAC6D7632931FFCD003BC645 /* GitHubLanguagesDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DAC6D78429320819003BC645 /* Utils */,
 				DAC6D7642931FFCD003BC645 /* GitHubLanguagesDemoApp.swift */,
 				DAC6D778293200B4003BC645 /* GitHubLanguageColor */,
 				DAC6D7752932003A003BC645 /* Views */,
@@ -107,6 +110,14 @@
 				DAC6D782293203C1003BC645 /* sample-repository-languages.json */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DAC6D78429320819003BC645 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DAC6D78529320836003BC645 /* Double+Truncate.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				DAC6D77D293200B4003BC645 /* GitHubLanguageColor.swift in Sources */,
 				DAC6D7672931FFCD003BC645 /* ContentView.swift in Sources */,
+				DAC6D78629320836003BC645 /* Double+Truncate.swift in Sources */,
 				DAC6D77C293200B4003BC645 /* Color+hex.swift in Sources */,
 				DAC6D7812932010D003BC645 /* Language.swift in Sources */,
 				DAC6D7652931FFCD003BC645 /* GitHubLanguagesDemoApp.swift in Sources */,
