@@ -15,16 +15,9 @@ struct LanguagesBar: View {
     var body: some View {
         Chart(languages) { language in
             BarMark(
-                x: .value("Amount", language.percentage)
+                x: .value("Percentage", language.percentage)
             )
-            .foregroundStyle(GitHubLanguageColor.shared.getColor(withName: language.name) ?? .accentColor)
-//            .foregroundStyle(by: .value("Language", language.name))
-//            .foregroundStyle(by:
-//                    .value(
-//                        "Language Category",
-//                        "\(language.name) \((language.percentage * 100).truncate(places: 1))%"
-//                    )
-//            )
+            .foregroundStyle(language.color)
         }
         .chartPlotStyle { plotArea in
             plotArea
@@ -36,20 +29,16 @@ struct LanguagesBar: View {
         .chartXAxis(.hidden)
         // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
         .chartForegroundStyleScale(
-            domain: languages.map { $0.name },
-            range: languages.map { language in
-                GitHubLanguageColor.shared.getColor(withName: language.name) ?? .accentColor
-            }
+            domain: languages.map { $0.titleForLegend },
+            range: languages.map { $0.color }
         )
-        
     }
-    
-    
 }
 
 struct LanguagesBar_Previews: PreviewProvider {
     static var previews: some View {
         LanguagesBar()
             .padding()
+            .previewLayout(.fixed(width: 400, height: 200))
     }
 }
