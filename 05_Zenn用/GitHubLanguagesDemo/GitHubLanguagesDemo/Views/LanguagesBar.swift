@@ -25,6 +25,10 @@ struct LanguagesBar: View {
                     )
             )
         }
+        .chartPlotStyle { plotArea in
+            plotArea.frame(height: 20)
+        }
+        .chartXAxis(.hidden)
     }
 }
 
