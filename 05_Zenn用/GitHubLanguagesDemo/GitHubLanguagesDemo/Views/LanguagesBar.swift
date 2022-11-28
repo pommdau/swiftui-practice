@@ -10,7 +10,8 @@ import Charts
 
 struct LanguagesBar: View {
     
-    let languages = Language.sampleData
+//    let languages = Language.sampleData
+    let languages = Language.createSampleData()
     
     var body: some View {
         Chart(languages) { language in
