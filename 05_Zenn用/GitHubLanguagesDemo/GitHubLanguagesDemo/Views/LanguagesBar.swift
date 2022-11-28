@@ -11,6 +11,7 @@ import Charts
 struct LanguagesBar: View {
     
 //    let languages = Language.sampleData
+//    let languages = Language.createSampleData()
     let languages = Language.createSampleData()
     
     var body: some View {
@@ -26,7 +27,7 @@ struct LanguagesBar: View {
                     width: 4
                 )
                 .foregroundStyle(
-                    (index == languages.count - 1) ? .clear : .white
+                    (index == languages.count - 1) ? .clear : .otherLanguage
                 )
             }
         }

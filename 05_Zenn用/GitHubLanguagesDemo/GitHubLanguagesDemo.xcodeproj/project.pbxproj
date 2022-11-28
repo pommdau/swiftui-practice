@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DAB0A0F52934635D00546ECC /* SimpleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0A0F42934635D00546ECC /* SimpleBar.swift */; };
+		DAB0A0F7293486A700546ECC /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0A0F6293486A700546ECC /* Color+Extension.swift */; };
 		DAC6D7652931FFCD003BC645 /* GitHubLanguagesDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6D7642931FFCD003BC645 /* GitHubLanguagesDemoApp.swift */; };
 		DAC6D7672931FFCD003BC645 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6D7662931FFCD003BC645 /* ContentView.swift */; };
 		DAC6D7692931FFCE003BC645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC6D7682931FFCE003BC645 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		DAB0A0F42934635D00546ECC /* SimpleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBar.swift; sourceTree = "<group>"; };
+		DAB0A0F6293486A700546ECC /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		DAC6D7612931FFCD003BC645 /* GitHubLanguagesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubLanguagesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC6D7642931FFCD003BC645 /* GitHubLanguagesDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLanguagesDemoApp.swift; sourceTree = "<group>"; };
 		DAC6D7662931FFCD003BC645 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		DAC6D78429320819003BC645 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DAB0A0F6293486A700546ECC /* Color+Extension.swift */,
 				DAC6D78529320836003BC645 /* Double+Truncate.swift */,
 			);
 			path = Utils;
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC6D77D293200B4003BC645 /* GitHubLanguageColor.swift in Sources */,
+				DAB0A0F7293486A700546ECC /* Color+Extension.swift in Sources */,
 				DAB0A0F52934635D00546ECC /* SimpleBar.swift in Sources */,
 				DAC6D7672931FFCD003BC645 /* ContentView.swift in Sources */,
 				DAC6D78629320836003BC645 /* Double+Truncate.swift in Sources */,

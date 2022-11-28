@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("Languages")
+                .font(.title2)
+                .bold()
             LanguagesBar()
         }
         .padding()
