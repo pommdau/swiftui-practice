@@ -28,7 +28,10 @@ struct LanguagesBar: View {
         }
         .chartPlotStyle { plotArea in
             plotArea
-                .frame(height: 20)
+                .frame(height: 10)
+                .clipShape (
+                    RoundedRectangle(cornerRadius:5, style: .continuous)
+                )
         }
         .chartXAxis(.hidden)
         // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
