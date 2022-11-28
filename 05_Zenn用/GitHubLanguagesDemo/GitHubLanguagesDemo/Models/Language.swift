@@ -5,7 +5,6 @@
 //  Created by HIROKI IKEUCHI on 2022/11/26.
 //
 
-import Foundation
 import SwiftUI
 
 struct Language: Identifiable {
@@ -61,8 +60,7 @@ extension Language {
                          color: GitHubLanguageColor.shared.getColor(withName: name) ?? .accentColor)
             )
         }
-        otherPercentage = max(0.001, otherPercentage)
-                                
+                                        
         languages.sort(by: { first, second in
             // 使用率が大きい順にソート
             first.amount > second.amount
@@ -72,7 +70,7 @@ extension Language {
             languages.append(
                 Language(name: "Other",
                          amount: otherAmount,
-                         percentage: otherPercentage,
+                         percentage: max(0.001, otherPercentage),
                          color: .otherLanguage)
             )
         }
