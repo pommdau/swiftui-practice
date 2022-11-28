@@ -1,5 +1,5 @@
 //
-//  Color+Extension.swift
+//  Color+customColors.swift
 //  GitHubLanguagesDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/11/28.

@@ -1,11 +1,3 @@
-//
-//  Color+hex.swift
-//  iOSEngineerCodeCheck
-//
-//  Created by HIROKI IKEUCHI on 2022/11/14.
-//  Copyright © 2022 YUMEMI Inc. All rights reserved.
-//
-
 import SwiftUI
 
 // ref: [Use Hex color in SwiftUI](https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui)

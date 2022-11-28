@@ -35,7 +35,7 @@ struct LanguagesBar: View {
                 .cornerRadius(5)
         }
         .chartXAxis(.hidden)
-        // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
+        //        // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
         .chartForegroundStyleScale(
             domain: languages.map { $0.titleForLegend },
             range: languages.map { $0.color }

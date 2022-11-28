@@ -14,6 +14,7 @@ struct ContentView: View {
                 .font(.title2)
                 .bold()
             LanguagesBar()
+            Spacer()
         }
         .padding()
     }
