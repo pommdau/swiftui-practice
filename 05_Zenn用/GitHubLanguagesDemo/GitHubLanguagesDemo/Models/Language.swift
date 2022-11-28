@@ -23,7 +23,7 @@ struct Language: Identifiable {
 
 extension Language {
     
-    static let otherThresholdPercentage = 0.005  // 0.3%未満をOtherとする
+    static let otherThresholdPercentage = 0.01  // 1%未満をOtherとする
     
     static func createSampleData(putLowPercentageLanguageIntoOther: Bool = true) -> [Language] {
                                 

@@ -21,10 +21,13 @@ struct LanguagesBar: View {
                 )
                 .foregroundStyle(language.color)
                 
-                RuleMark(x: .value("padding", calculatePaddingXPosition(at: index)))
-                    .foregroundStyle(
-                        (index == languages.count - 1) ? .clear : .white
-                    )
+                RectangleMark(
+                    x: .value("padding", calculatePaddingXPosition(at: index)),
+                    width: 4
+                )
+                .foregroundStyle(
+                    (index == languages.count - 1) ? .clear : .white
+                )
             }
         }
         .chartPlotStyle { plotArea in
@@ -41,13 +44,12 @@ struct LanguagesBar: View {
     }
     
     private func calculatePaddingXPosition(at index: Int) -> Double {
-        var xPosition: Double = .zero
         if index == languages.count - 1 {
-            return 0.2
+            return .zero
         }
         
-        let numberOfFrontMarks = index
-        for markIndex in 0...numberOfFrontMarks {
+        var xPosition: Double = .zero
+        for markIndex in 0...index {
             xPosition += languages[markIndex].percentage
         }
         
