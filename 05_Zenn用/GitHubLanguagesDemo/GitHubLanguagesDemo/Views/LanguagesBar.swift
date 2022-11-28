@@ -14,18 +14,23 @@ struct LanguagesBar: View {
     let languages = Language.createSampleData()
     
     var body: some View {
-        Chart(languages) { language in
-            BarMark(
-                x: .value("Percentage", language.percentage)
-            )
-            .foregroundStyle(language.color)
+        Chart {
+            ForEach(Array(languages.enumerated()), id: \.element.name) { index, language in
+                BarMark(
+                    x: .value("Percentage", language.percentage)
+                )
+                .foregroundStyle(language.color)
+                
+                RuleMark(x: .value("padding", calculatePaddingXPosition(at: index)))
+                    .foregroundStyle(
+                        (index == languages.count - 1) ? .clear : .white
+                    )
+            }
         }
         .chartPlotStyle { plotArea in
             plotArea
                 .frame(height: 10)
-                .clipShape (
-                    RoundedRectangle(cornerRadius:5, style: .continuous)
-                )
+                .cornerRadius(5)
         }
         .chartXAxis(.hidden)
         // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
@@ -34,6 +39,21 @@ struct LanguagesBar: View {
             range: languages.map { $0.color }
         )
     }
+    
+    private func calculatePaddingXPosition(at index: Int) -> Double {
+        var xPosition: Double = .zero
+        if index == languages.count - 1 {
+            return 0.2
+        }
+        
+        let numberOfFrontMarks = index
+        for markIndex in 0...numberOfFrontMarks {
+            xPosition += languages[markIndex].percentage
+        }
+        
+        return xPosition
+    }
+    
 }
 
 struct LanguagesBar_Previews: PreviewProvider {
