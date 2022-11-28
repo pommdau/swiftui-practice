@@ -18,18 +18,30 @@ struct LanguagesBar: View {
                 x: .value("Amount", language.percentage)
             )
             .foregroundStyle(GitHubLanguageColor.shared.getColor(withName: language.name) ?? .accentColor)
-            .foregroundStyle(by:
-                    .value(
-                        "Language Category",
-                        "\(language.name) \((language.percentage * 100).truncate(places: 1))%"
-                    )
-            )
+//            .foregroundStyle(by: .value("Language", language.name))
+//            .foregroundStyle(by:
+//                    .value(
+//                        "Language Category",
+//                        "\(language.name) \((language.percentage * 100).truncate(places: 1))%"
+//                    )
+//            )
         }
         .chartPlotStyle { plotArea in
-            plotArea.frame(height: 20)
+            plotArea
+                .frame(height: 20)
         }
         .chartXAxis(.hidden)
+        // ref: [New in SwiftUI 4: Charts \(Bar chart\)](https://medium.com/devtechie/new-in-swiftui-4-charts-bar-chart-f242698b04f4)
+        .chartForegroundStyleScale(
+            domain: languages.map { $0.name },
+            range: languages.map { language in
+                GitHubLanguageColor.shared.getColor(withName: language.name) ?? .accentColor
+            }
+        )
+        
     }
+    
+    
 }
 
 struct LanguagesBar_Previews: PreviewProvider {
