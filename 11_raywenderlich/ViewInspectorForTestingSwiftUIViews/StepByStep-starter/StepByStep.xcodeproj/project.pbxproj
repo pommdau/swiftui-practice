@@ -35,6 +35,7 @@
 		DA0C4765293BA8420074F078 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA0C4764293BA8420074F078 /* ViewInspector */; };
 		DA0C4767293BAB710074F078 /* Inspectable+Model.swift..swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4766293BAB710074F078 /* Inspectable+Model.swift..swift */; };
 		DA0C4769293BACAB0074F078 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4768293BACAB0074F078 /* Inspection.swift */; };
+		DA0C476B293BBEA10074F078 /* TraversalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C476A293BBEA10074F078 /* TraversalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		DA0C4759293BA8050074F078 /* StepByStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepTests.swift; sourceTree = "<group>"; };
 		DA0C4766293BAB710074F078 /* Inspectable+Model.swift..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspectable+Model.swift..swift"; sourceTree = "<group>"; };
 		DA0C4768293BACAB0074F078 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
+		DA0C476A293BBEA10074F078 /* TraversalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraversalTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			children = (
 				DA0C4759293BA8050074F078 /* StepByStepTests.swift */,
 				DA0C4766293BAB710074F078 /* Inspectable+Model.swift..swift */,
+				DA0C476A293BBEA10074F078 /* TraversalTests.swift */,
 			);
 			path = StepByStepTests;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA0C476B293BBEA10074F078 /* TraversalTests.swift in Sources */,
 				DA0C4767293BAB710074F078 /* Inspectable+Model.swift..swift in Sources */,
 				DA0C475A293BA8050074F078 /* StepByStepTests.swift in Sources */,
 			);

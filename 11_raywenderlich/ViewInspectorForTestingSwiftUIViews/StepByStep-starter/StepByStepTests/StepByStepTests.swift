@@ -90,6 +90,67 @@ final class StepByStepTests: XCTestCase {
     XCTAssertEqual(try style.inspect(isPressed: true).scaleEffect().width, 1.1)
     XCTAssertEqual(try style.inspect(isPressed: false).scaleEffect().width, 1.0)
   }
+  
+  // MARK: - Testing StepListView
+  
+  func testStepName(_ index: Int) -> String {
+    "Step -\(index)"
+  }
 
+  func makeStepController(_ count: Int) -> StepController {
+    let recipeController = RecipeController.previewController()
+    let recipe = recipeController.createRecipe()
+    for idx in 1...count {
+      let step = recipeController.createStep(for: recipe)
+      step.name = testStepName(idx)
+      step.orderingIndex = Int16(idx)
+    }
+
+    let stepController = StepController(
+      recipe: recipe,
+      dataStack: recipeController.dataStack
+    )
+    return stepController
+  }
+
+  func testStepListCellCountSmall() throws {
+    let expectedCount = 20
+    let stepController = makeStepController(expectedCount)
+    let view = StepListView(stepController: stepController)
+
+    let expectation = view.inspection.inspect { view in
+      let cells = view.findAll(StepLineView.self)
+      XCTAssertEqual(cells.count, expectedCount)
+    }
+    ViewHosting.host(view: view)
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+  
+  func testStepListCellContent() throws {
+    let expectedCount = 10
+    let stepController = makeStepController(expectedCount)
+    let view = StepListView(stepController: stepController)
+
+    let expectation = view.inspection.inspect { view in
+      for idx in 1...expectedCount {
+        _ = try view.find(StepLineView.self, containing: self.testStepName(idx))
+      }
+    }
+    ViewHosting.host(view: view)
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+  
+  func testStepCellNavigationLink() throws {
+    let expectedCount = 1
+    let stepController = makeStepController(expectedCount)
+    let view = StepListView(stepController: stepController)
+
+    let expectation = view.inspection.inspect { view in
+      let navLink = try view.find(ViewType.NavigationLink.self)
+      _ = try navLink.view(StepEditorView.self)
+    }
+    ViewHosting.host(view: view)
+    self.wait(for: [expectation], timeout: 1.0)
+  }
   
 }
