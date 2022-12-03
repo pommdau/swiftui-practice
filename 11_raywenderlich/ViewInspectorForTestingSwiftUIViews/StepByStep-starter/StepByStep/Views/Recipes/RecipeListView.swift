@@ -33,6 +33,7 @@ struct RecipeListView: View {
           recipeController.selectedRecipe = newRecipe
         }
         // Add button style here
+        .buttonStyle(AdditiveButtonStyle())
       }
       .padding(8)
     }

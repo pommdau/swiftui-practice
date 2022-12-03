@@ -72,4 +72,24 @@ final class StepByStepTests: XCTestCase {
     self.wait(for: [expectation], timeout: 1.0)
   }
   
+  // The first test checks that the button has AdditiveButtonStyle applied to it.
+  func testAddRecipeButtonHasCorrectStyle() throws {
+    let controller = RecipeController.previewController()
+    let view = RecipeListView()
+    let expectation = view.inspection.inspect { view in
+      let button = try view.find(button: "Add Recipe")
+      XCTAssertTrue(try button.buttonStyle() is AdditiveButtonStyle)
+    }
+    ViewHosting.host(view: view.environmentObject(controller))
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+
+  // The second test verifies that AdditiveButtonStyle makes a button larger when pressed.
+  func testAdditiveButtonStylePressedState() throws {
+    let style = AdditiveButtonStyle()
+    XCTAssertEqual(try style.inspect(isPressed: true).scaleEffect().width, 1.1)
+    XCTAssertEqual(try style.inspect(isPressed: false).scaleEffect().width, 1.0)
+  }
+
+  
 }
