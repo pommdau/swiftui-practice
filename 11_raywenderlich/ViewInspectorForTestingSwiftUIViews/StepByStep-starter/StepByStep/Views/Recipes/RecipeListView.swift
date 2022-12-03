@@ -3,6 +3,7 @@ import UniformTypeIdentifiers
 
 struct RecipeListView: View {
   @EnvironmentObject var recipeController: RecipeController
+  internal let inspection = Inspection<Self>()
 
   var body: some View {
     VStack {
@@ -36,6 +37,8 @@ struct RecipeListView: View {
       .padding(8)
     }
     // add onReceive here
+    .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+
   }
 }
 

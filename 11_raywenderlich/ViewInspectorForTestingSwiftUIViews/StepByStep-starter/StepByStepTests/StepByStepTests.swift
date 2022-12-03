@@ -50,6 +50,26 @@ final class StepByStepTests: XCTestCase {
     let fontWeight = try inspectedName.attributes().fontWeight()
     XCTAssertEqual(fontWeight, .medium)
   }
-
+  
+  func testAddRecipeAddsRecipe() throws {
+    let controller = RecipeController.previewController()
+    let view = RecipeListView()
+    // 1
+    let expectation = view.inspection.inspect { view in
+      XCTAssertEqual(controller.recipes.count, 0)
+      try view.find(button: "Add Recipe").tap()
+      XCTAssertEqual(controller.recipes.count, 1)
+    }
+    
+    // 2
+    /*
+     ViewInspector supplies ViewHosting.
+     ViewHosting provides a UIWindow and a UIHostingController
+     大事-> for your view to live in while testing.
+     */
+    ViewHosting.host(view: view.environmentObject(controller))
+    // 3
+    self.wait(for: [expectation], timeout: 1.0)
+  }
   
 }
