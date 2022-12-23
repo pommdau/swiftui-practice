@@ -15,6 +15,8 @@
 		DAC8ED6529552C80008C8F94 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DAC8ED6429552C80008C8F94 /* ViewInspector */; };
 		DAC8ED6729552D2B008C8F94 /* TheBasicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6629552D2B008C8F94 /* TheBasicsView.swift */; };
 		DAC8ED6929552DE6008C8F94 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6829552DE6008C8F94 /* MyView.swift */; };
+		DAC8ED6B29553199008C8F94 /* MyView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6A29553199008C8F94 /* MyView2.swift */; };
+		DAC8ED6D2955984D008C8F94 /* MyView3WithList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6C2955984D008C8F94 /* MyView3WithList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		DAC8ED5C29552C6F008C8F94 /* ViewInspectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorTests.swift; sourceTree = "<group>"; };
 		DAC8ED6629552D2B008C8F94 /* TheBasicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBasicsView.swift; sourceTree = "<group>"; };
 		DAC8ED6829552DE6008C8F94 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		DAC8ED6A29553199008C8F94 /* MyView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView2.swift; sourceTree = "<group>"; };
+		DAC8ED6C2955984D008C8F94 /* MyView3WithList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView3WithList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				DAC8ED2E29552C25008C8F94 /* ContentView.swift */,
 				DAC8ED6629552D2B008C8F94 /* TheBasicsView.swift */,
 				DAC8ED6829552DE6008C8F94 /* MyView.swift */,
+				DAC8ED6A29553199008C8F94 /* MyView2.swift */,
+				DAC8ED6C2955984D008C8F94 /* MyView3WithList.swift */,
 				DAC8ED3029552C26008C8F94 /* Assets.xcassets */,
 				DAC8ED3229552C26008C8F94 /* Preview Content */,
 			);
@@ -215,6 +221,8 @@
 				DAC8ED2F29552C25008C8F94 /* ContentView.swift in Sources */,
 				DAC8ED2D29552C25008C8F94 /* ViewInspectorDemoApp.swift in Sources */,
 				DAC8ED6729552D2B008C8F94 /* TheBasicsView.swift in Sources */,
+				DAC8ED6D2955984D008C8F94 /* MyView3WithList.swift in Sources */,
+				DAC8ED6B29553199008C8F94 /* MyView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
