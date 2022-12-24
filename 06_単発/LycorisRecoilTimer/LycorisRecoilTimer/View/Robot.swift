@@ -72,9 +72,9 @@ struct Robot: View {
                         .offset(x: 0,
                                 y: -standatdOffset.height * 0.09)
                                         
-//                    robotBodyText(viewWidth: width,
-//                                  offset: offset,
-//                                  tappedAction: viewModel.rightEyeClicked)
+                    robotBodyText(viewWidth: length * 1.0,
+                                  offset: standatdOffset,
+                                  tappedAction: viewModel.rightEyeClicked)
                     
                     Path.robot()
                         .fill(Color.body(state: viewModel.state))
@@ -204,17 +204,19 @@ extension Robot {
                     .minimumScaleFactor(0.01)
                     .foregroundColor(.white)
             }
-            .frame(width: width * 0.5)
-            .offset(x: width * 0.25, y: width * 0.7 + offset.height)
+            .frame(width: width * 0.48)
+            .offset(.init(width: offset.width * 0.26,
+                          height: offset.height * 0.82))
         case .inProgress:
             Button {
                 tappedAction()
             } label: {
                 Text("PLEASE ENJOY\nTHE PARTY!")
-                    .mainLabel(lineLimit: 2)
+                    .mainLabel(lineLimit: 2, color: .white)
             }
-            .frame(width: width * 0.55)
-            .offset(x: width * 0.23, y: width * 0.68 + offset.height)
+            .frame(width: width * 0.52)
+            .offset(.init(width: offset.width * 0.24,
+                          height: offset.height * 0.78))
         case .isTimerOver:
             Button {
                 tappedAction()
@@ -227,23 +229,9 @@ extension Robot {
                     .foregroundColor(.red)
             }
             .frame(width: width * 0.30)
-            .offset(x: width * 0.35, y: width * 0.73 + offset.height)
+            .offset(.init(width: offset.width * 0.35,
+                          height: offset.height * 0.82))
         }
-    }
-}
-
-struct Robot_Previews: PreviewProvider {
-    static var previews: some View {
-
-        Robot()
-            .background(.green)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-            .previewDisplayName("iPhone 12")
-        
-        Robot()
-            .background(.red)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-            .previewDisplayName("iPhone 12")
     }
 }
 
@@ -265,5 +253,17 @@ extension Robot {
             path.addLine(to: .init(x: 100, y: 0))
             path.addLine(to: .init(x: 0, y: 0))
         }
+    }
+}
+
+struct Robot_Previews: PreviewProvider {
+    static var previews: some View {
+        Robot()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            .previewDisplayName("iPhone 12")
+        
+        Robot()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            .previewDisplayName("iPhone 12")
     }
 }

@@ -17,6 +17,7 @@
 		DAC8ED6929552DE6008C8F94 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6829552DE6008C8F94 /* MyView.swift */; };
 		DAC8ED6B29553199008C8F94 /* MyView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6A29553199008C8F94 /* MyView2.swift */; };
 		DAC8ED6D2955984D008C8F94 /* MyView3WithList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6C2955984D008C8F94 /* MyView3WithList.swift */; };
+		DAC8ED6F295598CC008C8F94 /* MyView3WithListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ED6E295598CC008C8F94 /* MyView3WithListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		DAC8ED6829552DE6008C8F94 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		DAC8ED6A29553199008C8F94 /* MyView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView2.swift; sourceTree = "<group>"; };
 		DAC8ED6C2955984D008C8F94 /* MyView3WithList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView3WithList.swift; sourceTree = "<group>"; };
+		DAC8ED6E295598CC008C8F94 /* MyView3WithListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView3WithListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				DAC8ED5C29552C6F008C8F94 /* ViewInspectorTests.swift */,
+				DAC8ED6E295598CC008C8F94 /* MyView3WithListTests.swift */,
 			);
 			path = ViewInspectorTests;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC8ED6F295598CC008C8F94 /* MyView3WithListTests.swift in Sources */,
 				DAC8ED5D29552C6F008C8F94 /* ViewInspectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

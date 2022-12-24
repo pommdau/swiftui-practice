@@ -115,6 +115,5 @@ final class MyView2Tests: XCTestCase {
         XCTAssertEqual(try playButton.find(ViewType.Text.self).string(),
                        playButtonTitle)
     }
-    
 }
 

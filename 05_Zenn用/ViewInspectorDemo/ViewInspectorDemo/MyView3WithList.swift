@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct MyView3WithList: View {
-    
-    private let titles = ["hoge", "fuga", "piyo"]
-    
+        
     var body: some View {
-        List(titles, id: \.self) { title in
-            Text(title)
+        List {
+            ForEach(0 ..< 5) { _ in 
+                MyView3WithListCell()
+            }
+        }
+    }
+}
+
+struct MyView3WithListCell: View {
+        
+    var body: some View {
+        HStack {
+            Image(systemName: "doc.fill")
+            Text("CellText")
         }
     }
 }
