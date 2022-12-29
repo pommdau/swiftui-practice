@@ -7,20 +7,30 @@
 
 import SwiftUI
 
-struct ContentView: View {
+
+struct CounterView: View {
+
+    @State var index: Int = 0
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Pages(currentPage: $index, transitionStyle: .pageCurl, hasControl: false) {
+            StickyView()
+                .frame(width: 200, height: 100)
+                .background(.red)
+            StickyView()
+                .frame(width: 200, height: 100)
+                .background(.red)
+            StickyView()
+                .frame(width: 200, height: 100)
+                .background(.red)
         }
-        .padding()
+        .frame(width: 200, height: 100)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CounterView()
     }
 }
+
