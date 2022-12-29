@@ -9,9 +9,8 @@ import SwiftUI
 
 struct StickyView: View {
     
-    @ObservedObject var sticky: Sticky
-    
-    let shadowOffset: CGFloat = 2
+    @ObservedObject var sticky: Sticky    
+    private let shadowOffset: CGFloat = 2
     
     var body: some View {
         /// [Weighted Layout \(HStack and VStack\) in SwiftUI](https://swiftuirecipes.com/blog/weighted-layout-hstack-and-vstack-in-swiftui)
@@ -20,6 +19,31 @@ struct StickyView: View {
                 Rectangle()
                     .foregroundColor(sticky.darkColor)
                     .frame(width: 40)
+                    .gesture(
+                        DragGesture()
+                            .onChanged{ value in
+//                                pointP2 = CGPoint(
+//                                    x: value.startLocation.x
+//                                    + value.translation.width,
+//                                    y: value.startLocation.y
+//                                    + value.translation.height
+//                                )
+
+                                let newPosition = CGPoint(x: sticky.positon.x + value.translation.width,
+                                                          y: sticky.positon.y + value.translation.height)
+                                print(newPosition)
+                                sticky.positon = CGPoint(x: sticky.positon.x + value.translation.width,
+                                                         y: sticky.positon.y + value.translation.height)
+                            }
+                            .onEnded{ value in
+//                                pointP2 = CGPoint(
+//                                    x: value.startLocation.x
+//                                    + value.translation.width,
+//                                    y: value.startLocation.y
+//                                    + value.translation.height
+//                                )
+                            }
+                    )
                 TextField("", text: $sticky.message, axis: .vertical)
                     .padding(.horizontal, 8)
                     .foregroundColor(.black)

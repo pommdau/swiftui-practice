@@ -14,7 +14,7 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "plus.circle")
                 }
-                .padding(.leading, 20)
+                .padding(.trailing, 20)
             }
             
             GeometryReader { geometry in
@@ -29,7 +29,8 @@ struct ContentView: View {
                             .foregroundColor(Color.black.opacity(0.01))
                     }
                     .frame(width: 300, height: 200)
-                    .offset(x: stickyList.stickies[index].positon.x, y: stickyList.stickies[index].positon.y)
+                    .offset(x: stickyList.stickies[index].positon.x,
+                            y: stickyList.stickies[index].positon.y)
                 }
             }
             .background(.red.opacity(0.1))
