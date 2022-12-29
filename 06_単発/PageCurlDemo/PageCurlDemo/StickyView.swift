@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StickyView: View {
     
-    @State var message: String = ""
+    @State var message: String = "faioejfoajefioajofjaeiojfioajeoifajoepjf"
     let darkColor: Color
     let lightColor: Color
     let shadowOffset: CGFloat = 2
@@ -20,34 +20,28 @@ struct StickyView: View {
             HStack(spacing: 0) {
                 Rectangle()
                     .foregroundColor(darkColor)
-                    .shadow(
-                        color: .primary,
-                        radius: CGFloat(shadowOffset),
-                        x: CGFloat(shadowOffset), y: CGFloat(shadowOffset))
                     .frame(width: 20)
-                
                 TextField("", text: $message)
-//                    .foregroundColor(lightColor)
                     .frame(width: geometry.size.width * 0.8)
                     .frame(maxHeight: .infinity)
                     .padding(.leading, 10)
                     .background(lightColor)
-                    .compositingGroup()
-                    .shadow(
-                        color: .primary,
-                        radius: CGFloat(shadowOffset),
-                        x: CGFloat(shadowOffset), y: CGFloat(shadowOffset))
             }
+            .compositingGroup()
         }
+        .shadow(
+            color: .primary,
+            radius: CGFloat(shadowOffset),
+            x: CGFloat(shadowOffset), y: CGFloat(shadowOffset))
         
     }
 }
 
 struct StickyView_Previews: PreviewProvider {
     static var previews: some View {
-        StickyView(message: "hogehoge",
+        StickyView(
                    darkColor: .stickyDarkGreen,
                    lightColor: .stickyLightGreen)
-        .frame(width: 300, height: 100)
+        .frame(width: 300, height: 200)
     }
 }
