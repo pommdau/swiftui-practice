@@ -20,7 +20,7 @@ struct StickyView: View {
             HStack(spacing: 0) {
                 Rectangle()
                     .foregroundColor(darkColor)
-                    .frame(width: 20)
+                    .frame(width: 40)
                 TextField("", text: $message, axis: .vertical)
                     .padding(.horizontal, 8)
                     .foregroundColor(.black)

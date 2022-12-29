@@ -19,9 +19,7 @@ struct ContentView: View {
                     }
             }
             .frame(width: 300, height: 200)
-            
-            
-            
+                                    
             StickyView(darkColor: .stickyDarkGreen, lightColor: .stickyLightGreen)
                 .frame(width: 200, height: 100)
             StickyView(darkColor: .stickyDarkYellow, lightColor: .stickyLightYellow)
