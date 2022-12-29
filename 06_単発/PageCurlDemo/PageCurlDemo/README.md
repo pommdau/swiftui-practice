@@ -42,3 +42,20 @@ struct ContentView: View {
     - [Building an iPad Reader for War of the Worlds](https://code.tutsplus.com/tutorials/building-an-ipad-reader-for-emwar-of-the-worldsem--mobile-7406)
     - [How do I create a custom page curl Core Animation?](https://stackoverflow.com/questions/1489061/how-do-i-create-a-custom-page-curl-core-animation)
     
+```swift
+UIView.animate(withDuration: 1.0, animations: {
+            let animation = CATransition()
+            animation.duration = 1.2
+            animation.startProgress = 0.0
+            animation.endProgress = 0.6
+            animation.type = CATransitionType(rawValue: "pageCurl")
+            animation.subtype = CATransitionSubtype(rawValue: "fromRight")
+            animation.isRemovedOnCompletion = false
+            animation.fillMode = CAMediaTimingFillMode(rawValue: "extended")
+            animation.isRemovedOnCompletion = false
+            if let animation = animation as? CATransition{
+                self.view.layer.add(animation, forKey: "pageFlipAnimation")
+                self.viewDidLoad()
+            }
+        })
+```

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StickyView: View {
     
-    @ObservedObject var sticky = Sticky(message: "HogeHoge", positon: .init(x: 100, y: 100))
+    @ObservedObject var sticky: Sticky
     
     let shadowOffset: CGFloat = 2
     
@@ -40,7 +40,7 @@ struct StickyView: View {
 
 struct StickyView_Previews: PreviewProvider {
     static var previews: some View {
-        StickyView()
+        StickyView(sticky: Sticky.init(message: "HogeHoge", positon: .init(x: 100, y: 100)))
             .frame(width: 300, height: 200)
     }
 }
