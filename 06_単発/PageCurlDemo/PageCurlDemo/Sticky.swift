@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-struct Sticky {
+class Sticky: ObservableObject {
+    
+    @Published var message: String
+    @Published var positon: CGPoint
+    
     let darkColor: Color = .stickyDarkGreen
     let lightColor: Color = .stickyLightGreen
-    let message: String
-    let shadowOffset: CGFloat = 2
+    
+    init(message: String, positon: CGPoint) {
+        self.message = message
+        self.positon = positon
+    }
 }

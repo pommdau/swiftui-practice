@@ -10,8 +10,7 @@ struct ContentView: View {
             Pages(currentPage: $currentPage,
                   transitionStyle: .pageCurl,
                   hasControl: false) {
-                StickyView(darkColor: .stickyDarkOrange,
-                           lightColor: .stickyLightOrange)
+                StickyView()
                 Rectangle()
                     .foregroundColor(Color.black.opacity(0.01))
                     .onAppear() {
@@ -20,9 +19,9 @@ struct ContentView: View {
             }
             .frame(width: 300, height: 200)
                                     
-            StickyView(darkColor: .stickyDarkGreen, lightColor: .stickyLightGreen)
+            StickyView()
                 .frame(width: 200, height: 100)
-            StickyView(darkColor: .stickyDarkYellow, lightColor: .stickyLightYellow)
+            StickyView()
                 .frame(width: 200, height: 100)
         }
     }
