@@ -59,3 +59,7 @@ UIView.animate(withDuration: 1.0, animations: {
             }
         })
 ```
+
+## 削除処理
+- [SwiftUI out of index when deleting an array element in ForEach](https://stackoverflow.com/questions/61430999/swiftui-out-of-index-when-deleting-an-array-element-in-foreach)
+- [【SwiftUI】ObservableObjectを階層構造で使う](https://capibara1969.com/3598/)
