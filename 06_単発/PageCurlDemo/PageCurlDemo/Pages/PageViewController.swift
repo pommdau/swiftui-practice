@@ -12,6 +12,7 @@ struct PageViewController: UIViewControllerRepresentable {
     var transitionStyle: UIPageViewController.TransitionStyle
     var bounce: Bool
     var wrap: Bool
+    var onDelete: () -> ()
     var controllers: [UIViewController]
 
     func makeCoordinator() -> PagesCoordinator {
@@ -91,6 +92,9 @@ class PagesCoordinator: NSObject, UIPageViewControllerDataSource,
         let visibleViewController = pageViewController.viewControllers?.first,
         let index = parent.controllers.firstIndex(of: visibleViewController) {
             parent.currentPage = index
+            if parent.currentPage == 1 {
+                parent.onDelete()
+            }
         }
     }
 }

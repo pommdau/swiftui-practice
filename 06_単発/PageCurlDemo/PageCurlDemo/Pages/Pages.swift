@@ -15,6 +15,7 @@ public struct Pages: View {
     var hasControl: Bool
     var pageControl: UIPageControl? = nil
     var controlAlignment: Alignment
+    var onDelete: () -> ()
 
     public init(
         currentPage: Binding<Int>,
@@ -25,6 +26,7 @@ public struct Pages: View {
         hasControl: Bool = true,
         control: UIPageControl? = nil,
         controlAlignment: Alignment = .bottom,
+        onDelete: @escaping () -> () = {},
         @PagesBuilder pages: () -> [AnyView]
     ) {
         self.navigationOrientation = navigationOrientation
@@ -34,8 +36,9 @@ public struct Pages: View {
         self.hasControl = hasControl
         self.pageControl = control
         self.controlAlignment = controlAlignment
+        self.onDelete = onDelete
         self.pages = pages()
-        self._currentPage = currentPage
+        self._currentPage = currentPage        
     }
 
     public var body: some View {
@@ -46,6 +49,7 @@ public struct Pages: View {
                 transitionStyle: transitionStyle,
                 bounce: bounce,
                 wrap: wrap,
+                onDelete: onDelete,
                 controllers: pages.map {
                     let h = UIHostingController(rootView: $0)
                     h.view.backgroundColor = .clear

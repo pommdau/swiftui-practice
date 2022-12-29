@@ -41,6 +41,7 @@ public struct ModelPages<Data, Content>: View where Data: RandomAccessCollection
     private var hasControl: Bool
     private var pageControl: UIPageControl? = nil
     private var controlAlignment: Alignment
+    private var onDelete: () -> ()
 
     /**
     Creates the paging view that generates pages dynamically based on some user-defined data.
@@ -86,6 +87,7 @@ public struct ModelPages<Data, Content>: View where Data: RandomAccessCollection
         hasControl: Bool = true,
         control: UIPageControl? = nil,
         controlAlignment: Alignment = .bottom,
+        onDelete: @escaping () -> () = {},
         template: @escaping (Int, Data.Element) -> Content
     ) {
         self._currentPage = currentPage
@@ -96,6 +98,7 @@ public struct ModelPages<Data, Content>: View where Data: RandomAccessCollection
         self.hasControl = hasControl
         self.pageControl = control
         self.controlAlignment = controlAlignment
+        self.onDelete = onDelete
         self.items = items.map { $0 }
         self.template = template
     }
@@ -108,6 +111,7 @@ public struct ModelPages<Data, Content>: View where Data: RandomAccessCollection
                 transitionStyle: transitionStyle,
                 bounce: bounce,
                 wrap: wrap,
+                onDelete: onDelete,
                 controllers: (0..<items.count).map { i in
                     let h = UIHostingController(rootView: template(i, items[i]))
                     h.view.backgroundColor = .clear

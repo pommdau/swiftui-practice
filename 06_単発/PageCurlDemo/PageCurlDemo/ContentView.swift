@@ -2,33 +2,46 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var currentPage = 0
+    @ObservedObject private var stickyList = StickyList()
     
     var body: some View{
-        GeometryReader { geometry in
-                Pages(currentPage: $currentPage,
+        GeometryReader { geometry in            
+            ForEach(stickyList.stickies.indices, id: \.self) { index in
+                Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
                       transitionStyle: .pageCurl,
-                      hasControl: false) {
-                    StickyView(sticky: .init(message: "HogeHoge", positon: .init(x: 100, y: 40)))
+                      hasControl: false, onDelete: {
+                    stickyList.stickies.remove(at: index)
+                }) {
+                    StickyView(sticky: stickyList.stickies[index])
                     Rectangle()
                         .foregroundColor(Color.black.opacity(0.01))
-                        .onAppear() {
-                            print("🐱")
-                        }
                 }
-                      .frame(width: 300, height: 200)
-                      .offset(.init(width: 0, height: 0))
+                .frame(width: 300, height: 200)
+                .offset(x: stickyList.stickies[index].positon.x, y: stickyList.stickies[index].positon.y)
                 
-                StickyView(sticky: .init(message: "HogeHoge", positon: .init(x: 0, y: 300)))
-                    .frame(width: 200, height: 100)
-                    .offset(.init(width: 20, height: 200))
-                StickyView(sticky: .init(message: "HogeHoge", positon: .init(x: 100, y: 200)))
-                    .frame(width: 200, height: 100)
-                    .offset(.init(width: 0, height: 350))
-
+//                .onChange(of: stickyList.stickies[index].currentPageIndex) { newValue in
+//                    print(index)
+//                    stickyList.remove(sticky: stickyList.stickies[index])
+//                }
+            }
+            .onDelete { index in
+                print("🐱 \(index)")
+            }
         }
         .background(.red.opacity(0.1))
+//        .onChange(of: stickyList.stickies) { newValue in
+//            print(index)
+//            stickyList.remove(sticky: stickyList.stickies[index])
+//        }
+        .onAppear {
+            stickyList.add(sticky: .init(message: "HogeHoge", positon: .init(x: 0, y: 100)))
+            stickyList.add(sticky: .init(message: "HogeHoge", positon: .init(x: 10, y: 200)))
+            stickyList.add(sticky: .init(message: "HogeHoge", positon: .init(x: 0, y: 300)))
+        }
     }
+    
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
