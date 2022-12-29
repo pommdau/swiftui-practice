@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StickyView: View {
     
-    @State var message: String = "faioejfoajefioajofjaeiojfioajeoifajoepjf"
+    @State var message: String = "『ぼっち・ざ・ろっく！』は、はまじあきによる日本の4コマ漫画。"
     let darkColor: Color
     let lightColor: Color
     let shadowOffset: CGFloat = 2
@@ -21,17 +21,19 @@ struct StickyView: View {
                 Rectangle()
                     .foregroundColor(darkColor)
                     .frame(width: 20)
-                TextField("", text: $message)
-                    .frame(width: geometry.size.width * 0.8)
+                TextField("", text: $message, axis: .vertical)
+                    .padding(.horizontal, 8)
+                
+                    .frame(width: geometry.size.width - 20)
                     .frame(maxHeight: .infinity)
-                    .padding(.leading, 10)
                     .background(lightColor)
             }
             .compositingGroup()
         }
+        .background(.red)
         .shadow(
-            color: .primary,
-            radius: CGFloat(shadowOffset),
+            color: .primary.opacity(0.2),
+            radius: CGFloat(2),
             x: CGFloat(shadowOffset), y: CGFloat(shadowOffset))
         
     }

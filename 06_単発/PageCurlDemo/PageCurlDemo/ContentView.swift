@@ -1,11 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var currentPage = 0
+    
     var body: some View{
         
         VStack {
-            StickyView(darkColor: .stickyDarkOrange, lightColor: .stickyLightOrange)
-                .frame(width: 200, height: 100)
+            Pages(currentPage: $currentPage, transitionStyle: .pageCurl, hasControl: false) {
+                StickyView(darkColor: .stickyDarkOrange, lightColor: .stickyLightOrange)
+                Rectangle()
+                    .foregroundColor(Color.black.opacity(0.01))
+            }
+            .frame(width: 300, height: 200)
             StickyView(darkColor: .stickyDarkGreen, lightColor: .stickyLightGreen)
                 .frame(width: 200, height: 100)
             StickyView(darkColor: .stickyDarkYellow, lightColor: .stickyLightYellow)
