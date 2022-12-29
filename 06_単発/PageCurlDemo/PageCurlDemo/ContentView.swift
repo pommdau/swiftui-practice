@@ -7,12 +7,21 @@ struct ContentView: View {
     var body: some View{
         
         VStack {
-            Pages(currentPage: $currentPage, transitionStyle: .pageCurl, hasControl: false) {
-                StickyView(darkColor: .stickyDarkOrange, lightColor: .stickyLightOrange)
+            Pages(currentPage: $currentPage,
+                  transitionStyle: .pageCurl,
+                  hasControl: false) {
+                StickyView(darkColor: .stickyDarkOrange,
+                           lightColor: .stickyLightOrange)
                 Rectangle()
                     .foregroundColor(Color.black.opacity(0.01))
+                    .onAppear() {
+                        print("🐱")
+                    }
             }
             .frame(width: 300, height: 200)
+            
+            
+            
             StickyView(darkColor: .stickyDarkGreen, lightColor: .stickyLightGreen)
                 .frame(width: 200, height: 100)
             StickyView(darkColor: .stickyDarkYellow, lightColor: .stickyLightYellow)

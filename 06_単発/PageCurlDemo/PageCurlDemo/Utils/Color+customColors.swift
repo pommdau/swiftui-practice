@@ -10,8 +10,8 @@ import SwiftUI
 
 extension Color {
     // ref: https://www.colordic.org/p
-    static let stickyDarkGreen = Color(hex: "#bfff7f")
-    static let stickyDarkYellow = Color(hex: "#ffff7f")
+    static let stickyDarkGreen = Color(hex: "#8eff8e")
+    static let stickyDarkYellow = Color(hex: "#fdd35c")
     static let stickyDarkOrange = Color(hex: "#ffbf7f")
     static let stickyLightGreen = Color(hex: "#dbffb7")
     static let stickyLightYellow = Color(hex: "#ffffb7")

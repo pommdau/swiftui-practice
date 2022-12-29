@@ -23,7 +23,7 @@ struct StickyView: View {
                     .frame(width: 20)
                 TextField("", text: $message, axis: .vertical)
                     .padding(.horizontal, 8)
-                
+                    .foregroundColor(.black)
                     .frame(width: geometry.size.width - 20)
                     .frame(maxHeight: .infinity)
                     .background(lightColor)
