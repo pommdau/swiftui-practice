@@ -18,6 +18,8 @@
 		DAF92852295D852C00700A8F /* PagesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF9284D295D852C00700A8F /* PagesBuilder.swift */; };
 		DAF92853295D852C00700A8F /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF9284E295D852C00700A8F /* PageControl.swift */; };
 		DAF92856295D880000700A8F /* StickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF92855295D880000700A8F /* StickyView.swift */; };
+		DAF9287D295DA74F00700A8F /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF9287C295DA74F00700A8F /* Color+hex.swift */; };
+		DAF92880295DA79C00700A8F /* Color+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF9287F295DA79C00700A8F /* Color+customColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DAF9284D295D852C00700A8F /* PagesBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesBuilder.swift; sourceTree = "<group>"; };
 		DAF9284E295D852C00700A8F /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		DAF92855295D880000700A8F /* StickyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyView.swift; sourceTree = "<group>"; };
+		DAF9287C295DA74F00700A8F /* Color+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		DAF9287F295DA79C00700A8F /* Color+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+customColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		DAF92834295D778200700A8F /* PageCurlDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DAF9287E295DA75300700A8F /* Utils */,
 				DAF92835295D778200700A8F /* PageCurlDemoApp.swift */,
 				DAF92837295D778200700A8F /* ContentView.swift */,
 				DAF92855295D880000700A8F /* StickyView.swift */,
@@ -93,6 +98,15 @@
 				DAF9284D295D852C00700A8F /* PagesBuilder.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		DAF9287E295DA75300700A8F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DAF9287C295DA74F00700A8F /* Color+hex.swift */,
+				DAF9287F295DA79C00700A8F /* Color+customColors.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,8 +189,10 @@
 				DAF92853295D852C00700A8F /* PageControl.swift in Sources */,
 				DAF92850295D852C00700A8F /* ModelPages.swift in Sources */,
 				DAF92851295D852C00700A8F /* PageViewController.swift in Sources */,
+				DAF92880295DA79C00700A8F /* Color+customColors.swift in Sources */,
 				DAF9284F295D852C00700A8F /* Pages.swift in Sources */,
 				DAF92856295D880000700A8F /* StickyView.swift in Sources */,
+				DAF9287D295DA74F00700A8F /* Color+hex.swift in Sources */,
 				DAF92838295D778200700A8F /* ContentView.swift in Sources */,
 				DAF92836295D778200700A8F /* PageCurlDemoApp.swift in Sources */,
 			);

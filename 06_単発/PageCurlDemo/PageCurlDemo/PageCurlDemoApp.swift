@@ -11,7 +11,7 @@ import SwiftUI
 struct PageCurlDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            CounterView()
+            ContentView()
         }
     }
 }
