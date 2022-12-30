@@ -3,21 +3,10 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject private var stickyList = StickyList()
+    @State private var center: CGPoint = .init(x: 200, y: 200)  // 初期位置
+    @State private var distanceFromCenter: CGPoint = .zero  // オブジェクトの中心とタッチ地点との距離
     
     var body: some View{
-//        StickyView(sticky: sticky)
-//            .frame(width: 300, height: 200)
-//            .gesture(
-//                DragGesture()
-//                    .onChanged{ value in
-//                        sticky.positon = value.location
-//                    }
-//                    .onEnded{ value in
-//                        sticky.positon = value.location
-//                    }
-//            )
-//            .position(sticky.positon)
-        
         VStack {
             HStack {
                 Spacer()
@@ -31,6 +20,7 @@ struct ContentView: View {
 
             GeometryReader { geometry in
                 ForEach(stickyList.stickies.indices, id: \.self) { index in
+                    let _ = print(#function)
                     Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
                           transitionStyle: .pageCurl,
                           hasControl: false, onDelete: {
@@ -41,13 +31,28 @@ struct ContentView: View {
                             .foregroundColor(Color.black.opacity(0.01))
                     }
                     .frame(width: 300, height: 200)
-                    .position(x: stickyList.stickies[index].positon.x + 200,
-                              y: stickyList.stickies[index].positon.y)
+                    .position(x: center.x,
+                              y: center.y)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ value in
+                                if distanceFromCenter == .zero {
+                                    distanceFromCenter = CGPoint(x: value.startLocation.x - center.x,
+                                                                 y: value.startLocation.y - center.y)
+                                } else {
+                                    center = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
+                                                     y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
+                                }
+                            })
+                            .onEnded({ value in
+                                distanceFromCenter = .zero
+                            })
+                    )
                 }
             }
             .background(.red.opacity(0.1))
             .onAppear {
-                for _ in 0...3 {
+                for _ in 0...1 {
                     addRandomSticky()
                 }
             }
