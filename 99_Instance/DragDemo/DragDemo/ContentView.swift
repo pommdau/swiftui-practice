@@ -16,12 +16,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             ForEach($books) { $book in
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(Color.red.opacity(0.1))
-                        .frame(width: 300, height: 200)
-                    Text(book.title)
-                }
+                BookView(book: $book)
                 .position(book.positon)
                 .gesture(
                     DragGesture()
