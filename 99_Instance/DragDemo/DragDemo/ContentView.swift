@@ -17,27 +17,27 @@ struct ContentView: View {
         ZStack {
             ForEach($books) { $book in
                 BookView(book: $book)
-                .position(book.positon)
-                .gesture(
-                    DragGesture()
-                        .onChanged({ value in
-                            if center == .zero {
-                                center = book.positon
-                            }
-                            if distanceFromCenter == .zero {
-                                distanceFromCenter = CGPoint(x: value.startLocation.x - center.x,
-                                                             y: value.startLocation.y - center.y)
-                            } else {
-                                center = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
-                                                 y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
-                                book.positon = center
-                            }
-                        })
-                        .onEnded({ value in
-                            distanceFromCenter = .zero
-                            center = .zero
-                        })
-                )
+                    .position(book.positon)
+//                    .gesture(
+//                        DragGesture()
+//                            .onChanged({ value in
+//                                if center == .zero {
+//                                    center = book.positon
+//                                }
+//                                if distanceFromCenter == .zero {
+//                                    distanceFromCenter = CGPoint(x: value.startLocation.x - center.x,
+//                                                                 y: value.startLocation.y - center.y)
+//                                } else {
+//                                    center = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
+//                                                     y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
+//                                    book.positon = center
+//                                }
+//                            })
+//                            .onEnded({ value in
+//                                distanceFromCenter = .zero
+//                                center = .zero
+//                            })
+//                    )
             }
         }
     }
