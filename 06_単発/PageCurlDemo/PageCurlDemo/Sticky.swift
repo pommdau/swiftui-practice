@@ -31,11 +31,11 @@ class StickyList: ObservableObject {
     
 }
 
-class Sticky: ObservableObject, Identifiable {
+struct Sticky {
     let id = UUID()
-    @Published var currentPageIndex: Int = 0
-    @Published var message: String
-    @Published var positon: CGPoint
+    var currentPageIndex: Int = 0
+    var message: String
+    var positon: CGPoint
     
     let darkColor: Color = .stickyDarkGreen
     let lightColor: Color = .stickyLightGreen

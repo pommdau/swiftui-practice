@@ -2,9 +2,21 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject private var stickyList = StickyList()
+    @StateObject private var stickyList = StickyList()
     
     var body: some View{
+//        StickyView(sticky: sticky)
+//            .frame(width: 300, height: 200)
+//            .gesture(
+//                DragGesture()
+//                    .onChanged{ value in
+//                        sticky.positon = value.location
+//                    }
+//                    .onEnded{ value in
+//                        sticky.positon = value.location
+//                    }
+//            )
+//            .position(sticky.positon)
         
         VStack {
             HStack {
@@ -16,7 +28,7 @@ struct ContentView: View {
                 }
                 .padding(.trailing, 20)
             }
-            
+
             GeometryReader { geometry in
                 ForEach(stickyList.stickies.indices, id: \.self) { index in
                     Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
@@ -24,13 +36,13 @@ struct ContentView: View {
                           hasControl: false, onDelete: {
                         stickyList.stickies.remove(at: index)
                     }) {
-                        StickyView(sticky: stickyList.stickies[index])
+                        StickyView(sticky: $stickyList.stickies[index])
                         Rectangle()
                             .foregroundColor(Color.black.opacity(0.01))
                     }
                     .frame(width: 300, height: 200)
-                    .offset(x: stickyList.stickies[index].positon.x,
-                            y: stickyList.stickies[index].positon.y)
+                    .position(x: stickyList.stickies[index].positon.x + 200,
+                              y: stickyList.stickies[index].positon.y)
                 }
             }
             .background(.red.opacity(0.1))

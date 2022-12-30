@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StickyView: View {
     
-    @ObservedObject var sticky: Sticky    
+    @Binding var sticky: Sticky
     private let shadowOffset: CGFloat = 2
     
     var body: some View {
@@ -22,13 +22,6 @@ struct StickyView: View {
                     .gesture(
                         DragGesture()
                             .onChanged{ value in
-//                                pointP2 = CGPoint(
-//                                    x: value.startLocation.x
-//                                    + value.translation.width,
-//                                    y: value.startLocation.y
-//                                    + value.translation.height
-//                                )
-
                                 let newPosition = CGPoint(x: sticky.positon.x + value.translation.width,
                                                           y: sticky.positon.y + value.translation.height)
                                 print(newPosition)
@@ -36,12 +29,8 @@ struct StickyView: View {
                                                          y: sticky.positon.y + value.translation.height)
                             }
                             .onEnded{ value in
-//                                pointP2 = CGPoint(
-//                                    x: value.startLocation.x
-//                                    + value.translation.width,
-//                                    y: value.startLocation.y
-//                                    + value.translation.height
-//                                )
+                                sticky.positon = CGPoint(x: sticky.positon.x + value.translation.width,
+                                                         y: sticky.positon.y + value.translation.height)
                             }
                     )
                 TextField("", text: $sticky.message, axis: .vertical)
@@ -64,7 +53,7 @@ struct StickyView: View {
 
 struct StickyView_Previews: PreviewProvider {
     static var previews: some View {
-        StickyView(sticky: Sticky.init(message: "HogeHoge", positon: .init(x: 100, y: 100)))
+        StickyView(sticky: .constant(Sticky.init(message: "HogeHoge", positon: .init(x: 100, y: 100))))
             .frame(width: 300, height: 200)
     }
 }
