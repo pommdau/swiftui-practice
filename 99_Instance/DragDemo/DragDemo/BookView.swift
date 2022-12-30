@@ -10,13 +10,12 @@ import SwiftUI
 struct BookView: View {
     
     @Binding var book: Book
-    @State private var center: CGPoint = .zero  // 初期位置
+    @State private var centerPosition: CGPoint = .zero  // 初期位置
     @State private var distanceFromCenter: CGPoint = .zero  // オブジェクトの中心とタッチ地点との距離
     
     var body: some View {
         HStack(spacing: 0) {
             Button {
-//                book.title += "i"
                 book.positon = CGPoint(x: book.positon.x + 10, y: book.positon.y + 10)
             } label: {
                 Text("Debug")
@@ -27,24 +26,25 @@ struct BookView: View {
                 .gesture(
                     DragGesture()
                         .onChanged({ value in
-                            center = .init(x: center.x + 0.1, y: center.y + 0.1)
-                            distanceFromCenter = .init(x: distanceFromCenter.x + 0.1, y: distanceFromCenter.y + 0.1)
-                            book.positon = CGPoint(x: book.positon.x + 0.1, y: book.positon.y + 0.1)
                             
-//                            if distanceFromCenter == .zero {
-//                                distanceFromCenter = CGPoint(x: value.startLocation.x - center.x,
-//                                                             y: value.startLocation.y - center.y)
-//                            } else {
-//                                center = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
-//                                                 y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
-//                                book.positon = center
-//                            }
-//                            book.positon = center
+                            if centerPosition == .zero {
+                                centerPosition = book.positon
+                            }
+                            if distanceFromCenter == .zero {
+                                distanceFromCenter = CGPoint(x: value.startLocation.x - centerPosition.x,
+                                                             y: value.startLocation.y - centerPosition.y)
+                            }
+                            centerPosition = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
+                                                     y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
+
+//                            book.positon = CGPoint(x: centerPosition.x, y: centerPosition.y)
+                            book.positon = CGPoint(x: book.positon.x + 0.1, y: book.positon.y + 0.1)
+//                            book.positon = centerPosition
                         })
                         .onEnded({ value in
-//                            book.positon = CGPoint(x: book.positon.x + 10, y: book.positon.y + 10)
+//                            book.positon = centerPosition
                             distanceFromCenter = .zero
-                            center = .zero
+                            centerPosition = .zero                            
                             print("onEnded")
                         })
                 )
