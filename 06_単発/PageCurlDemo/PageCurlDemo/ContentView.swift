@@ -20,7 +20,6 @@ struct ContentView: View {
 
             GeometryReader { geometry in
                 ForEach(stickyList.stickies.indices, id: \.self) { index in
-                    let _ = print(#function)
                     Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
                           transitionStyle: .pageCurl,
                           hasControl: false, onDelete: {
@@ -31,16 +30,15 @@ struct ContentView: View {
                             .foregroundColor(Color.black.opacity(0.01))
                     }
                     .frame(width: 300, height: 200)
-                    .position(x: center.x,
-                              y: center.y)
+                    .position(stickyList.stickies[index].positon)
                     .gesture(
                         DragGesture()
                             .onChanged({ value in
                                 if distanceFromCenter == .zero {
-                                    distanceFromCenter = CGPoint(x: value.startLocation.x - center.x,
-                                                                 y: value.startLocation.y - center.y)
+                                    distanceFromCenter = CGPoint(x: value.startLocation.x - stickyList.stickies[index].positon.x,
+                                                                 y: value.startLocation.y - stickyList.stickies[index].positon.y)
                                 } else {
-                                    center = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
+                                    stickyList.stickies[index].positon = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
                                                      y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
                                 }
                             })
@@ -48,6 +46,7 @@ struct ContentView: View {
                                 distanceFromCenter = .zero
                             })
                     )
+                    
                 }
             }
             .background(.red.opacity(0.1))
@@ -62,7 +61,7 @@ struct ContentView: View {
     private func addRandomSticky() {
         stickyList.add(sticky:
                 .init(message: "HogeHoge",
-                      positon: .init(x: Int.random(in: 0...30), y: Int.random(in: 0...400))))
+                      positon: .init(x: Int.random(in: 150...300), y: Int.random(in: 0...400))))
     }
 }
 

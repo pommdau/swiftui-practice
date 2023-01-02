@@ -36,11 +36,14 @@ struct ContentView: View {
 
 ## その他
 - アニメーションの自前実装で役に立つかも
+    - [Implementing iBooks page curling using a conical deformation algorithm](http://wdnuon.blogspot.com/2010/05/implementing-ibooks-page-curling-using.html)
     - [Turn a page like a Book with UIView?](https://stackoverflow.com/questions/477078/turn-a-page-like-a-book-with-uiview)
     - [iBook Image Curl Animation on iOS](https://stackoverflow.com/questions/39222887/ibook-image-curl-animation-on-ios)
     - [Split82/HMGLTransitions](https://github.com/Split82/HMGLTransitions/tree/master/Classes)
     - [Building an iPad Reader for War of the Worlds](https://code.tutsplus.com/tutorials/building-an-ipad-reader-for-emwar-of-the-worldsem--mobile-7406)
     - [How do I create a custom page curl Core Animation?](https://stackoverflow.com/questions/1489061/how-do-i-create-a-custom-page-curl-core-animation)
+    - [A Page Turn Effect Using C\#](https://www.codeproject.com/Articles/13202/A-Page-Turn-Effect-Using-C)
+    - [App Store\-Safe Page Curl Animations](https://oleb.net/blog/2010/06/app-store-safe-page-curl-animations/)
     
 ```swift
 UIView.animate(withDuration: 1.0, animations: {
