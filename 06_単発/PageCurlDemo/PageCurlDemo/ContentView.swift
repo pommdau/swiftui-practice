@@ -20,18 +20,17 @@ struct ContentView: View {
 
             GeometryReader { geometry in
                 ForEach(stickyList.stickies.indices, id: \.self) { index in
-//                    Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
-//                          transitionStyle: .pageCurl,
-//                          hasControl: false, onDelete: {
-//                        stickyList.stickies.remove(at: index)
-//                    }) {
-//                        StickyView(sticky: $stickyList.stickies[index])
-//                        Rectangle()
-//                            .foregroundColor(Color.black.opacity(0.01))
-//                    }
                     ZStack {
-                        StickyView(sticky: $stickyList.stickies[index])
-                        Color.red.opacity(0.4)
+                        Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
+                              transitionStyle: .pageCurl,
+                              hasControl: false, onDelete: {
+                            stickyList.stickies.remove(at: index)
+                        }) {
+                            StickyView(sticky: $stickyList.stickies[index])
+                            Rectangle()
+                                .foregroundColor(Color.black.opacity(0.01))
+                        }
+                        Color.clear
                             .contentShape(Rectangle())
                             .frame(width: 40)
                             .offset(x: -130)
@@ -54,22 +53,6 @@ struct ContentView: View {
                     }
                     .frame(width: 300, height: 200)
                     .position(stickyList.stickies[index].positon)
-//                    .gesture(
-//                        DragGesture()
-//                            .onChanged({ value in
-//                                if distanceFromCenter == .zero {
-//                                    distanceFromCenter = CGPoint(x: value.startLocation.x - stickyList.stickies[index].positon.x,
-//                                                                 y: value.startLocation.y - stickyList.stickies[index].positon.y)
-//                                } else {
-//                                    stickyList.stickies[index].positon = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
-//                                                     y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
-//                                }
-//                            })
-//                            .onEnded({ value in
-//                                distanceFromCenter = .zero
-//                            })
-//                    )
-                    
                 }
             }
             .background(.red.opacity(0.1))

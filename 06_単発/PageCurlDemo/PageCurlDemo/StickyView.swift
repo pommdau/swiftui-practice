@@ -19,20 +19,6 @@ struct StickyView: View {
                 Rectangle()
                     .foregroundColor(sticky.darkColor)
                     .frame(width: 40)
-//                    .gesture(
-//                        DragGesture()
-//                            .onChanged{ value in
-//                                let newPosition = CGPoint(x: sticky.positon.x + value.translation.width,
-//                                                          y: sticky.positon.y + value.translation.height)
-//                                print(newPosition)
-//                                sticky.positon = CGPoint(x: sticky.positon.x + value.translation.width,
-//                                                         y: sticky.positon.y + value.translation.height)
-//                            }
-//                            .onEnded{ value in
-//                                sticky.positon = CGPoint(x: sticky.positon.x + value.translation.width,
-//                                                         y: sticky.positon.y + value.translation.height)
-//                            }
-//                    )
                 TextField("", text: $sticky.message, axis: .vertical)
                     .padding(.horizontal, 8)
                     .foregroundColor(.black)
@@ -42,12 +28,10 @@ struct StickyView: View {
             }
             .compositingGroup()
         }
-        .background(.red)
         .shadow(
             color: .primary.opacity(0.2),
             radius: CGFloat(2),
             x: CGFloat(shadowOffset), y: CGFloat(shadowOffset))
-        
     }
 }
 
