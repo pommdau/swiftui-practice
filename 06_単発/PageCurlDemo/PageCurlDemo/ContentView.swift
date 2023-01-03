@@ -6,13 +6,16 @@ struct ContentView: View {
     @State private var center: CGPoint = .init(x: 200, y: 200)  // 初期位置
     @State private var distanceFromCenter: CGPoint = .zero  // オブジェクトの中心とタッチ地点との距離
     
-    @State private var draggingFromDeckPosition: CGPoint = .zero
+    @State private var draggingFromDeckPosition: CGPoint = .init(x: CGFloat.infinity, y: CGFloat.infinity)
     @State private var isDraggingFromDeck = false
     
-    var body: some View{
+    var body: some View {
         ZStack {
-            stickyCanvas()
-            customToolbar()
+            VStack {
+                stickyCanvas()
+                Spacer()
+                customToolbar()
+            }
         }
         .background(.blue.opacity(0.1))
     }
@@ -29,10 +32,10 @@ struct ContentView: View {
     private func customToolbar() -> some View {
         GeometryReader { geometry in
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.accentColor, lineWidth: 4)
-                    .frame(height: 80)
-                    .background(Color.secondary.opacity(0.1).cornerRadius(10))
+//                RoundedRectangle(cornerRadius: 10)
+//                    .stroke(Color.accentColor, lineWidth: 4)
+//                    .frame(height: 80)
+//                    .background(Color.secondary.opacity(0.1).cornerRadius(10))
                 HStack {
                     StickyDeck()
                         .frame(width: 100, height: 50)
@@ -41,7 +44,6 @@ struct ContentView: View {
                             DragGesture(coordinateSpace: .global)
                                 .onChanged({ value in
                                     print(value.startLocation)
-                                    isDraggingFromDeck = true
                                     if distanceFromCenter == .zero {
                                         isDraggingFromDeck = true
                                         distanceFromCenter = CGPoint(x: -80, y: 50)
@@ -52,14 +54,12 @@ struct ContentView: View {
                                     }
                                 })
                                 .onEnded({ value in
-                                    
-                                    let newSticky = Sticky(message: "", positon: draggingFromDeckPosition)
                                     stickyList.add(sticky:
                                             .init(message: "ふせんアプリだよ",
                                                   positon: draggingFromDeckPosition)
                                     )
                                     isDraggingFromDeck = false
-                                    draggingFromDeckPosition = .zero
+                                    draggingFromDeckPosition = .init(x: CGFloat.infinity, y: CGFloat.infinity)
                                     distanceFromCenter = .zero
                                     print(draggingFromDeckPosition)
                                 })
@@ -83,9 +83,10 @@ struct ContentView: View {
         GeometryReader { geometry in
             
             if isDraggingFromDeck {
-                StickyView(sticky: .constant(.init(message: "", positon: .zero)))
+                StickyView(sticky: .constant(.init(message: "ふせんアプリだよ", positon: .zero)))
                     .frame(width: 200, height: 100)
                     .position(draggingFromDeckPosition)
+                    .zIndex(1)
             }
             
             ForEach(stickyList.stickies.indices, id: \.self) { index in
