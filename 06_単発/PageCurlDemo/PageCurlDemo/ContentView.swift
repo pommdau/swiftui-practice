@@ -11,6 +11,7 @@ struct ContentView: View {
             stickyCanvas()
             customToolbar()
         }
+        .background(.blue.opacity(0.1))
     }
     
     private func addRandomSticky() {
@@ -23,18 +24,26 @@ struct ContentView: View {
     
     @ViewBuilder
     private func customToolbar() -> some View {
-        HStack {
-            StickyView(sticky: .constant(Sticky(message: "", positon: .zero)))
-                .frame(width: 100, height: 50)
-                .offset(x: 20, y: -20)
-            Spacer()
-            Button {
-                addRandomSticky()
-            } label: {
-                Image(systemName: "plus.circle")
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.accentColor, lineWidth: 4)
+                .frame(height: 80)
+                .background(Color.secondary.opacity(0.1).cornerRadius(10))
+            HStack {
+                StickyView(sticky: .constant(Sticky(message: "", positon: .zero)))
+                    .frame(width: 100, height: 50)
+                    .padding(.leading, 20)
+                Spacer()
+                Button {
+                    addRandomSticky()
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
+                .padding(.trailing, 20)
             }
-            .padding(.trailing, 20)
+            .frame(height: 80)
         }
+        .padding()
     }
     
     @ViewBuilder
