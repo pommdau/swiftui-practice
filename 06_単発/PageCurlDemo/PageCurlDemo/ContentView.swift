@@ -30,7 +30,7 @@ struct ContentView: View {
                 .frame(height: 80)
                 .background(Color.secondary.opacity(0.1).cornerRadius(10))
             HStack {
-                StickyView(sticky: .constant(Sticky(message: "", positon: .zero)))
+                StickyDeck()
                     .frame(width: 100, height: 50)
                     .padding(.leading, 20)
                 Spacer()

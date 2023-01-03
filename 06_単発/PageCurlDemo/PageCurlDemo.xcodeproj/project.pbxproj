@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA35D202295DBEC200F84610 /* Sticky.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA35D201295DBEC200F84610 /* Sticky.swift */; };
+		DA925ED72963B61C001CF544 /* StickyDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA925ED62963B61C001CF544 /* StickyDeck.swift */; };
 		DAF92836295D778200700A8F /* PageCurlDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF92835295D778200700A8F /* PageCurlDemoApp.swift */; };
 		DAF92838295D778200700A8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF92837295D778200700A8F /* ContentView.swift */; };
 		DAF9283A295D778300700A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF92839295D778300700A8F /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		DA35D201295DBEC200F84610 /* Sticky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticky.swift; sourceTree = "<group>"; };
 		DA35D203295DC1E800F84610 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA925ED62963B61C001CF544 /* StickyDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyDeck.swift; sourceTree = "<group>"; };
 		DAF92832295D778200700A8F /* PageCurlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageCurlDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF92835295D778200700A8F /* PageCurlDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCurlDemoApp.swift; sourceTree = "<group>"; };
 		DAF92837295D778200700A8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				DAF92837295D778200700A8F /* ContentView.swift */,
 				DA35D201295DBEC200F84610 /* Sticky.swift */,
 				DAF92855295D880000700A8F /* StickyView.swift */,
+				DA925ED62963B61C001CF544 /* StickyDeck.swift */,
 				DAF92854295D854000700A8F /* Pages */,
 				DAF92839295D778300700A8F /* Assets.xcassets */,
 				DAF9283B295D778300700A8F /* Preview Content */,
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAF92852295D852C00700A8F /* PagesBuilder.swift in Sources */,
+				DA925ED72963B61C001CF544 /* StickyDeck.swift in Sources */,
 				DAF92853295D852C00700A8F /* PageControl.swift in Sources */,
 				DAF92850295D852C00700A8F /* ModelPages.swift in Sources */,
 				DAF92851295D852C00700A8F /* PageViewController.swift in Sources */,
