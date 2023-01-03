@@ -19,7 +19,7 @@ struct ContentView: View {
     
     private func addRandomSticky() {
         stickyList.add(sticky:
-                .init(message: "ふせんだよふせんだよ\nふせんだよふせんだよ\nふせんだよふせんだよ",
+                .init(message: "ふせんアプリだよ",
                       positon: .init(x: Int.random(in: 150...300), y: Int.random(in: 0...400))))
     }
     
@@ -44,7 +44,7 @@ struct ContentView: View {
                                     isDraggingFromDeck = true
                                     if distanceFromCenter == .zero {
                                         isDraggingFromDeck = true
-                                        distanceFromCenter = CGPoint(x: -50, y: 50)
+                                        distanceFromCenter = CGPoint(x: -80, y: 50)
                                     } else {
                                         draggingFromDeckPosition =
                                         CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
@@ -52,6 +52,12 @@ struct ContentView: View {
                                     }
                                 })
                                 .onEnded({ value in
+                                    
+                                    let newSticky = Sticky(message: "", positon: draggingFromDeckPosition)
+                                    stickyList.add(sticky:
+                                            .init(message: "ふせんアプリだよ",
+                                                  positon: draggingFromDeckPosition)
+                                    )
                                     isDraggingFromDeck = false
                                     draggingFromDeckPosition = .zero
                                     distanceFromCenter = .zero
@@ -77,8 +83,8 @@ struct ContentView: View {
         GeometryReader { geometry in
             
             if isDraggingFromDeck {
-                Rectangle()
-                    .frame(width: 100, height: 100)
+                StickyView(sticky: .constant(.init(message: "", positon: .zero)))
+                    .frame(width: 200, height: 100)
                     .position(draggingFromDeckPosition)
             }
             
@@ -96,7 +102,7 @@ struct ContentView: View {
                     Color.clear
                         .contentShape(Rectangle())
                         .frame(width: 40)
-                        .offset(x: -130)
+                        .offset(x: -80)
                         .gesture(
                             DragGesture(coordinateSpace: .global)
                                 .onChanged({ value in
@@ -113,7 +119,7 @@ struct ContentView: View {
                                 })
                         )
                 }
-                .frame(width: 300, height: 200)
+                .frame(width: 200, height: 100)
                 .position(stickyList.stickies[index].positon)
             }
         }

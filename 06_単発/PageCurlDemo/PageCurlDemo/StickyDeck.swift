@@ -13,7 +13,7 @@ struct StickyDeck: View {
     
     var body: some View {
             ZStack {
-                Group {                    
+                Group {
                     stickyDeckTemplate()
                     stickyDeckTemplate()
                         .offset(x: 4, y: 0)
