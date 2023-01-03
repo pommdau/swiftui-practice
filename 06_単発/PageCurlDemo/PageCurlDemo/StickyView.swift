@@ -22,12 +22,13 @@ struct StickyView: View {
                 TextField("", text: $sticky.message, axis: .vertical)
                     .padding(.horizontal, 8)
                     .foregroundColor(.black)
-                    .frame(width: geometry.size.width - 20)
+                    .frame(width: geometry.size.width - 40)
                     .frame(maxHeight: .infinity)
                     .background(sticky.lightColor)
             }
             .compositingGroup()
         }
+        .ignoresSafeArea()
         .shadow(
             color: .primary.opacity(0.2),
             radius: CGFloat(2),

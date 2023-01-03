@@ -8,59 +8,8 @@ struct ContentView: View {
     
     var body: some View{
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    addRandomSticky()
-                } label: {
-                    Image(systemName: "plus.circle")
-                }
-                .padding(.trailing, 20)
-            }
-
-            GeometryReader { geometry in
-                ForEach(stickyList.stickies.indices, id: \.self) { index in
-                    ZStack {
-                        Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
-                              transitionStyle: .pageCurl,
-                              hasControl: false, onDelete: {
-                            stickyList.stickies.remove(at: index)
-                        }) {
-                            StickyView(sticky: $stickyList.stickies[index])
-                            Rectangle()
-                                .foregroundColor(Color.black.opacity(0.01))
-                        }
-                        Color.clear
-                            .contentShape(Rectangle())
-                            .frame(width: 40)
-                            .offset(x: -130)
-                            .gesture(
-                                DragGesture(coordinateSpace: .global)                                
-                                    .onChanged({ value in
-                                        print(value)
-                                        if distanceFromCenter == .zero {
-                                            distanceFromCenter = CGPoint(x: value.startLocation.x - stickyList.stickies[index].positon.x,
-                                                                         y: value.startLocation.y - stickyList.stickies[index].positon.y)
-                                        } else {
-                                            stickyList.stickies[index].positon = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
-                                                             y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
-                                        }
-                                    })
-                                    .onEnded({ value in
-                                        distanceFromCenter = .zero
-                                    })
-                            )
-                    }
-                    .frame(width: 300, height: 200)
-                    .position(stickyList.stickies[index].positon)
-                }
-            }
-            .background(.red.opacity(0.1))
-            .onAppear {
-                for _ in 0...1 {
-                    addRandomSticky()
-                }
-            }
+            stickyCanvas()
+            customToolbar()
         }
     }
     
@@ -69,6 +18,72 @@ struct ContentView: View {
                 .init(message: "ふせんだよふせんだよ\nふせんだよふせんだよ\nふせんだよふせんだよ",
                       positon: .init(x: Int.random(in: 150...300), y: Int.random(in: 0...400))))
     }
+    
+    // MARK: - ViewBuilder
+    
+    @ViewBuilder
+    private func customToolbar() -> some View {
+        HStack {
+            StickyView(sticky: .constant(Sticky(message: "", positon: .zero)))
+                .frame(width: 100, height: 50)
+                .offset(x: 20, y: -20)
+            Spacer()
+            Button {
+                addRandomSticky()
+            } label: {
+                Image(systemName: "plus.circle")
+            }
+            .padding(.trailing, 20)
+        }
+    }
+    
+    @ViewBuilder
+    private func stickyCanvas() -> some View {
+        GeometryReader { geometry in
+            ForEach(stickyList.stickies.indices, id: \.self) { index in
+                ZStack {
+                    Pages(currentPage: $stickyList.stickies[index].currentPageIndex,
+                          transitionStyle: .pageCurl,
+                          hasControl: false, onDelete: {
+                        stickyList.stickies.remove(at: index)
+                    }) {
+                        StickyView(sticky: $stickyList.stickies[index])
+                        Rectangle()
+                            .foregroundColor(Color.black.opacity(0.01))
+                    }
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .frame(width: 40)
+                        .offset(x: -130)
+                        .gesture(
+                            DragGesture(coordinateSpace: .global)
+                                .onChanged({ value in
+                                    print(value)
+                                    if distanceFromCenter == .zero {
+                                        distanceFromCenter = CGPoint(x: value.startLocation.x - stickyList.stickies[index].positon.x,
+                                                                     y: value.startLocation.y - stickyList.stickies[index].positon.y)
+                                    } else {
+                                        stickyList.stickies[index].positon = CGPoint(x: value.startLocation.x + value.translation.width - distanceFromCenter.x,
+                                                         y: value.startLocation.y + value.translation.height - distanceFromCenter.y)
+                                    }
+                                })
+                                .onEnded({ value in
+                                    distanceFromCenter = .zero
+                                })
+                        )
+                }
+                .frame(width: 300, height: 200)
+                .position(stickyList.stickies[index].positon)
+            }
+        }
+        .background(.red.opacity(0.1))
+        .onAppear {
+            for _ in 0...1 {
+                addRandomSticky()
+            }
+        }
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
