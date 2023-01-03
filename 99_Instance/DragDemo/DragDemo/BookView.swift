@@ -50,12 +50,12 @@ struct BookView: View {
                 )
             
             
-            ZStack {
-                Rectangle()
-                    .foregroundColor(Color.red.opacity(0.1))
-                    .frame(width: 300, height: 200)
-                Text(book.title)
-            }
+//            ZStack {
+//                Rectangle()
+//                    .foregroundColor(Color.red.opacity(0.1))
+//                    .frame(width: 300, height: 200)
+//                Text(book.title)
+//            }
         }
     }
 }
