@@ -71,3 +71,6 @@ UIView.animate(withDuration: 1.0, animations: {
 - [\[SwiftUI\] ドラッグによりViewを移動させるときに気をつけること](https://software.small-desk.com/development/2020/05/18/tips-swiftui-viewdrag/)
 - 子ビューの中のときは`DragGesture(coordinateSpace: .global)`のように指定しないといけない？
     - [SwiftUI DragGesture sets offset in infinite loop \[duplicate\]](https://stackoverflow.com/questions/69563958/swiftui-draggesture-sets-offset-in-infinite-loop)
+
+## ズームできるビュー
+- [\[SwiftUI\] 複数ジェスチャーのサポート \(Pinch と Drag の両方をサポートする\)](https://software.small-desk.com/development/2021/06/28/swiftui-pinch-and-drag/#MagnificationGesture)
