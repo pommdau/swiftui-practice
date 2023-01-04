@@ -7,41 +7,44 @@
 
 import SwiftUI
 
-struct ZoomableView: View {
+import SwiftUI
+
+public struct ZoomableView<Content>: View where Content: View {
     
-    @State var scale:CGFloat = 1.0
-    @State var initialScale: CGFloat = 1.0
+    private var size: CGSize
+    private var min: CGFloat = 1.0
+    private var max: CGFloat = 3.0
+    private var showsIndicators: Bool = false
+    @ViewBuilder private var content: () -> Content
     
-    var body: some View {
-        ScrollView([.horizontal, .vertical], showsIndicators: false) {
-            ZStack {
-                Color.green.opacity(0.2)
-                Circle()
-                    .fill(Color.red)
-                    .frame(width:100, height:100)
-                Rectangle()
-                    .fill(.blue)
-                    .frame(width: 50, height: 40)
-            }
-            .frame(width: 1000, height: 1000)
-        }
-        .scaleEffect(scale)
-        .background(Color.red.opacity(0.2))
-        .gesture(magnificationGesture())
+    /**
+     Initializes an `ZoomableView`
+     - parameter size : The content size of the views.
+     - parameter min : The minimum value that can be zoom out.
+     - parameter max : The maximum value that can be zoom in.
+     - parameter showsIndicators : A value that indicates whether the scroll view displays the scrollable component of the content offset, in a way that’s suitable for the platform.
+     - parameter content : The ZoomableView view’s content.
+     */
+    public init(size: CGSize,
+                min: CGFloat = 1.0,
+                max: CGFloat = 3.0,
+                showsIndicators: Bool = false,
+                @ViewBuilder content: @escaping () -> Content) {
+        self.size = size
+        self.min = min
+        self.max = max
+        self.showsIndicators = showsIndicators
+        self.content = content
     }
     
-    private func magnificationGesture() -> some Gesture {
-        MagnificationGesture()
-            .onChanged({ value in
-                scale = max(value * initialScale, 1.0)  // 縮小はさせない
-            })
-            .onEnded{ _ in
-                initialScale = scale
-            }
-    }
-}
-struct ZoomableView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZoomableView()
+    public var body: some View {
+        content()
+            .frame(width: size.width, height: size.height, alignment: .center)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .contentShape(Rectangle())
+            .modifier(ZoomableModifier(contentSize: self.size,
+                                       min: min,
+                                       max: max,
+                                       showsIndicators: showsIndicators))
     }
 }
