@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				2A325555296FED74009D3FA0 /* ViewInspectorDemo */,
-				2A325566296FED75009D3FA0 /* ViewInspectorDemoTests */,
+				2A325566296FED75009D3FA0 /* GuideTests */,
 				2A325554296FED74009D3FA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,7 +126,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		2A325566296FED75009D3FA0 /* ViewInspectorDemoTests */ = {
+		2A325566296FED75009D3FA0 /* GuideTests */ = {
 			isa = PBXGroup;
 			children = (
 				2A325591297060F8009D3FA0 /* TheBasicsViewTests.swift */,
@@ -136,7 +136,7 @@
 				2A4182FA2970DD1A00D804D5 /* ViewsUsingStateAndEnvironmentOrEnvironmentObjectTests */,
 				2A4182FE2970E1B300D804D5 /* CustomViewModifierViewTests.swift */,
 			);
-			path = ViewInspectorDemoTests;
+			path = GuideTests;
 			sourceTree = "<group>";
 		};
 		2A325589296FF4EC009D3FA0 /* TheBasicsView */ = {
