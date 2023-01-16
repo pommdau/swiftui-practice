@@ -1,17 +1,17 @@
 //
-//  MyView.swift
+//  TheBasicsView2.swift
 //  ViewInspectorDemo
 //
-//  Created by HIROKI IKEUCHI on 2022/12/23.
+//  Created by Hiroki Ikeuchi on 2023/01/12.
 //
 
 import SwiftUI
 
-struct MyView: View {
+struct TheBasicsView2: View {
     var body: some View {
         HStack {
-           Text("Hi")
-           AnyView(OtherView())
+            Text("Hi")
+            AnyView(OtherView())
         }
     }
 }
@@ -22,8 +22,8 @@ struct OtherView: View {
     }
 }
 
-struct MyView_Previews: PreviewProvider {
+struct TheBasicsView2_Previews: PreviewProvider {
     static var previews: some View {
-        MyView()
+        TheBasicsView2()
     }
 }

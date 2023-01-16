@@ -2,20 +2,15 @@
 //  ContentView.swift
 //  ViewInspectorDemo
 //
-//  Created by HIROKI IKEUCHI on 2022/12/23.
+//  Created by Hiroki Ikeuchi on 2023/01/12.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+        
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Parent_ViewsUsingBindingAndObservedObjectView1()
     }
 }
 
