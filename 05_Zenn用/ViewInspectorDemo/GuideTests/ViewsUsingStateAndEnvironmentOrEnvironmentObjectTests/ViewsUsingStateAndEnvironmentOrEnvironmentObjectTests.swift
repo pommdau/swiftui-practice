@@ -28,7 +28,7 @@ final class ViewsUsingStateAndEnvironmentOrEnvironmentObjectTests: XCTestCase {
     func testButtonTogglesFlag2() throws {
         let sut = ViewsUsingStateAndEnvironmentOrEnvironmentObjectView2()
         // inspectを遅らせる
-        let exp = sut.inspection.inspect(after: 0.5) { view in
+        let exp = sut.inspection.inspect(after: 0.1) { view in
             XCTAssertFalse(try view.actualView().flag)
             try view.button().tap()
             XCTAssertTrue(try view.actualView().flag)

@@ -28,11 +28,45 @@
 		2A4182F92970DCD300D804D5 /* Inspection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4182F82970DCD300D804D5 /* Inspection+Model.swift */; };
 		2A4182FD2970E15400D804D5 /* CustomViewModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4182FC2970E15400D804D5 /* CustomViewModifierView.swift */; };
 		2A4182FF2970E1B300D804D5 /* CustomViewModifierViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4182FE2970E1B300D804D5 /* CustomViewModifierViewTests.swift */; };
-		DA9BB3A72974D1E200BCDE84 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = DA9BB3A62974D1E200BCDE84 /* ViewInspector */; };
+		2AA09E452978CF0C006DCB47 /* GestureModifiersView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E442978CF0C006DCB47 /* GestureModifiersView1.swift */; };
+		2AA09E472978CF65006DCB47 /* GestureModifiersViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E462978CF65006DCB47 /* GestureModifiersViewTests.swift */; };
+		2AA09E492978CFF6006DCB47 /* GestureModifiersView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E482978CFF6006DCB47 /* GestureModifiersView2.swift */; };
+		2AA09E4B2978D083006DCB47 /* GestureModifiersView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E4A2978D083006DCB47 /* GestureModifiersView3.swift */; };
+		2AA09E532978D1AD006DCB47 /* GestureMaskView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E522978D1AD006DCB47 /* GestureMaskView1.swift */; };
+		2AA09E552978D1BB006DCB47 /* GestureMaskViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E542978D1BB006DCB47 /* GestureMaskViewTests.swift */; };
+		2AA09E572978D2C0006DCB47 /* GesturePropertiesView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E562978D2C0006DCB47 /* GesturePropertiesView1.swift */; };
+		2AA09E592978D2CD006DCB47 /* GesturePropertiesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E582978D2CD006DCB47 /* GesturePropertiesViewTests.swift */; };
+		2AA09E5B2978D409006DCB47 /* InvokingGestureUpdatingCallbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E5A2978D409006DCB47 /* InvokingGestureUpdatingCallbackView.swift */; };
+		2AA09E5D2978D505006DCB47 /* InvokingGestureUpdatingCallbackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E5C2978D505006DCB47 /* InvokingGestureUpdatingCallbackViewTests.swift */; };
+		2AA09E5F2978D54A006DCB47 /* Inspection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E5E2978D54A006DCB47 /* Inspection+Model.swift */; };
+		2AA09E632978D5C0006DCB47 /* GestureKeyboardModifiersVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E622978D5C0006DCB47 /* GestureKeyboardModifiersVIew.swift */; };
+		2AA09E9C2978D6EB006DCB47 /* GestureKeyboardModifiersVIewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA09E9B2978D6EB006DCB47 /* GestureKeyboardModifiersVIewTests.swift */; };
+		2AB758E62979274B0033069B /* AlertView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB758E52979274B0033069B /* AlertView1.swift */; };
+		2AB758E8297927940033069B /* AlertViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB758E7297927940033069B /* AlertViewTests.swift */; };
+		2AB758EE29792C140033069B /* Inspection+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB758ED29792C140033069B /* Inspection+Model.swift */; };
+		2AB758F229793EAA0033069B /* AlertView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB758F129793EAA0033069B /* AlertView2.swift */; };
+		2AB758F4297942C50033069B /* ActionSheetView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB758F3297942C50033069B /* ActionSheetView1.swift */; };
+		2AFB0003297E2212007E4946 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFB0002297E2212007E4946 /* ViewInspector */; };
+		2AFB0005297E2218007E4946 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFB0004297E2218007E4946 /* ViewInspector */; };
+		2AFB0007297E221D007E4946 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFB0006297E221D007E4946 /* ViewInspector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		2A325564296FED75009D3FA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A32554B296FED74009D3FA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A325552296FED74009D3FA0;
+			remoteInfo = ViewInspectorDemo;
+		};
+		2AA09E3E2978CE74006DCB47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A32554B296FED74009D3FA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A325552296FED74009D3FA0;
+			remoteInfo = ViewInspectorDemo;
+		};
+		2AA09EB32978D960006DCB47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A32554B296FED74009D3FA0 /* Project object */;
 			proxyType = 1;
@@ -65,7 +99,26 @@
 		2A4182F82970DCD300D804D5 /* Inspection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspection+Model.swift"; sourceTree = "<group>"; };
 		2A4182FC2970E15400D804D5 /* CustomViewModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifierView.swift; sourceTree = "<group>"; };
 		2A4182FE2970E1B300D804D5 /* CustomViewModifierViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifierViewTests.swift; sourceTree = "<group>"; };
-		DAE2108529714EB500642E06 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2AA09E3A2978CE74006DCB47 /* GuideGesturesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuideGesturesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA09E442978CF0C006DCB47 /* GestureModifiersView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureModifiersView1.swift; sourceTree = "<group>"; };
+		2AA09E462978CF65006DCB47 /* GestureModifiersViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureModifiersViewTests.swift; sourceTree = "<group>"; };
+		2AA09E482978CFF6006DCB47 /* GestureModifiersView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureModifiersView2.swift; sourceTree = "<group>"; };
+		2AA09E4A2978D083006DCB47 /* GestureModifiersView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureModifiersView3.swift; sourceTree = "<group>"; };
+		2AA09E522978D1AD006DCB47 /* GestureMaskView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureMaskView1.swift; sourceTree = "<group>"; };
+		2AA09E542978D1BB006DCB47 /* GestureMaskViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureMaskViewTests.swift; sourceTree = "<group>"; };
+		2AA09E562978D2C0006DCB47 /* GesturePropertiesView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturePropertiesView1.swift; sourceTree = "<group>"; };
+		2AA09E582978D2CD006DCB47 /* GesturePropertiesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturePropertiesViewTests.swift; sourceTree = "<group>"; };
+		2AA09E5A2978D409006DCB47 /* InvokingGestureUpdatingCallbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvokingGestureUpdatingCallbackView.swift; sourceTree = "<group>"; };
+		2AA09E5C2978D505006DCB47 /* InvokingGestureUpdatingCallbackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvokingGestureUpdatingCallbackViewTests.swift; sourceTree = "<group>"; };
+		2AA09E5E2978D54A006DCB47 /* Inspection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspection+Model.swift"; sourceTree = "<group>"; };
+		2AA09E622978D5C0006DCB47 /* GestureKeyboardModifiersVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureKeyboardModifiersVIew.swift; sourceTree = "<group>"; };
+		2AA09E9B2978D6EB006DCB47 /* GestureKeyboardModifiersVIewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureKeyboardModifiersVIewTests.swift; sourceTree = "<group>"; };
+		2AA09EAF2978D95F006DCB47 /* GuidePopupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuidePopupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AB758E52979274B0033069B /* AlertView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView1.swift; sourceTree = "<group>"; };
+		2AB758E7297927940033069B /* AlertViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewTests.swift; sourceTree = "<group>"; };
+		2AB758ED29792C140033069B /* Inspection+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspection+Model.swift"; sourceTree = "<group>"; };
+		2AB758F129793EAA0033069B /* AlertView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView2.swift; sourceTree = "<group>"; };
+		2AB758F3297942C50033069B /* ActionSheetView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetView1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +133,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA9BB3A72974D1E200BCDE84 /* ViewInspector in Frameworks */,
+				2AFB0003297E2212007E4946 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AA09E372978CE74006DCB47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFB0005297E2218007E4946 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AA09EAC2978D95F006DCB47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFB0007297E221D007E4946 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +161,10 @@
 			children = (
 				2A325555296FED74009D3FA0 /* ViewInspectorDemo */,
 				2A325566296FED75009D3FA0 /* GuideTests */,
+				2AA09E3B2978CE74006DCB47 /* GuideGesturesTests */,
+				2AA09EB02978D960006DCB47 /* GuidePopupTests */,
 				2A325554296FED74009D3FA0 /* Products */,
+				2AA09E4F2978D0E0006DCB47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +173,8 @@
 			children = (
 				2A325553296FED74009D3FA0 /* ViewInspectorDemo.app */,
 				2A325563296FED75009D3FA0 /* GuideTests.xctest */,
+				2AA09E3A2978CE74006DCB47 /* GuideGesturesTests.xctest */,
+				2AA09EAF2978D95F006DCB47 /* GuidePopupTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,12 +182,13 @@
 		2A325555296FED74009D3FA0 /* ViewInspectorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DAE2108629714EB800642E06 /* Guide */,
 				2A325556296FED74009D3FA0 /* ViewInspectorDemoApp.swift */,
 				2A325558296FED74009D3FA0 /* ContentView.swift */,
 				2A32555A296FED75009D3FA0 /* Assets.xcassets */,
 				2A32555C296FED75009D3FA0 /* Preview Content */,
-				DAE2108529714EB500642E06 /* README.md */,
+				DAE2108629714EB800642E06 /* Guide */,
+				2AA09E432978CED3006DCB47 /* GuideGestures */,
+				2AA09EAA2978D93C006DCB47 /* GuidePopups */,
 			);
 			path = ViewInspectorDemo;
 			sourceTree = "<group>";
@@ -200,6 +275,59 @@
 			path = CustomViewModifier;
 			sourceTree = "<group>";
 		};
+		2AA09E3B2978CE74006DCB47 /* GuideGesturesTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AA09E462978CF65006DCB47 /* GestureModifiersViewTests.swift */,
+				2AA09E542978D1BB006DCB47 /* GestureMaskViewTests.swift */,
+				2AA09E582978D2CD006DCB47 /* GesturePropertiesViewTests.swift */,
+				2AA09E5C2978D505006DCB47 /* InvokingGestureUpdatingCallbackViewTests.swift */,
+				2AA09E5E2978D54A006DCB47 /* Inspection+Model.swift */,
+				2AA09E9B2978D6EB006DCB47 /* GestureKeyboardModifiersVIewTests.swift */,
+			);
+			path = GuideGesturesTests;
+			sourceTree = "<group>";
+		};
+		2AA09E432978CED3006DCB47 /* GuideGestures */ = {
+			isa = PBXGroup;
+			children = (
+				2AA09E442978CF0C006DCB47 /* GestureModifiersView1.swift */,
+				2AA09E482978CFF6006DCB47 /* GestureModifiersView2.swift */,
+				2AA09E4A2978D083006DCB47 /* GestureModifiersView3.swift */,
+				2AA09E522978D1AD006DCB47 /* GestureMaskView1.swift */,
+				2AA09E562978D2C0006DCB47 /* GesturePropertiesView1.swift */,
+				2AA09E5A2978D409006DCB47 /* InvokingGestureUpdatingCallbackView.swift */,
+				2AA09E622978D5C0006DCB47 /* GestureKeyboardModifiersVIew.swift */,
+			);
+			path = GuideGestures;
+			sourceTree = "<group>";
+		};
+		2AA09E4F2978D0E0006DCB47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2AA09EAA2978D93C006DCB47 /* GuidePopups */ = {
+			isa = PBXGroup;
+			children = (
+				2AB758E52979274B0033069B /* AlertView1.swift */,
+				2AB758F129793EAA0033069B /* AlertView2.swift */,
+				2AB758F3297942C50033069B /* ActionSheetView1.swift */,
+			);
+			path = GuidePopups;
+			sourceTree = "<group>";
+		};
+		2AA09EB02978D960006DCB47 /* GuidePopupTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AB758E7297927940033069B /* AlertViewTests.swift */,
+				2AB758ED29792C140033069B /* Inspection+Model.swift */,
+			);
+			path = GuidePopupTests;
+			sourceTree = "<group>";
+		};
 		DAE2108629714EB800642E06 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,10 +378,52 @@
 			);
 			name = GuideTests;
 			packageProductDependencies = (
-				DA9BB3A62974D1E200BCDE84 /* ViewInspector */,
+				2AFB0002297E2212007E4946 /* ViewInspector */,
 			);
 			productName = ViewInspectorDemoTests;
 			productReference = 2A325563296FED75009D3FA0 /* GuideTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2AA09E392978CE74006DCB47 /* GuideGesturesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AA09E402978CE74006DCB47 /* Build configuration list for PBXNativeTarget "GuideGesturesTests" */;
+			buildPhases = (
+				2AA09E362978CE74006DCB47 /* Sources */,
+				2AA09E372978CE74006DCB47 /* Frameworks */,
+				2AA09E382978CE74006DCB47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AA09E3F2978CE74006DCB47 /* PBXTargetDependency */,
+			);
+			name = GuideGesturesTests;
+			packageProductDependencies = (
+				2AFB0004297E2218007E4946 /* ViewInspector */,
+			);
+			productName = GuideGesturesTests;
+			productReference = 2AA09E3A2978CE74006DCB47 /* GuideGesturesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2AA09EAE2978D95F006DCB47 /* GuidePopupTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AA09EB52978D960006DCB47 /* Build configuration list for PBXNativeTarget "GuidePopupTests" */;
+			buildPhases = (
+				2AA09EAB2978D95F006DCB47 /* Sources */,
+				2AA09EAC2978D95F006DCB47 /* Frameworks */,
+				2AA09EAD2978D95F006DCB47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AA09EB42978D960006DCB47 /* PBXTargetDependency */,
+			);
+			name = GuidePopupTests;
+			packageProductDependencies = (
+				2AFB0006297E221D007E4946 /* ViewInspector */,
+			);
+			productName = GuidePopupTests;
+			productReference = 2AA09EAF2978D95F006DCB47 /* GuidePopupTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -273,6 +443,14 @@
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 2A325552296FED74009D3FA0;
 					};
+					2AA09E392978CE74006DCB47 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 2A325552296FED74009D3FA0;
+					};
+					2AA09EAE2978D95F006DCB47 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 2A325552296FED74009D3FA0;
+					};
 				};
 			};
 			buildConfigurationList = 2A32554E296FED74009D3FA0 /* Build configuration list for PBXProject "ViewInspectorDemo" */;
@@ -285,7 +463,7 @@
 			);
 			mainGroup = 2A32554A296FED74009D3FA0;
 			packageReferences = (
-				DA9BB3A52974D1E200BCDE84 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				2AFB0001297E2212007E4946 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 2A325554296FED74009D3FA0 /* Products */;
 			projectDirPath = "";
@@ -293,6 +471,8 @@
 			targets = (
 				2A325552296FED74009D3FA0 /* ViewInspectorDemo */,
 				2A325562296FED75009D3FA0 /* GuideTests */,
+				2AA09E392978CE74006DCB47 /* GuideGesturesTests */,
+				2AA09EAE2978D95F006DCB47 /* GuidePopupTests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,6 +494,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AA09E382978CE74006DCB47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AA09EAD2978D95F006DCB47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -323,15 +517,25 @@
 			files = (
 				2A32558E296FF859009D3FA0 /* DynamicQueryWithFindView1.swift in Sources */,
 				2A32559029705AF2009D3FA0 /* DynamicQueryWithFindView2.swift in Sources */,
+				2AA09E492978CFF6006DCB47 /* GestureModifiersView2.swift in Sources */,
+				2AB758F229793EAA0033069B /* AlertView2.swift in Sources */,
+				2AB758E62979274B0033069B /* AlertView1.swift in Sources */,
 				2A325559296FED74009D3FA0 /* ContentView.swift in Sources */,
+				2AA09E632978D5C0006DCB47 /* GestureKeyboardModifiersVIew.swift in Sources */,
 				2A4182FD2970E15400D804D5 /* CustomViewModifierView.swift in Sources */,
 				2A4182F72970DBEE00D804D5 /* Inspection.swift in Sources */,
 				2A4182F52970DBD100D804D5 /* ViewsUsingStateAndEnvironmentOrEnvironmentObjectView2.swift in Sources */,
 				2A325557296FED74009D3FA0 /* ViewInspectorDemoApp.swift in Sources */,
+				2AA09E532978D1AD006DCB47 /* GestureMaskView1.swift in Sources */,
+				2AA09E452978CF0C006DCB47 /* GestureModifiersView1.swift in Sources */,
 				2A32558B296FF6C3009D3FA0 /* TheBasicsView2.swift in Sources */,
+				2AB758F4297942C50033069B /* ActionSheetView1.swift in Sources */,
 				2A4182F12970D97C00D804D5 /* ViewsUsingStateAndEnvironmentOrEnvironmentObjectView1.swift in Sources */,
 				2A325582296FF439009D3FA0 /* TheBasicsView1.swift in Sources */,
+				2AA09E4B2978D083006DCB47 /* GestureModifiersView3.swift in Sources */,
+				2AA09E572978D2C0006DCB47 /* GesturePropertiesView1.swift in Sources */,
 				2A325599297080E8009D3FA0 /* InspectableAttributesView1.swift in Sources */,
+				2AA09E5B2978D409006DCB47 /* InvokingGestureUpdatingCallbackView.swift in Sources */,
 				2A4182EC2970846C00D804D5 /* ViewsUsingBindingAndObservedObjectView1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +554,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AA09E362978CE74006DCB47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AA09E9C2978D6EB006DCB47 /* GestureKeyboardModifiersVIewTests.swift in Sources */,
+				2AA09E5F2978D54A006DCB47 /* Inspection+Model.swift in Sources */,
+				2AA09E5D2978D505006DCB47 /* InvokingGestureUpdatingCallbackViewTests.swift in Sources */,
+				2AA09E552978D1BB006DCB47 /* GestureMaskViewTests.swift in Sources */,
+				2AA09E592978D2CD006DCB47 /* GesturePropertiesViewTests.swift in Sources */,
+				2AA09E472978CF65006DCB47 /* GestureModifiersViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AA09EAB2978D95F006DCB47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AB758E8297927940033069B /* AlertViewTests.swift in Sources */,
+				2AB758EE29792C140033069B /* Inspection+Model.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -357,6 +583,16 @@
 			isa = PBXTargetDependency;
 			target = 2A325552296FED74009D3FA0 /* ViewInspectorDemo */;
 			targetProxy = 2A325564296FED75009D3FA0 /* PBXContainerItemProxy */;
+		};
+		2AA09E3F2978CE74006DCB47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A325552296FED74009D3FA0 /* ViewInspectorDemo */;
+			targetProxy = 2AA09E3E2978CE74006DCB47 /* PBXContainerItemProxy */;
+		};
+		2AA09EB42978D960006DCB47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A325552296FED74009D3FA0 /* ViewInspectorDemo */;
+			targetProxy = 2AA09EB32978D960006DCB47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -483,7 +719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorDemo/Preview Content\"";
-				DEVELOPMENT_TEAM = BWMJMJK727;
+				DEVELOPMENT_TEAM = 634C8XNAX7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -496,7 +732,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh.hikeuchi.ViewInspectorDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.ViewInspectorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -512,7 +748,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorDemo/Preview Content\"";
-				DEVELOPMENT_TEAM = BWMJMJK727;
+				DEVELOPMENT_TEAM = 634C8XNAX7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -525,7 +761,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh.hikeuchi.ViewInspectorDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.ViewInspectorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -540,11 +776,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BWMJMJK727;
+				DEVELOPMENT_TEAM = 634C8XNAX7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh.ViewInspectorDemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.ViewInspectorDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -564,7 +800,87 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh.ViewInspectorDemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.ViewInspectorDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorDemo";
+			};
+			name = Release;
+		};
+		2AA09E412978CE74006DCB47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 662PVPVA3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.GuideGesturesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorDemo";
+			};
+			name = Debug;
+		};
+		2AA09E422978CE74006DCB47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 662PVPVA3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.GuideGesturesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorDemo";
+			};
+			name = Release;
+		};
+		2AA09EB62978D960006DCB47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 662PVPVA3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.GuidePopupTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorDemo";
+			};
+			name = Debug;
+		};
+		2AA09EB72978D960006DCB47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 662PVPVA3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.morisawa.hikeuchi.GuidePopupTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -603,23 +919,51 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2AA09E402978CE74006DCB47 /* Build configuration list for PBXNativeTarget "GuideGesturesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AA09E412978CE74006DCB47 /* Debug */,
+				2AA09E422978CE74006DCB47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AA09EB52978D960006DCB47 /* Build configuration list for PBXNativeTarget "GuidePopupTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AA09EB62978D960006DCB47 /* Debug */,
+				2AA09EB72978D960006DCB47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DA9BB3A52974D1E200BCDE84 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+		2AFB0001297E2212007E4946 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.5;
+				branch = 0.9.6;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA9BB3A62974D1E200BCDE84 /* ViewInspector */ = {
+		2AFB0002297E2212007E4946 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA9BB3A52974D1E200BCDE84 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			package = 2AFB0001297E2212007E4946 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		2AFB0004297E2218007E4946 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFB0001297E2212007E4946 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		2AFB0006297E221D007E4946 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFB0001297E2212007E4946 /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
 		};
 /* End XCSwiftPackageProductDependency section */

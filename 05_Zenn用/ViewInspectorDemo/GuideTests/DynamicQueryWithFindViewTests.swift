@@ -17,6 +17,7 @@ final class DynamicQueryWithFindViewTests: XCTestCase {
     func testDynamicQueryWithFindView1() throws {
         let sut = DynamicQueryWithFindView1()
         let okText = try sut.inspect().find(ViewType.HStack.self).text(1)  // find
+        let _ = try sut.inspect().find(text: "Ok")  // okTextと同義
         XCTAssertEqual(try okText.string(), "Ok")
         
         let textsInHStack = try sut.inspect().findAll(ViewType.Text.self)
