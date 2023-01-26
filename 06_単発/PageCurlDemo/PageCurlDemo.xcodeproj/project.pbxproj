@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA2E44B129646A8F007C3185 /* ZoomableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E44B029646A8F007C3185 /* ZoomableView.swift */; };
+		DA2E44B4296557EF007C3185 /* ZoomableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E44B3296557EF007C3185 /* ZoomableModifier.swift */; };
 		DA35D202295DBEC200F84610 /* Sticky.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA35D201295DBEC200F84610 /* Sticky.swift */; };
 		DA925ED72963B61C001CF544 /* StickyDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA925ED62963B61C001CF544 /* StickyDeck.swift */; };
 		DA925ED92963CC02001CF544 /* StickyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA925ED82963CC02001CF544 /* StickyContentView.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA2E44B029646A8F007C3185 /* ZoomableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableView.swift; sourceTree = "<group>"; };
+		DA2E44B3296557EF007C3185 /* ZoomableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableModifier.swift; sourceTree = "<group>"; };
 		DA35D201295DBEC200F84610 /* Sticky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticky.swift; sourceTree = "<group>"; };
 		DA35D203295DC1E800F84610 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA925ED62963B61C001CF544 /* StickyDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyDeck.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA2E44B22965579C007C3185 /* ZoomableView */ = {
+			isa = PBXGroup;
+			children = (
+				DA2E44B029646A8F007C3185 /* ZoomableView.swift */,
+				DA2E44B3296557EF007C3185 /* ZoomableModifier.swift */,
+			);
+			path = ZoomableView;
+			sourceTree = "<group>";
+		};
 		DAF92829295D778200700A8F = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 		DAF92834295D778200700A8F /* PageCurlDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA2E44B22965579C007C3185 /* ZoomableView */,
 				DAF9287E295DA75300700A8F /* Utils */,
 				DAF92835295D778200700A8F /* PageCurlDemoApp.swift */,
 				DAF92837295D778200700A8F /* ContentView.swift */,
@@ -201,6 +215,7 @@
 				DAF92853295D852C00700A8F /* PageControl.swift in Sources */,
 				DAF92850295D852C00700A8F /* ModelPages.swift in Sources */,
 				DAF92851295D852C00700A8F /* PageViewController.swift in Sources */,
+				DA2E44B129646A8F007C3185 /* ZoomableView.swift in Sources */,
 				DAF92880295DA79C00700A8F /* Color+customColors.swift in Sources */,
 				DAF9284F295D852C00700A8F /* Pages.swift in Sources */,
 				DA925ED92963CC02001CF544 /* StickyContentView.swift in Sources */,
@@ -208,6 +223,7 @@
 				DA35D202295DBEC200F84610 /* Sticky.swift in Sources */,
 				DAF9287D295DA74F00700A8F /* Color+hex.swift in Sources */,
 				DAF92838295D778200700A8F /* ContentView.swift in Sources */,
+				DA2E44B4296557EF007C3185 /* ZoomableModifier.swift in Sources */,
 				DAF92836295D778200700A8F /* PageCurlDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
