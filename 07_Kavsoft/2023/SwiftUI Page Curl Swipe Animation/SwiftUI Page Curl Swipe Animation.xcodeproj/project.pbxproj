@@ -12,6 +12,7 @@
 		DA7AF77D2AB813E700BF4D8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7AF77C2AB813E700BF4D8D /* Assets.xcassets */; };
 		DA7AF7802AB813E700BF4D8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7AF77F2AB813E700BF4D8D /* Preview Assets.xcassets */; };
 		DA7AF7882AB814FB00BF4D8D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7AF7872AB814FB00BF4D8D /* Home.swift */; };
+		DA7AF78A2AB816A400BF4D8D /* PeelEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7AF7892AB816A400BF4D8D /* PeelEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		DA7AF77C2AB813E700BF4D8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7AF77F2AB813E700BF4D8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA7AF7872AB814FB00BF4D8D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		DA7AF7892AB816A400BF4D8D /* PeelEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7AF7872AB814FB00BF4D8D /* Home.swift */,
+				DA7AF7892AB816A400BF4D8D /* PeelEffect.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				DA7AF77B2AB813E400BF4D8D /* ContentView.swift in Sources */,
 				DA7AF7882AB814FB00BF4D8D /* Home.swift in Sources */,
+				DA7AF78A2AB816A400BF4D8D /* PeelEffect.swift in Sources */,
 				DA7AF7792AB813E400BF4D8D /* SwiftUI_Page_Curl_Swipe_AnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
