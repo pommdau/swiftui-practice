@@ -36,6 +36,8 @@ struct PeelEffect<Content: View>: View {
                 GeometryReader {
                     let rect = $0.frame(in: .global)
                     let size = $0.size
+                    let minOpacity = dragProgress / 0.05
+                    let opacity = min(1, minOpacity)
                     
                     content
                     /// Making it look like it's rolling
@@ -62,6 +64,7 @@ struct PeelEffect<Content: View>: View {
                                 )
                                 .frame(width: 60)
                                 .offset(x: 40)
+                                .offset(x: -30 + (30 * opacity))
                                 .offset(x: size.width * -dragProgress)
                         }
                     
@@ -89,7 +92,11 @@ struct PeelEffect<Content: View>: View {
                                 })
                                 .onEnded({ value in
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
-                                        dragProgress = .zero
+                                        if dragProgress > 0.25 {
+                                            dragProgress = 0.6
+                                        } else {
+                                            dragProgress = .zero
+                                        }
                                     }
                                 })
                         )
@@ -113,11 +120,15 @@ struct PeelEffect<Content: View>: View {
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
                     .fill(.red.gradient)
                     .overlay(alignment: .trailing) {
-                        Image(systemName: "trash")
-                            .font(.title)
-                            .fontWeight(.semibold)
-                            .padding(.trailing, 20)
-                            .foregroundColor(.white)
+                        Button {
+                            print("Tapped")
+                        } label: {
+                            Image(systemName: "trash")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .padding(.trailing, 20)
+                                .foregroundColor(.white)
+                        }
                     }
                     .padding(.vertical, 8)
             }
