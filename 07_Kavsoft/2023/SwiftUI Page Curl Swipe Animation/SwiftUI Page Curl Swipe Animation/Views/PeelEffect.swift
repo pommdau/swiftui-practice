@@ -42,6 +42,7 @@ struct PeelEffect<Content: View>: View {
                                     .padding(.trailing, 20)
                                     .foregroundColor(.white)
                             }
+                            .disabled(dragProgress < 0.6)
                         }
                         .padding(.vertical, 8)
                         .contentShape(Rectangle())
@@ -66,6 +67,16 @@ struct PeelEffect<Content: View>: View {
                                     }
                                 })
                         )
+                    
+                    /// Background Shadow
+                    Rectangle()
+                        .fill(.black)
+                        .padding(.vertical, 23)
+                        .shadow(color: .black.opacity(0.3), radius: 15, x: 30, y: 0)
+                        .padding(.trailing, rect.width * dragProgress)
+                        .mask(content)
+                    /// Disabling Interaction
+                        .allowsHitTesting(false)
                     
                     content
                         .mask {
@@ -128,19 +139,6 @@ struct PeelEffect<Content: View>: View {
                 }
                 /// Disable interaction
                     .allowsHitTesting(false)
-            }
-        /// Background Shadow
-            .background {
-                GeometryReader {
-                    let rect = $0.frame(in: .global)
-                    
-                    Rectangle()
-                        .fill(.black)
-                        .padding(.vertical, 23)
-                        .shadow(color: .black.opacity(0.3), radius: 15, x: 30, y: 0)
-                        .padding(.trailing, rect.width * dragProgress)
-                }
-                .mask(content)
             }
     }
 }
