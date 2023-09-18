@@ -38,6 +38,14 @@ struct PeelEffect<Content: View>: View {
                     let size = $0.size
                     
                     content
+                    /// Making it look like it's rolling
+                        .shadow(color: .black.opacity(dragProgress != 0 ? 0.1 : 0), radius: 5, x: 15, y: 0)
+                        .overlay {
+                            Rectangle()
+                                .fill(.white.opacity(0.25))
+                                .mask(content)
+                        }
+                    
                     /// Flipping Horizontally for upsize down
                         .scaleEffect(x: -1)
                     /// Moving Along Side While Dragging
@@ -59,13 +67,26 @@ struct PeelEffect<Content: View>: View {
                                     /// Converting Translation Into Progress (0 - 1)
                                     let progress = min(1, translationX / size.width)
                                     dragProgress = progress
-                                }).onEnded({ value in
+                                })
+                                .onEnded({ value in
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
                                         dragProgress = .zero
                                     }
                                 })
                         )
                 }
+            }
+            .background {
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .fill(.red.gradient)
+                    .overlay(alignment: .trailing) {
+                        Image(systemName: "trash")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .padding(.trailing, 20)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.vertical, 8)
             }
     }
 }
