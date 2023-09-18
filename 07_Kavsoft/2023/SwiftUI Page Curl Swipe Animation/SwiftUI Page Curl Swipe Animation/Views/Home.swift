@@ -18,7 +18,11 @@ struct Home: View {
                     PeelEffect {
                         CardView(image)
                     } onDelete: {
-
+                        if let index = images.firstIndex(where: { $0.id == image.id }) {
+                            let _ = withAnimation(.easeInOut(duration: 0.35)) {
+                                images.remove(at: index)
+                            }
+                        }
                     }
                 }
             }
