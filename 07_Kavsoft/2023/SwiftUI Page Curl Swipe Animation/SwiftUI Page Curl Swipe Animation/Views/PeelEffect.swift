@@ -37,10 +37,12 @@ struct PeelEffect<Content: View>: View {
                     let rect = $0.frame(in: .global)
                     let size = $0.size
                     
-                    content.opacity(0.2)
-                        .offset(x: size.width)
+                    content
+                    /// Flipping Horizontally for upsize down
+                        .scaleEffect(-1)
+                    /// Moving Along Side While Dragging
+                        .offset(x: size.width - (size.width * dragProgress))
                         .contentShape(Rectangle())
-                        
                         .gesture(
                             DragGesture()
                                 .onChanged({ value in
