@@ -45,6 +45,26 @@ struct PeelEffect<Content: View>: View {
                                 .fill(.white.opacity(0.25))
                                 .mask(content)
                         }
+                    
+                    /// Making it Glow at the back side
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(
+                                    .linearGradient(
+                                        colors: [
+                                            .clear,
+                                            .white,
+                                            .clear,
+                                            .clear
+                                        ],
+                                        startPoint: .leading,
+                                        endPoint: .trailing)
+                                )
+                                .frame(width: 60)
+                                .offset(x: 40)
+                                .offset(x: size.width * -dragProgress)
+                        }
+                    
                     /// Flipping Horizontally for upsize down
                         .scaleEffect(x: -1)
                     /// Moving Along Side While Dragging
@@ -82,6 +102,7 @@ struct PeelEffect<Content: View>: View {
                     
                     Rectangle()
                         .fill(.black)
+                        .padding(.vertical, 23)
                         .shadow(color: .black.opacity(0.3), radius: 15, x: 30, y: 0)
                         .padding(.trailing, rect.width * dragProgress)
                 }
