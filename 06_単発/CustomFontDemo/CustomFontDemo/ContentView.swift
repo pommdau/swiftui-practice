@@ -101,7 +101,6 @@ extension ContentView {
     private func installFonts(fonts: [Font]) {
         
         let fontURLs = fonts.map { $0.url } as CFArray
-        
         CTFontManagerRegisterFontURLs(fontURLs as CFArray, .user, true) { cfarray, result in
             print("*** result ***")
             print(cfarray)
