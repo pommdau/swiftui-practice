@@ -13,6 +13,7 @@
 		DA0D84992B0DEFE9006EE4A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA0D84982B0DEFE9006EE4A7 /* Preview Assets.xcassets */; };
 		DA0D84A22B0DEFF9006EE4A7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D84A12B0DEFF9006EE4A7 /* Note.swift */; };
 		DA0D84A42B0DF026006EE4A7 /* NoteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D84A32B0DF026006EE4A7 /* NoteCategory.swift */; };
+		DAA461A72B0DF22A0033CBBB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA461A62B0DF22A0033CBBB /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DA0D849A2B0DEFE9006EE4A7 /* NotesApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotesApp.entitlements; sourceTree = "<group>"; };
 		DA0D84A12B0DEFF9006EE4A7 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		DA0D84A32B0DF026006EE4A7 /* NoteCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCategory.swift; sourceTree = "<group>"; };
+		DAA461A62B0DF22A0033CBBB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		DA0D84902B0DEFE8006EE4A7 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				DAA461A52B0DF2240033CBBB /* View */,
 				DA0D84A02B0DEFF1006EE4A7 /* Model */,
 				DA0D84912B0DEFE8006EE4A7 /* NotesAppApp.swift */,
 				DA0D84932B0DEFE8006EE4A7 /* ContentView.swift */,
@@ -81,6 +84,14 @@
 				DA0D84A32B0DF026006EE4A7 /* NoteCategory.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DAA461A52B0DF2240033CBBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAA461A62B0DF22A0033CBBB /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			files = (
 				DA0D84942B0DEFE8006EE4A7 /* ContentView.swift in Sources */,
 				DA0D84A42B0DF026006EE4A7 /* NoteCategory.swift in Sources */,
+				DAA461A72B0DF22A0033CBBB /* Home.swift in Sources */,
 				DA0D84922B0DEFE8006EE4A7 /* NotesAppApp.swift in Sources */,
 				DA0D84A22B0DEFF9006EE4A7 /* Note.swift in Sources */,
 			);
