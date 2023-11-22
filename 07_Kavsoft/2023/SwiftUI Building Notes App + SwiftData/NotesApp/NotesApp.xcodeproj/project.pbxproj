@@ -13,6 +13,7 @@
 		DA0D84992B0DEFE9006EE4A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA0D84982B0DEFE9006EE4A7 /* Preview Assets.xcassets */; };
 		DA0D84A22B0DEFF9006EE4A7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D84A12B0DEFF9006EE4A7 /* Note.swift */; };
 		DA0D84A42B0DF026006EE4A7 /* NoteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0D84A32B0DF026006EE4A7 /* NoteCategory.swift */; };
+		DA9A5EA52B0E229100104E17 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A5EA42B0E229100104E17 /* NotesView.swift */; };
 		DAA461A72B0DF22A0033CBBB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA461A62B0DF22A0033CBBB /* Home.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		DA0D849A2B0DEFE9006EE4A7 /* NotesApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotesApp.entitlements; sourceTree = "<group>"; };
 		DA0D84A12B0DEFF9006EE4A7 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		DA0D84A32B0DF026006EE4A7 /* NoteCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCategory.swift; sourceTree = "<group>"; };
+		DA9A5EA42B0E229100104E17 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		DAA461A62B0DF22A0033CBBB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				DAA461A62B0DF22A0033CBBB /* Home.swift */,
+				DA9A5EA42B0E229100104E17 /* NotesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				DA0D84942B0DEFE8006EE4A7 /* ContentView.swift in Sources */,
 				DA0D84A42B0DF026006EE4A7 /* NoteCategory.swift in Sources */,
+				DA9A5EA52B0E229100104E17 /* NotesView.swift in Sources */,
 				DAA461A72B0DF22A0033CBBB /* Home.swift in Sources */,
 				DA0D84922B0DEFE8006EE4A7 /* NotesAppApp.swift in Sources */,
 				DA0D84A22B0DEFF9006EE4A7 /* Note.swift in Sources */,

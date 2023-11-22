@@ -21,6 +21,8 @@ struct Home: View {
     @State private var requestedCategory: NoteCategory?
     @State private var deleteRequest: Bool = false
     @State private var renameRequest: Bool = false
+    /// Dark Mode Toggle
+    @State private var isDark: Bool = true
     
     var body: some View {
         NavigationSplitView {
@@ -67,7 +69,8 @@ struct Home: View {
                 
             }
         } detail: {
-            
+            // Notes view with dynamic filtering based on the category
+            NotesView(category: selectedTag)
         }
         .navigationTitle(selectedTag ?? "Notes")
         .alert("Add Category", isPresented: $addCategory) {
@@ -82,7 +85,6 @@ struct Home: View {
                 categoryTitle = ""
             }
         }
-        
         .alert("Rename Category", isPresented: $renameRequest) {
             TextField("Work", text: $categoryTitle)
             Button("Cancel", role: .cancel) {
@@ -98,7 +100,6 @@ struct Home: View {
                 }
             }
         }
-        
         .alert("Are you sure to delete \(categoryTitle) category?", isPresented: $deleteRequest) {
             Button("Cancel", role: .cancel) {
                 categoryTitle = ""
@@ -113,6 +114,23 @@ struct Home: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                HStack {
+                    Button("", systemImage: "plus") {
+                        // Add new note
+                        let note = Note(content: "")
+                        context.insert(note)
+                    }
+                    
+                    Button("", systemImage: isDark ? "sun.min" : "moon") {
+                        isDark.toggle()
+                    }
+                    .contentTransition(.symbolEffect(.replace))
+                }
+            }
+        }
+        .preferredColorScheme(isDark ? .dark : .light)
     }
 }
 
