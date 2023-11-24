@@ -70,7 +70,7 @@ struct Home: View {
             }
         } detail: {
             // Notes view with dynamic filtering based on the category
-            NotesView(category: selectedTag)
+            NotesView(category: selectedTag, allCategories: categories)
         }
         .navigationTitle(selectedTag ?? "Notes")
         .alert("Add Category", isPresented: $addCategory) {
