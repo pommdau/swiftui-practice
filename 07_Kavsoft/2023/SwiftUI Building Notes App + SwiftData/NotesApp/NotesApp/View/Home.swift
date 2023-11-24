@@ -34,39 +34,7 @@ struct Home: View {
                 Text("Favorites")
                     .tag("Favorites")
                     .foregroundStyle(selectedTag == "Favorites" ? Color.primary : .gray)
-                
-                // User Created Categories
-                Section {
-                    ForEach(categories) { category in
-                        Text(category.categoryTitle)
-                            .tag(category.categoryTitle)
-                            .foregroundStyle(selectedTag == category.categoryTitle ? Color.primary : .gray)
-                        // some basic editing options
-                            .contextMenu {
-                                Button("Rename") {
-                                    categoryTitle = category.categoryTitle
-                                    requestedCategory = category
-                                    renameRequest = true
-                                }
-                                
-                                Button("Delete") {
-                                    categoryTitle = category.categoryTitle
-                                    requestedCategory = category
-                                    deleteRequest = true
-                                }
-                            }
-                    }
-                } header: {
-                    HStack(spacing: 5) {
-                        Text("Categories")
-                        Button("", systemImage: "plus") {
-                            addCategory.toggle()
-                        }
-                        .tint(.gray)
-                        .buttonStyle(.plain)
-                    }
-                }
-                
+                categoriesSection()
             }
         } detail: {
             // Notes view with dynamic filtering based on the category
@@ -74,63 +42,134 @@ struct Home: View {
         }
         .navigationTitle(selectedTag ?? "Notes")
         .alert("Add Category", isPresented: $addCategory) {
-            TextField("Work", text: $categoryTitle)
-            Button("Cancel", role: .cancel) {
-                categoryTitle = ""
-            }
-            
-            Button("Add") {
-                let category = NoteCategory(categoryTitle: categoryTitle)
-                context.insert(category)
-                categoryTitle = ""
-            }
+            addCaterogyAlertView()
         }
         .alert("Rename Category", isPresented: $renameRequest) {
-            TextField("Work", text: $categoryTitle)
-            Button("Cancel", role: .cancel) {
-                categoryTitle = ""
-                requestedCategory = nil
-            }
-            
-            Button("Rename") {
-                if let requestedCategory {
-                    requestedCategory.categoryTitle = categoryTitle
-                    categoryTitle = ""
-                    self.requestedCategory = nil
-                }
-            }
+            renameCategoryAlertView()
         }
         .alert("Are you sure to delete \(categoryTitle) category?", isPresented: $deleteRequest) {
-            Button("Cancel", role: .cancel) {
-                categoryTitle = ""
-                requestedCategory = nil
-            }
-            
-            Button("Delete", role: .destructive) {
-                if let requestedCategory {
-                    context.delete(requestedCategory)
-                    categoryTitle = ""
-                    self.requestedCategory = nil
-                }
-            }
+            deleteCategoryAlertView()
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                HStack {
-                    Button("", systemImage: "plus") {
-                        // Add new note
-                        let note = Note(content: "")
-                        context.insert(note)
-                    }
-                    
-                    Button("", systemImage: isDark ? "sun.min" : "moon") {
-                        isDark.toggle()
-                    }
-                    .contentTransition(.symbolEffect(.replace))
-                }
+                toolbarItems()
             }
         }
         .preferredColorScheme(isDark ? .dark : .light)
+    }
+    
+    
+}
+
+// MARK: - Sidebar
+
+extension Home {
+    @ViewBuilder
+    private func categoriesSection() -> some View {
+        // User Created Categories
+        Section {
+            ForEach(categories) { category in
+                Text(category.categoryTitle)
+                    .tag(category.categoryTitle)
+                    .foregroundStyle(selectedTag == category.categoryTitle ? Color.primary : .gray)
+                // some basic editing options
+                    .contextMenu {
+                        Button("Rename") {
+                            categoryTitle = category.categoryTitle
+                            requestedCategory = category
+                            renameRequest = true
+                        }
+                        
+                        Button("Delete") {
+                            categoryTitle = category.categoryTitle
+                            requestedCategory = category
+                            deleteRequest = true
+                        }
+                    }
+            }
+        } header: {
+            HStack(spacing: 5) {
+                Text("Categories")
+                Button("", systemImage: "plus") {
+                    addCategory.toggle()
+                }
+                .tint(.gray)
+                .buttonStyle(.plain)
+            }
+        }
+    }
+}
+
+// MARK: - Alert
+
+extension Home {
+    @ViewBuilder
+    private func addCaterogyAlertView() -> some View {
+        
+        Button("Add", role: .none) {
+            let category = NoteCategory(categoryTitle: categoryTitle)
+            context.insert(category)
+            categoryTitle = ""
+        }
+        .disabled(categoryTitle.isEmpty)
+        
+        TextField("Work", text: $categoryTitle)
+        Button("Cancel", role: .cancel) {
+            categoryTitle = ""
+        }
+    }
+    
+    @ViewBuilder
+    private func renameCategoryAlertView() -> some View {
+        TextField("Work", text: $categoryTitle)
+        Button("Cancel", role: .cancel) {
+            categoryTitle = ""
+            requestedCategory = nil
+        }
+        
+        Button("Rename") {
+            if let requestedCategory {
+                requestedCategory.categoryTitle = categoryTitle
+                categoryTitle = ""
+                self.requestedCategory = nil
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func deleteCategoryAlertView() -> some View {
+        Button("Cancel", role: .cancel) {
+            categoryTitle = ""
+            requestedCategory = nil
+        }
+        
+        Button("Delete", role: .destructive) {
+            if let requestedCategory {
+                context.delete(requestedCategory)
+                categoryTitle = ""
+                self.requestedCategory = nil
+            }
+        }
+    }
+}
+
+// MARK: - Toolbar
+
+extension Home {
+    @ViewBuilder
+    private func toolbarItems() -> some View {
+        HStack {
+            Button("", systemImage: "plus") {
+                // Add new note
+                let note = Note(content: "")
+                context.insert(note)
+            }
+            
+            Button("", systemImage: isDark ? "sun.min" : "moon") {
+                isDark.toggle()
+            }
+            .contentTransition(.symbolEffect(.replace))
+        }
     }
 }
 
