@@ -11,7 +11,7 @@ import ComposableArchitecture
 /*
  Reducer: カウンターのロジックをカプセル化
  State: ジョブを実行するために必要な状態を保持する型(通常struct)
-    監視する場合は@ObservableStateをつける
+ 監視する場合は@ObservableStateをつける
  
  */
 
@@ -21,11 +21,15 @@ struct CounterFeature {
     @ObservableState
     struct State {
         var count = 0
+        var fact: String?
+        var isLoading = false
     }
     
     enum Action {
         // ユーザがUIで実行することを文字通り命名する
         case decrementButtonTapped
+        case factButtonTapped
+        case factResponse(String)
         case incrementButtonTapped
     }
     
@@ -36,10 +40,28 @@ struct CounterFeature {
             switch action {
             case .decrementButtonTapped:
                 state.count -= 1
+                state.fact = nil
+                return .none
+                
+            case .factButtonTapped:
+                state.fact = nil
+                state.isLoading = true
+                
+                return .run { [count = state.count] send in
+                    let (data, _) = try await URLSession.shared
+                        .data(from: URL(string: "http://numbersapi.com/\(count)")!)
+                    let fact = String(decoding: data, as: UTF8.self)
+                    await send(.factResponse(fact))
+                }
+                
+            case let .factResponse(fact):
+                state.fact = fact
+                state.isLoading = false
                 return .none
                 
             case .incrementButtonTapped:
                 state.count += 1
+                state.fact = nil
                 return .none
             }
         }
@@ -47,7 +69,7 @@ struct CounterFeature {
     
 }
 
-/* 
+/*
  私たちの個人的な好みとしては、それが不可能になるまでリデューサーとビューを
  同じファイル内に保持することですが、タイプを独自のファイルに分割することを
  好む人もいます。
@@ -82,6 +104,23 @@ struct CounterView: View {
                 .padding()
                 .background(Color.black.opacity(0.1))
                 .cornerRadius(10)
+            }
+            
+            Button("Fact") {
+                store.send(.factButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(Color.black.opacity(0.1))
+            .cornerRadius(10)
+            
+            if store.isLoading {
+                ProgressView()
+            } else if let fact = store.fact {
+                Text(fact)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
         }
     }
