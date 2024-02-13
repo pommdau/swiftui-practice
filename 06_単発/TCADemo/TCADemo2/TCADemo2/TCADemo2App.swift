@@ -11,14 +11,14 @@ import SwiftUI
 @main
 struct TCADemo2App: App {
     
-    static let store = Store(initialState: CounterFeature.State()) {
-        CounterFeature()
-            ._printChanges()
+    static let store = Store(initialState: AppFeature.State()) {
+        AppFeature()
+//            ._printChanges()
     }
     
     var body: some Scene {
         WindowGroup {
-            CounterView(store: TCADemo2App.store)
+            AppView(store: TCADemo2App.store)
         }
     }
 }
