@@ -13,7 +13,18 @@
 		DA17D93F2B7B32BC0024782A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA17D93E2B7B32BC0024782A /* Preview Assets.xcassets */; };
 		DA17D9472B7B332B0024782A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DA17D9462B7B332B0024782A /* ComposableArchitecture */; };
 		DA17D94A2B7B333A0024782A /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17D9492B7B333A0024782A /* CounterFeature.swift */; };
+		DA87B1EA2B7B3CD600DC6AD0 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87B1E92B7B3CD600DC6AD0 /* CounterFeatureTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DA87B1EB2B7B3CD600DC6AD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA17D92C2B7B32BB0024782A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA17D9332B7B32BB0024782A;
+			remoteInfo = TCADemo2;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DA17D9342B7B32BB0024782A /* TCADemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCADemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +34,8 @@
 		DA17D93E2B7B32BC0024782A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA17D9492B7B333A0024782A /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
 		DA87B1E22B7B382800DC6AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DA87B1E72B7B3CD600DC6AD0 /* ReducerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReducerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA87B1E92B7B3CD600DC6AD0 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +47,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA87B1E42B7B3CD600DC6AD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				DA17D9362B7B32BB0024782A /* TCADemo2 */,
+				DA87B1E82B7B3CD600DC6AD0 /* ReducerTests */,
 				DA17D9352B7B32BB0024782A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				DA17D9342B7B32BB0024782A /* TCADemo2.app */,
+				DA87B1E72B7B3CD600DC6AD0 /* ReducerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +104,14 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		DA87B1E82B7B3CD600DC6AD0 /* ReducerTests */ = {
+			isa = PBXGroup;
+			children = (
+				DA87B1E92B7B3CD600DC6AD0 /* CounterFeatureTests.swift */,
+			);
+			path = ReducerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,6 +135,24 @@
 			productReference = DA17D9342B7B32BB0024782A /* TCADemo2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DA87B1E62B7B3CD600DC6AD0 /* ReducerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA87B1ED2B7B3CD600DC6AD0 /* Build configuration list for PBXNativeTarget "ReducerTests" */;
+			buildPhases = (
+				DA87B1E32B7B3CD600DC6AD0 /* Sources */,
+				DA87B1E42B7B3CD600DC6AD0 /* Frameworks */,
+				DA87B1E52B7B3CD600DC6AD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA87B1EC2B7B3CD600DC6AD0 /* PBXTargetDependency */,
+			);
+			name = ReducerTests;
+			productName = ReducerTests;
+			productReference = DA87B1E72B7B3CD600DC6AD0 /* ReducerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -117,6 +165,10 @@
 				TargetAttributes = {
 					DA17D9332B7B32BB0024782A = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					DA87B1E62B7B3CD600DC6AD0 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = DA17D9332B7B32BB0024782A;
 					};
 				};
 			};
@@ -137,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				DA17D9332B7B32BB0024782A /* TCADemo2 */,
+				DA87B1E62B7B3CD600DC6AD0 /* ReducerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -148,6 +201,13 @@
 			files = (
 				DA17D93F2B7B32BC0024782A /* Preview Assets.xcassets in Resources */,
 				DA17D93C2B7B32BC0024782A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA87B1E52B7B3CD600DC6AD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +224,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA87B1E32B7B3CD600DC6AD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA87B1EA2B7B3CD600DC6AD0 /* CounterFeatureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA87B1EC2B7B3CD600DC6AD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA17D9332B7B32BB0024782A /* TCADemo2 */;
+			targetProxy = DA87B1EB2B7B3CD600DC6AD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DA17D9402B7B32BC0024782A /* Debug */ = {
@@ -346,6 +422,42 @@
 			};
 			name = Release;
 		};
+		DA87B1EE2B7B3CD600DC6AD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BWMJMJK727;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.ReducerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TCADemo2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TCADemo2";
+			};
+			name = Debug;
+		};
+		DA87B1EF2B7B3CD600DC6AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BWMJMJK727;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.ReducerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TCADemo2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TCADemo2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +475,15 @@
 			buildConfigurations = (
 				DA17D9432B7B32BC0024782A /* Debug */,
 				DA17D9442B7B32BC0024782A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA87B1ED2B7B3CD600DC6AD0 /* Build configuration list for PBXNativeTarget "ReducerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA87B1EE2B7B3CD600DC6AD0 /* Debug */,
+				DA87B1EF2B7B3CD600DC6AD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

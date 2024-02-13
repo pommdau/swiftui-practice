@@ -13,7 +13,7 @@ import ComposableArchitecture
 @Reducer
 struct CounterFeature {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var count = 0
         var fact: String?
         var isLoading = false
@@ -32,6 +32,8 @@ struct CounterFeature {
     enum CancelID {
         case timer
     }
+    
+    @Dependency(\.continuousClock) var clock
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -71,9 +73,8 @@ struct CounterFeature {
                 state.isTimerRunning.toggle()
                 
                 if state.isTimerRunning {
-                    return .run { send in
-                        while true {
-                            try await Task.sleep(for: .seconds(1))
+                    return .run { send in                        
+                        for await _ in self.clock.timer(interval: .seconds(1)) {
                             await send(.timerTick)
                         }
                     }
@@ -99,7 +100,7 @@ struct CounterView: View {
             HStack {
                 incrementButton()
                 decrementButton()
-            }            
+            }
             timerButton()
             factButton()
             factLabel()
