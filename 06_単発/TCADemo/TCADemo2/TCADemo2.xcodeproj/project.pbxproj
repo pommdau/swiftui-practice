@@ -22,6 +22,7 @@
 		DA17D93B2B7B32BC0024782A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA17D93E2B7B32BC0024782A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA17D9492B7B333A0024782A /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		DA87B1E22B7B382800DC6AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 		DA17D9362B7B32BB0024782A /* TCADemo2 */ = {
 			isa = PBXGroup;
 			children = (
+				DA87B1E22B7B382800DC6AD0 /* Info.plist */,
 				DA17D9372B7B32BB0024782A /* TCADemo2App.swift */,
 				DA17D9392B7B32BB0024782A /* ContentView.swift */,
 				DA17D9482B7B33340024782A /* Features */,
@@ -295,6 +297,7 @@
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TCADemo2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +327,7 @@
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TCADemo2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
