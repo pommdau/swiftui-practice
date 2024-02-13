@@ -14,6 +14,7 @@
 		DA17D9102B747D9F0024782A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DA17D90F2B747D9F0024782A /* ComposableArchitecture */; };
 		DA17D9122B747DCD0024782A /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17D9112B747DCD0024782A /* CounterFeature.swift */; };
 		DA17D91D2B7B08530024782A /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17D91C2B7B08530024782A /* CounterFeatureTests.swift */; };
+		DA17D9242B7B2AA30024782A /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17D9232B7B2AA30024782A /* NumberFactClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		DA17D9152B75E46B0024782A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA17D91A2B7B08530024782A /* TCADemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCADemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA17D91C2B7B08530024782A /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
+		DA17D9232B7B2AA30024782A /* NumberFactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFactClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				DA17D9002B747CE50024782A /* TCADemoApp.swift */,
 				DA17D9022B747CE50024782A /* ContentView.swift */,
 				DA17D9112B747DCD0024782A /* CounterFeature.swift */,
+				DA17D9232B7B2AA30024782A /* NumberFactClient.swift */,
 				DA17D9042B747CF30024782A /* Assets.xcassets */,
 				DA17D9062B747CF30024782A /* Preview Content */,
 			);
@@ -213,6 +216,7 @@
 				DA17D9122B747DCD0024782A /* CounterFeature.swift in Sources */,
 				DA17D9032B747CE50024782A /* ContentView.swift in Sources */,
 				DA17D9012B747CE50024782A /* TCADemoApp.swift in Sources */,
+				DA17D9242B7B2AA30024782A /* NumberFactClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
