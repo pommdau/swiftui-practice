@@ -13,13 +13,18 @@ import ComposableArchitecture
  State: ジョブを実行するために必要な状態を保持する型(通常struct)
  監視する場合は@ObservableStateをつける
  
+ TCAにおいてテストの対象はReducerのみ
+ 
+ リデューサーは純粋な関数を形成するため、状態の変更はコンポーザブル アーキテクチャでテストするのが最も簡単な部分です。
+ 必要なのは、状態の一部とアクションをリデューサーに供給し、状態がどのように変化したかをアサートすることだけです
+ 
  */
 
 @Reducer
 struct CounterFeature {
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var count = 0
         var fact: String?
         var isLoading = false
