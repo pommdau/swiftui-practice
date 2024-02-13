@@ -10,6 +10,18 @@ import ComposableArchitecture
 
 // MARK: - Reducer
 
+/*
+ Reducer: カウンターのロジックをカプセル化
+ State: ジョブを実行するために必要な状態を保持する型(通常struct)
+ 監視する場合は@ObservableStateをつける
+ 
+ TCAにおいてテストの対象はReducerのみ
+ 
+ リデューサーは純粋な関数を形成するため、状態の変更はコンポーザブル アーキテクチャでテストするのが最も簡単な部分です。
+ 必要なのは、状態の一部とアクションをリデューサーに供給し、状態がどのように変化したかをアサートすることだけです
+ 
+ */
+
 @Reducer
 struct CounterFeature {
     @ObservableState
@@ -87,6 +99,12 @@ struct CounterFeature {
 }
 
 // MARK: - Views
+
+/*
+ 私たちの個人的な好みとしては、それが不可能になるまでリデューサーとビューを
+ 同じファイル内に保持することですが、タイプを独自のファイルに分割することを
+ 好む人もいます。
+ */
 
 struct CounterView: View {
     

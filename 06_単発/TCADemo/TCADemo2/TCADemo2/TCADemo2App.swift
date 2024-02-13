@@ -11,7 +11,11 @@ import SwiftUI
 @main
 struct TCADemo2App: App {
     
+    // Storeの作成は一回だけ
+    // ほとんどはアプリのルートに作成してOK
+    // storeには初期状態を渡す
     static let store = Store(initialState: AppFeature.State()) {
+        // Closure内で機能を提供するReducerを指定
         AppFeature()
 //            ._printChanges()
     }

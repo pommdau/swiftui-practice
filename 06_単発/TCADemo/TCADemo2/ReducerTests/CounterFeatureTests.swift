@@ -18,6 +18,8 @@ final class CounterFeatureTests: XCTestCase {
         }
         
         await store.send(.incrementButtonTapped) {
+            // そのアクションが送信された後に状態がどのように変化するかを正確に記述する必要がある
+            // $0: CounterFeature.State
             $0.count = 1
         }
         await store.send(.decrementButtonTapped) {
