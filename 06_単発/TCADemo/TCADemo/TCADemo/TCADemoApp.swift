@@ -14,15 +14,14 @@ struct TCADemoApp: App {
     
     // Storeの作成は一回だけ
     // ほとんどはアプリのルートに作成してOK
-    static let store = Store(initialState: CounterFeature.State()) {
-        CounterFeature()
+    static let store = Store(initialState: AppFeature.State()) {
+        AppFeature()
             ._printChanges()
-    }
+      }
     
     var body: some Scene {
         WindowGroup {
-            CounterView(store: TCADemoApp.store)
-            
+            AppView(store: TCADemoApp.store)
         }
     }
 }
