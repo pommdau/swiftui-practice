@@ -11,11 +11,12 @@ struct LoopingStack<Content: View>: View {
     
     var visibleCardsCount: Int = 2
     @ViewBuilder var content: Content
-    
     @State private var offset: CGFloat = .zero
+    @State private var rotation: Int = 0
     
     var body: some View {
         Group(subviews: content) { collection in
+            let collection = collection.rotateFromLeft(by: rotation)
             let count = collection.count
             ZStack {
                 ForEach(collection) { view in
@@ -25,7 +26,9 @@ struct LoopingStack<Content: View>: View {
                     LoopingStackCardView(
                         index: index,
                         count: count,
-                        visibleCardsCount: visibleCardsCount) {
+                        visibleCardsCount: visibleCardsCount,
+                        rotation: $rotation
+                    ) {
                             view
                         }
                         .zIndex(zIndex)
@@ -41,6 +44,7 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
     var count: Int
     var visibleCardsCount: Int
     
+    @Binding var rotation: Int
     @ViewBuilder var content: Content
     @State private var offset: CGFloat = .zero
     @State private var viewSize: CGSize = .zero
@@ -64,6 +68,7 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
             )
             .offset(x: extraOffset)
             .scaleEffect(scale)
+            .animation(.smooth(duration: 0.25, extraBounce: 0), value: index)
             .offset(x: offset)
             .rotation3DEffect(
                 Angle(degrees: rotation),
@@ -88,7 +93,7 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
                             }
                         }
                     },
-                isEnabled: index == 0 // 一番上のみジェスチャーが有効
+                isEnabled: index == 0 && count > 1 // 一番上のみジェスチャーが有効
                 
             )
     }
@@ -99,6 +104,7 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
         withAnimation(animation, completionCriteria: .logicallyComplete) {
             offset = -viewSize.width
         } completion: {
+            rotation += 1
             withAnimation(.smooth(duration: 0.25, extraBounce: 0)) {
                 offset = .zero
             }
@@ -108,6 +114,16 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
 
 
 extension SubviewsCollection {
+    
+    // e.g. (by 2): [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
+    func rotateFromLeft(by: Int) -> [ForEachSubviewCollection.Element] {
+        let moveIndex = by % count
+        let rotatedElements = Array(self[moveIndex...]) + Array(self[0..<moveIndex])
+        return rotatedElements
+    }
+}
+
+extension [SubviewsCollection.Element] {
     func index(_ item: SubviewsCollection.Element) -> Int {
         firstIndex(where: { $0.id == item.id }) ?? 0
     }
