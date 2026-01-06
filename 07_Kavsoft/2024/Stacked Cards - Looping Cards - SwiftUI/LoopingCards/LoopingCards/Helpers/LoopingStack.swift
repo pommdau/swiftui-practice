@@ -10,6 +10,7 @@ import SwiftUI
 struct LoopingStack<Content: View>: View {
     
     var visibleCardsCount: Int = 2
+    var maxTranslationWidth: CGFloat?
     @ViewBuilder var content: Content
     @State private var offset: CGFloat = .zero
     @State private var rotation: Int = 0
@@ -27,6 +28,7 @@ struct LoopingStack<Content: View>: View {
                         index: index,
                         count: count,
                         visibleCardsCount: visibleCardsCount,
+                        maxTranslationWidth: maxTranslationWidth,
                         rotation: $rotation
                     ) {
                             view
@@ -43,6 +45,7 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
     var index: Int
     var count: Int
     var visibleCardsCount: Int
+    var maxTranslationWidth: CGFloat?
     
     @Binding var rotation: Int
     @ViewBuilder var content: Content
@@ -80,7 +83,12 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
                 DragGesture()
                     .onChanged { value in
                         let xOffset = -max(-value.translation.width, 0) // 左方向のみドラッグ可能
-                        offset = xOffset
+                        if let maxTranslationWidth {
+                            let progress = -max(min(-xOffset / maxTranslationWidth, 1), 0) * viewSize.width
+                            offset = progress
+                        } else {
+                            offset = xOffset
+                        }
                     }
                     .onEnded { value in
                         let xVelocity = max(-value.velocity.width / 5, 0)
@@ -117,6 +125,9 @@ extension SubviewsCollection {
     
     // e.g. (by 2): [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
     func rotateFromLeft(by: Int) -> [ForEachSubviewCollection.Element] {
+        if isEmpty {
+            return []
+        }        
         let moveIndex = by % count
         let rotatedElements = Array(self[moveIndex...]) + Array(self[0..<moveIndex])
         return rotatedElements
