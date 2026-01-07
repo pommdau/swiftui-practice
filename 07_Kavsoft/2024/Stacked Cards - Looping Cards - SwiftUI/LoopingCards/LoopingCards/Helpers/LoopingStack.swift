@@ -23,7 +23,6 @@ struct LoopingStack<Content: View>: View {
                 ForEach(collection) { view in
                     let index = collection.index(view)
                     let zIndex = Double(count - index) // 0枚目が一番上
-                    
                     LoopingStackCardView(
                         index: index,
                         count: count,
@@ -117,26 +116,6 @@ fileprivate struct LoopingStackCardView<Content: View>: View {
                 offset = .zero
             }
         }
-    }
-}
-
-
-extension SubviewsCollection {
-    
-    // e.g. (by 2): [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
-    func rotateFromLeft(by: Int) -> [ForEachSubviewCollection.Element] {
-        if isEmpty {
-            return []
-        }        
-        let moveIndex = by % count
-        let rotatedElements = Array(self[moveIndex...]) + Array(self[0..<moveIndex])
-        return rotatedElements
-    }
-}
-
-extension [SubviewsCollection.Element] {
-    func index(_ item: SubviewsCollection.Element) -> Int {
-        firstIndex(where: { $0.id == item.id }) ?? 0
     }
 }
 
